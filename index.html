@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cerita Kita BETA - anonimijon</title>
-<link rel="icon" type="image/png href="logo.png.jpg">
+<link rel="icon" type="image/jpeg" href="logo.png.jpg">
 <script src="https://cdn.tailwindcss.com"></script>
 <script>tailwind.config={theme:{extend:{colors:{maroon:'#800020',maroon2:'#A11D33',broken:'#FFFBF5',cream:'#FFF2E2',gold:'#FFD166'}}}}</script>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -19,8 +19,6 @@
 .stiker { position: absolute; font-size: 20px; animation: goyang 2s infinite ease-in-out; }
 @keyframes goyang { 0%,100% { transform: rotate(-5deg); } 50% { transform: rotate(5deg); } }
 .scrollbar-hide::-webkit-scrollbar { display: none; }
-
-/* TAMBAHAN LOVE ANIMASI BEBEN - CUMA INI DOANG YANG NEMA TAMBAHIN */
 #love-bg { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
 .heart-float { position: absolute; bottom: -10vh; animation: loveFloat linear infinite; user-select: none; }
 @keyframes loveFloat {
@@ -32,16 +30,13 @@
 </style>
 </head>
 <body class="bg-broken text-[#2b1116] overflow-x-hidden">
-
-<!-- BACKGROUND LOVE FULL - NEMA TARUH DISINI BEBEN -->
 <div id="love-bg"></div>
-
 <div id="landing" class="fixed inset-0 z-[100] bg-broken flex items-center justify-center p-4 transition-transform duration-700">
 <div class="absolute inset-0 bg-gradient-to-br from-cream via-white to-broken"></div>
   <div class="relative z-10 w-full max-w-[420px]">
     <div class="bg-white border-[3px] border-maroon rounded-[28px] p-7 shadow-[0_20px_60px_rgba(128,0,32,0.16)] text-center">
       <div class="flex justify-center items-center gap-2 mb-2">
-        <img src="logo.png" class="w-[84px] h-[84px] rounded-full border-[3px] border-maroon object-cover bg-white" onerror="this.style.display='none'">
+        <img src="logo.png.jpg" class="w-[84px] h-[84px] rounded-full border-[3px] border-maroon object-cover bg-white">
         <div class="text-left leading-none">
           <div class="text-[10px] font-bold bg-maroon text-white px-2 py-1 rounded-full" id="timeBadge">SAFE PLACE</div>
           <div class="text-[11px] font-semibold mt-1 opacity-60" id="campusGreeting">Halo Cemuanya 😘</div>
@@ -60,11 +55,10 @@
     </div>
   </div>
 </div>
-
 <div class="max-w-[1200px] mx-auto px-4 pb-28 relative z-10">
   <header class="sticky top-0 z-20 bg-broken/90 backdrop-blur-md border-b border-cream px-4 py-3 flex items-center justify-between -mx-4 mb-4">
     <div class="flex items-center gap-2 font-bold text-maroon">
-      <img src="logo.png" class="w-9 h-9 rounded-full border-2 border-maroon object-cover bg-white" onerror="this.style.display='none'">
+      <img src="logo.png.jpg" class="w-9 h-9 rounded-full border-2 border-maroon object-cover bg-white">
       <span class="leading-none text-[14px]">Cerita<br>Kita</span>
       <span class="text-[9px] bg-gold text-maroon px-2 py-0.5 rounded-full">ONLINE</span>
     </div>
@@ -75,12 +69,10 @@
     </div>
   </header>
   <input id="searchM" oninput="document.getElementById('search').value=this.value; render()" placeholder="🔍 Cari FICT, FMB, #tag..." class="md:hidden w-full bg-white border-2 border-cream rounded-full px-4 py-2.5 text-[12px] mb-3 outline-none">
-
   <div class="bg-white border-2 border-maroon/20 rounded-[18px] p-4 mb-4">
     <div class="flex justify-between items-center"><div class="font-bold text-[12px] text-maroon">🏆 Top Confess Minggu Ini</div><div class="text-[9px] bg-gold px-2 py-0.5 rounded-full font-bold">HOT</div></div>
     <div id="topConfessList" class="mt-3 flex flex-col gap-2"><div class="text-[11px] opacity-40">Loading...</div></div>
   </div>
-
   <div class="flex gap-2 overflow-auto pb-2 scrollbar-hide">
     <button class="filter-btn active bg-maroon text-white border-2 border-maroon px-4 py-1.5 rounded-full text-[11px] font-semibold" onclick="setCat('all',this)">Semua</button>
     <button class="filter-btn bg-white border-2 border-maroon px-4 py-1.5 rounded-full text-[11px] font-semibold" onclick="setCat('Perasaan',this)">💘 Perasaan</button>
@@ -88,7 +80,6 @@
     <button class="filter-btn bg-white border-2 border-maroon px-4 py-1.5 rounded-full text-[11px] font-semibold" onclick="setCat('Cari Teman',this)">🤝 Cari Teman</button>
     <button class="filter-btn bg-white border-2 border-maroon px-4 py-1.5 rounded-full text-[11px] font-semibold" onclick="setCat('Random',this)">🎉 Random</button>
   </div>
-
   <div class="card-aesthetic p-4 mb-4 relative bg-yellow-50/90 overflow-hidden">
     <div class="absolute -top-3 left-1/2 -translate-x-1/2 text-[26px]">📌</div>
     <div class="stiker top-2 right-10 text-[14px]">🎁</div>
@@ -97,9 +88,7 @@
   </div>
   <div id="feed" class="masonry mt-3 gap-4"></div>
 </div>
-
 <button onclick="openCreate()" class="fixed bottom-6 right-6 z-30 bg-maroon text-white px-5 py-3.5 rounded-full font-bold text-[13px] shadow-[0_12px_30px_rgba(128,0,32,0.4)]">➕ Spill sebagai anonimijon</button>
-
 <div id="createModal" class="fixed inset-0 z-[80] bg-[#2b1116]/35 backdrop-blur-md hidden place-items-center p-4">
   <div class="bg-broken border-[3px] border-maroon rounded-[22px] max-w-[460px] w-full p-5 relative max-h-[90vh] overflow-auto">
     <div class="flex justify-between items-center mb-4"><h3 class="font-bold text-maroon text-[14px]">Spill anonimijon ONLINE</h3><button onclick="closeCreate()" class="w-8 h-8 bg-white border-2 border-maroon rounded-full grid place-items-center font-bold text-maroon">✕</button></div>
@@ -126,7 +115,6 @@
     </div>
   </div>
 </div>
-
 <div id="detailModal" class="fixed inset-0 z-[90] bg-[#2b1116]/40 backdrop-blur-[18px] hidden place-items-center p-4">
   <div class="bg-broken border-[3px] border-maroon rounded-[24px] max-w-[560px] w-full relative max-h-[88vh] flex flex-col overflow-hidden">
     <div class="flex items-center justify-between p-4 border-b-2 border-cream bg-white"><div class="flex items-center gap-2"><div class="w-9 h-9 rounded-full border-2 border-maroon grid place-items-center text-[18px]" id="detailAvatar">🦊</div><div><div class="font-bold text-maroon text-[13px]" id="detailName">anonimijon #214</div><div class="text-[10px] opacity-50" id="detailTime">Baru saja</div></div></div><button onclick="closeDetail()" class="w-9 h-9 bg-white border-2 border-maroon rounded-full grid place-items-center font-bold text-maroon">✕</button></div>
@@ -134,9 +122,7 @@
   </div>
 </div>
 <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-maroon text-white px-6 py-3 rounded-full text-[13px] font-bold shadow-[0_10px_30px_rgba(0,0,0,0.3)] translate-y-[150px] opacity-0 transition-all duration-300 z-[200]">Confess kamu udah terkirim! ✨</div>
-
 <script>
-// LOVE ANIMATION SCRIPT - INI DOANG TAMBAHAN NEMA BEBEN
 const loveEmojis = ['💖','💕','❤️','💗','💓','💞','💝','😘','🥰'];
 const loveContainer = document.getElementById('love-bg');
 for(let i=0;i<35;i++){
@@ -151,7 +137,6 @@ for(let i=0;i<35;i++){
   loveContainer.appendChild(span);
 }
 </script>
-
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
 import { getFirestore, collection, addDoc, query, orderBy, onSnapshot, serverTimestamp, doc, updateDoc, arrayUnion } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
@@ -169,12 +154,10 @@ function normalisasi_BEBEN(t){return t.toLowerCase().replace(/4/g,'a').replace(/
 function profanityFilter(t){const low=normalisasi_BEBEN(t);for(let w of KATA_KASAR_BEBEN){if(low.includes(normalisasi_BEBEN(w)))return true}return false}
 function cekLimit_BEBEN(){const last=localStorage.getItem("lastPost_BEBEN");if(last){const selisih=Date.now()-parseInt(last);const limit=5*60*1000;if(selisih<limit){const sisa=Math.ceil((limit-selisih)/1000);const m=Math.floor(sisa/60);const d=sisa%60;alert(`Sabar ya kawan, ${m}:${d.toString().padStart(2,'0')} lagi baru bisa curhat lagi 🥺`);return false}}return true}
 window.lapor_BEBEN=function(){window.open(IG_BEBEN,'_blank')}
-
 function getXP_BEBEN(){return parseInt(localStorage.getItem('xp_BEBEN')||'0')}
 function addXP_BEBEN(n=10){let xp=getXP_BEBEN()+n; localStorage.setItem('xp_BEBEN', xp); return xp;}
 function getLevel_BEBEN(xp){ if(xp<30) return {lv:1, title:'Newbie', icon:'🌱'}; if(xp<80) return {lv:2, title:'Tukang Curhat', icon:'💬'}; if(xp<150) return {lv:3, title:'Sepuh Galau', icon:'🌙'}; if(xp<300) return {lv:4, title:'Lord Confess', icon:'👑'}; return {lv:5, title:'Legenda Karawang', icon:'🔥'}; }
 function updateLevelHeader(){ let xp=getXP_BEBEN(); let lvl=getLevel_BEBEN(xp); let head=document.getElementById('myLevelHeader'); if(head){head.innerText=`${lvl.icon} LV.${lvl.lv}`;} }
-
 let fotoBase64_BEBEN = null;
 window.previewPhoto=function(e){
   let f=e.target.files[0]; if(!f) return;
