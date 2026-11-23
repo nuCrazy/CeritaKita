@@ -5,124 +5,141 @@
 <title>Cerita Kita BETA - anonimijon</title>
 <link rel="icon" type="image/jpeg" href="logo.png.jpg">
 <script src="https://cdn.tailwindcss.com"></script>
-<script>tailwind.config={theme:{extend:{colors:{maroon:'#800020',maroon2:'#A11D33',broken:'#FFFBF5',cream:'#FFF2E2',gold:'#FFD166'}}}}}</script>
+<script>
+tailwind.config={
+ theme:{
+  extend:{
+   colors:{
+    maroon:'#5D0F1F',
+    maroon2:'#8B1E3F',
+    maroonSoft:'#A63A50',
+    broken:'#FFF8E7',
+    cream:'#FDE8C9',
+    cream2:'#FFF1D6',
+    gold:'#E8B86D',
+    ink:'#2B0A12'
+   }
+  }
+ }
+}
+</script>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
 *{font-family:'Poppins',sans-serif}
+body{background:#FFF8E7}
 .masonry{column-count:1;column-gap:14px} @media(min-width:640px){.masonry{column-count:2}} @media(min-width:1024px){.masonry{column-count:3}}
 .masonry-item{break-inside:avoid;margin-bottom:14px}
 .scrollbar-hide::-webkit-scrollbar{display:none;}
-html.dark body{background:#0e0608!important;color:#FFEEDD!important}
-html.dark .bg-white{background:#211016!important;color:#FFEEDD!important;border-color:#4a2030!important}
-html.dark .bg-broken{background:#12070a!important}
-html.dark .bg-cream{background:#2a1520!important;color:#FFEEDD!important}
-html.dark .bg-yellow-50\/90{background:#211016!important}
-html.dark .border-cream{border-color:#3d1e2b!important}
-html.dark .border-maroon{border-color:#5a1a2a!important}
-html.dark header{background:rgba(18,7,10,0.9)!important}
-html.dark input,html.dark textarea,html.dark select{background:#211016!important;color:#FFEEDD!important;border-color:#4a2030!important}
+/* DARK MODE - MAROON CREAM DARK */
+html.dark body{background:#1A0A0F!important;color:#FFEEDD!important}
+html.dark .bg-white{background:#2A1420!important;color:#FFEEDD!important;border-color:#4a2030!important}
+html.dark .bg-broken{background:#1A0A0F!important}
+html.dark .bg-cream, html.dark .bg-cream2{background:#2A1420!important;color:#FFEEDD!important}
+html.dark .border-cream, html.dark .border-cream2{border-color:#3d1e2b!important}
+html.dark .border-maroon{border-color:#6b2030!important}
+html.dark header{background:rgba(26,10,15,0.92)!important;backdrop-filter:blur(12px)}
+html.dark input,html.dark textarea,html.dark select{background:#2A1420!important;color:#FFEEDD!important;border-color:#4a2030!important}
 html.dark .text-maroon,html.dark .text-maroon2{color:#FFB3C0!important}
-html.dark .card-aesthetic{background:#211016!important}
-html.dark .masonry-item{background:#211016!important;border-color:#3d1e2b!important}
-html.dark footer{background:#211016!important}
-html.dark .bottom-nav{background:#211016!important;border-color:#5a1a2a!important;box-shadow:0 10px 30px rgba(0,0,0,0.5)}
+html.dark .text-ink{color:#FFEEDD!important}
+html.dark .bottom-nav{background:#2A1420!important;border-color:#5a1a2a!important}
 html.dark .bottom-nav button{color:#FFEEDD!important}
-html.dark .bottom-nav button.active{background:#800020!important;color:white!important}
-html.dark .from-maroon{background:#211016!important}
-.bottom-nav{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);width:calc(100% - 20px);max-width:440px;background:white;border:2.5px solid #800020;border-radius:20px;display:flex;justify-content:space-around;padding:6px;z-index:50;box-shadow:0 10px 30px rgba(128,0,32,0.25)}
-.bottom-nav button{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 6px;border-radius:14px;font-size:10px;font-weight:700;color:#800020;opacity:0.5;transition:0.2s}
-.bottom-nav button.active{background:#800020;color:white;opacity:1;transform:translateY(-2px)}
+html.dark .bottom-nav button.active{background:#8B1E3F!important;color:white!important}
+.bottom-nav{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);width:calc(100% - 20px);max-width:440px;background:#FFFBF0;border:2.5px solid #5D0F1F;border-radius:20px;display:flex;justify-content:space-around;padding:6px;z-index:50;box-shadow:0 12px 32px rgba(93,15,31,0.22)}
+.bottom-nav button{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:9px 6px;border-radius:14px;font-size:10px;font-weight:700;color:#5D0F1F;opacity:0.45;transition:0.22s}
+.bottom-nav button.active{background:#5D0F1F;color:#FFF8E7;opacity:1;transform:translateY(-3px);box-shadow:0 6px 14px rgba(93,15,31,0.3)}
 .bottom-nav button span.icon{font-size:18px;line-height:1}
-.view{display:none;animation:fadeIn 0.25s ease} .view.active{display:block} @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.view{display:none;animation:fadeIn 0.28s ease} .view.active{display:block} @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 @keyframes spinWheel{0%{transform:rotate(0)}100%{transform:rotate(1440deg)}}
+.card-cream{box-shadow:5px 5px 0px #5D0F1F}
 </style>
 </head>
-<body class="bg-broken text-[#2b1116] overflow-x-hidden">
+<body class="text-ink overflow-x-hidden">
 <div id="landing" class="fixed inset-0 z-[100] bg-broken flex items-center justify-center p-4 transition-transform duration-700">
-<div class="absolute inset-0 bg-gradient-to-br from-cream via-white to-broken"></div>
+<div class="absolute inset-0 bg-gradient-to-br from-cream via-[#FFFBF0] to-broken"></div>
 <div class="relative z-10 w-full max-w-[420px]">
-<div class="bg-white border-[3px] border-maroon rounded-[28px] p-7 shadow-[0_20px_60px_rgba(128,0,32,0.16)] text-center">
-<div class="flex justify-center items-center gap-2 mb-2">
+<div class="bg-white border-[3px] border-maroon rounded-[28px] p-7 shadow-[0_20px_60px_rgba(93,15,31,0.18)] text-center">
+<div class="flex justify-center items-center gap-3 mb-2">
 <img src="logo.png.jpg" class="w-[84px] h-[84px] rounded-full border-[3px] border-maroon object-cover bg-white">
 <div class="text-left leading-none">
-<div class="text-[10px] font-bold bg-maroon text-white px-2 py-1 rounded-full" id="timeBadge">SAFE PLACE</div>
-<div class="text-[11px] font-semibold mt-1 opacity-60">Halo Cemuanya 😘</div>
+<div class="text-[10px] font-bold bg-maroon text-[#FFF8E7] px-2.5 py-1 rounded-full" id="timeBadge">SAFE PLACE</div>
+<div class="text-[11px] font-semibold mt-1 opacity-70">Halo Cemuanya 😘</div>
 <div class="text-[9px] opacity-40 mt-0.5" id="dateBadge">Loading...</div>
 </div></div>
-<h1 class="text-[36px] font-extrabold leading-[0.9] text-maroon mt-3">Cerita<span class="text-maroon2">Kita</span></h1>
-<button onclick="enterApp()" class="w-full mt-4 bg-maroon text-white py-[14px] rounded-[14px] font-bold text-[14px]">Masuk sebagai anonimijon →</button>
+<h1 class="text-[36px] font-extrabold leading-[0.9] text-maroon mt-3 tracking-tight">Cerita<span class="text-maroon2">Kita</span></h1>
+<p class="text-[11px] opacity-60 mt-2">Cozzy place to confess, maroon cream edition</p>
+<button onclick="enterApp()" class="w-full mt-5 bg-maroon text-[#FFF8E7] py-[14px] rounded-[14px] font-bold text-[14px] shadow-[0_8px_20px_rgba(93,15,31,0.25)]">Masuk sebagai anonimijon →</button>
 <div class="mt-3 text-[9px] opacity-40" id="connStatus">Menghubungkan...</div>
 </div></div></div>
 
 <div class="max-w-[1200px] mx-auto px-4 pb-[120px] relative z-10">
-<header class="sticky top-0 z-20 bg-broken/90 backdrop-blur-md border-b border-cream px-4 py-3 flex items-center justify-between -mx-4 mb-4">
-<div class="flex items-center gap-2 font-bold text-maroon">
+<header class="sticky top-0 z-20 bg-broken/90 backdrop-blur-md border-b border-cream px-4 py-3.5 flex items-center justify-between -mx-4 mb-5">
+<div class="flex items-center gap-2.5 font-bold text-maroon">
 <img src="logo.png.jpg" class="w-9 h-9 rounded-full border-2 border-maroon object-cover bg-white">
-<span class="leading-none text-[14px]">Cerita<br>Kita</span>
+<span class="leading-none text-[13px] tracking-tight">Cerita<br>Kita</span>
 </div>
 <div class="flex items-center gap-1.5">
-<button id="notifBell" onclick="openNotif()" class="relative w-9 h-9 bg-white border-2 border-cream rounded-full grid place-items-center text-[14px]">🔔<span id="notifDot" class="hidden absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full border-2 border-white"></span></button>
-<button id="darkToggle" onclick="toggleDark()" class="w-9 h-9 bg-white border-2 border-cream rounded-full grid place-items-center text-[14px]">🌙</button>
-<div id="myLevelHeader" class="text-[10px] bg-maroon text-white border border-maroon rounded-full px-2.5 py-1 font-bold">🌱 LV.1</div>
+<button id="notifBell" onclick="openNotif()" class="relative w-9 h-9 bg-white border-2 border-cream rounded-full grid place-items-center text-[14px] shadow-sm">🔔<span id="notifDot" class="hidden absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full border-2 border-white"></span></button>
+<button id="darkToggle" onclick="toggleDark()" class="w-9 h-9 bg-white border-2 border-cream rounded-full grid place-items-center text-[14px] shadow-sm">🌙</button>
+<div id="myLevelHeader" class="text-[10px] bg-maroon text-[#FFF8E7] border border-maroon rounded-full px-3 py-1.5 font-bold shadow-sm">🌱 LV.1</div>
 </div></header>
 
 <div id="view-home" class="view active space-y-4">
-<div class="bg-white border-[2.5px] border-maroon rounded-[20px] p-5 shadow-[4px_4px_0px_#800020]">
+<div class="bg-white border-[2.5px] border-maroon rounded-[22px] p-5 card-cream">
 <h2 class="font-extrabold text-maroon text-[15px]">📜 Rules Cerita Kita</h2>
-<div id="homeRules" class="mt-3 text-[12px] leading-6 opacity-80">Loading rules dari admin...</div>
+<div id="homeRules" class="mt-3 text-[12px] leading-[1.8] opacity-80">Loading rules dari admin...</div>
 </div>
-<div class="bg-maroon border-[2.5px] border-maroon rounded-[20px] p-5 text-white shadow-[4px_4px_0px_#3a0a14]">
-<h2 class="font-extrabold text-[15px]">📢 Pengumuman</h2>
-<div id="homePengumuman" class="mt-3 text-[12px] leading-6 opacity-90">Belum ada pengumuman</div>
-<div class="mt-2 text-[9px] opacity-60" id="pengumumanDate"></div>
+<div class="bg-maroon border-[2.5px] border-maroon rounded-[22px] p-5 text-[#FFF8E7] card-cream">
+<h2 class="font-extrabold text-[15px] tracking-wide">📢 Pengumuman</h2>
+<div id="homePengumuman" class="mt-3 text-[12px] leading-[1.8] opacity-90">Belum ada pengumuman</div>
+<div class="mt-3 text-[9px] opacity-50" id="pengumumanDate"></div>
 </div>
-<div class="bg-white border-[2.5px] border-gold rounded-[20px] p-5 shadow-[4px_4px_0px_#FFD166]">
-<div class="flex justify-between"><h2 class="font-extrabold text-maroon text-[15px]">💰 Iklan / Sponsor</h2><span class="text-[9px] bg-gold px-2 py-1 rounded-full font-bold">ADS</span></div>
-<div id="homeIklan" class="mt-3 text-[12px]">Belum ada iklan, hubungi admin buat pasang iklan</div>
+<div class="bg-[#FFFBF0] border-[2.5px] border-gold rounded-[22px] p-5 card-cream" style="box-shadow:5px 5px 0px #E8B86D">
+<div class="flex justify-between items-center"><h2 class="font-extrabold text-maroon text-[15px]">💰 Iklan / Sponsor</h2><span class="text-[9px] bg-gold text-maroon px-2.5 py-1 rounded-full font-extrabold">ADS</span></div>
+<div id="homeIklan" class="mt-3 text-[12px] leading-6">Belum ada iklan, hubungi admin buat pasang iklan di sini biar rame!</div>
 </div>
 <div class="grid grid-cols-2 gap-3">
-<div class="bg-white border-2 border-cream rounded-[16px] py-4 text-center"><div class="font-extrabold text-maroon text-[24px]" id="lTotal">0</div><div class="text-[9px] font-bold opacity-60">TOTAL CONFESS</div></div>
-<div class="bg-white border-2 border-cream rounded-[16px] py-4 text-center"><div class="font-extrabold text-maroon text-[24px]" id="lStreak">0🔥</div><div class="text-[9px] font-bold opacity-60">STREAK HARI</div></div>
+<div class="bg-white border-2 border-cream rounded-[18px] py-5 text-center shadow-sm"><div class="font-extrabold text-maroon text-[26px]" id="lTotal">0</div><div class="text-[9px] font-bold opacity-60 tracking-widest mt-1">TOTAL CONFESS</div></div>
+<div class="bg-white border-2 border-cream rounded-[18px] py-5 text-center shadow-sm"><div class="font-extrabold text-maroon text-[26px]" id="lStreak">0🔥</div><div class="text-[9px] font-bold opacity-60 tracking-widest mt-1">STREAK HARI</div></div>
 </div>
 </div>
 
 <div id="view-feed" class="view">
-<input id="searchM" oninput="document.getElementById('search').value=this.value; render()" placeholder="🔍 Cari FICT, FMB, #tag..." class="md:hidden w-full bg-white border-2 border-cream rounded-full px-4 py-2.5 text-[12px] mb-3 outline-none">
-<input id="search" oninput="render()" placeholder="Cari #tag / FICT / FMB..." class="hidden md:block w-full bg-white border-2 border-cream rounded-full px-4 py-2.5 text-[11px] mb-3 outline-none">
-<div class="bg-white border-2 border-maroon/20 rounded-[18px] p-4 mb-4">
-<div class="flex justify-between items-center"><div class="font-bold text-[12px] text-maroon">🏆 Top Confess Minggu Ini</div><div class="text-[9px] bg-gold px-2 py-0.5 rounded-full font-bold">HOT</div></div>
+<input id="searchM" oninput="document.getElementById('search').value=this.value; render()" placeholder="🔍 Cari FICT, FMB, #tag..." class="md:hidden w-full bg-white border-2 border-cream rounded-full px-4 py-3 text-[12px] mb-3 outline-none shadow-sm">
+<input id="search" oninput="render()" placeholder="Cari #tag / FICT / FMB..." class="hidden md:block w-full bg-white border-2 border-cream rounded-full px-4 py-3 text-[11px] mb-4 outline-none shadow-sm">
+<div class="bg-white border-[2px] border-maroon/15 rounded-[18px] p-4 mb-4 shadow-sm">
+<div class="flex justify-between items-center"><div class="font-bold text-[12px] text-maroon">🏆 Top Confess Minggu Ini</div><div class="text-[9px] bg-gold text-maroon px-2.5 py-1 rounded-full font-bold">HOT</div></div>
 <div id="topConfessList" class="mt-3 flex flex-col gap-2"></div>
 </div>
 <div class="flex gap-2 overflow-auto pb-2 scrollbar-hide">
-<button class="filter-btn active bg-maroon text-white border-2 border-maroon px-4 py-1.5 rounded-full text-[11px] font-semibold" onclick="setCat('all',this)">Semua</button>
-<button class="filter-btn bg-white border-2 border-maroon px-4 py-1.5 rounded-full text-[11px] font-semibold" onclick="setCat('Perasaan',this)">💘 Perasaan</button>
-<button class="filter-btn bg-white border-2 border-maroon px-4 py-1.5 rounded-full text-[11px] font-semibold" onclick="setCat('Curhat Dosen',this)">😤 Dosen</button>
-<button class="filter-btn bg-white border-2 border-maroon px-4 py-1.5 rounded-full text-[11px] font-semibold" onclick="setCat('Cari Teman',this)">🤝 Teman</button>
-<button class="filter-btn bg-white border-2 border-maroon px-4 py-1.5 rounded-full text-[11px] font-semibold" onclick="setCat('Random',this)">🎉 Random</button>
+<button class="filter-btn active bg-maroon text-[#FFF8E7] border-2 border-maroon px-5 py-2 rounded-full text-[11px] font-semibold shadow-sm" onclick="setCat('all',this)">Semua</button>
+<button class="filter-btn bg-white border-2 border-maroon px-5 py-2 rounded-full text-[11px] font-semibold" onclick="setCat('Perasaan',this)">💘 Perasaan</button>
+<button class="filter-btn bg-white border-2 border-maroon px-5 py-2 rounded-full text-[11px] font-semibold" onclick="setCat('Curhat Dosen',this)">😤 Dosen</button>
+<button class="filter-btn bg-white border-2 border-maroon px-5 py-2 rounded-full text-[11px] font-semibold" onclick="setCat('Cari Teman',this)">🤝 Teman</button>
+<button class="filter-btn bg-white border-2 border-maroon px-5 py-2 rounded-full text-[11px] font-semibold" onclick="setCat('Random',this)">🎉 Random</button>
 </div>
-<div id="feed" class="masonry mt-3 gap-4"></div>
+<div id="feed" class="masonry mt-4 gap-4"></div>
 </div>
 
 <div id="view-game" class="view space-y-3">
-<div class="bg-white border-2 border-cream rounded-xl p-4"><div class="font-bold text-[12px]">🎡 Spin Harian</div><div class="text-[10px] opacity-60">Spin 1x sehari dapet XP 5-25</div><div id="spinWheel" class="mt-3 w-20 h-20 mx-auto rounded-full border-4 border-maroon grid place-items-center text-[24px] bg-gold">🎡</div><button id="spinBtn" onclick="doSpin()" class="w-full mt-3 bg-maroon text-white py-2 rounded-xl font-bold text-[11px]">SPIN SEKARANG</button><div id="spinResult" class="text-[11px] text-center mt-2 font-bold text-maroon"></div></div>
-<div class="bg-white border-2 border-cream rounded-xl p-4"><div class="font-bold text-[12px]">🧠 Tebak Mood</div><div id="moodText" class="mt-2 bg-broken border rounded-xl p-3 text-[11px] italic">Loading...</div><div class="grid grid-cols-3 gap-2 mt-2"><button onclick="guessMood('sedih')" class="bg-broken border py-2 rounded-full text-[11px]">😭 Sedih</button><button onclick="guessMood('seneng')" class="bg-broken border py-2 rounded-full text-[11px]">😆 Seneng</button><button onclick="guessMood('marah')" class="bg-broken border py-2 rounded-full text-[11px]">😤 Marah</button></div><div id="moodResult" class="text-[11px] mt-2 font-bold text-center"></div></div>
-<div class="bg-white border-2 border-cream rounded-xl p-4"><div class="font-bold text-[12px]">🐱 Tap Si Kucing - 10 detik</div><div class="mt-2 text-center"><div id="catScore" class="text-[24px] font-extrabold text-maroon">0</div><button id="catBtn" onclick="tapCat()" class="w-24 h-24 bg-cream border-4 border-maroon rounded-full text-[40px] active:scale-90 transition">🐱</button><div id="catTimer" class="text-[11px] mt-2">Klik START</div></div><button id="catStartBtn" onclick="startCatGame()" class="w-full mt-3 bg-maroon text-white py-2 rounded-xl font-bold text-[11px]">START GAME</button></div>
+<div class="bg-white border-2 border-cream rounded-[18px] p-5 shadow-sm"><div class="font-bold text-[13px] text-maroon">🎡 Spin Harian</div><div class="text-[10px] opacity-60 mt-1">Spin 1x sehari dapet XP 5-25</div><div id="spinWheel" class="mt-4 w-20 h-20 mx-auto rounded-full border-[3px] border-maroon grid place-items-center text-[24px] bg-cream2">🎡</div><button id="spinBtn" onclick="doSpin()" class="w-full mt-4 bg-maroon text-[#FFF8E7] py-2.5 rounded-xl font-bold text-[11px]">SPIN SEKARANG</button><div id="spinResult" class="text-[11px] text-center mt-2 font-bold text-maroon"></div></div>
+<div class="bg-white border-2 border-cream rounded-[18px] p-5 shadow-sm"><div class="font-bold text-[13px] text-maroon">🧠 Tebak Mood</div><div id="moodText" class="mt-3 bg-broken border-2 border-cream rounded-xl p-3.5 text-[11px] italic">Loading...</div><div class="grid grid-cols-3 gap-2 mt-3"><button onclick="guessMood('sedih')" class="bg-broken border-2 border-cream py-2.5 rounded-full text-[11px] font-semibold">😭 Sedih</button><button onclick="guessMood('seneng')" class="bg-broken border-2 border-cream py-2.5 rounded-full text-[11px] font-semibold">😆 Seneng</button><button onclick="guessMood('marah')" class="bg-broken border-2 border-cream py-2.5 rounded-full text-[11px] font-semibold">😤 Marah</button></div><div id="moodResult" class="text-[11px] mt-3 font-bold text-center"></div></div>
+<div class="bg-white border-2 border-cream rounded-[18px] p-5 shadow-sm"><div class="font-bold text-[13px] text-maroon">🐱 Tap Si Kucing - 10 detik</div><div class="mt-3 text-center"><div id="catScore" class="text-[26px] font-extrabold text-maroon">0</div><button id="catBtn" onclick="tapCat()" class="w-24 h-24 bg-cream2 border-[3px] border-maroon rounded-full text-[40px] active:scale-90 transition">🐱</button><div id="catTimer" class="text-[11px] mt-3 font-semibold opacity-60">Klik START</div></div><button id="catStartBtn" onclick="startCatGame()" class="w-full mt-4 bg-maroon text-[#FFF8E7] py-2.5 rounded-xl font-bold text-[11px]">START GAME</button></div>
 </div>
 
 <div id="view-profile" class="view space-y-4">
-<div class="bg-white border-[3px] border-maroon rounded-[20px] p-6 text-center">
-<div class="w-16 h-16 mx-auto rounded-full border-[3px] border-maroon bg-cream grid place-items-center text-[32px]">🦊</div>
-<h2 class="font-extrabold text-maroon mt-3" id="profileName">anonimijon</h2>
+<div class="bg-white border-[2.5px] border-maroon rounded-[22px] p-6 text-center card-cream">
+<div class="w-16 h-16 mx-auto rounded-full border-[3px] border-maroon bg-cream2 grid place-items-center text-[32px]">🦊</div>
+<h2 class="font-extrabold text-maroon mt-4 text-[16px]" id="profileName">anonimijon</h2>
 <div class="text-[11px] opacity-60 mt-1">Level & XP kamu naik dari main game & spill</div>
-<div class="mt-4 grid grid-cols-3 gap-2">
-<div class="bg-broken border-2 rounded-xl py-3"><div class="font-bold text-maroon" id="profileLevel">LV.1</div><div class="text-[9px]">LEVEL</div></div>
-<div class="bg-broken border-2 rounded-xl py-3"><div class="font-bold text-maroon" id="profileXP">0</div><div class="text-[9px]">XP</div></div>
-<div class="bg-broken border-2 rounded-xl py-3"><div class="font-bold text-maroon" id="profileStreak">0🔥</div><div class="text-[9px]">STREAK</div></div>
+<div class="mt-5 grid grid-cols-3 gap-2.5">
+<div class="bg-broken border-2 border-cream rounded-[14px] py-3.5"><div class="font-extrabold text-maroon text-[16px]" id="profileLevel">LV.1</div><div class="text-[9px] font-bold opacity-50 mt-1">LEVEL</div></div>
+<div class="bg-broken border-2 border-cream rounded-[14px] py-3.5"><div class="font-extrabold text-maroon text-[16px]" id="profileXP">0</div><div class="text-[9px] font-bold opacity-50 mt-1">XP</div></div>
+<div class="bg-broken border-2 border-cream rounded-[14px] py-3.5"><div class="font-extrabold text-maroon text-[16px]" id="profileStreak">0🔥</div><div class="text-[9px] font-bold opacity-50 mt-1">STREAK</div></div>
 </div>
 </div>
-<div class="bg-white border-2 rounded-[18px] p-4"><h3 class="font-bold text-[12px] text-maroon">📝 Confess Gue</h3><div id="myConfessList" class="mt-3 space-y-2 text-[11px]"></div></div>
-<footer class="bg-white border-[3px] border-maroon rounded-[24px] p-6 text-center"><img src="logo.png.jpg" class="w-[56px] h-[56px] rounded-full border-[3px] border-maroon mx-auto object-cover"><div class="font-extrabold text-maroon mt-2">Cerita Kita - CozzyPlaceToConfess ☁️</div><div class="text-[10px] opacity-50 mt-2">Made with 💖 by HUMAN/ERROR © 2026</div></footer>
+<div class="bg-white border-2 border-cream rounded-[18px] p-4 shadow-sm"><h3 class="font-bold text-[12px] text-maroon">📝 Confess Gue</h3><div id="myConfessList" class="mt-3 space-y-2 text-[11px]"></div></div>
+<footer class="bg-white border-[2.5px] border-maroon rounded-[22px] p-6 text-center card-cream"><img src="logo.png.jpg" class="w-[56px] h-[56px] rounded-full border-[3px] border-maroon mx-auto object-cover"><div class="font-extrabold text-maroon mt-3">Cerita Kita - CozzyPlaceToConfess ☁️</div><div class="text-[10px] opacity-50 mt-2">Made with 💖 by HUMAN/ERROR © 2026 - Maroon Cream Edition</div></footer>
 </div>
 </div>
 
@@ -133,15 +150,16 @@ html.dark .from-maroon{background:#211016!important}
 <button id="nav-profile" onclick="switchTab('profile')"><span class="icon">👤</span>Profil</button>
 </div>
 
-<button onclick="openCreate()" class="fixed bottom-[84px] right-5 z-40 bg-maroon text-white px-5 py-3.5 rounded-full font-bold text-[13px] shadow-[0_12px_30px_rgba(128,0,32,0.4)]">➕ Spill</button>
+<button onclick="openCreate()" class="fixed bottom-[88px] right-5 z-40 bg-maroon text-[#FFF8E7] px-6 py-3.5 rounded-full font-bold text-[13px] shadow-[0_12px_28px_rgba(93,15,31,0.35)]">➕ Spill</button>
 
-<div id="rulesModal" class="fixed inset-0 z-[110] bg-[#2b1116]/60 backdrop-blur-md hidden place-items-center p-4"><div class="bg-white border-[3px] border-maroon rounded-[22px] max-w-[400px] w-full p-6"><h3 class="font-extrabold text-maroon text-[18px]">📜 Rules Cerita Kita</h3><ul class="mt-3 text-[11px] leading-5 list-disc pl-4 opacity-80"><li>Dilarang SARA, porn, 18+, doxxing identitas</li><li>Dilarang spam, promo judi, pinjol</li><li>Saling respect, no bully</li><li>Foto max 1MB, auto kompres</li><li>Langgar = confess dihapus</li></ul><label class="flex items-center gap-2 mt-4 text-[11px] font-bold"><input id="agreeCheck" type="checkbox" class="w-4 h-4"> Gue setuju & siap jadi anonimijon baik</label><button onclick="agreeRules()" class="w-full mt-4 bg-maroon text-white py-3 rounded-xl font-bold text-[13px]">Masuk Sekarang →</button></div></div>
-<div id="notifModal" class="fixed inset-0 z-[85] bg-[#2b1116]/40 backdrop-blur-md hidden place-items-center p-4"><div class="bg-broken border-[3px] border-maroon rounded-[22px] max-w-[420px] w-full p-5 max-h-[80vh] overflow-auto"><div class="flex justify-between items-center"><h3 class="font-bold text-maroon">🔔 Notifikasi Balasan</h3><button onclick="closeNotif()" class="w-8 h-8 bg-white border-2 border-maroon rounded-full grid place-items-center font-bold">✕</button></div><div id="notifList" class="mt-4 flex flex-col gap-2 text-[11px]"></div><button onclick="clearNotif()" class="w-full mt-4 bg-cream border-2 py-2 rounded-xl text-[11px] font-bold">Hapus Semua</button></div></div>
-<div id="createModal" class="fixed inset-0 z-[80] bg-[#2b1116]/35 backdrop-blur-md hidden place-items-center p-4"><div class="bg-broken border-[3px] border-maroon rounded-[22px] max-w-[460px] w-full p-5 relative max-h-[90vh] overflow-auto"><div class="flex justify-between items-center mb-4"><h3 class="font-bold text-maroon text-[14px]">Spill ONLINE</h3><button onclick="closeCreate()" class="w-8 h-8 bg-white border-2 border-maroon rounded-full grid place-items-center font-bold text-maroon">✕</button></div><div class="space-y-3"><div class="grid grid-cols-2 gap-3"><div><label class="text-[11px] font-semibold">Untuk Siapa</label><input id="toInput" class="mt-1 w-full bg-white border-2 border-cream rounded-xl px-3 py-2.5 text-[12px] outline-none"></div><div><label class="text-[11px] font-semibold">Kategori</label><select id="catInput" class="mt-1 w-full bg-white border-2 border-cream rounded-xl px-3 py-2.5 text-[12px]"><option>Perasaan</option><option>Curhat Dosen</option><option>Cari Teman</option><option>Random</option><option>Curhat Kuliah</option></select></div></div><div><label class="text-[11px] font-semibold">Pilih wujud</label><div id="avatarPicker" class="mt-1 flex gap-1.5 overflow-auto scrollbar-hide"></div><div id="colorPicker" class="mt-2 flex gap-1.5"></div></div><div><label class="text-[11px] font-semibold">Isi Confess <span id="charCount" class="opacity-50">0/500</span></label><textarea id="msgInput" maxlength="500" placeholder="mau curcol apa?" class="mt-1 w-full bg-white border-2 border-cream rounded-xl px-3 py-2.5 text-[12px] min-h-[110px] resize-none outline-none"></textarea><div class="mt-3 grid grid-cols-2 gap-2"><button type="button" onclick="document.getElementById('photoInputGallery').click()" class="bg-white border-2 border-cream rounded-xl px-3 py-2.5 text-[11px] font-semibold">🖼️ Galeri</button><button type="button" onclick="document.getElementById('photoInputCamera').click()" class="bg-white border-2 border-cream rounded-xl px-3 py-2.5 text-[11px] font-semibold">📸 Kamera</button></div><input type="file" id="photoInputGallery" accept="image/*" class="hidden" onchange="previewPhoto(event)"><input type="file" id="photoInputCamera" accept="image/*" capture="environment" class="hidden" onchange="previewPhoto(event)"><div id="photoName" class="text-[9px] opacity-40 mt-1 text-center">max 1MB auto kompres</div><img id="photoPreview" class="hidden w-full h-52 object-cover rounded-xl border-2 border-cream mt-2"><button id="removePhoto" onclick="removePhoto()" class="hidden text-[10px] bg-red-500 text-white px-3 py-1 rounded-full mt-2">Hapus Foto</button></div><button id="sendBtn" onclick="sendConfess()" class="w-full bg-maroon text-white py-3 rounded-xl font-bold text-[14px]">Kirim ONLINE ✈️</button></div></div></div>
-<div id="editModal" class="fixed inset-0 z-[85] bg-[#2b1116]/50 backdrop-blur-md hidden place-items-center p-4"><div class="bg-broken border-[3px] border-maroon rounded-[22px] max-w-[460px] w-full p-5"><div class="flex justify-between items-center mb-4"><h3 class="font-bold text-maroon text-[14px]">Edit ✏️</h3><button onclick="closeEdit()" class="w-8 h-8 bg-white border-2 border-maroon rounded-full grid place-items-center font-bold">✕</button></div><div class="space-y-3"><div class="grid grid-cols-2 gap-3"><div><label class="text-[11px]">Untuk Siapa</label><input id="editToInput" class="mt-1 w-full bg-white border-2 rounded-xl px-3 py-2.5 text-[12px]"></div><div><label class="text-[11px]">Kategori</label><select id="editCatInput" class="mt-1 w-full bg-white border-2 rounded-xl px-3 py-2.5 text-[12px]"><option>Perasaan</option><option>Curhat Dosen</option><option>Cari Teman</option><option>Random</option><option>Curhat Kuliah</option></select></div></div><textarea id="editMsgInput" maxlength="500" class="mt-1 w-full bg-white border-2 rounded-xl px-3 py-2.5 text-[12px] min-h-[100px]"></textarea><button id="saveEditBtn" onclick="saveEdit()" class="w-full bg-maroon text-white py-3 rounded-xl font-bold">Simpan 💾</button></div></div></div>
-<div id="deleteModal" class="fixed inset-0 z-[95] bg-[#2b1116]/50 backdrop-blur-md hidden place-items-center p-4"><div class="bg-white border-[3px] border-maroon rounded-[22px] max-w-[360px] w-full p-6 text-center"><div class="text-[40px]">🗑️</div><h3 class="font-bold text-maroon mt-2">Hapus Confess?</h3><p class="text-[11px] opacity-60 mt-1">Gak bisa dibalikin</p><div class="grid grid-cols-2 gap-2 mt-4"><button onclick="closeDelete()" class="bg-broken border-2 py-2.5 rounded-xl font-bold text-[12px]">Batal</button><button id="confirmDeleteBtn" class="bg-red-600 text-white py-2.5 rounded-xl font-bold text-[12px]">Ya, Hapus</button></div></div></div>
-<div id="detailModal" class="fixed inset-0 z-[90] bg-[#2b1116]/40 backdrop-blur-[18px] hidden place-items-center p-4"><div class="bg-broken border-[3px] border-maroon rounded-[24px] max-w-[560px] w-full max-h-[88vh] flex flex-col overflow-hidden"><div class="flex items-center justify-between p-4 border-b-2 bg-white"><div class="flex items-center gap-2"><div class="w-9 h-9 rounded-full border-2 border-maroon grid place-items-center text-[18px]" id="detailAvatar">🦊</div><div><div class="font-bold text-maroon text-[13px]" id="detailName"></div><div class="text-[10px] opacity-50" id="detailTime"></div></div></div><button onclick="closeDetail()" class="w-9 h-9 bg-white border-2 border-maroon rounded-full grid place-items-center font-bold">✕</button></div><div class="p-5 overflow-auto" id="detailContent"></div></div></div>
-<div id="toast" class="fixed bottom-[90px] left-1/2 -translate-x-1/2 bg-maroon text-white px-6 py-3 rounded-full text-[13px] font-bold shadow translate-y-[150px] opacity-0 transition-all duration-300 z-[200]"></div>
+<!-- MODALS -->
+<div id="rulesModal" class="fixed inset-0 z-[110] bg-[#2b0a12]/60 backdrop-blur-md hidden place-items-center p-4"><div class="bg-[#FFFBF0] border-[3px] border-maroon rounded-[22px] max-w-[400px] w-full p-6"><h3 class="font-extrabold text-maroon text-[18px]">📜 Rules Cerita Kita</h3><ul class="mt-3 text-[11px] leading-5 list-disc pl-4 opacity-80"><li>Dilarang SARA, porn, 18+, doxxing identitas</li><li>Dilarang spam, promo judi, pinjol</li><li>Saling respect, no bully</li><li>Foto max 1MB, auto kompres</li><li>Langgar = confess dihapus</li></ul><label class="flex items-center gap-2 mt-4 text-[11px] font-bold"><input id="agreeCheck" type="checkbox" class="w-4 h-4 accent-maroon"> Gue setuju & siap jadi anonimijon baik</label><button onclick="agreeRules()" class="w-full mt-4 bg-maroon text-[#FFF8E7] py-3 rounded-xl font-bold text-[13px]">Masuk Sekarang →</button></div></div>
+<div id="notifModal" class="fixed inset-0 z-[85] bg-[#2b0a12]/40 backdrop-blur-md hidden place-items-center p-4"><div class="bg-broken border-[3px] border-maroon rounded-[22px] max-w-[420px] w-full p-5 max-h-[80vh] overflow-auto"><div class="flex justify-between items-center"><h3 class="font-bold text-maroon">🔔 Notifikasi Balasan</h3><button onclick="closeNotif()" class="w-8 h-8 bg-white border-2 border-maroon rounded-full grid place-items-center font-bold">✕</button></div><div id="notifList" class="mt-4 flex flex-col gap-2 text-[11px]"></div><button onclick="clearNotif()" class="w-full mt-4 bg-cream border-2 py-2 rounded-xl text-[11px] font-bold">Hapus Semua</button></div></div>
+<div id="createModal" class="fixed inset-0 z-[80] bg-[#2b0a12]/35 backdrop-blur-md hidden place-items-center p-4"><div class="bg-broken border-[3px] border-maroon rounded-[22px] max-w-[460px] w-full p-5 relative max-h-[90vh] overflow-auto"><div class="flex justify-between items-center mb-4"><h3 class="font-bold text-maroon text-[14px]">Spill ONLINE</h3><button onclick="closeCreate()" class="w-8 h-8 bg-white border-2 border-maroon rounded-full grid place-items-center font-bold text-maroon">✕</button></div><div class="space-y-3"><div class="grid grid-cols-2 gap-3"><div><label class="text-[11px] font-semibold">Untuk Siapa</label><input id="toInput" class="mt-1 w-full bg-white border-2 border-cream rounded-xl px-3 py-2.5 text-[12px] outline-none"></div><div><label class="text-[11px] font-semibold">Kategori</label><select id="catInput" class="mt-1 w-full bg-white border-2 border-cream rounded-xl px-3 py-2.5 text-[12px]"><option>Perasaan</option><option>Curhat Dosen</option><option>Cari Teman</option><option>Random</option><option>Curhat Kuliah</option></select></div></div><div><label class="text-[11px] font-semibold">Pilih wujud</label><div id="avatarPicker" class="mt-1 flex gap-1.5 overflow-auto scrollbar-hide"></div><div id="colorPicker" class="mt-2 flex gap-1.5"></div></div><div><label class="text-[11px] font-semibold">Isi Confess <span id="charCount" class="opacity-50">0/500</span></label><textarea id="msgInput" maxlength="500" placeholder="mau curcol apa?" class="mt-1 w-full bg-white border-2 border-cream rounded-xl px-3 py-2.5 text-[12px] min-h-[110px] resize-none outline-none"></textarea><div class="mt-3 grid grid-cols-2 gap-2"><button type="button" onclick="document.getElementById('photoInputGallery').click()" class="bg-white border-2 border-cream rounded-xl px-3 py-2.5 text-[11px] font-semibold">🖼️ Galeri</button><button type="button" onclick="document.getElementById('photoInputCamera').click()" class="bg-white border-2 border-cream rounded-xl px-3 py-2.5 text-[11px] font-semibold">📸 Kamera</button></div><input type="file" id="photoInputGallery" accept="image/*" class="hidden" onchange="previewPhoto(event)"><input type="file" id="photoInputCamera" accept="image/*" capture="environment" class="hidden" onchange="previewPhoto(event)"><div id="photoName" class="text-[9px] opacity-40 mt-1 text-center">max 1MB auto kompres</div><img id="photoPreview" class="hidden w-full h-52 object-cover rounded-xl border-2 border-cream mt-2"><button id="removePhoto" onclick="removePhoto()" class="hidden text-[10px] bg-red-500 text-white px-3 py-1 rounded-full mt-2">Hapus Foto</button></div><button id="sendBtn" onclick="sendConfess()" class="w-full bg-maroon text-[#FFF8E7] py-3 rounded-xl font-bold text-[14px]">Kirim ONLINE ✈️</button></div></div></div>
+<div id="editModal" class="fixed inset-0 z-[85] bg-[#2b0a12]/50 backdrop-blur-md hidden place-items-center p-4"><div class="bg-broken border-[3px] border-maroon rounded-[22px] max-w-[460px] w-full p-5"><div class="flex justify-between items-center mb-4"><h3 class="font-bold text-maroon text-[14px]">Edit ✏️</h3><button onclick="closeEdit()" class="w-8 h-8 bg-white border-2 border-maroon rounded-full grid place-items-center font-bold">✕</button></div><div class="space-y-3"><div class="grid grid-cols-2 gap-3"><div><label class="text-[11px]">Untuk Siapa</label><input id="editToInput" class="mt-1 w-full bg-white border-2 rounded-xl px-3 py-2.5 text-[12px]"></div><div><label class="text-[11px]">Kategori</label><select id="editCatInput" class="mt-1 w-full bg-white border-2 rounded-xl px-3 py-2.5 text-[12px]"><option>Perasaan</option><option>Curhat Dosen</option><option>Cari Teman</option><option>Random</option><option>Curhat Kuliah</option></select></div></div><textarea id="editMsgInput" maxlength="500" class="mt-1 w-full bg-white border-2 rounded-xl px-3 py-2.5 text-[12px] min-h-[100px]"></textarea><button id="saveEditBtn" onclick="saveEdit()" class="w-full bg-maroon text-white py-3 rounded-xl font-bold">Simpan 💾</button></div></div></div>
+<div id="deleteModal" class="fixed inset-0 z-[95] bg-[#2b0a12]/50 backdrop-blur-md hidden place-items-center p-4"><div class="bg-white border-[3px] border-maroon rounded-[22px] max-w-[360px] w-full p-6 text-center"><div class="text-[40px]">🗑️</div><h3 class="font-bold text-maroon mt-2">Hapus Confess?</h3><p class="text-[11px] opacity-60 mt-1">Gak bisa dibalikin</p><div class="grid grid-cols-2 gap-2 mt-4"><button onclick="closeDelete()" class="bg-broken border-2 py-2.5 rounded-xl font-bold text-[12px]">Batal</button><button id="confirmDeleteBtn" class="bg-red-600 text-white py-2.5 rounded-xl font-bold text-[12px]">Ya, Hapus</button></div></div></div>
+<div id="detailModal" class="fixed inset-0 z-[90] bg-[#2b0a12]/40 backdrop-blur-[18px] hidden place-items-center p-4"><div class="bg-broken border-[3px] border-maroon rounded-[24px] max-w-[560px] w-full max-h-[88vh] flex flex-col overflow-hidden"><div class="flex items-center justify-between p-4 border-b-2 bg-white"><div class="flex items-center gap-2"><div class="w-9 h-9 rounded-full border-2 border-maroon grid place-items-center text-[18px]" id="detailAvatar">🦊</div><div><div class="font-bold text-maroon text-[13px]" id="detailName"></div><div class="text-[10px] opacity-50" id="detailTime"></div></div></div><button onclick="closeDetail()" class="w-9 h-9 bg-white border-2 border-maroon rounded-full grid place-items-center font-bold">✕</button></div><div class="p-5 overflow-auto" id="detailContent"></div></div></div>
+<div id="toast" class="fixed bottom-[90px] left-1/2 -translate-x-1/2 bg-maroon text-[#FFF8E7] px-6 py-3 rounded-full text-[13px] font-bold shadow translate-y-[150px] opacity-0 transition-all duration-300 z-[200]"></div>
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
@@ -150,37 +168,11 @@ const firebaseConfig = { apiKey: "AIzaSyCToBiaTsuCCWrDnKK8cI1aQf7BDHICsQ4", auth
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app, "cnfss");
 const colRef = collection(db, "confesses");
-const avatars=['🦊','🐱','🐶','🐼','👻','🦄','🐙','🦅']; const colors=['#FFF2E2','#E0F2E9','#E0E7FF','#FFE4E6','#FEF3C7'];
+const avatars=['🦊','🐱','🐶','🐼','👻','🦄','🐙','🦅']; const colors=['#FDE8C9','#E0F2E9','#E0E7FF','#FFE4E6','#FFF1D6'];
 let selectedAvatar=avatars[0]; let selectedColor=colors[0];
 let confesses=[]; let activeCat='all'; let savedScroll=0; let editId=null; let deleteId=null;
-
-window.switchTab=function(name){
- document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
- document.getElementById('view-'+name).classList.add('active');
- document.querySelectorAll('.bottom-nav button').forEach(b=>b.classList.remove('active'));
- document.getElementById('nav-'+name).classList.add('active');
- window.scrollTo({top:0,behavior:'smooth'});
- if(name==='profile') renderProfile();
- if(name==='game') loadMoodGame();
-}
-async function loadHomeConfig(){
- try{
-   const homeDocRef = doc(db,"home_config","main");
-   onSnapshot(homeDocRef,(snap)=>{
-     if(snap.exists()){
-       let data=snap.data();
-       document.getElementById('homeRules').innerHTML = data.rules || "Rules belum diset admin";
-       document.getElementById('homePengumuman').innerHTML = data.pengumuman || "Belum ada pengumuman";
-       document.getElementById('pengumumanDate').innerText = data.pengumumanDate ? "Update: "+data.pengumumanDate : "";
-       let iklanDiv=document.getElementById('homeIklan');
-       if(data.iklan){ iklanDiv.innerHTML=data.iklan; }
-     }else{
-       document.getElementById('homeRules').innerHTML = `<ul class="list-disc pl-4 space-y-1"><li>Dilarang SARA, porn, 18+, doxxing identitas</li><li>Dilarang spam, promo judi, pinjol</li><li>Saling respect, no bully</li><li>Foto max 1MB, auto kompres</li><li>Langgar = confess dihapus</li></ul>`;
-       document.getElementById('homePengumuman').innerHTML = `Selamat datang di Cerita Kita BETA! Spill dengan aman & anonymous 💖<br><br>Admin bisa ganti teks ini lewat web admin nanti.`;
-     }
-   });
- }catch(e){ console.log(e); }
-}
+window.switchTab=function(name){ document.querySelectorAll('.view').forEach(v=>v.classList.remove('active')); document.getElementById('view-'+name).classList.add('active'); document.querySelectorAll('.bottom-nav button').forEach(b=>b.classList.remove('active')); document.getElementById('nav-'+name).classList.add('active'); window.scrollTo({top:0,behavior:'smooth'}); if(name==='profile') renderProfile(); if(name==='game') loadMoodGame(); }
+async function loadHomeConfig(){ try{ const homeDocRef = doc(db,"home_config","main"); onSnapshot(homeDocRef,(snap)=>{ if(snap.exists()){ let data=snap.data(); document.getElementById('homeRules').innerHTML = data.rules || "Rules belum diset admin"; document.getElementById('homePengumuman').innerHTML = data.pengumuman || "Belum ada pengumuman"; document.getElementById('pengumumanDate').innerText = data.pengumumanDate ? "Update: "+data.pengumumanDate : ""; let iklanDiv=document.getElementById('homeIklan'); if(data.iklan){ iklanDiv.innerHTML=data.iklan; } }else{ document.getElementById('homeRules').innerHTML = `<ul class="list-disc pl-4 space-y-1.5"><li>Dilarang SARA, porn, 18+, doxxing identitas</li><li>Dilarang spam, promo judi, pinjol</li><li>Saling respect, no bully</li><li>Foto max 1MB, auto kompres</li><li>Langgar = confess dihapus</li></ul>`; document.getElementById('homePengumuman').innerHTML = `Selamat datang di Maroon Cream Edition! Spill dengan aman & anonymous 💖`; } }); }catch(e){} }
 loadHomeConfig();
 function todayStr(){ return new Date().toISOString().slice(0,10); }
 function yesterdayStr(){ let d=new Date(); d.setDate(d.getDate()-1); return d.toISOString().slice(0,10); }
@@ -245,10 +237,10 @@ window.closeDelete=function(){ document.getElementById('deleteModal').classList.
 document.getElementById('confirmDeleteBtn').onclick=async function(){ if(!deleteId) return; try{ await deleteDoc(doc(db,"confesses",deleteId)); removeMyId(deleteId); closeDelete(); closeDetail(); showToast('Dihapus 🗑️'); }catch(e){ alert(e.message); } }
 function showToast(msg){ let t=document.getElementById('toast'); t.innerText=msg; t.classList.remove('translate-y-[150px]','opacity-0'); t.classList.add('translate-y-0','opacity-100'); setTimeout(()=>{ t.classList.add('translate-y-[150px]','opacity-0'); t.classList.remove('translate-y-0','opacity-100'); },2500); }
 window.sendConfess=async function(){ let to=document.getElementById('toInput').value.trim(); let cat=document.getElementById('catInput').value; let text=document.getElementById('msgInput').value.trim(); if(text.length<8){ alert('Minimal 8'); return; } if(!to){ alert('Isi Untuk Siapa'); return; } if(profanityFilter(text)){ alert('jaga jempol'); return; } if(!cekLimit()) return; let tags=(text.match(/#(\w+)/g)||[]).map(t=>t.replace('#','')).slice(0,4); let btn=document.getElementById('sendBtn'); btn.disabled=true; btn.innerText='Mengirim...'; try{ let docRef=await addDoc(colRef, {to,cat,text,tags,avatar:selectedAvatar,color:selectedColor,time:Date.now(),createdAt:serverTimestamp(),code:Math.floor(100+Math.random()*900),reactions:{love:0,cry:0,coffee:0,shy:0},replies:[],photo:fotoBase64}); saveMyId(docRef.id); document.getElementById('msgInput').value=''; document.getElementById('toInput').value=''; closeCreate(); localStorage.setItem("lastPost_BEBEN",Date.now().toString()); addXP_BEBEN(10); let s=updateStreak(); showStreak(); if(s===3){ addXP_BEBEN(20); showToast('Streak 3 hari! +20 XP 🌙'); } if(s===7){ addXP_BEBEN(50); showToast('Streak 7 hari LEGEND! +50 XP 🔥'); } updateLevelHeader(); fotoBase64=null; removePhoto(); showToast('Terkirim! ✨'); }catch(e){ alert(e.message); } btn.disabled=false; btn.innerText='Kirim ONLINE ✈️'; }
-window.setCat=function(cat,btn){ activeCat=cat; document.querySelectorAll('.filter-btn').forEach(b=>{ b.classList.remove('bg-maroon','text-white'); b.classList.add('bg-white'); }); btn.classList.add('bg-maroon','text-white'); btn.classList.remove('bg-white'); render(); }
+window.setCat=function(cat,btn){ activeCat=cat; document.querySelectorAll('.filter-btn').forEach(b=>{ b.classList.remove('bg-maroon','text-[#FFF8E7]'); b.classList.add('bg-white'); }); btn.classList.add('bg-maroon','text-[#FFF8E7]'); btn.classList.remove('bg-white'); render(); }
 function renderTop(){ let c=document.getElementById('topConfessList'); if(!c) return; if(confesses.length===0){ c.innerHTML='<div class="text-[11px] opacity-40">Belum ada</div>'; return; } let top3=[...confesses].sort((a,b)=>{ let ta=Object.values(a.reactions||{}).reduce((x,y)=>x+y,0); let tb=Object.values(b.reactions||{}).reduce((x,y)=>x+y,0); return tb-ta; }).slice(0,3); c.innerHTML=top3.map((cc,i)=>{ let medal=i===0?'🥇':i===1?'🥈':'🥉'; let total=Object.values(cc.reactions||{}).reduce((x,y)=>x+y,0); return `<div onclick="openDetail('${cc.firestoreId}')" class="cursor-pointer bg-broken border border-cream rounded-xl px-3 py-2.5 flex gap-2 items-center"><div>${medal}</div><div class="flex-1 overflow-hidden"><div class="text-[11px] font-semibold line-clamp-1">${esc(cc.text).slice(0,45)}</div><div class="text-[9px] opacity-50">To: ${esc(cc.to)} • 💖 ${total}</div></div></div>`; }).join(''); }
-function renderProfile(){ let my=confesses.filter(c=>isMine(c.firestoreId)); document.getElementById('myConfessList').innerHTML=my.map(c=>`<div class="bg-broken border rounded-xl p-3"><div class="font-bold">To: ${esc(c.to)}</div><div class="mt-1 line-clamp-2">${esc(c.text).slice(0,80)}</div><div class="mt-2 flex gap-1"><button onclick="openEdit('${c.firestoreId}')" class="text-[10px] bg-yellow-100 border px-2 py-1 rounded-full">✏️ Edit</button><button onclick="confirmDelete('${c.firestoreId}')" class="text-[10px] bg-red-100 border px-2 py-1 rounded-full text-red-600">🗑️ Hapus</button><button onclick="openDetail('${c.firestoreId}')" class="text-[10px] bg-white border px-2 py-1 rounded-full">👁️ Lihat</button></div></div>`).join('')||'<div class="text-center opacity-40 py-6">Belum ada confess<br><span class="text-[10px]">Spill pertama dapet 10 XP!</span></div>'; }
-window.render=function(){ let s=(document.getElementById('search')?.value||'').toLowerCase(); let filtered=confesses.filter(c=>{ let catOk=activeCat==='all'||c.cat===activeCat; let searchOk=!s||c.text.toLowerCase().includes(s)||c.to.toLowerCase().includes(s)||(c.tags||[]).join(' ').toLowerCase().includes(s); return catOk&&searchOk; }); document.getElementById('feed').innerHTML=filtered.map(c=>{ let total=Object.values(c.reactions||{}).reduce((a,b)=>a+b,0); let photoHtml=c.photo?`<img src="${c.photo}" class="mt-2 w-full rounded-[12px] border-2 border-cream max-h-[300px] object-cover">`:''; let mineBtn=isMine(c.firestoreId)?`<div class="mt-2 flex gap-1"><button onclick="openEdit('${c.firestoreId}')" class="text-[10px] bg-yellow-100 border px-2.5 py-1 rounded-full font-bold">✏️ Edit</button><button onclick="confirmDelete('${c.firestoreId}')" class="text-[10px] bg-red-100 border px-2.5 py-1 rounded-full font-bold text-red-600">🗑️ Hapus</button></div>`:''; return `<div class="masonry-item bg-white border-[1.5px] border-cream rounded-[18px] p-4"><div class="flex justify-between items-center"><div class="flex items-center gap-2"><div class="w-8 h-8 rounded-full border-2 border-maroon grid place-items-center" style="background:${c.color}">${c.avatar}</div><div class="leading-tight"><div class="text-[10px] font-bold text-maroon">anonimijon ${c.avatar} #${c.code}</div><div class="text-[9px] opacity-50">${timeAgo(c.time)} • ${(c.replies||[]).length} balasan</div></div></div><span class="text-[9px] bg-cream px-3 py-1 rounded-full">${esc(c.cat)}</span></div><div class="mt-3 cursor-pointer" onclick="openDetail('${c.firestoreId}')"><div class="text-[11px] font-semibold opacity-60">To: ${esc(c.to)}</div><div class="text-[13px] leading-6 mt-1">${parseContent(c.text)}</div>${photoHtml}</div><div class="mt-2 flex flex-wrap gap-1">${(c.tags||[]).map(t=>`<span class="text-[10px] bg-broken border px-2 py-0.5 rounded-full">#${esc(t)}</span>`).join('')}</div><div class="mt-3 flex items-center gap-1"><button onclick="react('${c.firestoreId}','love',this)" class="text-[10px] border px-2 py-1 rounded-full bg-broken">💖 ${c.reactions?.love||0}</button><button onclick="react('${c.firestoreId}','cry',this)" class="text-[10px] bg-broken border px-2 py-1 rounded-full">😭 ${c.reactions?.cry||0}</button><span class="text-[10px] opacity-40 ml-1">${total} reaksi</span></div>${mineBtn}</div>`; }).join('')||'<div class="text-center py-12 opacity-50 text-[12px]">Belum ada confess</div>'; document.getElementById('lTotal').innerText=confesses.length; renderTop(); updateLevelHeader(); showStreak(); renderProfile(); }
+function renderProfile(){ let my=confesses.filter(c=>isMine(c.firestoreId)); document.getElementById('myConfessList').innerHTML=my.map(c=>`<div class="bg-broken border-2 border-cream rounded-xl p-3"><div class="font-bold">To: ${esc(c.to)}</div><div class="mt-1 line-clamp-2">${esc(c.text).slice(0,80)}</div><div class="mt-2 flex gap-1"><button onclick="openEdit('${c.firestoreId}')" class="text-[10px] bg-yellow-100 border px-2 py-1 rounded-full">✏️ Edit</button><button onclick="confirmDelete('${c.firestoreId}')" class="text-[10px] bg-red-100 border px-2 py-1 rounded-full text-red-600">🗑️ Hapus</button><button onclick="openDetail('${c.firestoreId}')" class="text-[10px] bg-white border px-2 py-1 rounded-full">👁️ Lihat</button></div></div>`).join('')||'<div class="text-center opacity-40 py-6">Belum ada confess<br><span class="text-[10px]">Spill pertama dapet 10 XP!</span></div>'; }
+window.render=function(){ let s=(document.getElementById('search')?.value||'').toLowerCase(); let filtered=confesses.filter(c=>{ let catOk=activeCat==='all'||c.cat===activeCat; let searchOk=!s||c.text.toLowerCase().includes(s)||c.to.toLowerCase().includes(s)||(c.tags||[]).join(' ').toLowerCase().includes(s); return catOk&&searchOk; }); document.getElementById('feed').innerHTML=filtered.map(c=>{ let total=Object.values(c.reactions||{}).reduce((a,b)=>a+b,0); let photoHtml=c.photo?`<img src="${c.photo}" class="mt-2 w-full rounded-[12px] border-2 border-cream max-h-[300px] object-cover">`:''; let mineBtn=isMine(c.firestoreId)?`<div class="mt-2 flex gap-1"><button onclick="openEdit('${c.firestoreId}')" class="text-[10px] bg-yellow-100 border px-2.5 py-1 rounded-full font-bold">✏️ Edit</button><button onclick="confirmDelete('${c.firestoreId}')" class="text-[10px] bg-red-100 border px-2.5 py-1 rounded-full font-bold text-red-600">🗑️ Hapus</button></div>`:''; return `<div class="masonry-item bg-white border-[1.5px] border-cream rounded-[18px] p-4 shadow-sm"><div class="flex justify-between items-center"><div class="flex items-center gap-2"><div class="w-8 h-8 rounded-full border-2 border-maroon grid place-items-center" style="background:${c.color}">${c.avatar}</div><div class="leading-tight"><div class="text-[10px] font-bold text-maroon">anonimijon ${c.avatar} #${c.code}</div><div class="text-[9px] opacity-50">${timeAgo(c.time)} • ${(c.replies||[]).length} balasan</div></div></div><span class="text-[9px] bg-cream px-3 py-1 rounded-full font-bold text-maroon">${esc(c.cat)}</span></div><div class="mt-3 cursor-pointer" onclick="openDetail('${c.firestoreId}')"><div class="text-[11px] font-semibold opacity-60">To: ${esc(c.to)}</div><div class="text-[13px] leading-6 mt-1">${parseContent(c.text)}</div>${photoHtml}</div><div class="mt-2 flex flex-wrap gap-1">${(c.tags||[]).map(t=>`<span class="text-[10px] bg-broken border border-cream px-2 py-0.5 rounded-full">#${esc(t)}</span>`).join('')}</div><div class="mt-3 flex items-center gap-1"><button onclick="react('${c.firestoreId}','love',this)" class="text-[10px] border border-cream px-2.5 py-1 rounded-full bg-broken font-semibold">💖 ${c.reactions?.love||0}</button><button onclick="react('${c.firestoreId}','cry',this)" class="text-[10px] bg-broken border border-cream px-2.5 py-1 rounded-full font-semibold">😭 ${c.reactions?.cry||0}</button><span class="text-[10px] opacity-40 ml-1">${total} reaksi</span></div>${mineBtn}</div>`; }).join('')||'<div class="text-center py-12 opacity-50 text-[12px]">Belum ada confess</div>'; document.getElementById('lTotal').innerText=confesses.length; renderTop(); updateLevelHeader(); showStreak(); renderProfile(); }
 window.openDetail=function(fid){ let c=confesses.find(x=>x.firestoreId===fid); if(!c) return; lockScroll(); document.getElementById('detailAvatar').innerText=c.avatar; document.getElementById('detailAvatar').style.background=c.color; document.getElementById('detailName').innerText=`anonimijon ${c.avatar} #${c.code}`; document.getElementById('detailTime').innerText=`${timeAgo(c.time)} • ${esc(c.cat)}`; let photoDetail=c.photo?`<img src="${c.photo}" class="mt-3 w-full max-h-[400px] object-contain rounded-xl border-2 border-cream bg-broken">`:''; let mineDetail=isMine(fid)?`<div class="mt-3 grid grid-cols-2 gap-2"><button onclick="openEdit('${c.firestoreId}'); closeDetail();" class="bg-yellow-100 border-2 py-2 rounded-xl text-[11px] font-bold">✏️ Edit</button><button onclick="confirmDelete('${c.firestoreId}')" class="bg-red-100 border-2 py-2 rounded-xl text-[11px] font-bold text-red-600">🗑️ Hapus</button></div>`:''; document.getElementById('detailContent').innerHTML=`<div class="bg-white border-2 border-cream rounded-xl p-3"><div class="text-[11px] opacity-60">To: ${esc(c.to)}</div><div class="text-[14px] leading-7 mt-2">${parseContent(c.text)}</div>${photoDetail}</div>${mineDetail}<div class="mt-4 grid grid-cols-4 gap-2">${['love','cry','coffee','shy'].map(type=>{ let emoji={love:'💖',cry:'😭',coffee:'☕',shy:'🫣'}[type]; return `<button onclick="react('${c.firestoreId}','${type}',this)" class="py-2.5 rounded-xl border-2 font-bold bg-white">${emoji} ${c.reactions?.[type]||0}</button>`; }).join('')}</div><div class="mt-5"><div class="font-bold text-[12px]">Thread (${(c.replies||[]).length})</div><div class="mt-2 grid gap-2 max-h-[160px] overflow-auto">${(c.replies||[]).map(r=>`<div class="flex gap-2"><div class="w-7 h-7 rounded-full border grid place-items-center text-[14px]" style="background:${r.color}">${r.avatar}</div><div class="bg-white border rounded-xl px-3 py-2 text-[12px] flex-1"><div class="font-bold text-[10px] text-maroon">${esc(r.name)}</div>${esc(r.text)}</div></div>`).join('')||'<div class="text-[11px] opacity-40">Belum ada balasan</div>'}</div><div class="mt-3 flex gap-2"><input id="reply-${c.firestoreId}" placeholder="Balas..." class="flex-1 bg-white border-2 rounded-xl px-3 py-2.5 text-[12px]"><button onclick="addReply('${c.firestoreId}')" class="bg-maroon text-white px-4 rounded-xl font-bold text-[12px]">Kirim</button></div></div>`; document.getElementById('detailModal').classList.remove('hidden'); document.getElementById('detailModal').classList.add('grid'); }
 window.closeDetail=function(){ document.getElementById('detailModal').classList.add('hidden'); document.getElementById('detailModal').classList.remove('grid'); unlockScroll(); }
 window.react=async function(fid,type,el){ let key=`liked_${fid}_${type}`; if(localStorage.getItem(key)) return; let c=confesses.find(x=>x.firestoreId===fid); if(!c) return; let newCount=(c.reactions?.[type]||0)+1; c.reactions[type]=newCount; el.innerHTML=el.innerHTML.replace(/\d+/,newCount); localStorage.setItem(key,'1'); try{ await updateDoc(doc(db,"confesses",fid), {reactions:c.reactions}); renderTop(); }catch(e){} }
