@@ -9,39 +9,47 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 *{font-family:'Poppins',sans-serif}
-body{background: linear-gradient(180deg, #FFF8E7 0%, #FDE8C9 35%, #FFECD2 70%, #FFF1D6 100%); min-height:100vh}
+body{background: linear-gradient(180deg, #FFF8E7 0%, #FDE8C9 35%, #FFECD2 70%, #FFF1D6 100%); min-height:100vh; transition:background 0.25s}
 .masonry{column-count:1;column-gap:14px} @media(min-width:640px){.masonry{column-count:2}} @media(min-width:1024px){.masonry{column-count:3}}
 .masonry-item{break-inside:avoid;margin-bottom:14px} .scrollbar-hide::-webkit-scrollbar{display:none;}
 .line-clamp-3{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-.soft-card{background: linear-gradient(135deg, #FFFBF0 0%, #FFF1D6 100%); border: 2.5px solid #5D0F1F; box-shadow: 5px 5px 0px #5D0F1F; transition:0.15s}
+.soft-card{background: linear-gradient(135deg, #FFFBF0 0%, #FFF1D6 100%); border: 2.5px solid #5D0F1F; box-shadow: 5px 5px 0px #5D0F1F; transition:0.25s}
 .soft-card.clickable{cursor:pointer} .soft-card.clickable:active{transform:translate(2px,2px); box-shadow: 3px 3px 0px #5D0F1F}
-.soft-card-gold{background: linear-gradient(135deg, #FFFBF0 0%, #FFECD2 100%); border: 2.5px solid #E8B86D; box-shadow: 5px 5px 0px #E8B86D; transition:0.15s; cursor:pointer}
+.soft-card-gold{background: linear-gradient(135deg, #FFFBF0 0%, #FFECD2 100%); border: 2.5px solid #E8B86D; box-shadow: 5px 5px 0px #E8B86D; transition:0.25s; cursor:pointer}
 .soft-card-gold:active{transform:translate(2px,2px); box-shadow: 3px 3px 0px #E8B86D}
-.soft-header{background: linear-gradient(180deg, rgba(255,248,231,0.95) 0%, rgba(253,232,201,0.9) 100%); backdrop-filter: blur(12px); border-bottom: 1.5px solid rgba(93,15,31,0.08)}
-.bottom-nav{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);width:calc(100% - 20px);max-width:440px;background: rgba(255,251,240,0.95); backdrop-filter: blur(16px); border:2.5px solid #5D0F1F;border-radius:20px;display:flex;justify-content:space-around;padding:6px;z-index:50}
+.soft-header{background: linear-gradient(180deg, rgba(255,248,231,0.95) 0%, rgba(253,232,201,0.9) 100%); backdrop-filter: blur(12px); border-bottom: 1.5px solid rgba(93,15,31,0.08); transition:0.25s}
+.bottom-nav{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);width:calc(100% - 20px);max-width:440px;background: rgba(255,251,240,0.95); backdrop-filter: blur(16px); border:2.5px solid #5D0F1F;border-radius:20px;display:flex;justify-content:space-around;padding:6px;z-index:50; transition:0.25s}
 .bottom-nav button{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:9px 6px;border-radius:14px;font-size:10px;font-weight:700;color:#5D0F1F;opacity:0.45;transition:0.2s}
 .bottom-nav button.active{background: linear-gradient(135deg, #5D0F1F 0%, #8B1E3F 100%);color:#FFF8E7;opacity:1;transform:translateY(-3px)}
 .view{display:none} .view.active{display:block;animation:fadeIn 0.25s ease} @keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
-.koala-area{position:relative;width:100%;height:220px;background: linear-gradient(180deg, #FFF1D6 0%, #FFECD2 100%);border:2px dashed #E8B86D;border-radius:16px;overflow:hidden}
+.koala-area{position:relative;width:100%;height:220px;background: linear-gradient(180deg, #FFF1D6 0%, #FFECD2 100%);border:2px dashed #E8B86D;border-radius:16px;overflow:hidden; transition:0.25s}
 .koala{position:absolute;font-size:36px;cursor:pointer;user-select:none}
 
-/* DARK MODE FIX */
-html.dark body{background: linear-gradient(180deg, #1a060b 0%, #2B0A12 70%, #3a1520 100%)!important; color:#FFF8E7}
-html.dark .soft-card{background: linear-gradient(135deg, #3a1520 0%, #2B0A12 100%)!important; border-color:#E8B86D!important; color:#FFF8E7!important; box-shadow:5px 5px 0px #1a060b!important}
-html.dark .soft-card-gold{background: linear-gradient(135deg, #4a2030 0%, #3a1520 100%)!important; border-color:#E8B86D!important; color:#FFF8E7!important; box-shadow:5px 5px 0px #1a060b!important}
-html.dark .soft-header{background: linear-gradient(180deg, rgba(43,10,18,0.95) 0%, rgba(26,6,11,0.9) 100%)!important; border-bottom-color:rgba(232,184,109,0.15)}
-html.dark .soft-header div{color:#FFF8E7!important}
+/* DARK MODE KOMPLIT FIX */
+html.dark body{background: linear-gradient(180deg, #1a060b 0%, #2B0A12 60%, #3a1520 100%)!important; color:#FFF8E7}
+html.dark .soft-card{background: linear-gradient(135deg, #3a1520 0%, #2B0A12 100%)!important; border-color:#E8B86D!important; color:#FFF8E7!important; box-shadow:5px 5px 0px #0f0205!important}
+html.dark .soft-card-gold{background: linear-gradient(135deg, #4a2030 0%, #3a1520 100%)!important; border-color:#E8B86D!important; color:#FFF8E7!important; box-shadow:5px 5px 0px #0f0205!important}
+html.dark .soft-header{background: linear-gradient(180deg, rgba(43,10,18,0.96) 0%, rgba(26,6,11,0.9) 100%)!important; border-bottom-color:rgba(232,184,109,0.2)!important}
+html.dark .soft-header div{color:#FDE8C9!important}
 html.dark input, html.dark textarea, html.dark select{background:#2B0A12!important; border-color:#5D0F1F!important; color:#FFF8E7!important}
-html.dark .bg-white{background:#2B0A12!important; color:#FFF8E7!important}
-html.dark .bg-broken{background:#3a1520!important}
+html.dark .bg-white{background:#2B0A12!important; color:#FFF8E7!important; border-color:#5D0F1F!important}
+html.dark .bg-broken{background:#3a1520!important; color:#FFF8E7!important}
 html.dark .text-maroon{color:#FDE8C9!important}
 html.dark .border-cream{border-color:#5D0F1F!important}
 html.dark .border-maroon{border-color:#E8B86D!important}
 html.dark #landing{background: linear-gradient(135deg, #1a060b 0%, #2B0A12 50%, #3a1520 100%)!important}
-html.dark .bottom-nav{background: rgba(43,10,18,0.95)!important; border-color:#E8B86D!important}
-html.dark .masonry-item{background: linear-gradient(135deg, #3a1520 0%, #2B0A12 100%)!important; color:#FFF8E7}
-html.dark .koala-area{background: linear-gradient(180deg, #2B0A12 0%, #3a1520 100%)!important}
-html.dark footer{color:#FDE8C9!important}
+html.dark .bottom-nav{background: rgba(43,10,18,0.96)!important; border-color:#E8B86D!important}
+html.dark .bottom-nav button{color:#FDE8C9!important}
+html.dark .masonry-item{background: linear-gradient(135deg, #3a1520 0%, #2B0A12 100%)!important; color:#FFF8E7!important; border-color:#5D0F1F!important}
+html.dark .koala-area{background: linear-gradient(180deg, #2B0A12 0%, #3a1520 100%)!important; border-color:#E8B86D!important}
+html.dark footer{color:#FDE8C9!important; opacity:0.6}
+html.dark #topConfessList div, html.dark #myConfessList div{background:#2B0A12!important; color:#FFF8E7!important}
+html.dark .filter-btn{background:#2B0A12!important; color:#FDE8C9!important; border-color:#E8B86D!important}
+html.dark .filter-btn.active{background: linear-gradient(135deg, #E8B86D 0%, #FDE8C9 100%)!important; color:#2B0A12!important}
+html.dark #iklanCarousel div{background:#2B0A12!important; border-color:#5D0F1F!important; color:#FFF8E7!important}
+html.dark #notifModal div, html.dark #detailModal div, html.dark #createModal div, html.dark #editModal div, html.dark #homeDetailModal div{background:#2B0A12!important; color:#FFF8E7!important}
+html.dark #notifDot{box-shadow:0 0 8px #ef4444}
+html.dark ::placeholder{color:rgba(253,232,201,0.5)!important}
 </style>
 </head>
 <body>
@@ -72,16 +80,13 @@ html.dark footer{color:#FDE8C9!important}
 <div id="homePengumuman" class="mt-3 text-[12px] leading-6 line-clamp-3">Belum ada pengumuman</div>
 <div id="pengumumanDate" class="mt-2 text-[9px] opacity-50"></div>
 </div>
-
-<!-- ADS CAROUSEL 5 AUTO SCROLL -->
 <div class="soft-card-gold rounded-[22px] p-5 overflow-hidden">
 <div class="flex justify-between items-center"><h2 class="font-extrabold text-maroon">💰 Iklan / Sponsor</h2><span class="text-[9px] bg-gold text-maroon px-2.5 py-1 rounded-full font-bold" id="iklanCount">0 ADS</span></div>
 <div id="iklanCarousel" class="mt-3 flex gap-3 overflow-x-auto scrollbar-hide snap-x snap-mandatory pb-2" style="scroll-behavior:smooth"></div>
-<div class="text-[9px] opacity-40 mt-1">geser ke samping → auto scroll 3 detik</div>
+<div class="text-[9px] opacity-40 mt-1">geser → auto scroll 3 detik • tap untuk kontak</div>
 </div>
-
 <div class="grid grid-cols-2 gap-3"><div class="soft-card rounded-[18px] py-5 text-center"><div class="font-extrabold text-maroon text-[26px]" id="lTotal">0</div><div class="text-[9px] font-bold opacity-60">TOTAL</div></div><div class="soft-card rounded-[18px] py-5 text-center"><div class="font-extrabold text-maroon text-[26px]" id="lStreak">0🔥</div><div class="text-[9px] font-bold opacity-60">STREAK</div></div></div>
-<footer class="text-center py-8 opacity-40"><div class="text-[11px]">☁️ cozzy place to confess</div><div class="text-[9px] mt-1">Human/Error 2026 • v7 dark + 5 ads</div></footer>
+<footer class="text-center py-8 opacity-40"><div class="text-[11px]">☁️ cozzy place to confess</div><div class="text-[9px] mt-1">Human/Error 2026 • v7.1 full fix</div></footer>
 </div>
 
 <div id="view-feed" class="view">
@@ -159,16 +164,20 @@ const colRef = collection(db, "confesses");
 const avatars=['🦊','🐱','🐶','🐼','👻','🦄','🐙','🦅']; const colors=['#FDE8C9','#E0F2E9','#E0E7FF','#FFE4E6','#FFF1D6'];
 let selectedAvatar=avatars[0]; let selectedColor=colors[0];
 let confesses=[]; let activeCat='all'; let savedScroll=0; let editId=null; let deleteId=null; let prevReplyCounts={}; let isFirstLoad=true;
-let homeDataCache={rules:'',pengumuman:'',pengumumanDate:'',iklanList:[],wa:'',ig:''};
-let iklanInterval=null;
+let homeDataCache={rules:'',pengumuman:'',pengumumanDate:'',iklanList:[]};
+let iklanInterval=null; let iklanPaused=false;
 
 function timeAgo(t){ if(!t) return 'Baru saja'; let d=Math.floor((Date.now()-t)/60000); if(d<1) return 'Baru saja'; if(d<60) return d+' menit lalu'; if(d<1440) return Math.floor(d/60)+' jam lalu'; return Math.floor(d/1440)+' hari lalu'; }
 function todayStr(){ return new Date().toLocaleDateString('en-CA',{timeZone:'Asia/Jakarta'}); }
 function yesterdayStr(){ let d=new Date(); d.setDate(d.getDate()-1); return d.toLocaleDateString('en-CA',{timeZone:'Asia/Jakarta'}); }
 function esc(s){ return (s||'').toString().replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
-function safeHTML(s){ if(!s) return ''; return s.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi,''); }
+function safeHTML(s){ if(!s) return ''; return s.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi,'').replace(/ on\w+="[^"]*"/gi,'').replace(/ on\w+='[^']*'/gi,''); }
 function parseContent(t){ return esc(t).replace(/#(\w+)/g,'<span class="text-maroon2 font-bold">#$1</span>'); }
-window.handleSearch=function(val){ let a=document.getElementById('search'); let b=document.getElementById('searchM'); if(a && a.value!==val) a.value=val; if(b && b.value!==val) b.value=val; render(); }
+window.handleSearch=function(val){
+  let a=document.getElementById('search'); let b=document.getElementById('searchM');
+  if(document.activeElement!==a && document.activeElement!==b) return;
+  if(a && a.value!==val) a.value=val; if(b && b.value!==val) b.value=val; render();
+}
 window.switchTab=function(name){
   document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
   document.getElementById('view-'+name).classList.add('active');
@@ -181,7 +190,7 @@ window.switchTab=function(name){
   if(name==='game'){ updateSpinLabel(); setTimeout(()=>drawSpinWheel(),100); }
 }
 function loadTheme(){ let t=localStorage.getItem('theme_CeritaKita'); if(t==='dark'){ document.documentElement.classList.add('dark'); document.getElementById('darkToggle').innerText='☀️'; } }
-window.toggleDark=function(){ let isDark=document.documentElement.classList.toggle('dark'); localStorage.setItem('theme_CeritaKita', isDark?'dark':'light'); document.getElementById('darkToggle').innerText=isDark?'☀️':'🌙'; }
+window.toggleDark=function(){ let isDark=document.documentElement.classList.toggle('dark'); localStorage.setItem('theme_CeritaKita', isDark?'dark':'light'); document.getElementById('darkToggle').innerText=isDark?'☀️':'🌙'; setTimeout(()=>drawSpinWheel(),100); }
 loadTheme();
 function getMyIds(){ try{ return JSON.parse(localStorage.getItem('myConfesses_CeritaKita')||'[]'); }catch{ return []; } }
 function saveMyId(id){ let a=getMyIds(); if(!a.includes(id)){ a.push(id); localStorage.setItem('myConfesses_CeritaKita', JSON.stringify(a)); } }
@@ -202,41 +211,40 @@ window.clearNotif=function(){ saveNotif([]); showNotifDot(); closeNotif(); }
 showNotifDot();
 
 window.openHomeDetail=function(type, iklanIndex=0){
-  lockScroll();
-  let modal=document.getElementById('homeDetailModal');
-  let title=document.getElementById('homeDetailTitle');
-  let icon=document.getElementById('homeDetailIcon');
-  let content=document.getElementById('homeDetailContent');
-  let fotoEl=document.getElementById('homeDetailFoto');
-  let kontakWrap=document.getElementById('homeDetailKontak');
-  let kontakContent=document.getElementById('homeDetailKontakContent');
-  kontakWrap.classList.add('hidden'); fotoEl.classList.add('hidden');
-  
-  if(type==='rules'){
-    title.innerText='📜 Rules Lengkap'; icon.innerText='📜';
-    content.innerHTML=safeHTML(homeDataCache.rules) || '<ul class="list-disc pl-4"><li>Dilarang SARA, porn, 18+</li><li>Dilarang spam, judi, pinjol</li><li>Saling respect</li></ul>';
-  } else if(type==='pengumuman'){
-    title.innerText='📢 Pengumuman'; icon.innerText='📢';
-    content.innerHTML=`<div>${safeHTML(homeDataCache.pengumuman) || 'Belum ada pengumuman'}</div><div class="mt-3 text-[10px] opacity-40">${homeDataCache.pengumumanDate ? 'Update: '+esc(homeDataCache.pengumumanDate) : ''}</div>`;
-  } else if(type==='iklan'){
-    let ik = homeDataCache.iklanList[iklanIndex] || homeDataCache.iklanList[0];
-    if(!ik){ closeHomeDetail(); return; }
-    title.innerText='💰 Detail Iklan'; icon.innerText='💰';
-    if(ik.foto){ fotoEl.src=ik.foto; fotoEl.classList.remove('hidden'); }
-    content.innerHTML=safeHTML(ik.teks) || safeHTML(ik.iklan) || 'Belum ada iklan';
-    let hasKontakText = ik.kontak && ik.kontak.trim().length>0;
-    let hasWA = ik.wa && ik.wa.replace(/[^0-9]/g,'').length>=10;
-    let hasIG = ik.ig && ik.ig.length>=2;
-    if(hasKontakText || hasWA || hasIG) kontakWrap.classList.remove('hidden');
-    kontakContent.innerHTML = safeHTML(ik.kontak) || (hasWA||hasIG ? '' : '<span class="opacity-40">Belum ada kontak</span>');
-    let waBtn=document.getElementById('waBtn');
-    let igBtn=document.getElementById('igBtn');
-    let btnWrap=document.getElementById('kontakBtnWrap');
-    waBtn.classList.add('hidden'); igBtn.classList.add('hidden'); btnWrap.style.display='none';
-    if(hasWA){ waBtn.classList.remove('hidden'); btnWrap.style.display='grid'; waBtn.onclick=()=>{ window.open('https://wa.me/'+ik.wa.replace(/[^0-9]/g,''),'_blank'); }; }
-    if(hasIG){ igBtn.classList.remove('hidden'); btnWrap.style.display='grid'; let handle=ik.ig.replace('@','').replace('https://instagram.com/','').replace('instagram.com/','').split('/')[0]; igBtn.onclick=()=>{ window.open('https://instagram.com/'+handle,'_blank'); }; }
-  }
-  modal.classList.remove('hidden'); modal.classList.add('grid');
+  try{
+    lockScroll();
+    let modal=document.getElementById('homeDetailModal');
+    let title=document.getElementById('homeDetailTitle');
+    let icon=document.getElementById('homeDetailIcon');
+    let content=document.getElementById('homeDetailContent');
+    let fotoEl=document.getElementById('homeDetailFoto');
+    let kontakWrap=document.getElementById('homeDetailKontak');
+    let kontakContent=document.getElementById('homeDetailKontakContent');
+    kontakWrap.classList.add('hidden'); fotoEl.classList.add('hidden');
+    if(type==='rules'){
+      title.innerText='📜 Rules Lengkap'; icon.innerText='📜';
+      content.innerHTML=safeHTML(homeDataCache.rules) || '<ul class="list-disc pl-4"><li>Dilarang SARA, porn, 18+</li><li>Dilarang spam, judi, pinjol</li><li>Saling respect</li></ul>';
+    } else if(type==='pengumuman'){
+      title.innerText='📢 Pengumuman'; icon.innerText='📢';
+      content.innerHTML=`<div>${safeHTML(homeDataCache.pengumuman) || 'Belum ada pengumuman'}</div><div class="mt-3 text-[10px] opacity-40">${homeDataCache.pengumumanDate ? 'Update: '+esc(homeDataCache.pengumumanDate) : ''}</div>`;
+    } else if(type==='iklan'){
+      let ik = homeDataCache.iklanList[iklanIndex] || homeDataCache.iklanList[0];
+      if(!ik){ unlockScroll(); return; }
+      title.innerText='💰 Detail Iklan'; icon.innerText='💰';
+      if(ik.foto){ fotoEl.src=ik.foto; fotoEl.classList.remove('hidden'); }
+      content.innerHTML=safeHTML(ik.teks) || 'Belum ada iklan';
+      let hasKontakText = ik.kontak && ik.kontak.trim().length>0;
+      let hasWA = ik.wa && ik.wa.replace(/[^0-9]/g,'').length>=10;
+      let hasIG = ik.ig && ik.ig.length>=2;
+      if(hasKontakText || hasWA || hasIG) kontakWrap.classList.remove('hidden');
+      kontakContent.innerHTML = safeHTML(ik.kontak) || '';
+      let waBtn=document.getElementById('waBtn'); let igBtn=document.getElementById('igBtn'); let btnWrap=document.getElementById('kontakBtnWrap');
+      waBtn.classList.add('hidden'); igBtn.classList.add('hidden'); btnWrap.style.display='none';
+      if(hasWA){ waBtn.classList.remove('hidden'); btnWrap.style.display='grid'; waBtn.onclick=()=>{ window.open('https://wa.me/'+ik.wa.replace(/[^0-9]/g,''),'_blank'); }; }
+      if(hasIG){ igBtn.classList.remove('hidden'); btnWrap.style.display='grid'; let handle=ik.ig.replace('@','').replace('https://instagram.com/','').replace('instagram.com/','').split('/')[0].split('?')[0]; igBtn.onclick=()=>{ window.open('https://instagram.com/'+handle,'_blank'); }; }
+    }
+    modal.classList.remove('hidden'); modal.classList.add('grid');
+  }catch(e){ unlockScroll(); console.log(e); }
 }
 window.closeHomeDetail=function(){
   document.getElementById('homeDetailModal').classList.add('hidden');
@@ -253,18 +261,20 @@ function drawSpinWheel(){
   let ctx=canvas.getContext('2d');
   let cx=80, cy=80, r=76;
   ctx.clearRect(0,0,160,160);
+  let isDark=document.documentElement.classList.contains('dark');
   for(let i=0;i<8;i++){
     let start=(i*45-90)*Math.PI/180;
     let end=((i+1)*45-90)*Math.PI/180;
     ctx.beginPath(); ctx.moveTo(cx,cy); ctx.arc(cx,cy,r,start,end); ctx.closePath();
-    ctx.fillStyle=spinColors[i]; ctx.fill();
-    ctx.strokeStyle='#5D0F1F'; ctx.lineWidth=1; ctx.stroke();
+    ctx.fillStyle=isDark ? ['#3a1520','#2B0A12','#4a2030','#5D0F1F','#3a1520','#2B0A12','#4a2030','#3a1520'][i] : spinColors[i];
+    ctx.fill();
+    ctx.strokeStyle=isDark ? '#E8B86D' : '#5D0F1F'; ctx.lineWidth=1; ctx.stroke();
     let mid=(start+end)/2;
     ctx.save(); ctx.translate(cx,cy); ctx.rotate(mid);
-    ctx.textAlign='right'; ctx.font='bold 11px Poppins'; ctx.fillStyle='#5D0F1F';
+    ctx.textAlign='right'; ctx.font='bold 11px Poppins'; ctx.fillStyle=isDark ? '#FDE8C9' : '#5D0F1F';
     ctx.fillText(spinPrizes[i]+' XP', r-12, 4); ctx.restore();
   }
-  ctx.beginPath(); ctx.arc(cx,cy,r,0,Math.PI*2); ctx.strokeStyle='#5D0F1F'; ctx.lineWidth=3; ctx.stroke();
+  ctx.beginPath(); ctx.arc(cx,cy,r,0,Math.PI*2); ctx.strokeStyle=isDark ? '#E8B86D' : '#5D0F1F'; ctx.lineWidth=3; ctx.stroke();
 }
 window.doSpin=function(){
   let lastSpin=localStorage.getItem('spinDate_CeritaKita');
@@ -294,6 +304,8 @@ function updateSpinLabel(){
 }
 let koalaScore=0, koalaTime=15, koalaInterval=null, koalaMoveInterval=null;
 window.startKoalaGame=function(){
+  if(koalaInterval) clearInterval(koalaInterval);
+  if(koalaMoveInterval) clearInterval(koalaMoveInterval);
   koalaScore=0; koalaTime=15;
   document.getElementById('koalaScore').innerText='0'; document.getElementById('koalaTimer').innerText='15s';
   document.getElementById('koalaResult').innerText=''; document.getElementById('koalaArea').innerHTML='';
@@ -303,21 +315,25 @@ window.startKoalaGame=function(){
   koalaMoveInterval=setInterval(()=>{ if(koalaTime>0) spawnKoala(); },900);
 }
 function spawnKoala(){
-  let area=document.getElementById('koalaArea'); area.innerHTML='';
+  let area=document.getElementById('koalaArea'); if(!area) return;
+  area.innerHTML='';
   let k=document.createElement('div'); k.className='koala'; k.innerText='🐨';
   k.style.left=Math.random()*80+'%'; k.style.top=Math.random()*70+'%';
-  k.onclick=()=>{ koalaScore++; document.getElementById('koalaScore').innerText=koalaScore; k.innerText='💥'; setTimeout(()=>k.remove(),150); };
+  k.onclick=()=>{ koalaScore++; document.getElementById('koalaScore').innerText=koalaScore; k.innerText='💥'; setTimeout(()=>{ if(k.parentNode) k.remove(); },150); };
   area.appendChild(k);
 }
 function endKoalaGame(){
-  clearInterval(koalaInterval); clearInterval(koalaMoveInterval);
-  document.getElementById('koalaArea').innerHTML='<div class="absolute inset-0 grid place-items-center text-[11px] opacity-40">Selesai!</div>';
+  if(koalaInterval) clearInterval(koalaInterval);
+  if(koalaMoveInterval) clearInterval(koalaMoveInterval);
+  koalaInterval=null; koalaMoveInterval=null;
+  let area=document.getElementById('koalaArea');
+  if(area) area.innerHTML='<div class="absolute inset-0 grid place-items-center text-[11px] opacity-40">Selesai!</div>';
   document.getElementById('koalaStartBtn').disabled=false; document.getElementById('koalaStartBtn').innerText='MAIN LAGI 🐨';
   let xp=Math.floor(koalaScore/2); document.getElementById('koalaResult').innerText=`Dapet ${koalaScore} koala! +${xp} XP`;
   if(xp>0){ addXP_BEBEN(xp); updateLevelHeader(); }
 }
 const KATA_KASAR=["anjing","babi","bangsat","bajingan","kampret","tolol","goblok","idiot","bego","brengsek","lonte","kontol","memek","ngentot"];
-function profanityFilter(t){ let low=t.toLowerCase(); for(let w of KATA_KASAR){ if(low.includes(w)) return true; } return false; }
+function profanityFilter(t){ let low=t.toLowerCase(); for(let w of KATA_KASAR){ let re=new RegExp("\\b"+w+"\\b","i"); if(re.test(low)) return true; } return false; }
 function cekLimit(){ let last=localStorage.getItem("lastPost_BEBEN"); if(last){ let selisih=Date.now()-parseInt(last); let limit=5*60*1000; if(selisih<limit){ let sisa=Math.ceil((limit-selisih)/1000); let m=Math.floor(sisa/60); let d=sisa%60; alert(`Sabar ${m}:${d.toString().padStart(2,'0')} lagi`); return false; } } return true; }
 function getXP(){ return parseInt(localStorage.getItem('xp_BEBEN')||'0'); }
 function addXP_BEBEN(n=10){ let xp=getXP()+n; localStorage.setItem('xp_BEBEN', xp); return xp; }
@@ -325,19 +341,25 @@ function getLevel(xp){ if(xp<30) return {lv:1,icon:'🌱'}; if(xp<80) return {lv
 function updateLevelHeader(){ let lvl=getLevel(getXP()); document.getElementById('myLevelHeader').innerText=`${lvl.icon} LV.${lvl.lv}`; let pl=document.getElementById('profileLevel'); if(pl) pl.innerText=`LV.${lvl.lv}`; let px=document.getElementById('profileXP'); if(px) px.innerText=getXP(); }
 let fotoBase64=null;
 window.previewPhoto=function(e){
-  let f=e.target.files[0]; if(!f) return;
-  if(f.size > 4*1024*1024){ showToast('Foto max 4MB ya ta!'); return; }
-  let r=new FileReader(); r.onload=ev=>{
-    let img=new Image(); img.src=ev.target.result; img.onload=()=>{
-      let canvas=document.createElement('canvas'); let maxW=800; let scale=Math.min(1,maxW/img.width);
-      canvas.width=img.width*scale; canvas.height=img.height*scale; canvas.getContext('2d').drawImage(img,0,0,canvas.width,canvas.height);
-      fotoBase64=canvas.toDataURL('image/jpeg',0.6);
-      let sizeKB = Math.round(fotoBase64.length*0.75/1024);
-      document.getElementById('photoSizeInfo').innerText = sizeKB+'KB';
-      if(sizeKB > 900){ fotoBase64=null; showToast('Foto kegedean >900KB'); document.getElementById('photoPreview').classList.add('hidden'); document.getElementById('removePhoto').classList.add('hidden'); return; }
-      let p=document.getElementById('photoPreview'); p.src=fotoBase64; p.classList.remove('hidden'); document.getElementById('removePhoto').classList.remove('hidden');
-    };
-  }; r.readAsDataURL(f);
+  try{
+    let f=e.target.files[0]; if(!f) return;
+    if(f.size > 4*1024*1024){ showToast('Foto max 4MB ya ta!'); return; }
+    let r=new FileReader();
+    r.onerror=()=>showToast('Gagal baca foto');
+    r.onload=ev=>{
+      let img=new Image(); img.src=ev.target.result;
+      img.onerror=()=>showToast('Foto rusak');
+      img.onload=()=>{
+        let canvas=document.createElement('canvas'); let maxW=800; let scale=Math.min(1,maxW/img.width);
+        canvas.width=img.width*scale; canvas.height=img.height*scale; canvas.getContext('2d').drawImage(img,0,0,canvas.width,canvas.height);
+        fotoBase64=canvas.toDataURL('image/jpeg',0.6);
+        let sizeKB = Math.round(fotoBase64.length*0.75/1024);
+        document.getElementById('photoSizeInfo').innerText = sizeKB+'KB';
+        if(sizeKB > 900){ fotoBase64=null; showToast('Foto kegedean >900KB'); document.getElementById('photoPreview').classList.add('hidden'); document.getElementById('removePhoto').classList.add('hidden'); return; }
+        let p=document.getElementById('photoPreview'); p.src=fotoBase64; p.classList.remove('hidden'); document.getElementById('removePhoto').classList.remove('hidden');
+      };
+    }; r.readAsDataURL(f);
+  }catch(err){ showToast('Error foto'); }
 }
 window.removePhoto=function(){ fotoBase64=null; document.getElementById('photoInputGallery').value=''; document.getElementById('photoInputCamera').value=''; document.getElementById('photoPreview').classList.add('hidden'); document.getElementById('removePhoto').classList.add('hidden'); document.getElementById('photoSizeInfo').innerText=''; }
 function renderAvatarPicker(){ document.getElementById('avatarPicker').innerHTML=avatars.map(a=>`<button type="button" onclick="window.pickAvatar('${a}')" class="w-9 h-9 rounded-full border-2 ${selectedAvatar===a?'border-maroon scale-110':'border-cream bg-white'} grid place-items-center text-[18px]" style="background:${selectedAvatar===a?selectedColor:'#fff'}">${a}</button>`).join(''); document.getElementById('colorPicker').innerHTML=colors.map(c=>`<button type="button" onclick="window.pickColor('${c}')" class="w-7 h-7 rounded-full border-2 ${selectedColor===c?'border-maroon scale-110':'border-white'}" style="background:${c}"></button>`).join(''); }
@@ -357,10 +379,10 @@ window.closeDelete=function(){ document.getElementById('deleteModal').classList.
 document.getElementById('confirmDeleteBtn').onclick=async function(){ if(!deleteId) return; try{ await deleteDoc(doc(db,"confesses",deleteId)); removeMyId(deleteId); closeDelete(); closeDetail(); showToast('Dihapus 🗑️'); }catch(e){ alert(e.message); } }
 function showToast(msg){ let t=document.getElementById('toast'); t.innerText=msg; t.classList.remove('translate-y-[150px]','opacity-0'); t.classList.add('translate-y-0','opacity-100'); setTimeout(()=>{ t.classList.add('translate-y-[150px]','opacity-0'); t.classList.remove('translate-y-0','opacity-100'); },2500); }
 window.sendConfess=async function(){ let to=document.getElementById('toInput').value.trim(); let cat=document.getElementById('catInput').value; let text=document.getElementById('msgInput').value.trim(); if(text.length<8){ alert('Minimal 8'); return; } if(!to){ alert('Isi Untuk Siapa'); return; } if(profanityFilter(text)){ alert('jaga jempol'); return; } if(!cekLimit()) return; let tags=(text.match(/#(\w+)/g)||[]).map(t=>t.replace('#','')).slice(0,4); let btn=document.getElementById('sendBtn'); btn.disabled=true; btn.innerText='Mengirim...'; try{ let docRef=await addDoc(colRef, {to,cat,text,tags,avatar:selectedAvatar,color:selectedColor,time:Date.now(),createdAt:serverTimestamp(),code:Math.floor(100+Math.random()*900),reactions:{love:0,cry:0,coffee:0,shy:0},replies:[],photo:fotoBase64}); saveMyId(docRef.id); document.getElementById('msgInput').value=''; document.getElementById('toInput').value=''; document.getElementById('charCount').innerText='0/500'; closeCreate(); localStorage.setItem("lastPost_BEBEN",Date.now().toString()); addXP_BEBEN(10); let s=updateStreak(); showStreak(); updateLevelHeader(); fotoBase64=null; removePhoto(); showToast('Terkirim! ✨'); }catch(e){ alert(e.message); } btn.disabled=false; btn.innerText='Kirim ONLINE ✈️'; }
-window.setCat=function(cat,btn){ activeCat=cat; document.querySelectorAll('.filter-btn').forEach(b=>{ b.classList.remove('bg-maroon','text-[#FFF8E7]'); b.classList.add('bg-white'); }); btn.classList.add('bg-maroon','text-[#FFF8E7]'); btn.classList.remove('bg-white'); render(); }
-function renderTop(){ let c=document.getElementById('topConfessList'); if(!c) return; if(confesses.length===0){ c.innerHTML='<div class="text-[11px] opacity-40">Belum ada</div>'; return; } let top3=[...confesses].sort((a,b)=>{ let ta=Object.values(a.reactions||{}).reduce((x,y)=>x+y,0); let tb=Object.values(b.reactions||{}).reduce((x,y)=>x+y,0); return tb-ta; }).slice(0,3); c.innerHTML=top3.map((cc,i)=>{ let medal=i===0?'🥇':i===1?'🥈':'🥉'; let total=Object.values(cc.reactions||{}).reduce((x,y)=>x+y,0); return `<div onclick="openDetail('${cc.firestoreId}')" class="cursor-pointer bg-broken border border-cream rounded-xl px-3 py-2.5 flex gap-2 items-center"><div>${medal}</div><div class="flex-1 overflow-hidden"><div class="text-[11px] font-semibold line-clamp-3">${esc(cc.text).slice(0,45)}</div><div class="text-[9px] opacity-50">To: ${esc(cc.to)} • 💖 ${total}</div></div></div>`; }).join(''); }
+window.setCat=function(cat,btn){ activeCat=cat; document.querySelectorAll('.filter-btn').forEach(b=>{ b.classList.remove('bg-maroon','text-[#FFF8E7]','active'); b.classList.add('bg-white'); }); btn.classList.add('bg-maroon','text-[#FFF8E7]','active'); btn.classList.remove('bg-white'); render(); }
+function renderTop(){ let c=document.getElementById('topConfessList'); if(!c) return; if(confesses.length===0){ c.innerHTML='<div class="text-[11px] opacity-40">Belum ada</div>'; return; } let top3=[...confesses].sort((a,b)=>{ let ta=Object.values(a.reactions||{}).reduce((x,y)=>x+y||0,0); let tb=Object.values(b.reactions||{}).reduce((x,y)=>x+y||0,0); return tb-ta; }).slice(0,3); c.innerHTML=top3.map((cc,i)=>{ let medal=i===0?'🥇':i===1?'🥈':'🥉'; let total=Object.values(cc.reactions||{}).reduce((x,y)=>x+y||0,0); return `<div onclick="openDetail('${cc.firestoreId}')" class="cursor-pointer bg-broken border border-cream rounded-xl px-3 py-2.5 flex gap-2 items-center"><div>${medal}</div><div class="flex-1 overflow-hidden"><div class="text-[11px] font-semibold line-clamp-3">${esc(cc.text).slice(0,45)}</div><div class="text-[9px] opacity-50">To: ${esc(cc.to)} • 💖 ${total}</div></div></div>`; }).join(''); }
 function renderProfile(){ let my=confesses.filter(c=>isMine(c.firestoreId)); document.getElementById('myConfessList').innerHTML=my.map(c=>`<div class="bg-broken border-2 border-cream rounded-xl p-3"><div class="font-bold">To: ${esc(c.to)}</div><div class="mt-1 line-clamp-3">${esc(c.text).slice(0,80)}</div><div class="mt-2 flex gap-1"><button onclick="openEdit('${c.firestoreId}')" class="text-[10px] bg-yellow-100 border px-2 py-1 rounded-full">✏️ Edit</button><button onclick="confirmDelete('${c.firestoreId}')" class="text-[10px] bg-red-100 border px-2 py-1 rounded-full text-red-600">🗑️ Hapus</button><button onclick="openDetail('${c.firestoreId}')" class="text-[10px] bg-white border px-2 py-1 rounded-full">👁️ Lihat</button></div></div>`).join('')||'<div class="text-center opacity-40 py-6">Belum ada confess</div>'; }
-window.render=function(){ let s=(document.getElementById('search')?.value||document.getElementById('searchM')?.value||'').toLowerCase(); let filtered=confesses.filter(c=>{ let catOk=activeCat==='all'||c.cat===activeCat; let searchOk=!s||c.text.toLowerCase().includes(s)||c.to.toLowerCase().includes(s)||(c.tags||[]).join(' ').toLowerCase().includes(s); return catOk&&searchOk; }); document.getElementById('feed').innerHTML=filtered.map(c=>{ let total=Object.values(c.reactions||{}).reduce((a,b)=>a+b,0); let photoHtml=c.photo?`<img src="${c.photo}" class="mt-2 w-full rounded-[12px] border-2 border-cream max-h-[300px] object-cover">`:''; let mineBtn=isMine(c.firestoreId)?`<div class="mt-2 flex gap-1"><button onclick="openEdit('${c.firestoreId}')" class="text-[10px] bg-yellow-100 border px-2.5 py-1 rounded-full font-bold">✏️ Edit</button><button onclick="confirmDelete('${c.firestoreId}')" class="text-[10px] bg-red-100 border px-2.5 py-1 rounded-full font-bold text-red-600">🗑️ Hapus</button></div>`:''; return `<div class="masonry-item bg-white border-[1.5px] border-cream rounded-[18px] p-4 shadow-sm" style="background: linear-gradient(135deg, #FFFBF0 0%, #FFF8E7 100%)"><div class="flex justify-between items-center"><div class="flex items-center gap-2"><div class="w-8 h-8 rounded-full border-2 border-maroon grid place-items-center" style="background:${c.color}">${c.avatar}</div><div class="leading-tight"><div class="text-[10px] font-bold text-maroon">anonimijon ${c.avatar} #${c.code}</div><div class="text-[9px] opacity-50">${timeAgo(c.time)} • ${(c.replies||[]).length} balasan</div></div></div><span class="text-[9px] bg-cream px-3 py-1 rounded-full font-bold text-maroon">${esc(c.cat)}</span></div><div class="mt-3 cursor-pointer" onclick="openDetail('${c.firestoreId}')"><div class="text-[11px] font-semibold opacity-60">To: ${esc(c.to)}</div><div class="text-[13px] leading-6 mt-1 line-clamp-3">${parseContent(c.text)}</div>${photoHtml}</div><div class="mt-2 flex flex-wrap gap-1">${(c.tags||[]).map(t=>`<span class="text-[10px] bg-broken border border-cream px-2 py-0.5 rounded-full">#${esc(t)}</span>`).join('')}</div><div class="mt-3 flex items-center gap-1"><button onclick="react('${c.firestoreId}','love',this)" class="text-[10px] border border-cream px-2.5 py-1 rounded-full bg-broken font-semibold">💖 ${c.reactions?.love||0}</button><button onclick="react('${c.firestoreId}','cry',this)" class="text-[10px] bg-broken border border-cream px-2.5 py-1 rounded-full font-semibold">😭 ${c.reactions?.cry||0}</button><span class="text-[10px] opacity-40 ml-1">${total} reaksi</span></div>${mineBtn}</div>`; }).join('')||'<div class="text-center py-12 opacity-50 text-[12px]">Belum ada confess</div>'; document.getElementById('lTotal').innerText=confesses.length; renderTop(); updateLevelHeader(); showStreak(); renderProfile(); }
+window.render=function(){ let s=(document.getElementById('search')?.value||document.getElementById('searchM')?.value||'').toLowerCase(); let filtered=confesses.filter(c=>{ let catOk=activeCat==='all'||c.cat===activeCat; let searchOk=!s||c.text.toLowerCase().includes(s)||c.to.toLowerCase().includes(s)||(c.tags||[]).join(' ').toLowerCase().includes(s); return catOk&&searchOk; }); document.getElementById('feed').innerHTML=filtered.map(c=>{ let total=Object.values(c.reactions||{}).reduce((a,b)=>a+b||0,0); let photoHtml=c.photo?`<img src="${c.photo}" class="mt-2 w-full rounded-[12px] border-2 border-cream max-h-[300px] object-cover">`:''; let mineBtn=isMine(c.firestoreId)?`<div class="mt-2 flex gap-1"><button onclick="openEdit('${c.firestoreId}')" class="text-[10px] bg-yellow-100 border px-2.5 py-1 rounded-full font-bold">✏️ Edit</button><button onclick="confirmDelete('${c.firestoreId}')" class="text-[10px] bg-red-100 border px-2.5 py-1 rounded-full font-bold text-red-600">🗑️ Hapus</button></div>`:''; return `<div class="masonry-item bg-white border-[1.5px] border-cream rounded-[18px] p-4 shadow-sm" style="background: linear-gradient(135deg, #FFFBF0 0%, #FFF8E7 100%)"><div class="flex justify-between items-center"><div class="flex items-center gap-2"><div class="w-8 h-8 rounded-full border-2 border-maroon grid place-items-center" style="background:${c.color}">${c.avatar}</div><div class="leading-tight"><div class="text-[10px] font-bold text-maroon">anonimijon ${c.avatar} #${c.code}</div><div class="text-[9px] opacity-50">${timeAgo(c.time)} • ${(c.replies||[]).length} balasan</div></div></div><span class="text-[9px] bg-cream px-3 py-1 rounded-full font-bold text-maroon">${esc(c.cat)}</span></div><div class="mt-3 cursor-pointer" onclick="openDetail('${c.firestoreId}')"><div class="text-[11px] font-semibold opacity-60">To: ${esc(c.to)}</div><div class="text-[13px] leading-6 mt-1 line-clamp-3">${parseContent(c.text)}</div>${photoHtml}</div><div class="mt-2 flex flex-wrap gap-1">${(c.tags||[]).map(t=>`<span class="text-[10px] bg-broken border border-cream px-2 py-0.5 rounded-full">#${esc(t)}</span>`).join('')}</div><div class="mt-3 flex items-center gap-1"><button onclick="react('${c.firestoreId}','love',this)" class="text-[10px] border border-cream px-2.5 py-1 rounded-full bg-broken font-semibold">💖 ${c.reactions?.love||0}</button><button onclick="react('${c.firestoreId}','cry',this)" class="text-[10px] bg-broken border border-cream px-2.5 py-1 rounded-full font-semibold">😭 ${c.reactions?.cry||0}</button><span class="text-[10px] opacity-40 ml-1">${total} reaksi</span></div>${mineBtn}</div>`; }).join('')||'<div class="text-center py-12 opacity-50 text-[12px]">Belum ada confess</div>'; document.getElementById('lTotal').innerText=confesses.length; renderTop(); updateLevelHeader(); showStreak(); renderProfile(); }
 window.openDetail=function(fid){ let c=confesses.find(x=>x.firestoreId===fid); if(!c) return; lockScroll(); document.getElementById('detailAvatar').innerText=c.avatar; document.getElementById('detailAvatar').style.background=c.color; document.getElementById('detailName').innerText=`anonimijon ${c.avatar} #${c.code}`; document.getElementById('detailTime').innerText=`${timeAgo(c.time)} • ${esc(c.cat)}`; let photoDetail=c.photo?`<img src="${c.photo}" class="mt-3 w-full max-h-[400px] object-contain rounded-xl border-2 border-cream bg-broken">`:''; let mineDetail=isMine(fid)?`<div class="mt-3 grid grid-cols-2 gap-2"><button onclick="openEdit('${c.firestoreId}'); closeDetail();" class="bg-yellow-100 border-2 py-2 rounded-xl text-[11px] font-bold">✏️ Edit</button><button onclick="confirmDelete('${c.firestoreId}')" class="bg-red-100 border-2 py-2 rounded-xl text-[11px] font-bold text-red-600">🗑️ Hapus</button></div>`:''; document.getElementById('detailContent').innerHTML=`<div class="bg-white border-2 border-cream rounded-xl p-3"><div class="text-[11px] opacity-60">To: ${esc(c.to)}</div><div class="text-[14px] leading-7 mt-2">${parseContent(c.text)}</div>${photoDetail}</div>${mineDetail}<div class="mt-4 grid grid-cols-4 gap-2">${['love','cry','coffee','shy'].map(type=>{ let emoji={love:'💖',cry:'😭',coffee:'☕',shy:'🫣'}[type]; return `<button onclick="react('${c.firestoreId}','${type}',this)" class="py-2.5 rounded-xl border-2 font-bold bg-white">${emoji} ${c.reactions?.[type]||0}</button>`; }).join('')}</div><div class="mt-5"><div class="font-bold text-[12px]">Thread (${(c.replies||[]).length})</div><div class="mt-2 grid gap-2 max-h-[160px] overflow-auto">${(c.replies||[]).map(r=>`<div class="flex gap-2"><div class="w-7 h-7 rounded-full border grid place-items-center text-[14px]" style="background:${r.color}">${r.avatar}</div><div class="bg-white border rounded-xl px-3 py-2 text-[12px] flex-1"><div class="font-bold text-[10px] text-maroon">${esc(r.name)}</div>${esc(r.text)}</div></div>`).join('')||'<div class="text-[11px] opacity-40">Belum ada balasan</div>'}</div><div class="mt-3 flex gap-2"><input id="reply-${c.firestoreId}" placeholder="Balas..." class="flex-1 bg-white border-2 rounded-xl px-3 py-2.5 text-[12px]"><button onclick="addReply('${c.firestoreId}')" class="bg-maroon text-white px-4 rounded-xl font-bold text-[12px]">Kirim</button></div></div>`; document.getElementById('detailModal').classList.remove('hidden'); document.getElementById('detailModal').classList.add('grid'); }
 window.closeDetail=function(){ document.getElementById('detailModal').classList.add('hidden'); document.getElementById('detailModal').classList.remove('grid'); unlockScroll(); }
 window.react=async function(fid,type,el){ let key=`liked_${fid}_${type}`; if(localStorage.getItem(key)) return; let c=confesses.find(x=>x.firestoreId===fid); if(!c) return; let newCount=(c.reactions?.[type]||0)+1; c.reactions[type]=newCount; el.innerHTML=el.innerHTML.replace(/\d+/,newCount); localStorage.setItem(key,'1'); try{ await updateDoc(doc(db,"confesses",fid), {reactions:c.reactions}); renderTop(); }catch(e){} }
@@ -374,15 +396,11 @@ async function loadHomeConfig(){
         homeDataCache.rules=data.rules || '';
         homeDataCache.pengumuman=data.pengumuman || '';
         homeDataCache.pengumumanDate=data.pengumumanDate || '';
-
-        // MULTI ADS + LEGACY FALLBACK
         let list = data.iklanList && Array.isArray(data.iklanList) && data.iklanList.length ? data.iklanList : (data.iklan ? [{teks:data.iklan, foto:data.iklanFoto, wa:data.iklanWA||data.wa||'', ig:data.iklanIG||data.ig||'', kontak:data.iklanKontak||''}] : []);
         homeDataCache.iklanList = list;
-
         document.getElementById('homeRules').innerHTML = safeHTML(data.rules) || "Rules belum diset admin";
         document.getElementById('homePengumuman').innerHTML = safeHTML(data.pengumuman) || "Belum ada pengumuman";
         document.getElementById('pengumumanDate').innerText = data.pengumumanDate ? "Update: "+data.pengumumanDate : "";
-
         let carousel=document.getElementById('iklanCarousel');
         let countEl=document.getElementById('iklanCount');
         if(countEl) countEl.innerText=list.length+' ADS';
@@ -392,19 +410,27 @@ async function loadHomeConfig(){
           carousel.innerHTML=list.map((ik,i)=>`
             <div onclick="openHomeDetail('iklan',${i})" class="min-w-[220px] max-w-[220px] snap-center bg-white border-2 border-cream rounded-xl p-3 cursor-pointer active:scale-95 transition">
               ${ik.foto?`<img src="${ik.foto}" class="w-full h-24 object-cover rounded-lg mb-2 border-2 border-cream">`:''}
-              <div class="text-[11px] leading-5 line-clamp-3">${safeHTML(ik.teks||ik.iklan)||'Iklan'}</div>
+              <div class="text-[11px] leading-5 line-clamp-3">${safeHTML(ik.teks)||'Iklan'}</div>
               <div class="mt-2 flex gap-1">${ik.wa?'<span class="text-[8px] bg-green-500 text-white px-1.5 py-0.5 rounded-full">WA</span>':''}${ik.ig?'<span class="text-[8px] bg-gradient-to-r from-purple-500 to-pink-500 text-white px-1.5 py-0.5 rounded-full">IG</span>':''}</div>
             </div>
           `).join('');
+          // pause on hover/touch
+          carousel.onmouseenter=()=>{ iklanPaused=true; };
+          carousel.onmouseleave=()=>{ iklanPaused=false; };
+          carousel.ontouchstart=()=>{ iklanPaused=true; };
+          carousel.ontouchend=()=>{ setTimeout(()=>{ iklanPaused=false; },2000); };
         }
-
         if(iklanInterval) clearInterval(iklanInterval);
         if(list.length>1){
           let idx=0;
           iklanInterval=setInterval(()=>{
+            if(iklanPaused) return;
             idx=(idx+1)%list.length;
             let el=carousel.children[idx];
-            if(el) el.scrollIntoView({behavior:'smooth', inline:'center', block:'nearest'});
+            if(el){
+              let left = el.offsetLeft - carousel.offsetLeft - (carousel.clientWidth - el.clientWidth)/2;
+              carousel.scrollTo({left, behavior:'smooth'});
+            }
           },3000);
         }
       }
