@@ -24,6 +24,24 @@ body{background: linear-gradient(180deg, #FFF8E7 0%, #FDE8C9 35%, #FFECD2 70%, #
 .view{display:none} .view.active{display:block;animation:fadeIn 0.25s ease} @keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
 .koala-area{position:relative;width:100%;height:220px;background: linear-gradient(180deg, #FFF1D6 0%, #FFECD2 100%);border:2px dashed #E8B86D;border-radius:16px;overflow:hidden}
 .koala{position:absolute;font-size:36px;cursor:pointer;user-select:none}
+
+/* DARK MODE FIX */
+html.dark body{background: linear-gradient(180deg, #1a060b 0%, #2B0A12 70%, #3a1520 100%)!important; color:#FFF8E7}
+html.dark .soft-card{background: linear-gradient(135deg, #3a1520 0%, #2B0A12 100%)!important; border-color:#E8B86D!important; color:#FFF8E7!important; box-shadow:5px 5px 0px #1a060b!important}
+html.dark .soft-card-gold{background: linear-gradient(135deg, #4a2030 0%, #3a1520 100%)!important; border-color:#E8B86D!important; color:#FFF8E7!important; box-shadow:5px 5px 0px #1a060b!important}
+html.dark .soft-header{background: linear-gradient(180deg, rgba(43,10,18,0.95) 0%, rgba(26,6,11,0.9) 100%)!important; border-bottom-color:rgba(232,184,109,0.15)}
+html.dark .soft-header div{color:#FFF8E7!important}
+html.dark input, html.dark textarea, html.dark select{background:#2B0A12!important; border-color:#5D0F1F!important; color:#FFF8E7!important}
+html.dark .bg-white{background:#2B0A12!important; color:#FFF8E7!important}
+html.dark .bg-broken{background:#3a1520!important}
+html.dark .text-maroon{color:#FDE8C9!important}
+html.dark .border-cream{border-color:#5D0F1F!important}
+html.dark .border-maroon{border-color:#E8B86D!important}
+html.dark #landing{background: linear-gradient(135deg, #1a060b 0%, #2B0A12 50%, #3a1520 100%)!important}
+html.dark .bottom-nav{background: rgba(43,10,18,0.95)!important; border-color:#E8B86D!important}
+html.dark .masonry-item{background: linear-gradient(135deg, #3a1520 0%, #2B0A12 100%)!important; color:#FFF8E7}
+html.dark .koala-area{background: linear-gradient(180deg, #2B0A12 0%, #3a1520 100%)!important}
+html.dark footer{color:#FDE8C9!important}
 </style>
 </head>
 <body>
@@ -54,13 +72,16 @@ body{background: linear-gradient(180deg, #FFF8E7 0%, #FDE8C9 35%, #FFECD2 70%, #
 <div id="homePengumuman" class="mt-3 text-[12px] leading-6 line-clamp-3">Belum ada pengumuman</div>
 <div id="pengumumanDate" class="mt-2 text-[9px] opacity-50"></div>
 </div>
-<div id="iklanCard" onclick="openHomeDetail('iklan')" class="soft-card-gold rounded-[22px] p-5">
-<div class="flex justify-between"><h2 class="font-extrabold text-maroon">💰 Iklan / Sponsor</h2><span class="text-[9px] bg-gold text-maroon px-2.5 py-1 rounded-full font-bold">ADS • tap untuk kontak</span></div>
-<div id="homeIklan" class="mt-3 text-[12px] line-clamp-3">Belum ada iklan</div>
-<img id="homeIklanFoto" class="hidden w-full h-40 object-cover rounded-xl border-2 border-cream mt-3">
+
+<!-- ADS CAROUSEL 5 AUTO SCROLL -->
+<div class="soft-card-gold rounded-[22px] p-5 overflow-hidden">
+<div class="flex justify-between items-center"><h2 class="font-extrabold text-maroon">💰 Iklan / Sponsor</h2><span class="text-[9px] bg-gold text-maroon px-2.5 py-1 rounded-full font-bold" id="iklanCount">0 ADS</span></div>
+<div id="iklanCarousel" class="mt-3 flex gap-3 overflow-x-auto scrollbar-hide snap-x snap-mandatory pb-2" style="scroll-behavior:smooth"></div>
+<div class="text-[9px] opacity-40 mt-1">geser ke samping → auto scroll 3 detik</div>
 </div>
+
 <div class="grid grid-cols-2 gap-3"><div class="soft-card rounded-[18px] py-5 text-center"><div class="font-extrabold text-maroon text-[26px]" id="lTotal">0</div><div class="text-[9px] font-bold opacity-60">TOTAL</div></div><div class="soft-card rounded-[18px] py-5 text-center"><div class="font-extrabold text-maroon text-[26px]" id="lStreak">0🔥</div><div class="text-[9px] font-bold opacity-60">STREAK</div></div></div>
-<footer class="text-center py-8 opacity-40"><div class="text-[11px]">☁️ cozzy place to confess</div><div class="text-[9px] mt-1">Human/Error 2026 • v6.2 dinamis</div></footer>
+<footer class="text-center py-8 opacity-40"><div class="text-[11px]">☁️ cozzy place to confess</div><div class="text-[9px] mt-1">Human/Error 2026 • v7 dark + 5 ads</div></footer>
 </div>
 
 <div id="view-feed" class="view">
@@ -138,7 +159,8 @@ const colRef = collection(db, "confesses");
 const avatars=['🦊','🐱','🐶','🐼','👻','🦄','🐙','🦅']; const colors=['#FDE8C9','#E0F2E9','#E0E7FF','#FFE4E6','#FFF1D6'];
 let selectedAvatar=avatars[0]; let selectedColor=colors[0];
 let confesses=[]; let activeCat='all'; let savedScroll=0; let editId=null; let deleteId=null; let prevReplyCounts={}; let isFirstLoad=true;
-let homeDataCache={rules:'',pengumuman:'',pengumumanDate:'',iklan:'',iklanKontak:'',iklanFoto:'',wa:'',ig:''};
+let homeDataCache={rules:'',pengumuman:'',pengumumanDate:'',iklanList:[],wa:'',ig:''};
+let iklanInterval=null;
 
 function timeAgo(t){ if(!t) return 'Baru saja'; let d=Math.floor((Date.now()-t)/60000); if(d<1) return 'Baru saja'; if(d<60) return d+' menit lalu'; if(d<1440) return Math.floor(d/60)+' jam lalu'; return Math.floor(d/1440)+' hari lalu'; }
 function todayStr(){ return new Date().toLocaleDateString('en-CA',{timeZone:'Asia/Jakarta'}); }
@@ -179,7 +201,7 @@ window.closeNotif=function(){ document.getElementById('notifModal').classList.ad
 window.clearNotif=function(){ saveNotif([]); showNotifDot(); closeNotif(); }
 showNotifDot();
 
-window.openHomeDetail=function(type){
+window.openHomeDetail=function(type, iklanIndex=0){
   lockScroll();
   let modal=document.getElementById('homeDetailModal');
   let title=document.getElementById('homeDetailTitle');
@@ -197,30 +219,22 @@ window.openHomeDetail=function(type){
     title.innerText='📢 Pengumuman'; icon.innerText='📢';
     content.innerHTML=`<div>${safeHTML(homeDataCache.pengumuman) || 'Belum ada pengumuman'}</div><div class="mt-3 text-[10px] opacity-40">${homeDataCache.pengumumanDate ? 'Update: '+esc(homeDataCache.pengumumanDate) : ''}</div>`;
   } else if(type==='iklan'){
+    let ik = homeDataCache.iklanList[iklanIndex] || homeDataCache.iklanList[0];
+    if(!ik){ closeHomeDetail(); return; }
     title.innerText='💰 Detail Iklan'; icon.innerText='💰';
-    if(homeDataCache.iklanFoto){ fotoEl.src=homeDataCache.iklanFoto; fotoEl.classList.remove('hidden'); }
-    content.innerHTML=safeHTML(homeDataCache.iklan) || 'Belum ada iklan';
-    // kontak & tombol dinamis
-    let hasKontakText = homeDataCache.iklanKontak && homeDataCache.iklanKontak.trim().length > 0;
-    let hasWA = homeDataCache.wa && homeDataCache.wa.replace(/[^0-9]/g,'').length >= 10;
-    let hasIG = homeDataCache.ig && homeDataCache.ig.length >= 2;
-    if(hasKontakText || hasWA || hasIG){ kontakWrap.classList.remove('hidden'); }
-    kontakContent.innerHTML = safeHTML(homeDataCache.iklanKontak) || (hasWA||hasIG ? '' : `<span class="opacity-40">Belum ada kontak</span>`);
-    
+    if(ik.foto){ fotoEl.src=ik.foto; fotoEl.classList.remove('hidden'); }
+    content.innerHTML=safeHTML(ik.teks) || safeHTML(ik.iklan) || 'Belum ada iklan';
+    let hasKontakText = ik.kontak && ik.kontak.trim().length>0;
+    let hasWA = ik.wa && ik.wa.replace(/[^0-9]/g,'').length>=10;
+    let hasIG = ik.ig && ik.ig.length>=2;
+    if(hasKontakText || hasWA || hasIG) kontakWrap.classList.remove('hidden');
+    kontakContent.innerHTML = safeHTML(ik.kontak) || (hasWA||hasIG ? '' : '<span class="opacity-40">Belum ada kontak</span>');
     let waBtn=document.getElementById('waBtn');
     let igBtn=document.getElementById('igBtn');
     let btnWrap=document.getElementById('kontakBtnWrap');
     waBtn.classList.add('hidden'); igBtn.classList.add('hidden'); btnWrap.style.display='none';
-    
-    if(hasWA){
-        waBtn.classList.remove('hidden'); btnWrap.style.display='grid';
-        waBtn.onclick=()=>{ window.open('https://wa.me/'+homeDataCache.wa.replace(/[^0-9]/g,''),'_blank'); };
-    }
-    if(hasIG){
-        igBtn.classList.remove('hidden'); btnWrap.style.display='grid';
-        let handle=homeDataCache.ig.replace('@','');
-        igBtn.onclick=()=>{ window.open('https://instagram.com/'+handle,'_blank'); };
-    }
+    if(hasWA){ waBtn.classList.remove('hidden'); btnWrap.style.display='grid'; waBtn.onclick=()=>{ window.open('https://wa.me/'+ik.wa.replace(/[^0-9]/g,''),'_blank'); }; }
+    if(hasIG){ igBtn.classList.remove('hidden'); btnWrap.style.display='grid'; let handle=ik.ig.replace('@','').replace('https://instagram.com/','').replace('instagram.com/','').split('/')[0]; igBtn.onclick=()=>{ window.open('https://instagram.com/'+handle,'_blank'); }; }
   }
   modal.classList.remove('hidden'); modal.classList.add('grid');
 }
@@ -360,20 +374,39 @@ async function loadHomeConfig(){
         homeDataCache.rules=data.rules || '';
         homeDataCache.pengumuman=data.pengumuman || '';
         homeDataCache.pengumumanDate=data.pengumumanDate || '';
-        homeDataCache.iklan=data.iklan || '';
-        homeDataCache.iklanKontak=data.iklanKontak || data.iklan_kontak || '';
-        homeDataCache.iklanFoto=data.iklanFoto || '';
+
+        // MULTI ADS + LEGACY FALLBACK
+        let list = data.iklanList && Array.isArray(data.iklanList) && data.iklanList.length ? data.iklanList : (data.iklan ? [{teks:data.iklan, foto:data.iklanFoto, wa:data.iklanWA||data.wa||'', ig:data.iklanIG||data.ig||'', kontak:data.iklanKontak||''}] : []);
+        homeDataCache.iklanList = list;
+
         document.getElementById('homeRules').innerHTML = safeHTML(data.rules) || "Rules belum diset admin";
         document.getElementById('homePengumuman').innerHTML = safeHTML(data.pengumuman) || "Belum ada pengumuman";
         document.getElementById('pengumumanDate').innerText = data.pengumumanDate ? "Update: "+data.pengumumanDate : "";
-        document.getElementById('homeIklan').innerHTML = safeHTML(data.iklan) || 'Belum ada iklan';
-        let fotoHome = document.getElementById('homeIklanFoto');
-        if(data.iklanFoto){ fotoHome.src=data.iklanFoto; fotoHome.classList.remove('hidden'); } else { fotoHome.classList.add('hidden'); }
-        let kontakStr = homeDataCache.iklanKontak;
-        let waMatch = kontakStr.match(/(?:wa|whatsapp)[:\s]*([0-9+]+)/i) || kontakStr.match(/([0-9]{10,15})/);
-        let igMatch = kontakStr.match(/(?:ig|instagram)[:\s]*@?([a-zA-Z0-9._]+)/i) || kontakStr.match(/@([a-zA-Z0-9._]+)/);
-        homeDataCache.wa = waMatch ? waMatch[1] : '';
-        homeDataCache.ig = igMatch ? igMatch[1] : '';
+
+        let carousel=document.getElementById('iklanCarousel');
+        let countEl=document.getElementById('iklanCount');
+        if(countEl) countEl.innerText=list.length+' ADS';
+        if(!list.length){
+          carousel.innerHTML='<div class="text-[11px] opacity-40 py-4">Belum ada iklan</div>';
+        } else {
+          carousel.innerHTML=list.map((ik,i)=>`
+            <div onclick="openHomeDetail('iklan',${i})" class="min-w-[220px] max-w-[220px] snap-center bg-white border-2 border-cream rounded-xl p-3 cursor-pointer active:scale-95 transition">
+              ${ik.foto?`<img src="${ik.foto}" class="w-full h-24 object-cover rounded-lg mb-2 border-2 border-cream">`:''}
+              <div class="text-[11px] leading-5 line-clamp-3">${safeHTML(ik.teks||ik.iklan)||'Iklan'}</div>
+              <div class="mt-2 flex gap-1">${ik.wa?'<span class="text-[8px] bg-green-500 text-white px-1.5 py-0.5 rounded-full">WA</span>':''}${ik.ig?'<span class="text-[8px] bg-gradient-to-r from-purple-500 to-pink-500 text-white px-1.5 py-0.5 rounded-full">IG</span>':''}</div>
+            </div>
+          `).join('');
+        }
+
+        if(iklanInterval) clearInterval(iklanInterval);
+        if(list.length>1){
+          let idx=0;
+          iklanInterval=setInterval(()=>{
+            idx=(idx+1)%list.length;
+            let el=carousel.children[idx];
+            if(el) el.scrollIntoView({behavior:'smooth', inline:'center', block:'nearest'});
+          },3000);
+        }
       }
     });
   }catch(e){}
