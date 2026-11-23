@@ -19,13 +19,20 @@
 .stiker { position: absolute; font-size: 20px; animation: goyang 2s infinite ease-in-out; }
 @keyframes goyang { 0%,100% { transform: rotate(-5deg); } 50% { transform: rotate(5deg); } }
 .scrollbar-hide::-webkit-scrollbar { display: none; }
-/* DARK MODE */
-html.dark body{ background:#12070a !important; color:#FFF2E2 !important; }
-html.dark .bg-white{ background:#2b1116 !important; color:#FFF2E2 !important; }
-html.dark .bg-broken{ background:#1a0a0e !important; }
-html.dark .border-cream{ border-color:#3a1a20 !important; }
-html.dark header{ background:rgba(26,10,14,0.9) !important; }
-html.dark input, html.dark textarea, html.dark select{ background:#2b1116 !important; color:#FFF2E2 !important; border-color:#3a1a20 !important; }
+ /* DARK MODE - FIX 100% */
+html.dark body{ background:#0e0608 !important; color:#FFEEDD !important; }
+html.dark .bg-white{ background:#211016 !important; color:#FFEEDD !important; border-color:#4a2030 !important; }
+html.dark .bg-broken{ background:#12070a !important; }
+html.dark .bg-cream{ background:#2a1520 !important; color:#FFEEDD !important; }
+html.dark .bg-yellow-50\/90{ background:#211016 !important; }
+html.dark .border-cream{ border-color:#3d1e2b !important; }
+html.dark header{ background:rgba(18,7,10,0.9) !important; backdrop-blur:12px; }
+html.dark input, html.dark textarea, html.dark select{ background:#211016 !important; color:#FFEEDD !important; border-color:#4a2030 !important; }
+html.dark .text-maroon, html.dark .text-maroon2{ color:#FFB3C0 !important; }
+html.dark .card-aesthetic{ background:#211016 !important; border-color:#7A1F1F !important; box-shadow: 4px 4px 0px #3a1018 !important; }
+html.dark .masonry-item{ background:#211016 !important; border-color:#3d1e2b !important; }
+html.dark #landing .bg-white{ background:#211016 !important; }
+html.dark footer{ background:#211016 !important; }
 </style>
 </head>
 <body class="bg-broken text-[#2b1116] overflow-x-hidden">
