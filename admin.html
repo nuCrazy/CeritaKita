@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cerita Kita - Admin Panel</title>
+<title>Cerita Kita - Admin Panel V6</title>
 <link rel="icon" type="image/jpeg" href="logo.png.jpg">
 <script src="https://cdn.tailwindcss.com"></script>
 <script>tailwind.config={theme:{extend:{colors:{maroon:'#5D0F1F',maroon2:'#8B1E3F',broken:'#FFF8E7',cream:'#FDE8C9',cream2:'#FFF1D6',gold:'#E8B86D',ink:'#2B0A12'}}}}</script>
@@ -15,44 +15,79 @@
     <div class="flex items-center gap-3">
       <img src="logo.png.jpg" class="w-10 h-10 rounded-full border-2 border-maroon object-cover">
       <div>
-        <h1 class="text-[16px] font-extrabold text-maroon leading-none">Cerita Kita <span class="text-maroon2">Admin</span></h1>
-        <div class="text-[10px] opacity-60 mt-1">cozzy place to confess • dibuat oleh Human/Error 2026</div>
+        <h1 class="text-[16px] font-extrabold text-maroon leading-none">Cerita Kita <span class="text-maroon2">Admin V6</span></h1>
+        <div class="text-[10px] opacity-60 mt-1">Upload poster + kontak dinamis • Human/Error 2026</div>
       </div>
     </div>
     <div class="text-right">
       <div class="text-[11px] bg-maroon text-[#FFF8E7] px-3 py-1 rounded-full font-bold" id="totalInfo">Loading...</div>
-      <div class="text-[9px] opacity-50 mt-1">Maroon Cream Edition</div>
+      <div class="text-[9px] opacity-50 mt-1">Photo Upload Edition</div>
     </div>
   </div>
 
-  <!-- HOME CONFIG EDITOR -->
+  <!-- HOME CONFIG EDITOR V6 -->
   <div class="bg-white border-[2.5px] border-maroon rounded-[22px] p-5 shadow-[5px_5px_0px_#5D0F1F] mb-6">
     <div class="flex justify-between items-center mb-4">
       <h2 class="font-extrabold text-maroon text-[15px]">🏠 Edit Halaman Home</h2>
-      <span class="text-[9px] bg-gold text-maroon px-2.5 py-1 rounded-full font-bold">LIVE FIREBASE</span>
+      <span class="text-[9px] bg-gold text-maroon px-2.5 py-1 rounded-full font-bold">LIVE FIREBASE + FOTO</span>
     </div>
     <div class="grid md:grid-cols-2 gap-4">
       <div>
         <label class="text-[11px] font-bold text-maroon">📜 Rules (HTML boleh)</label>
-        <textarea id="inputRules" class="mt-1 w-full bg-broken border-2 border-cream rounded-xl p-3 text-[12px] min-h-[130px] outline-none" placeholder="<ul><li>Rules...</li></ul>"></textarea>
+        <textarea id="inputRules" class="mt-1 w-full bg-broken border-2 border-cream rounded-xl p-3 text-[12px] min-h-[130px] outline-none"></textarea>
       </div>
       <div>
         <label class="text-[11px] font-bold text-maroon">📢 Pengumuman</label>
-        <textarea id="inputPengumuman" class="mt-1 w-full bg-broken border-2 border-cream rounded-xl p-3 text-[12px] min-h-[90px] outline-none" placeholder="Tulis pengumuman..."></textarea>
+        <textarea id="inputPengumuman" class="mt-1 w-full bg-broken border-2 border-cream rounded-xl p-3 text-[12px] min-h-[90px] outline-none"></textarea>
         <label class="text-[11px] font-bold text-maroon mt-2 block">Tanggal Pengumuman</label>
-        <input id="inputTanggal" type="text" class="mt-1 w-full bg-broken border-2 border-cream rounded-xl px-3 py-2 text-[12px] outline-none" placeholder="contoh: 24 Nov 2026">
+        <input id="inputTanggal" type="text" class="mt-1 w-full bg-broken border-2 border-cream rounded-xl px-3 py-2 text-[12px] outline-none" placeholder="24 Nov 2026">
       </div>
     </div>
-    <div class="mt-4">
-      <label class="text-[11px] font-bold text-maroon">💰 Iklan / Sponsor (HTML boleh, bisa pasang gambar/link)</label>
-      <textarea id="inputIklan" class="mt-1 w-full bg-broken border-2 border-cream rounded-xl p-3 text-[12px] min-h-[100px] outline-none" placeholder='<div><a href="...">Sponsor...</a></div>'></textarea>
-      <div class="text-[9px] opacity-50 mt-1">Bisa pakai HTML: &lt;img&gt; &lt;a&gt; &lt;b&gt; dll</div>
+    
+    <div class="mt-5 p-4 bg-gradient-to-br from-cream2 to-cream rounded-xl border-2 border-gold">
+      <label class="text-[11px] font-bold text-maroon">💰 Iklan / Sponsor (teks)</label>
+      <textarea id="inputIklan" class="mt-1 w-full bg-white border-2 border-cream rounded-xl p-3 text-[12px] min-h-[100px] outline-none" placeholder="Promo ayam geprek 10k..."></textarea>
+      
+      <div class="mt-3">
+        <label class="text-[11px] font-bold text-maroon">📞 Kontak Iklan (WA, IG, Email) - OTOMATIS JADI TOMBOL</label>
+        <textarea id="inputKontak" class="mt-1 w-full bg-white border-2 border-cream rounded-xl p-3 text-[12px] min-h-[80px] outline-none" placeholder="WA: 6281234567890
+IG: @ceritakita.cirebon
+Email: iklan@ceritakita.id
+Rate: 50k/minggu"></textarea>
+        <div class="text-[9px] opacity-50 mt-1">Tulis bebas, nanti sistem auto deteksi WA & IG jadi tombol di app user</div>
+      </div>
+
+      <div class="mt-4">
+        <label class="text-[11px] font-bold text-maroon">🖼️ Poster / Foto Iklan (Upload langsung, gak perlu link!)</label>
+        <div id="dropArea" class="mt-2 w-full bg-white border-2 border-dashed border-gold rounded-xl p-4 text-center cursor-pointer hover:bg-cream2 transition">
+          <div class="text-[12px] font-bold text-maroon">Drag & drop foto kesini atau klik tombol di bawah</div>
+          <div class="text-[10px] opacity-50 mt-1">Max 4MB, auto kompres jadi 800px • JPG 60%</div>
+        </div>
+        <div class="mt-3 grid grid-cols-2 gap-2">
+          <button type="button" onclick="document.getElementById('iklanFotoGallery').click()" class="bg-white border-2 border-maroon rounded-xl px-3 py-2.5 text-[11px] font-bold text-maroon">🖼️ Galeri</button>
+          <button type="button" onclick="document.getElementById('iklanFotoCamera').click()" class="bg-white border-2 border-maroon rounded-xl px-3 py-2.5 text-[11px] font-bold text-maroon">📸 Kamera</button>
+        </div>
+        <input type="file" id="iklanFotoGallery" accept="image/*" class="hidden" onchange="previewIklanFoto(event)">
+        <input type="file" id="iklanFotoCamera" accept="image/*" capture="environment" class="hidden" onchange="previewIklanFoto(event)">
+        <img id="iklanFotoPreview" class="hidden w-full h-64 object-cover rounded-xl border-2 border-cream mt-3">
+        <div class="flex justify-between items-center mt-2">
+          <div id="iklanFotoInfo" class="text-[9px] opacity-50"></div>
+          <button id="removeIklanFoto" onclick="removeIklanFoto()" class="hidden text-[10px] bg-red-500 text-white px-3 py-1 rounded-full font-bold">Hapus Foto</button>
+        </div>
+      </div>
     </div>
-    <div class="grid grid-cols-2 gap-2 mt-4">
+
+    <div class="grid grid-cols-2 gap-2 mt-5">
       <button onclick="loadHomeConfigAdmin()" class="bg-cream border-2 border-maroon py-2.5 rounded-xl font-bold text-[12px] text-maroon">↻ Load Data</button>
-      <button onclick="saveHomeConfig()" id="saveHomeBtn" class="bg-maroon text-[#FFF8E7] py-2.5 rounded-xl font-bold text-[12px]">💾 Simpan Home</button>
+      <button onclick="saveHomeConfig()" id="saveHomeBtn" class="bg-maroon text-[#FFF8E7] py-2.5 rounded-xl font-bold text-[12px]">💾 Simpan Home + Foto</button>
     </div>
     <div id="saveHomeStatus" class="text-[10px] text-center mt-2 font-bold text-maroon"></div>
+    
+    <!-- Preview -->
+    <div class="mt-5 p-3 bg-broken rounded-xl border-2 border-cream">
+      <div class="text-[10px] font-bold text-maroon mb-2">👁️ Preview Iklan di App User:</div>
+      <div id="previewIklanCard" class="bg-white border-2 border-gold rounded-xl p-3 text-[12px]">Belum ada iklan</div>
+    </div>
   </div>
 
   <div class="grid grid-cols-4 gap-2 mb-4">
@@ -67,8 +102,8 @@
   <div id="adminList" class="grid gap-3"></div>
 
   <footer class="bg-white border-[2.5px] border-maroon rounded-[22px] p-5 text-center shadow-[4px_4px_0px_#5D0F1F] mt-6">
-    <div class="font-extrabold text-maroon text-[13px]">cozzy place to confess ☁️</div>
-    <div class="text-[10px] opacity-50 mt-1">dibuat oleh Human/Error 2026 • Cerita Kita Admin</div>
+    <div class="font-extrabold text-maroon text-[13px]">cozzy place to confess ☁️ Admin V6</div>
+    <div class="text-[10px] opacity-50 mt-1">Upload poster langsung • Human/Error 2026</div>
   </footer>
 </div>
 
@@ -81,6 +116,60 @@ const db = getFirestore(app, "cnfss");
 const colRef = collection(db, "confesses");
 
 let allData = [];
+let iklanFotoBase64 = null;
+
+// UPLOAD FOTO LOGIC
+window.previewIklanFoto = function(e){
+  let f = e.target.files[0]; if(!f) return;
+  if(f.size > 4*1024*1024){ alert('Foto max 4MB ya ta!'); return; }
+  let r = new FileReader();
+  r.onload = ev => {
+    let img = new Image(); img.src = ev.target.result;
+    img.onload = () => {
+      let canvas = document.createElement('canvas');
+      let maxW = 800; let scale = Math.min(1, maxW/img.width);
+      canvas.width = img.width*scale; canvas.height = img.height*scale;
+      canvas.getContext('2d').drawImage(img,0,0,canvas.width,canvas.height);
+      iklanFotoBase64 = canvas.toDataURL('image/jpeg',0.6);
+      let sizeKB = Math.round(iklanFotoBase64.length*0.75/1024);
+      document.getElementById('iklanFotoInfo').innerText = sizeKB+'KB (auto kompres 60%)';
+      if(sizeKB > 900){ iklanFotoBase64=null; alert('Foto masih kegedean >900KB, coba foto lain'); return; }
+      let p = document.getElementById('iklanFotoPreview'); p.src = iklanFotoBase64; p.classList.remove('hidden');
+      document.getElementById('removeIklanFoto').classList.remove('hidden');
+      updatePreview();
+    }
+  };
+  r.readAsDataURL(f);
+}
+window.removeIklanFoto = function(){
+  iklanFotoBase64 = null;
+  document.getElementById('iklanFotoGallery').value='';
+  document.getElementById('iklanFotoCamera').value='';
+  document.getElementById('iklanFotoPreview').classList.add('hidden');
+  document.getElementById('removeIklanFoto').classList.add('hidden');
+  document.getElementById('iklanFotoInfo').innerText='';
+  updatePreview();
+}
+
+// Drag & Drop
+let dropArea = document.getElementById('dropArea');
+dropArea.addEventListener('click', ()=>document.getElementById('iklanFotoGallery').click());
+dropArea.addEventListener('dragover', (e)=>{ e.preventDefault(); dropArea.classList.add('bg-cream'); });
+dropArea.addEventListener('dragleave', ()=>dropArea.classList.remove('bg-cream'));
+dropArea.addEventListener('drop', (e)=>{
+  e.preventDefault(); dropArea.classList.remove('bg-cream');
+  let f = e.dataTransfer.files[0];
+  if(f){ document.getElementById('iklanFotoGallery').files = e.dataTransfer.files; previewIklanFoto({target:{files:[f]}}); }
+});
+
+function updatePreview(){
+  let teks = document.getElementById('inputIklan').value || 'Belum ada iklan';
+  let kontak = document.getElementById('inputKontak').value || '';
+  let foto = iklanFotoBase64 ? `<img src="${iklanFotoBase64}" class="w-full h-40 object-cover rounded-xl border-2 border-cream mt-2">` : '';
+  document.getElementById('previewIklanCard').innerHTML = `<div>${teks}</div>${foto}<div class="mt-2 text-[10px] opacity-60 whitespace-pre-line">${kontak}</div>`;
+}
+document.getElementById('inputIklan').addEventListener('input', updatePreview);
+document.getElementById('inputKontak').addEventListener('input', updatePreview);
 
 // HOME CONFIG
 window.loadHomeConfigAdmin = async function(){
@@ -93,7 +182,16 @@ window.loadHomeConfigAdmin = async function(){
       document.getElementById('inputPengumuman').value = d.pengumuman||'';
       document.getElementById('inputTanggal').value = d.pengumumanDate||'';
       document.getElementById('inputIklan').value = d.iklan||'';
+      document.getElementById('inputKontak').value = d.iklanKontak || d.iklan_kontak || '';
+      if(d.iklanFoto){
+        iklanFotoBase64 = d.iklanFoto;
+        document.getElementById('iklanFotoPreview').src = iklanFotoBase64;
+        document.getElementById('iklanFotoPreview').classList.remove('hidden');
+        document.getElementById('removeIklanFoto').classList.remove('hidden');
+        document.getElementById('iklanFotoInfo').innerText = Math.round(iklanFotoBase64.length*0.75/1024)+'KB loaded';
+      }
       document.getElementById('saveHomeStatus').innerText = '✅ Loaded dari Firebase';
+      updatePreview();
     }else{
       document.getElementById('saveHomeStatus').innerText = 'Belum ada config, silakan buat baru';
     }
@@ -109,11 +207,13 @@ window.saveHomeConfig = async function(){
       pengumuman: document.getElementById('inputPengumuman').value,
       pengumumanDate: document.getElementById('inputTanggal').value,
       iklan: document.getElementById('inputIklan').value,
+      iklanKontak: document.getElementById('inputKontak').value,
+      iklanFoto: iklanFotoBase64,
       updatedAt: Date.now()
     }, {merge:true});
-    document.getElementById('saveHomeStatus').innerText = '✅ Tersimpan! Home user langsung update';
+    document.getElementById('saveHomeStatus').innerText = '✅ Tersimpan! Home user langsung update + foto';
   }catch(e){ document.getElementById('saveHomeStatus').innerText = '❌ '+e.message; }
-  btn.disabled = false; btn.innerText = '💾 Simpan Home';
+  btn.disabled = false; btn.innerText = '💾 Simpan Home + Foto';
 }
 loadHomeConfigAdmin();
 
