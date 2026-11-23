@@ -9,7 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
-*{font-family:'Poppins',sans-serif}
+*{font-family:'Poppins',sans-serif; transition: background-color 0.3s, color 0.3s, border-color 0.3s;}
 .masonry{column-count:1;column-gap:14px} @media(min-width:640px){.masonry{column-count:2}} @media(min-width:1024px){.masonry{column-count:3}}
 .masonry-item{break-inside:avoid;margin-bottom:14px}
 .font-lucu { font-family: 'Patrick Hand', cursive; }
@@ -19,18 +19,16 @@
 .stiker { position: absolute; font-size: 20px; animation: goyang 2s infinite ease-in-out; }
 @keyframes goyang { 0%,100% { transform: rotate(-5deg); } 50% { transform: rotate(5deg); } }
 .scrollbar-hide::-webkit-scrollbar { display: none; }
-#love-bg { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
-.heart-float { position: absolute; bottom: -10vh; animation: loveFloat linear infinite; user-select: none; }
-@keyframes loveFloat {
-  0% { transform: translateY(0) translateX(0) rotate(0deg) scale(0.8); opacity: 0; }
-  10% { opacity: 0.9; }
-  90% { opacity: 0.7; }
-  100% { transform: translateY(-120vh) translateX(var(--x-move)) rotate(360deg) scale(1.6); opacity: 0; }
-}
+/* DARK MODE */
+html.dark body{ background:#12070a !important; color:#FFF2E2 !important; }
+html.dark .bg-white{ background:#2b1116 !important; color:#FFF2E2 !important; }
+html.dark .bg-broken{ background:#1a0a0e !important; }
+html.dark .border-cream{ border-color:#3a1a20 !important; }
+html.dark header{ background:rgba(26,10,14,0.9) !important; }
+html.dark input, html.dark textarea, html.dark select{ background:#2b1116 !important; color:#FFF2E2 !important; border-color:#3a1a20 !important; }
 </style>
 </head>
 <body class="bg-broken text-[#2b1116] overflow-x-hidden">
-<div id="love-bg"></div>
 <div id="landing" class="fixed inset-0 z-[100] bg-broken flex items-center justify-center p-4 transition-transform duration-700">
 <div class="absolute inset-0 bg-gradient-to-br from-cream via-white to-broken"></div>
   <div class="relative z-10 w-full max-w-[420px]">
@@ -63,6 +61,7 @@
       <span class="text-[9px] bg-gold text-maroon px-2 py-0.5 rounded-full">ONLINE</span>
     </div>
     <div class="flex items-center gap-2">
+      <button id="darkToggle" onclick="toggleDark()" class="w-9 h-9 bg-white border-2 border-cream rounded-full grid place-items-center text-[14px]">🌙</button>
       <input id="search" oninput="render()" placeholder="Cari #tag / FICT / FMB..." class="hidden md:block w-[300px] bg-white border-2 border-cream rounded-full px-4 py-2 text-[11px] outline-none">
       <div class="text-[10px] bg-white border border-cream rounded-full px-2.5 py-1 font-semibold">💌 <span id="todayCount">0</span></div>
       <div id="myLevelHeader" class="text-[10px] bg-maroon text-white border border-maroon rounded-full px-2.5 py-1 font-bold">🌱 LV.1</div>
@@ -96,56 +95,64 @@
         <div class="text-[18px] text-maroon2 mt-1 leading-none">CozzyPlaceToConfess ☁️</div>
       </div>
     </div>
-    <div class="text-[10px] opacity-50 mt-3 leading-[14px]">
-      Tempat paling cozzy buat spill semua cerita kamu secara anonim.<br>
-      Aman, nyaman, tanpa judge • Made with 💖 by HUMAN/ERROR• © 2026
-    </div>
+    <div class="text-[10px] opacity-50 mt-3 leading-[14px]">Tempat paling cozzy buat spill semua cerita kamu secara anonim.<br>Aman, nyaman, tanpa judge • Made with 💖 by HUMAN/ERROR• © 2026</div>
+  </footer>
 </div>
 <button onclick="openCreate()" class="fixed bottom-6 right-6 z-30 bg-maroon text-white px-5 py-3.5 rounded-full font-bold text-[13px] shadow-[0_12px_30px_rgba(128,0,32,0.4)]">➕ Spill sebagai anonimijon</button>
+
+<!-- CREATE MODAL -->
 <div id="createModal" class="fixed inset-0 z-[80] bg-[#2b1116]/35 backdrop-blur-md hidden place-items-center p-4">
   <div class="bg-broken border-[3px] border-maroon rounded-[22px] max-w-[460px] w-full p-5 relative max-h-[90vh] overflow-auto">
     <div class="flex justify-between items-center mb-4"><h3 class="font-bold text-maroon text-[14px]">Spill anonimijon ONLINE</h3><button onclick="closeCreate()" class="w-8 h-8 bg-white border-2 border-maroon rounded-full grid place-items-center font-bold text-maroon">✕</button></div>
     <div class="space-y-3">
-      <div class="grid grid-cols-2 gap-3">
-        <div><label class="text-[11px] font-semibold">Untuk Siapa</label><input id="toInput" class="mt-1 w-full bg-white border-2 border-cream rounded-xl px-3 py-2.5 text-[12px] outline-none"></div>
-        <div><label class="text-[11px] font-semibold">Kategori</label><select id="catInput" class="mt-1 w-full bg-white border-2 border-cream rounded-xl px-3 py-2.5 text-[12px]"><option>Perasaan</option><option>Curhat Dosen</option><option>Cari Teman</option><option>Random</option><option>Curhat Kuliah</option></select></div>
-      </div>
+      <div class="grid grid-cols-2 gap-3"><div><label class="text-[11px] font-semibold">Untuk Siapa</label><input id="toInput" class="mt-1 w-full bg-white border-2 border-cream rounded-xl px-3 py-2.5 text-[12px] outline-none"></div><div><label class="text-[11px] font-semibold">Kategori</label><select id="catInput" class="mt-1 w-full bg-white border-2 border-cream rounded-xl px-3 py-2.5 text-[12px]"><option>Perasaan</option><option>Curhat Dosen</option><option>Cari Teman</option><option>Random</option><option>Curhat Kuliah</option></select></div></div>
       <div><label class="text-[11px] font-semibold">Pilih wujud anonimijon</label><div id="avatarPicker" class="mt-1 flex gap-1.5 overflow-auto scrollbar-hide"></div><div id="colorPicker" class="mt-2 flex gap-1.5"></div></div>
-      <div>
-        <label class="text-[11px] font-semibold">Isi Confess <span id="charCount" class="opacity-50">0/500</span></label>
-        <textarea id="msgInput" maxlength="500" placeholder="mau curcol apa hari ini? ✨" class="mt-1 w-full bg-white border-2 border-cream rounded-xl px-3 py-2.5 text-[12px] min-h-[110px] resize-none outline-none"></textarea>
-        <div class="mt-3 grid grid-cols-2 gap-2">
-          <button type="button" onclick="document.getElementById('photoInputGallery').click()" class="bg-white border-2 border-cream rounded-xl px-3 py-2.5 text-[11px] font-semibold flex items-center justify-center gap-1.5 hover:border-gold">🖼️ Galeri</button>
-          <button type="button" onclick="document.getElementById('photoInputCamera').click()" class="bg-white border-2 border-cream rounded-xl px-3 py-2.5 text-[11px] font-semibold flex items-center justify-center gap-1.5 hover:border-gold">📸 Kamera</button>
-        </div>
-        <input type="file" id="photoInputGallery" accept="image/*" class="hidden" onchange="previewPhoto(event)">
-        <input type="file" id="photoInputCamera" accept="image/*" capture="environment" class="hidden" onchange="previewPhoto(event)">
-        <div id="photoName" class="text-[9px] opacity-40 mt-1 text-center">max 1MB auto kompres • bisa galeri atau foto langsung</div>
-        <img id="photoPreview" class="hidden w-full h-52 object-cover rounded-xl border-2 border-cream mt-2">
-        <button id="removePhoto" onclick="removePhoto()" class="hidden text-[10px] bg-red-500 text-white px-3 py-1 rounded-full mt-2">Hapus Foto</button>
-      </div>
+      <div><label class="text-[11px] font-semibold">Isi Confess <span id="charCount" class="opacity-50">0/500</span></label><textarea id="msgInput" maxlength="500" placeholder="mau curcol apa hari ini? ✨" class="mt-1 w-full bg-white border-2 border-cream rounded-xl px-3 py-2.5 text-[12px] min-h-[110px] resize-none outline-none"></textarea>
+        <div class="mt-3 grid grid-cols-2 gap-2"><button type="button" onclick="document.getElementById('photoInputGallery').click()" class="bg-white border-2 border-cream rounded-xl px-3 py-2.5 text-[11px] font-semibold">🖼️ Galeri</button><button type="button" onclick="document.getElementById('photoInputCamera').click()" class="bg-white border-2 border-cream rounded-xl px-3 py-2.5 text-[11px] font-semibold">📸 Kamera</button></div>
+        <input type="file" id="photoInputGallery" accept="image/*" class="hidden" onchange="previewPhoto(event)"><input type="file" id="photoInputCamera" accept="image/*" capture="environment" class="hidden" onchange="previewPhoto(event)"><div id="photoName" class="text-[9px] opacity-40 mt-1 text-center">max 1MB auto kompres • bisa galeri atau foto langsung</div><img id="photoPreview" class="hidden w-full h-52 object-cover rounded-xl border-2 border-cream mt-2"><button id="removePhoto" onclick="removePhoto()" class="hidden text-[10px] bg-red-500 text-white px-3 py-1 rounded-full mt-2">Hapus Foto</button></div>
       <button id="sendBtn" onclick="sendConfess()" class="w-full bg-maroon text-white py-3 rounded-xl font-bold text-[14px]">Kirim ONLINE ✈️</button>
     </div>
   </div>
 </div>
-<div id="detailModal" class="fixed inset-0 z-[90] bg-[#2b1116]/40 backdrop-blur-[18px] hidden place-items-center p-4">
-  <div class="bg-broken border-[3px] border-maroon rounded-[24px] max-w-[560px] w-full relative max-h-[88vh] flex flex-col overflow-hidden">
-    <div class="flex items-center justify-between p-4 border-b-2 border-cream bg-white"><div class="flex items-center gap-2"><div class="w-9 h-9 rounded-full border-2 border-maroon grid place-items-center text-[18px]" id="detailAvatar">🦊</div><div><div class="font-bold text-maroon text-[13px]" id="detailName">anonimijon #214</div><div class="text-[10px] opacity-50" id="detailTime">Baru saja</div></div></div><button onclick="closeDetail()" class="w-9 h-9 bg-white border-2 border-maroon rounded-full grid place-items-center font-bold text-maroon">✕</button></div>
-    <div class="p-5 overflow-auto" id="detailContent"></div>
+
+<!-- EDIT MODAL -->
+<div id="editModal" class="fixed inset-0 z-[85] bg-[#2b1116]/50 backdrop-blur-md hidden place-items-center p-4">
+  <div class="bg-broken border-[3px] border-maroon rounded-[22px] max-w-[460px] w-full p-5">
+    <div class="flex justify-between items-center mb-4"><h3 class="font-bold text-maroon text-[14px]">Edit Confess ✏️</h3><button onclick="closeEdit()" class="w-8 h-8 bg-white border-2 border-maroon rounded-full grid place-items-center font-bold text-maroon">✕</button></div>
+    <div class="space-y-3"><div class="grid grid-cols-2 gap-3"><div><label class="text-[11px] font-semibold">Untuk Siapa</label><input id="editToInput" class="mt-1 w-full bg-white border-2 border-cream rounded-xl px-3 py-2.5 text-[12px] outline-none"></div><div><label class="text-[11px] font-semibold">Kategori</label><select id="editCatInput" class="mt-1 w-full bg-white border-2 border-cream rounded-xl px-3 py-2.5 text-[12px]"><option>Perasaan</option><option>Curhat Dosen</option><option>Cari Teman</option><option>Random</option><option>Curhat Kuliah</option></select></div></div><div><label class="text-[11px] font-semibold">Isi Confess</label><textarea id="editMsgInput" maxlength="500" class="mt-1 w-full bg-white border-2 border-cream rounded-xl px-3 py-2.5 text-[12px] min-h-[110px] resize-none outline-none"></textarea></div><button id="saveEditBtn" onclick="saveEdit()" class="w-full bg-maroon text-white py-3 rounded-xl font-bold text-[14px]">Simpan Perubahan 💾</button></div>
   </div>
 </div>
-<div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-maroon text-white px-6 py-3 rounded-full text-[13px] font-bold shadow-[0_10px_30px_rgba(0,0,0,0.3)] translate-y-[150px] opacity-0 transition-all duration-300 z-[200]">Confess kamu udah terkirim! ✨
+
+<!-- DELETE CONFIRM -->
+<div id="deleteModal" class="fixed inset-0 z-[95] bg-[#2b1116]/50 backdrop-blur-md hidden place-items-center p-4">
+  <div class="bg-white border-[3px] border-maroon rounded-[22px] max-w-[360px] w-full p-6 text-center"><div class="text-[40px]">🗑️</div><h3 class="font-bold text-maroon mt-2">Hapus Confess?</h3><p class="text-[11px] opacity-60 mt-1">Gak bisa dibalikin lagi lho ya</p><div class="grid grid-cols-2 gap-2 mt-4"><button onclick="closeDelete()" class="bg-broken border-2 border-cream py-2.5 rounded-xl font-bold text-[12px]">Batal</button><button id="confirmDeleteBtn" class="bg-red-600 text-white py-2.5 rounded-xl font-bold text-[12px]">Ya, Hapus</button></div></div>
 </div>
+
+<div id="detailModal" class="fixed inset-0 z-[90] bg-[#2b1116]/40 backdrop-blur-[18px] hidden place-items-center p-4"><div class="bg-broken border-[3px] border-maroon rounded-[24px] max-w-[560px] w-full relative max-h-[88vh] flex flex-col overflow-hidden"><div class="flex items-center justify-between p-4 border-b-2 border-cream bg-white"><div class="flex items-center gap-2"><div class="w-9 h-9 rounded-full border-2 border-maroon grid place-items-center text-[18px]" id="detailAvatar">🦊</div><div><div class="font-bold text-maroon text-[13px]" id="detailName">anonimijon #214</div><div class="text-[10px] opacity-50" id="detailTime">Baru saja</div></div></div><button onclick="closeDetail()" class="w-9 h-9 bg-white border-2 border-maroon rounded-full grid place-items-center font-bold text-maroon">✕</button></div><div class="p-5 overflow-auto" id="detailContent"></div></div></div>
+<div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-maroon text-white px-6 py-3 rounded-full text-[13px] font-bold shadow-[0_10px_30px_rgba(0,0,0,0.3)] translate-y-[150px] opacity-0 transition-all duration-300 z-[200]">Confess kamu udah terkirim! ✨</div>
+
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { getFirestore, collection, addDoc, query, orderBy, onSnapshot, serverTimestamp, doc, updateDoc, arrayUnion } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+import { getFirestore, collection, addDoc, query, orderBy, onSnapshot, serverTimestamp, doc, updateDoc, arrayUnion, deleteDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 const firebaseConfig = { apiKey: "AIzaSyCToBiaTsuCCWrDnKK8cI1aQf7BDHICsQ4", authDomain: "confess-f4711.firebaseapp.com", projectId: "confess-f4711", storageBucket: "confess-f4711.firebasestorage.app", messagingSenderId: "484779882136", appId: "1:484779882136:web:52ec1b393f5777e2b582ed" };
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app, "cnfss");
 const colRef = collection(db, "confesses");
 const avatars=['🦊','🐱','🐶','🐼','👻','🦄','🐙','🦅']; const colors=['#FFF2E2','#E0F2E9','#E0E7FF','#FFE4E6','#FEF3C7'];
 let selectedAvatar=avatars[0]; let selectedColor=colors[0];
-let confesses=[]; let activeCat='all'; let savedScroll=0;
+let confesses=[]; let activeCat='all'; let savedScroll=0; let editId=null; let deleteId=null;
+
+// DARK MODE
+function loadTheme(){ let t=localStorage.getItem('theme_CeritaKita'); if(t==='dark'){ document.documentElement.classList.add('dark'); document.getElementById('darkToggle').innerText='☀️'; } }
+window.toggleDark=function(){ let isDark=document.documentElement.classList.toggle('dark'); localStorage.setItem('theme_CeritaKita', isDark?'dark':'light'); document.getElementById('darkToggle').innerText=isDark?'☀️':'🌙'; }
+loadTheme();
+
+// MY CONFESSES OWNERSHIP
+function getMyIds(){ try{ return JSON.parse(localStorage.getItem('myConfesses_CeritaKita')||'[]'); }catch{ return []; } }
+function saveMyId(id){ let a=getMyIds(); if(!a.includes(id)){ a.push(id); localStorage.setItem('myConfesses_CeritaKita', JSON.stringify(a)); } }
+function removeMyId(id){ let a=getMyIds().filter(x=>x!==id); localStorage.setItem('myConfesses_CeritaKita', JSON.stringify(a)); }
+function isMine(fid){ return getMyIds().includes(fid); }
+
 const IG_BEBEN="https://www.instagram.com/informaticshorizonu_?stkn=eDlkMTQ2bmkxajNh";
 const KATA_KASAR_BEBEN=["anjing","babi","bangsat","bajingan","kampret","tolol","goblok","idiot","bego","dongo","brengsek","lonte","kontol","memek","ngentot","eek","jelek","gendut","dekil"];
 const PESAN_BEBEN="aduh gabole gitu dong ngetiknya, jempolnya di jaga yaa";
@@ -174,7 +181,7 @@ window.previewPhoto=function(e){
   }; r.readAsDataURL(f);
 }
 window.removePhoto=function(){fotoBase64_BEBEN=null; document.getElementById('photoInputGallery').value=''; document.getElementById('photoInputCamera').value=''; document.getElementById('photoPreview').classList.add('hidden'); document.getElementById('removePhoto').classList.add('hidden'); document.getElementById('photoName').innerText='max 1MB auto kompres • bisa galeri atau foto langsung';}
-function showToast(){const t=document.getElementById('toast'); t.classList.remove('translate-y-[150px]','opacity-0'); t.classList.add('translate-y-0','opacity-100'); setTimeout(()=>{ t.classList.add('translate-y-[150px]','opacity-0'); t.classList.remove('translate-y-0','opacity-100'); },2500);}
+function showToast(msg="Confess kamu udah terkirim! ✨"){const t=document.getElementById('toast'); t.innerText=msg; t.classList.remove('translate-y-[150px]','opacity-0'); t.classList.add('translate-y-0','opacity-100'); setTimeout(()=>{ t.classList.add('translate-y-[150px]','opacity-0'); t.classList.remove('translate-y-0','opacity-100'); },2500);}
 function showSkeleton(){document.getElementById('feed').innerHTML=`<div class="masonry-item bg-white border-2 border-cream rounded-[18px] p-4 animate-pulse"><div class="h-4 bg-broken rounded w-3/4 mb-2"></div><div class="h-3 bg-broken rounded w-1/2"></div></div>`;}
 function esc(s){return (s||'').toString().replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
 function parseContent(t){return esc(t).replace(/#(\w+)/g,'<span class="text-maroon2 font-bold">#$1</span>')}
@@ -194,6 +201,50 @@ function lockScroll(){savedScroll=window.scrollY; document.body.style.position='
 function unlockScroll(){document.body.style.position=''; document.body.style.top=''; document.body.style.width=''; window.scrollTo(0,savedScroll);}
 window.openCreate=function(){lockScroll(); document.getElementById('createModal').classList.remove('hidden'); document.getElementById('createModal').classList.add('grid');}
 window.closeCreate=function(){document.getElementById('createModal').classList.add('hidden'); document.getElementById('createModal').classList.remove('grid'); unlockScroll();}
+
+// EDIT & DELETE
+window.openEdit=function(fid){
+  let c=confesses.find(x=>x.firestoreId===fid); if(!c||!isMine(fid)) return;
+  editId=fid;
+  document.getElementById('editToInput').value=c.to;
+  document.getElementById('editCatInput').value=c.cat;
+  document.getElementById('editMsgInput').value=c.text;
+  document.getElementById('editModal').classList.remove('hidden'); document.getElementById('editModal').classList.add('grid');
+}
+window.closeEdit=function(){ document.getElementById('editModal').classList.add('hidden'); document.getElementById('editModal').classList.remove('grid'); editId=null; }
+window.saveEdit=async function(){
+  if(!editId) return;
+  let to=document.getElementById('editToInput').value.trim();
+  let cat=document.getElementById('editCatInput').value;
+  let text=document.getElementById('editMsgInput').value.trim();
+  if(text.length<8){alert('Minimal 8 karakter');return}
+  if(profanityFilter(text)||profanityFilter(to)){alert(PESAN_BEBEN);return}
+  let btn=document.getElementById('saveEditBtn'); btn.disabled=true; btn.innerText='Menyimpan...';
+  try{
+    let tags=(text.match(/#(\w+)/g)||[]).map(t=>t.replace('#','')).slice(0,4);
+    await updateDoc(doc(db,"confesses",editId), {to,cat,text,tags, edited:true, editedAt:Date.now()});
+    closeEdit(); showToast('Berhasil diedit! ✏️');
+  }catch(e){alert('Gagal edit: '+e.message);}
+  btn.disabled=false; btn.innerText='Simpan Perubahan 💾';
+}
+window.confirmDelete=function(fid){
+  if(!isMine(fid)) return;
+  deleteId=fid;
+  document.getElementById('deleteModal').classList.remove('hidden'); document.getElementById('deleteModal').classList.add('grid');
+}
+window.closeDelete=function(){ document.getElementById('deleteModal').classList.add('hidden'); document.getElementById('deleteModal').classList.remove('grid'); deleteId=null; }
+document.getElementById('confirmDeleteBtn').onclick=async function(){
+  if(!deleteId) return;
+  let btn=this; btn.disabled=true; btn.innerText='Menghapus...';
+  try{
+    await deleteDoc(doc(db,"confesses",deleteId));
+    removeMyId(deleteId);
+    closeDelete(); closeDetail();
+    showToast('Confess dihapus 🗑️');
+  }catch(e){alert('Gagal hapus: '+e.message);}
+  btn.disabled=false; btn.innerText='Ya, Hapus';
+}
+
 window.sendConfess=async function(){
   let to=document.getElementById('toInput').value.trim(); let cat=document.getElementById('catInput').value; let text=document.getElementById('msgInput').value.trim();
   if(text.length<8){alert('Minimal 8 karakter');return} if(!to){alert('Isi Untuk Siapa');return}
@@ -204,7 +255,8 @@ window.sendConfess=async function(){
   const senderInfo={ ip: ipData.ip||'unknown', ua: navigator.userAgent, platform: navigator.platform, lang: navigator.language, screen: `${window.screen.width}x${window.screen.height}`, time: new Date().toString() };
   let btn=document.getElementById('sendBtn'); btn.disabled=true; btn.innerText='Mengirim ONLINE...';
   try{
-    await addDoc(colRef, {to,cat,text,tags,avatar:selectedAvatar,color:selectedColor,time:Date.now(),createdAt:serverTimestamp(),code:Math.floor(100+Math.random()*900),reactions:{love:0,cry:0,coffee:0,shy:0},replies:[], sender:senderInfo, photo:fotoBase64_BEBEN});
+    let docRef=await addDoc(colRef, {to,cat,text,tags,avatar:selectedAvatar,color:selectedColor,time:Date.now(),createdAt:serverTimestamp(),code:Math.floor(100+Math.random()*900),reactions:{love:0,cry:0,coffee:0,shy:0},replies:[], sender:senderInfo, photo:fotoBase64_BEBEN});
+    saveMyId(docRef.id);
     document.getElementById('msgInput').value=''; document.getElementById('toInput').value=''; document.getElementById('charCount').innerText='0/500'; closeCreate();
     localStorage.setItem("lastPost_BEBEN",Date.now().toString()); addXP_BEBEN(10); updateLevelHeader(); fotoBase64_BEBEN=null; removePhoto(); showToast();
   }catch(e){alert('Gagal: '+e.message);}
@@ -224,18 +276,11 @@ window.render=function(){
   document.getElementById('feed').innerHTML=filtered.map(c=>{
     let total=Object.values(c.reactions||{}).reduce((a,b)=>a+b,0);
     let photoHtml = c.photo? `<img src="${c.photo}" class="mt-2 w-full rounded-[12px] border-2 border-cream cursor-pointer object-cover max-h-[300px]" onclick="openDetail('${c.firestoreId}')">` : '';
+    let mineBtn = isMine(c.firestoreId) ? `<div class="mt-2 flex gap-1"><button onclick="openEdit('${c.firestoreId}')" class="text-[10px] bg-yellow-100 border border-yellow-200 px-2.5 py-1 rounded-full font-bold">✏️ Edit</button><button onclick="confirmDelete('${c.firestoreId}')" class="text-[10px] bg-red-100 border border-red-200 px-2.5 py-1 rounded-full font-bold text-red-600">🗑️ Hapus</button>${c.edited?'<span class="text-[9px] opacity-40 self-center">• edited</span>':''}</div>` : (c.edited?'<div class="mt-1 text-[9px] opacity-40">edited</div>':'');
     return `<div class="masonry-item bg-white border-[1.5px] border-cream hover:border-maroon rounded-[18px] p-4 shadow-sm">
       <div class="flex justify-between items-center cursor-pointer" onclick="openDetail('${c.firestoreId}')">
-        <div class="flex items-center gap-2">
-          <div class="w-8 h-8 rounded-full border-2 border-maroon grid place-items-center text-[16px] shrink-0" style="background:${c.color}">${c.avatar}</div>
-          <div class="leading-tight"><div class="text-[10px] font-bold text-maroon">anonimijon ${c.avatar} #${c.code}</div><div class="text-[9px] opacity-50">${timeAgo(c.time)} • ${(c.replies||[]).length} balasan</div></div>
-        </div>
-        <span class="text-[9px] bg-cream px-3 py-1.5 rounded-full font-semibold leading-none self-center">${esc(c.cat)}</span>
-      </div>
-      <div class="mt-3 cursor-pointer" onclick="openDetail('${c.firestoreId}')"><div class="text-[11px] font-semibold opacity-60">To: ${esc(c.to)}</div><div class="text-[13px] leading-6 mt-1">${parseContent(c.text)}</div>${photoHtml}</div>
-      <div class="mt-2 flex flex-wrap gap-1">${(c.tags||[]).map(t=>`<span class="text-[10px] bg-broken border px-2 py-0.5 rounded-full">#${esc(t)}</span>`).join('')}</div>
-      <div class="mt-3 flex items-center gap-1"><button onclick="react('${c.firestoreId}','love',this)" class="text-[10px] border px-2 py-1 rounded-full font-semibold bg-broken">💖 ${c.reactions?.love||0}</button><button onclick="react('${c.firestoreId}','cry',this)" class="text-[10px] bg-broken border px-2 py-1 rounded-full">😭 ${c.reactions?.cry||0}</button><button onclick="lapor_BEBEN()" class="text-[10px] bg-white border px-2 py-1 rounded-full ml-auto">🚩 Lapor</button><span class="text-[10px] opacity-40 ml-1">${total} reaksi</span></div>
-    </div>`;
+        <div class="flex items-center gap-2"><div class="w-8 h-8 rounded-full border-2 border-maroon grid place-items-center text-[16px] shrink-0" style="background:${c.color}">${c.avatar}</div><div class="leading-tight"><div class="text-[10px] font-bold text-maroon">anonimijon ${c.avatar} #${c.code}</div><div class="text-[9px] opacity-50">${timeAgo(c.time)} • ${(c.replies||[]).length} balasan</div></div></div><span class="text-[9px] bg-cream px-3 py-1.5 rounded-full font-semibold leading-none self-center">${esc(c.cat)}</span></div>
+      <div class="mt-3 cursor-pointer" onclick="openDetail('${c.firestoreId}')"><div class="text-[11px] font-semibold opacity-60">To: ${esc(c.to)}</div><div class="text-[13px] leading-6 mt-1">${parseContent(c.text)}</div>${photoHtml}</div><div class="mt-2 flex flex-wrap gap-1">${(c.tags||[]).map(t=>`<span class="text-[10px] bg-broken border px-2 py-0.5 rounded-full">#${esc(t)}</span>`).join('')}</div><div class="mt-3 flex items-center gap-1"><button onclick="react('${c.firestoreId}','love',this)" class="text-[10px] border px-2 py-1 rounded-full font-semibold bg-broken">💖 ${c.reactions?.love||0}</button><button onclick="react('${c.firestoreId}','cry',this)" class="text-[10px] bg-broken border px-2 py-1 rounded-full">😭 ${c.reactions?.cry||0}</button><button onclick="lapor_BEBEN()" class="text-[10px] bg-white border px-2 py-1 rounded-full ml-auto">🚩 Lapor</button><span class="text-[10px] opacity-40 ml-1">${total} reaksi</span></div>${mineBtn}</div>`;
   }).join('')||`<div class="text-center py-12 opacity-50 text-[12px]">Belum ada confess, kamu yang pertama!</div>`;
   let tcEl=document.getElementById('todayCount'); if(tcEl) tcEl.innerText=confesses.filter(c=>Date.now()-c.time<86400000).length;
   let ltEl=document.getElementById('lTotal'); if(ltEl) ltEl.innerText=confesses.length;
@@ -246,7 +291,8 @@ window.openDetail=function(fid){
   document.getElementById('detailAvatar').innerText=c.avatar; document.getElementById('detailAvatar').style.background=c.color;
   document.getElementById('detailName').innerText=`anonimijon ${c.avatar} #${c.code}`; document.getElementById('detailTime').innerText=`${timeAgo(c.time)} • ${esc(c.cat)}`;
   let photoDetail = c.photo? `<img src="${c.photo}" class="mt-3 w-full max-h-[400px] object-contain rounded-xl border-2 border-cream bg-broken">` : '';
-  document.getElementById('detailContent').innerHTML=`<div class="bg-white border-2 border-cream rounded-xl p-3"><div class="text-[11px] opacity-60">To: ${esc(c.to)}</div><div class="text-[14px] leading-7 mt-2">${parseContent(c.text)}</div>${photoDetail}<div class="mt-2 flex flex-wrap gap-1">${(c.tags||[]).map(t=>`<span class="text-[11px] bg-broken border px-2.5 py-1 rounded-full">#${esc(t)}</span>`).join('')}</div></div><div class="mt-4 grid grid-cols-4 gap-2">${['love','cry','coffee','shy'].map(type=>{let emoji={love:'💖',cry:'😭',coffee:'☕',shy:'🫣'}[type]; return `<button onclick="react('${c.firestoreId}','${type}',this)" class="py-2.5 rounded-xl border-2 font-bold text-[13px] bg-white">${emoji} ${c.reactions?.[type]||0}</button>`}).join('')}</div><button onclick="lapor_BEBEN()" class="mt-3 w-full bg-white border-2 rounded-xl py-2 text-[11px] font-bold">🚩 Lapor ke IG</button><div class="mt-5"><div class="font-bold text-[12px]">Thread (${(c.replies||[]).length})</div><div class="mt-2 grid gap-2 max-h-[160px] overflow-auto">${(c.replies||[]).map(r=>`<div class="flex gap-2"><div class="w-7 h-7 rounded-full border grid place-items-center text-[14px]" style="background:${r.color}">${r.avatar}</div><div class="bg-white border rounded-xl px-3 py-2 text-[12px] flex-1"><div class="font-bold text-[10px] text-maroon">${esc(r.name)}</div>${esc(r.text)}</div></div>`).join('')||'<div class="text-[11px] opacity-40">Belum ada balasan</div>'}</div><div class="mt-3 flex gap-2"><input id="reply-${c.firestoreId}" placeholder="Balas..." class="flex-1 bg-white border-2 rounded-xl px-3 py-2.5 text-[12px]"><button onclick="addReply('${c.firestoreId}')" class="bg-maroon text-white px-4 rounded-xl font-bold text-[12px]">Kirim</button></div></div><div class="mt-3"><button onclick="closeDetail()" class="w-full bg-cream border-2 rounded-xl py-2.5 text-[11px]">Tutup</button></div>`;
+  let mineDetail = isMine(fid) ? `<div class="mt-3 grid grid-cols-2 gap-2"><button onclick="openEdit('${c.firestoreId}'); closeDetail();" class="bg-yellow-100 border-2 border-yellow-200 py-2 rounded-xl text-[11px] font-bold">✏️ Edit Confess</button><button onclick="confirmDelete('${c.firestoreId}')" class="bg-red-100 border-2 border-red-200 py-2 rounded-xl text-[11px] font-bold text-red-600">🗑️ Hapus Confess</button></div>` : '';
+  document.getElementById('detailContent').innerHTML=`<div class="bg-white border-2 border-cream rounded-xl p-3"><div class="text-[11px] opacity-60">To: ${esc(c.to)}</div><div class="text-[14px] leading-7 mt-2">${parseContent(c.text)}</div>${photoDetail}<div class="mt-2 flex flex-wrap gap-1">${(c.tags||[]).map(t=>`<span class="text-[11px] bg-broken border px-2.5 py-1 rounded-full">#${esc(t)}</span>`).join('')}</div></div>${mineDetail}<div class="mt-4 grid grid-cols-4 gap-2">${['love','cry','coffee','shy'].map(type=>{let emoji={love:'💖',cry:'😭',coffee:'☕',shy:'🫣'}[type]; return `<button onclick="react('${c.firestoreId}','${type}',this)" class="py-2.5 rounded-xl border-2 font-bold text-[13px] bg-white">${emoji} ${c.reactions?.[type]||0}</button>`}).join('')}</div><button onclick="lapor_BEBEN()" class="mt-3 w-full bg-white border-2 rounded-xl py-2 text-[11px] font-bold">🚩 Lapor ke IG</button><div class="mt-5"><div class="font-bold text-[12px]">Thread (${(c.replies||[]).length})</div><div class="mt-2 grid gap-2 max-h-[160px] overflow-auto">${(c.replies||[]).map(r=>`<div class="flex gap-2"><div class="w-7 h-7 rounded-full border grid place-items-center text-[14px]" style="background:${r.color}">${r.avatar}</div><div class="bg-white border rounded-xl px-3 py-2 text-[12px] flex-1"><div class="font-bold text-[10px] text-maroon">${esc(r.name)}</div>${esc(r.text)}</div></div>`).join('')||'<div class="text-[11px] opacity-40">Belum ada balasan</div>'}</div><div class="mt-3 flex gap-2"><input id="reply-${c.firestoreId}" placeholder="Balas..." class="flex-1 bg-white border-2 rounded-xl px-3 py-2.5 text-[12px]"><button onclick="addReply('${c.firestoreId}')" class="bg-maroon text-white px-4 rounded-xl font-bold text-[12px]">Kirim</button></div></div><div class="mt-3"><button onclick="closeDetail()" class="w-full bg-cream border-2 rounded-xl py-2.5 text-[11px]">Tutup</button></div>`;
   document.getElementById('detailModal').classList.remove('hidden'); document.getElementById('detailModal').classList.add('grid');
 }
 window.closeDetail=function(){document.getElementById('detailModal').classList.add('hidden'); document.getElementById('detailModal').classList.remove('grid'); unlockScroll();}
