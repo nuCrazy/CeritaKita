@@ -1,82 +1,3 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Admin Berita Kampus v8.2</title>
-<link rel="icon" type="image/jpeg" href="logo.png.jpg">
-<script src="https://cdn.tailwindcss.com"></script>
-<script>tailwind.config={theme:{extend:{colors:{maroon:'#5D0F1F',maroon2:'#8B1E3F',broken:'#FFF8E7',cream:'#FDE8C9',cream2:'#FFF1D6',gold:'#E8B86D'}}}}</script>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<style>*{font-family:'Poppins',sans-serif} body{background: linear-gradient(180deg, #FFF8E7 0%, #FDE8C9 100%); min-height:100vh} .broken-white{background:#FFFBF0; border:2px solid #FDE8C9} .soft-card{background: linear-gradient(135deg, #FFFBF0 0%, #FFF1D6 100%); border: 2.5px solid #5D0F1F; box-shadow: 5px 5px 0px #5D0F1F}</style>
-</head>
-<body class="p-4">
-<div class="max-w-[900px] mx-auto">
-<header class="soft-card rounded-[20px] p-5 flex justify-between items-center mb-6">
-<div class="flex items-center gap-3"><img src="logo.png.jpg" class="w-10 h-10 rounded-full border-2 border-maroon"><div><h1 class="font-extrabold text-maroon text-[18px]">Admin Berita Kampus</h1><div class="text-[10px] opacity-60">Max 10 poster • Foto auto compress sama kayak di Home</div></div></div>
-<div class="flex gap-2"><button onclick="loadData()" class="bg-cream2 border-2 border-maroon px-4 py-2 rounded-xl font-bold text-[11px]">🔄 Reload</button><div id="conn" class="text-[9px] bg-maroon text-white px-3 py-2 rounded-full">Menghubungkan...</div></div>
-</header>
-
-<div class="grid md:grid-cols-[360px_1fr] gap-4">
-<!-- FORM -->
-<div class="soft-card rounded-[20px] p-5 h-fit sticky top-4">
-<h2 class="font-extrabold text-maroon text-[14px]" id="formTitle">➕ Tambah Berita Baru</h2>
-<div class="mt-4 space-y-3">
-<div><label class="text-[11px] font-bold">Judul / Isi Berita *</label><textarea id="fTeks" placeholder="Seminar Nasional Teknik 2026 - Daftar sekarang!" class="mt-1 w-full bg-[#FFFBF0] border-2 border-cream rounded-xl px-3 py-2.5 text-[12px] min-h-[80px]"></textarea></div>
-<div class="grid grid-cols-2 gap-2">
-<div><label class="text-[11px] font-bold">Kategori</label><select id="fKategori" class="mt-1 w-full bg-[#FFFBF0] border-2 border-cream rounded-xl px-3 py-2.5 text-[11px]"><option>Info Kampus</option><option>Seminar</option><option>Lomba</option><option>Akademik</option><option>UKM</option><option>Beasiswa</option><option>Lowongan</option><option>Event</option></select></div>
-<div><label class="text-[11px] font-bold">Tanggal</label><input id="fTanggal" type="text" placeholder="24 Nov 2026" class="mt-1 w-full bg-[#FFFBF0] border-2 border-cream rounded-xl px-3 py-2.5 text-[11px]"></div>
-</div>
-
-<div>
-<label class="text-[11px] font-bold">Foto Poster * (auto compress max 900KB - sama gede kayak di Home)</label>
-<div class="mt-2 grid grid-cols-2 gap-2">
-<button onclick="document.getElementById('fFotoGaleri').click()" class="broken-white rounded-xl py-2.5 text-[11px] font-bold">🖼️ Galeri</button>
-<button onclick="document.getElementById('fFotoKamera').click()" class="broken-white rounded-xl py-2.5 text-[11px] font-bold">📸 Kamera</button>
-</div>
-<input type="file" id="fFotoGaleri" accept="image/*" class="hidden" onchange="previewBeritaFoto(event)">
-<input type="file" id="fFotoKamera" accept="image/*" capture="environment" class="hidden" onchange="previewBeritaFoto(event)">
-<img id="fFotoPreview" class="hidden w-full h-[200px] object-cover rounded-xl border-2 border-cream mt-2">
-<div class="flex gap-2 mt-2">
-<button id="fFotoRemove" onclick="removeBeritaFoto()" class="hidden text-[10px] bg-red-500 text-white px-3 py-1.5 rounded-full font-bold">🗑️ Hapus Foto</button>
-<span id="fFotoSize" class="text-[10px] opacity-60 py-1"></span>
-</div>
-<div class="text-[9px] opacity-40 mt-1">Tips: Foto poster kotak 1:1 atau 4:5 paling cakep di Home • Max 900KB biar gak berat</div>
-</div>
-
-<div class="pt-3 border-t-2 border-dashed border-cream space-y-2">
-<div class="font-bold text-[11px] text-maroon">Kontak (opsional)</div>
-<input id="fWA" placeholder="WA: 6281234567890" class="w-full bg-[#FFFBF0] border-2 border-cream rounded-xl px-3 py-2 text-[11px]">
-<input id="fIG" placeholder="IG: @bem_kampus" class="w-full bg-[#FFFBF0] border-2 border-cream rounded-xl px-3 py-2 text-[11px]">
-<input id="fLink" placeholder="Link daftar: https://forms.gle/..." class="w-full bg-[#FFFBF0] border-2 border-cream rounded-xl px-3 py-2 text-[11px]">
-<input id="fKontak" placeholder="CP: 0812xxxx - Sekretariat" class="w-full bg-[#FFFBF0] border-2 border-cream rounded-xl px-3 py-2 text-[11px]">
-</div>
-
-<div class="grid grid-cols-2 gap-2 pt-2">
-<button onclick="resetForm()" class="bg-broken border-2 border-cream py-2.5 rounded-xl font-bold text-[11px]">Batal</button>
-<button onclick="saveBerita()" id="saveBtn" class="bg-maroon text-white py-2.5 rounded-xl font-bold text-[11px]">💾 Simpan Berita</button>
-</div>
-<div id="formInfo" class="text-[10px] text-center mt-2 opacity-60"></div>
-</div>
-</div>
-
-<!-- LIST -->
-<div class="space-y-3">
-<div class="soft-card rounded-[18px] p-4 flex justify-between items-center">
-<div><div class="font-extrabold text-maroon text-[13px]">📋 Daftar Berita (<span id="count">0</span>/10)</div><div class="text-[10px] opacity-50">Drag tidak ada, edit aja kalo mau ganti urutan</div></div>
-<button onclick="if(confirm('Hapus semua berita?')) clearAll()" class="text-[10px] bg-red-100 border px-3 py-1.5 rounded-full font-bold">🗑️ Hapus Semua</button>
-</div>
-<div id="list" class="space-y-3"></div>
-<div id="empty" class="hidden text-center py-12 opacity-40">
-<div class="text-[40px]">📰</div>
-<div class="text-[12px] font-bold mt-2">Belum ada berita</div>
-<div class="text-[10px] mt-1">Tambah berita pertama di kiri</div>
-</div>
-</div>
-</div>
-</div>
-
-<div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-maroon text-white px-6 py-3 rounded-full text-[12px] font-bold shadow translate-y-[100px] opacity-0 transition-all z-[200]"></div>
-
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
 import { getFirestore, doc, onSnapshot, updateDoc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
@@ -106,18 +27,15 @@ window.previewBeritaFoto=function(e){
       let img=new Image();
       img.src=ev.target.result;
       img.onload=()=>{
-        // Compress sama kayak di confess - biar gede nya sama!
         let canvas=document.createElement('canvas');
         let maxW=800;
         let scale=Math.min(1, maxW / img.width);
         canvas.width=img.width*scale;
         canvas.height=img.height*scale;
-        let ctx=canvas.getContext('2d');
-        ctx.drawImage(img,0,0,canvas.width,canvas.height);
+        canvas.getContext('2d').drawImage(img,0,0,canvas.width,canvas.height);
         let base64=canvas.toDataURL('image/jpeg', 0.6);
         let sizeKB=Math.round(base64.length*0.75/1024);
         if(sizeKB > 900){
-          // Coba compress lagi lebih kecil
           base64=canvas.toDataURL('image/jpeg', 0.4);
           sizeKB=Math.round(base64.length*0.75/1024);
         }
@@ -136,7 +54,6 @@ window.previewBeritaFoto=function(e){
     r.readAsDataURL(f);
   }catch(err){ showToast('Error foto'); }
 }
-
 window.removeBeritaFoto=function(){
   fotoBase64=null;
   document.getElementById('fFotoGaleri').value='';
@@ -145,7 +62,6 @@ window.removeBeritaFoto=function(){
   document.getElementById('fFotoRemove').classList.add('hidden');
   document.getElementById('fFotoSize').innerText='';
 }
-
 window.resetForm=function(){
   editIndex=-1;
   fotoBase64=null;
@@ -165,7 +81,6 @@ window.resetForm=function(){
   document.getElementById('saveBtn').innerText='💾 Simpan Berita';
   document.getElementById('formInfo').innerText='';
 }
-
 window.loadData=async function(){
   try{
     let snap=await getDoc(docRef);
@@ -177,7 +92,6 @@ window.loadData=async function(){
     }
   }catch(e){ document.getElementById('conn').innerText='❌ Error'; }
 }
-
 function renderList(){
   let listEl=document.getElementById('list');
   let countEl=document.getElementById('count');
@@ -210,7 +124,6 @@ function renderList(){
     </div>
   `).join('');
 }
-
 window.editBerita=function(i){
   let b=beritaList[i];
   if(!b) return;
@@ -234,13 +147,11 @@ window.editBerita=function(i){
   document.getElementById('formInfo').innerText='Lagi edit berita ke-'+(i+1);
   window.scrollTo({top:0,behavior:'smooth'});
 }
-
 window.hapusBerita=async function(i){
   if(!confirm('Hapus berita #'+(i+1)+'?')) return;
   beritaList.splice(i,1);
   await saveToFirebase();
 }
-
 window.moveUp=async function(i){
   if(i===0) return;
   let tmp=beritaList[i];
@@ -248,7 +159,6 @@ window.moveUp=async function(i){
   beritaList[i-1]=tmp;
   await saveToFirebase();
 }
-
 window.moveDown=async function(i){
   if(i===beritaList.length-1) return;
   let tmp=beritaList[i];
@@ -256,25 +166,39 @@ window.moveDown=async function(i){
   beritaList[i+1]=tmp;
   await saveToFirebase();
 }
-
 window.clearAll=async function(){
   beritaList=[];
   await saveToFirebase();
 }
 
+// INI YANG FIX ANTI HILANG - CUMA UPDATE beritaList DOANG!
 async function saveToFirebase(){
   try{
     document.getElementById('conn').innerText='⏳ Menyimpan...';
-    await updateDoc(docRef, {beritaList: beritaList});
+    // Cek dulu data lama biar gak ilang
+    let snap = await getDoc(docRef);
+    if(snap.exists()){
+      // Kalo dokumen udah ada, cuma update field beritaList aja!
+      await updateDoc(docRef, { beritaList: beritaList });
+    } else {
+      // Kalo dokumen belum ada sama sekali, baru buat dengan merge
+      await setDoc(docRef, { beritaList: beritaList }, { merge: true });
+    }
     renderList();
-    document.getElementById('conn').innerText='✅ Tersimpan - '+beritaList.length+' berita';
-    showToast('Tersimpan! ✅');
+    document.getElementById('conn').innerText='✅ Tersimpan - '+beritaList.length+' berita (lainnya aman)';
+    showToast('Tersimpan! Iklan & Rules aman! ✅');
   }catch(e){
+    console.error(e);
+    // Fallback: coba update lagi dengan merge true
     try{
-      await setDoc(docRef, {beritaList: beritaList}, {merge:true});
+      await setDoc(docRef, { beritaList: beritaList }, { merge: true });
       renderList();
       showToast('Tersimpan! ✅');
-    }catch(err){ showToast('Gagal simpan: '+err.message); document.getElementById('conn').innerText='❌ Gagal'; }
+      document.getElementById('conn').innerText='✅ Tersimpan - '+beritaList.length+' berita';
+    }catch(err){
+      showToast('Gagal simpan: '+err.message);
+      document.getElementById('conn').innerText='❌ Gagal';
+    }
   }
 }
 
@@ -306,18 +230,17 @@ window.saveBerita=async function(){
   resetForm();
 }
 
-// Auto load
+// Auto load - live sync
 onSnapshot(docRef, (snap)=>{
   if(snap.exists()){
     let data=snap.data();
+    // Cuma ambil beritaList, jangan timpa yang lain!
     beritaList=data.beritaList && Array.isArray(data.beritaList) ? data.beritaList : [];
     renderList();
-    document.getElementById('conn').innerText='✅ LIVE - '+beritaList.length+' berita';
+    document.getElementById('conn').innerText='✅ LIVE - '+beritaList.length+' berita (lainnya aman)';
   }
 });
 
 resetForm();
 document.getElementById('fTanggal').value=new Date().toLocaleDateString('id-ID',{day:'2-digit',month:'short',year:'numeric'});
 </script>
-</body>
-</html>
