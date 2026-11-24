@@ -125,6 +125,37 @@ html.dark #lTotal,
 html.dark #spinResult {
   color: #E8B86D !important;
 }
+  
+/* FIX IKLAN BIAR PERSIS KAYAK ADMIN - NO CROP */
+#iklanCarousel {
+  align-items: flex-start !important;
+  scroll-snap-type: x mandatory;
+}
+#iklanCarousel > div {
+  flex: 0 0 88% !important; /* 1 iklan 88% layar, kayak IG */
+  height: auto !important;
+  overflow: visible !important;
+  background: #FFFBF0 !important;
+}
+#iklanCarousel > div img,
+#iklanCarousel img {
+  width: 100% !important;
+  height: auto !important; /* INI KUNCINYA */
+  max-height: none !important;
+  aspect-ratio: auto !important;
+  object-fit: contain !important; /* dari cover jadi contain */
+  object-position: center !important;
+  display: block;
+  border-radius: 12px;
+}
+
+/* FIX FOTO DETAIL IKLAN PAS DI-KLIK */
+#homeDetailFoto {
+  height: auto !important;
+  max-height: 70vh !important;
+  object-fit: contain !important;
+  background: #2B0A12;
+}
 </style>
 </head>
 <body>
