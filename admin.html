@@ -1,246 +1,196 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Super - Rules Iklan Berita Confess</title>
+<link rel="icon" type="image/jpeg" href="logo.png.jpg">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={theme:{extend:{colors:{maroon:'#5D0F1F',maroon2:'#8B1E3F',cream:'#FDE8C9',cream2:'#FFF1D6',gold:'#E8B86D'}}}}</script>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>*{font-family:'Poppins',sans-serif} body{background: linear-gradient(180deg, #FFF8E7 0%, #FDE8C9 100%); min-height:100vh} .soft-card{background: linear-gradient(135deg, #FFFBF0 0%, #FFF1D6 100%); border:2.5px solid #5D0F1F; box-shadow:5px 5px 0px #5D0F1F} .broken-white{background:#FFFBF0; border:2px solid #FDE8C9}</style>
+</head>
+<body class="p-4">
+<div class="max-w-[1100px] mx-auto">
+<header class="soft-card rounded-[20px] p-5 flex justify-between items-center mb-6">
+<div class="flex items-center gap-3"><img src="logo.png.jpg" class="w-10 h-10 rounded-full border-2 border-maroon"><div><h1 class="font-extrabold text-maroon">Admin Super</h1><div class="text-[10px] opacity-60">Rules • Iklan • Berita 10 • Hapus Confess • Anti Hilang</div></div></div>
+<div id="conn" class="text-[9px] bg-maroon text-white px-3 py-2 rounded-full">Loading...</div>
+</header>
+
+<div class="grid lg:grid-cols-2 gap-4">
+<!-- KIRI -->
+<div class="space-y-4">
+<div class="soft-card rounded-[18px] p-4">
+<h3 class="font-extrabold text-maroon text-[13px]">📜 Rules</h3>
+<textarea id="fRules" class="mt-2 w-full bg-[#FFFBF0] border-2 border-cream rounded-xl px-3 py-2 text-[11px] min-h-[80px]"></textarea>
+<button onclick="saveRules()" class="mt-2 bg-maroon text-white px-4 py-2 rounded-xl font-bold text-[11px]">💾 Simpan Rules</button>
+</div>
+
+<div class="soft-card rounded-[18px] p-4">
+<h3 class="font-extrabold text-maroon text-[13px]">📢 Pengumuman</h3>
+<textarea id="fPengumuman" class="mt-2 w-full bg-[#FFFBF0] border-2 border-cream rounded-xl px-3 py-2 text-[11px] min-h-[70px]"></textarea>
+<input id="fPengumumanDate" placeholder="24 Nov 2026" class="mt-2 w-full bg-[#FFFBF0] border-2 border-cream rounded-xl px-3 py-2 text-[11px]">
+<button onclick="savePengumuman()" class="mt-2 bg-maroon text-white px-4 py-2 rounded-xl font-bold text-[11px]">💾 Simpan Pengumuman</button>
+</div>
+
+<div class="soft-card rounded-[18px] p-4">
+<div class="flex justify-between"><h3 class="font-extrabold text-maroon text-[13px]">💰 Iklan List (<span id="iklanCount">0</span>)</h3><button onclick="openIklanForm()" class="text-[10px] bg-gold px-2 py-1 rounded-full font-bold">+ Tambah</button></div>
+<div id="iklanForm" class="hidden mt-3 space-y-2 p-3 bg-cream2 rounded-xl border-2 border-cream">
+<textarea id="iklanTeks" placeholder="Isi iklan..." class="w-full bg-[#FFFBF0] border-2 rounded-xl px-3 py-2 text-[11px]"></textarea>
+<input id="iklanFoto" placeholder="Link foto (opsional)" class="w-full bg-[#FFFBF0] border-2 rounded-xl px-3 py-2 text-[11px]">
+<div class="grid grid-cols-2 gap-2"><input id="iklanWA" placeholder="WA" class="bg-[#FFFBF0] border-2 rounded-xl px-3 py-2 text-[11px]"><input id="iklanIG" placeholder="IG" class="bg-[#FFFBF0] border-2 rounded-xl px-3 py-2 text-[11px]"></div>
+<input id="iklanKontak" placeholder="Kontak text" class="w-full bg-[#FFFBF0] border-2 rounded-xl px-3 py-2 text-[11px]">
+<div class="flex gap-2"><button onclick="saveIklan()" class="bg-maroon text-white px-3 py-1.5 rounded-xl text-[11px] font-bold">Simpan</button><button onclick="closeIklanForm()" class="bg-broken border-2 px-3 py-1.5 rounded-xl text-[11px] font-bold">Batal</button></div>
+</div>
+<div id="iklanList" class="mt-3 space-y-2"></div>
+</div>
+</div>
+
+<!-- KANAN -->
+<div class="space-y-4">
+<div class="soft-card rounded-[18px] p-4">
+<div class="flex justify-between"><h3 class="font-extrabold text-maroon text-[13px]">📰 Berita (<span id="beritaCount">0</span>/10)</h3><button onclick="openBeritaForm()" class="text-[10px] bg-gold px-2 py-1 rounded-full font-bold">+ Tambah</button></div>
+<div id="beritaForm" class="hidden mt-3 space-y-2 p-3 bg-cream2 rounded-xl border-2 border-cream">
+<textarea id="beritaTeks" placeholder="Judul berita..." class="w-full bg-[#FFFBF0] border-2 rounded-xl px-3 py-2 text-[11px]"></textarea>
+<div class="grid grid-cols-2 gap-2"><select id="beritaKategori" class="bg-[#FFFBF0] border-2 rounded-xl px-3 py-2 text-[11px]"><option>Info Kampus</option><option>Seminar</option><option>Lomba</option><option>Akademik</option><option>UKM</option></select><input id="beritaTanggal" placeholder="24 Nov 2026" class="bg-[#FFFBF0] border-2 rounded-xl px-3 py-2 text-[11px]"></div>
+<div class="grid grid-cols-2 gap-2"><button onclick="document.getElementById('beritaFotoFile').click()" class="broken-white py-2 rounded-xl text-[11px] font-bold">🖼️ Foto</button><button onclick="removeBeritaFoto()" class="broken-white py-2 rounded-xl text-[11px] font-bold">🗑️ Hapus Foto</button></div>
+<input type="file" id="beritaFotoFile" accept="image/*" class="hidden" onchange="previewBeritaFoto(event)">
+<img id="beritaFotoPreview" class="hidden w-full h-32 object-cover rounded-xl border-2 mt-2"><div id="beritaFotoSize" class="text-[9px] opacity-60"></div>
+<div class="grid grid-cols-2 gap-2"><input id="beritaWA" placeholder="WA" class="bg-[#FFFBF0] border-2 rounded-xl px-3 py-2 text-[11px]"><input id="beritaIG" placeholder="IG" class="bg-[#FFFBF0] border-2 rounded-xl px-3 py-2 text-[11px]"></div>
+<input id="beritaLink" placeholder="Link" class="w-full bg-[#FFFBF0] border-2 rounded-xl px-3 py-2 text-[11px]">
+<div class="flex gap-2"><button onclick="saveBerita()" class="bg-maroon text-white px-3 py-1.5 rounded-xl text-[11px] font-bold">Simpan</button><button onclick="closeBeritaForm()" class="bg-broken border-2 px-3 py-1.5 rounded-xl text-[11px] font-bold">Batal</button></div>
+</div>
+<div id="beritaList" class="mt-3 space-y-2"></div>
+</div>
+
+<div class="soft-card rounded-[18px] p-4">
+<div class="flex justify-between items-center"><h3 class="font-extrabold text-maroon text-[13px]">💌 Confess (<span id="confessCount">0</span>)</h3><button onclick="if(confirm('HAPUS SEMUA CONFESS? Gak bisa dibalikin!')) deleteAllConfess()" class="text-[10px] bg-red-500 text-white px-3 py-1 rounded-full font-bold">🗑️ Hapus Semua</button></div>
+<input id="searchConfess" placeholder="🔍 Cari confess..." class="mt-3 w-full bg-[#FFFBF0] border-2 border-cream rounded-full px-4 py-2 text-[11px]" oninput="renderConfess()">
+<div id="confessList" class="mt-3 space-y-2 max-h-[500px] overflow-auto"></div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-maroon text-white px-6 py-3 rounded-full text-[11px] font-bold translate-y-[100px] opacity-0 transition-all z-50"></div>
+
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { getFirestore, doc, onSnapshot, updateDoc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+import { getFirestore, doc, getDoc, setDoc, updateDoc, onSnapshot, collection, query, orderBy, deleteDoc, getDocs } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 const firebaseConfig = { apiKey: "AIzaSyCToBiaTsuCCWrDnKK8cI1aQf7BDHICsQ4", authDomain: "confess-f4711.firebaseapp.com", projectId: "confess-f4711", storageBucket: "confess-f4711.firebasestorage.app", messagingSenderId: "484779882136", appId: "1:484779882136:web:52ec1b393f5777e2b582ed" };
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app, "cnfss");
-const docRef = doc(db, "home_config", "main");
-let beritaList = [];
-let editIndex = -1;
-let fotoBase64 = null;
+const homeRef = doc(db, "home_config", "main");
+let homeData={}; let iklanList=[]; let beritaList=[]; let confesses=[]; let editIklanIdx=-1; let editBeritaIdx=-1; let beritaFotoBase64=null;
 
-function showToast(msg){
-  let t=document.getElementById('toast');
-  t.innerText=msg;
-  t.classList.remove('translate-y-[100px]','opacity-0');
-  t.classList.add('translate-y-0','opacity-100');
-  setTimeout(()=>{ t.classList.add('translate-y-[100px]','opacity-0'); },2500);
-}
+function toast(m){ let t=document.getElementById('toast'); t.innerText=m; t.classList.remove('translate-y-[100px]','opacity-0'); setTimeout(()=>t.classList.add('translate-y-[100px]','opacity-0'),2500); }
 
-window.previewBeritaFoto=function(e){
-  try{
-    let f=e.target.files[0];
-    if(!f) return;
-    if(f.size > 5*1024*1024){ showToast('Foto max 5MB ya!'); return; }
-    let r=new FileReader();
-    r.onload=ev=>{
-      let img=new Image();
-      img.src=ev.target.result;
-      img.onload=()=>{
-        let canvas=document.createElement('canvas');
-        let maxW=800;
-        let scale=Math.min(1, maxW / img.width);
-        canvas.width=img.width*scale;
-        canvas.height=img.height*scale;
-        canvas.getContext('2d').drawImage(img,0,0,canvas.width,canvas.height);
-        let base64=canvas.toDataURL('image/jpeg', 0.6);
-        let sizeKB=Math.round(base64.length*0.75/1024);
-        if(sizeKB > 900){
-          base64=canvas.toDataURL('image/jpeg', 0.4);
-          sizeKB=Math.round(base64.length*0.75/1024);
-        }
-        if(sizeKB > 900){
-          showToast('Foto masih kegedean '+sizeKB+'KB, coba foto lain');
-          return;
-        }
-        fotoBase64=base64;
-        document.getElementById('fFotoPreview').src=base64;
-        document.getElementById('fFotoPreview').classList.remove('hidden');
-        document.getElementById('fFotoRemove').classList.remove('hidden');
-        document.getElementById('fFotoSize').innerText=sizeKB+'KB - pas sama di Home! ✅';
-        showToast('Foto '+sizeKB+'KB siap! 💖');
-      };
-    };
-    r.readAsDataURL(f);
-  }catch(err){ showToast('Error foto'); }
-}
-window.removeBeritaFoto=function(){
-  fotoBase64=null;
-  document.getElementById('fFotoGaleri').value='';
-  document.getElementById('fFotoKamera').value='';
-  document.getElementById('fFotoPreview').classList.add('hidden');
-  document.getElementById('fFotoRemove').classList.add('hidden');
-  document.getElementById('fFotoSize').innerText='';
-}
-window.resetForm=function(){
-  editIndex=-1;
-  fotoBase64=null;
-  document.getElementById('formTitle').innerText='➕ Tambah Berita Baru';
-  document.getElementById('fTeks').value='';
-  document.getElementById('fKategori').value='Info Kampus';
-  document.getElementById('fTanggal').value=new Date().toLocaleDateString('id-ID',{day:'2-digit',month:'short',year:'numeric'});
-  document.getElementById('fWA').value='';
-  document.getElementById('fIG').value='';
-  document.getElementById('fLink').value='';
-  document.getElementById('fKontak').value='';
-  document.getElementById('fFotoGaleri').value='';
-  document.getElementById('fFotoKamera').value='';
-  document.getElementById('fFotoPreview').classList.add('hidden');
-  document.getElementById('fFotoRemove').classList.add('hidden');
-  document.getElementById('fFotoSize').innerText='';
-  document.getElementById('saveBtn').innerText='💾 Simpan Berita';
-  document.getElementById('formInfo').innerText='';
-}
-window.loadData=async function(){
-  try{
-    let snap=await getDoc(docRef);
-    if(snap.exists()){
-      let data=snap.data();
-      beritaList=data.beritaList && Array.isArray(data.beritaList) ? data.beritaList : [];
-      renderList();
-      document.getElementById('conn').innerText='✅ LIVE - '+beritaList.length+' berita';
-    }
-  }catch(e){ document.getElementById('conn').innerText='❌ Error'; }
-}
-function renderList(){
-  let listEl=document.getElementById('list');
-  let countEl=document.getElementById('count');
-  let emptyEl=document.getElementById('empty');
-  countEl.innerText=beritaList.length;
-  if(beritaList.length===0){
-    listEl.innerHTML='';
-    emptyEl.classList.remove('hidden');
-    return;
-  }
-  emptyEl.classList.add('hidden');
-  listEl.innerHTML=beritaList.map((b,i)=>`
-    <div class="soft-card rounded-[16px] p-3 flex gap-3">
-      ${b.foto?`<img src="${b.foto}" class="w-20 h-20 object-cover rounded-xl border-2 border-cream shrink-0">`:`<div class="w-20 h-20 bg-cream2 rounded-xl grid place-items-center border-2 border-cream shrink-0 text-[24px]">📰</div>`}
-      <div class="flex-1 min-w-0">
-        <div class="flex gap-1 items-center">
-          <span class="text-[8px] bg-maroon text-white px-2 py-0.5 rounded-full font-bold">${b.kategori||'Info'}</span>
-          <span class="text-[8px] opacity-50">${b.tanggal||''}</span>
-          <span class="text-[8px] bg-gold text-maroon px-1.5 py-0.5 rounded-full font-bold">#${i+1}</span>
-        </div>
-        <div class="text-[11px] font-bold leading-4 mt-1 line-clamp-2">${b.teks||''}</div>
-        <div class="text-[9px] opacity-50 mt-1">${b.foto?Math.round(b.foto.length*0.75/1024)+'KB':''} ${b.link?'• 🔗 link':''} ${b.wa?'• WA':''}</div>
-        <div class="flex gap-1 mt-2">
-          <button onclick="editBerita(${i})" class="text-[10px] bg-yellow-100 border-2 border-cream px-2.5 py-1 rounded-full font-bold">✏️ Edit</button>
-          <button onclick="hapusBerita(${i})" class="text-[10px] bg-red-100 border-2 border-cream px-2.5 py-1 rounded-full font-bold">🗑️ Hapus</button>
-          <button onclick="moveUp(${i})" class="text-[10px] broken-white px-2 py-1 rounded-full font-bold ${i===0?'opacity-30':''}">⬆️</button>
-          <button onclick="moveDown(${i})" class="text-[10px] broken-white px-2 py-1 rounded-full font-bold ${i===beritaList.length-1?'opacity-30':''}">⬇️</button>
-        </div>
-      </div>
-    </div>
-  `).join('');
-}
-window.editBerita=function(i){
-  let b=beritaList[i];
-  if(!b) return;
-  editIndex=i;
-  document.getElementById('formTitle').innerText='✏️ Edit Berita #'+(i+1);
-  document.getElementById('fTeks').value=b.teks||'';
-  document.getElementById('fKategori').value=b.kategori||'Info Kampus';
-  document.getElementById('fTanggal').value=b.tanggal||'';
-  document.getElementById('fWA').value=b.wa||'';
-  document.getElementById('fIG').value=b.ig||'';
-  document.getElementById('fLink').value=b.link||'';
-  document.getElementById('fKontak').value=b.kontak||'';
-  fotoBase64=b.foto||null;
-  if(b.foto){
-    document.getElementById('fFotoPreview').src=b.foto;
-    document.getElementById('fFotoPreview').classList.remove('hidden');
-    document.getElementById('fFotoRemove').classList.remove('hidden');
-    document.getElementById('fFotoSize').innerText=Math.round(b.foto.length*0.75/1024)+'KB';
-  }
-  document.getElementById('saveBtn').innerText='💾 Update Berita #'+(i+1);
-  document.getElementById('formInfo').innerText='Lagi edit berita ke-'+(i+1);
-  window.scrollTo({top:0,behavior:'smooth'});
-}
-window.hapusBerita=async function(i){
-  if(!confirm('Hapus berita #'+(i+1)+'?')) return;
-  beritaList.splice(i,1);
-  await saveToFirebase();
-}
-window.moveUp=async function(i){
-  if(i===0) return;
-  let tmp=beritaList[i];
-  beritaList[i]=beritaList[i-1];
-  beritaList[i-1]=tmp;
-  await saveToFirebase();
-}
-window.moveDown=async function(i){
-  if(i===beritaList.length-1) return;
-  let tmp=beritaList[i];
-  beritaList[i]=beritaList[i+1];
-  beritaList[i+1]=tmp;
-  await saveToFirebase();
-}
-window.clearAll=async function(){
-  beritaList=[];
-  await saveToFirebase();
-}
-
-// INI YANG FIX ANTI HILANG - CUMA UPDATE beritaList DOANG!
-async function saveToFirebase(){
+// ANTI HILANG - SIMPAN CUMA FIELD TERTENTU
+async function saveHomeField(field, value){
   try{
     document.getElementById('conn').innerText='⏳ Menyimpan...';
-    // Cek dulu data lama biar gak ilang
-    let snap = await getDoc(docRef);
-    if(snap.exists()){
-      // Kalo dokumen udah ada, cuma update field beritaList aja!
-      await updateDoc(docRef, { beritaList: beritaList });
-    } else {
-      // Kalo dokumen belum ada sama sekali, baru buat dengan merge
-      await setDoc(docRef, { beritaList: beritaList }, { merge: true });
-    }
-    renderList();
-    document.getElementById('conn').innerText='✅ Tersimpan - '+beritaList.length+' berita (lainnya aman)';
-    showToast('Tersimpan! Iklan & Rules aman! ✅');
+    await updateDoc(homeRef, { [field]: value });
+    toast('✅ '+field+' tersimpan, lainnya aman!');
+    document.getElementById('conn').innerText='✅ Tersimpan';
   }catch(e){
-    console.error(e);
-    // Fallback: coba update lagi dengan merge true
-    try{
-      await setDoc(docRef, { beritaList: beritaList }, { merge: true });
-      renderList();
-      showToast('Tersimpan! ✅');
-      document.getElementById('conn').innerText='✅ Tersimpan - '+beritaList.length+' berita';
-    }catch(err){
-      showToast('Gagal simpan: '+err.message);
-      document.getElementById('conn').innerText='❌ Gagal';
+    try{ await setDoc(homeRef, { [field]: value }, {merge:true}); toast('✅ '+field+' tersimpan!'); document.getElementById('conn').innerText='✅ Tersimpan';
+    }catch(err){ toast('❌ Gagal: '+err.message); }
+  }
+}
+
+window.saveRules=()=>saveHomeField('rules', document.getElementById('fRules').value);
+window.savePengumuman=async()=>{
+  await saveHomeField('pengumuman', document.getElementById('fPengumuman').value);
+  await saveHomeField('pengumumanDate', document.getElementById('fPengumumanDate').value);
+}
+
+// IKLAN
+window.openIklanForm=()=>{ document.getElementById('iklanForm').classList.remove('hidden'); editIklanIdx=-1; document.getElementById('iklanTeks').value=''; document.getElementById('iklanFoto').value=''; document.getElementById('iklanWA').value=''; document.getElementById('iklanIG').value=''; document.getElementById('iklanKontak').value=''; }
+window.closeIklanForm=()=>{ document.getElementById('iklanForm').classList.add('hidden'); }
+window.saveIklan=async()=>{
+  let teks=document.getElementById('iklanTeks').value.trim();
+  if(!teks){ alert('Isi iklan dulu'); return; }
+  let data={teks, foto:document.getElementById('iklanFoto').value, wa:document.getElementById('iklanWA').value, ig:document.getElementById('iklanIG').value, kontak:document.getElementById('iklanKontak').value};
+  if(editIklanIdx>=0) iklanList[editIklanIdx]=data; else iklanList.unshift(data);
+  await saveHomeField('iklanList', iklanList);
+  closeIklanForm();
+}
+window.editIklan=(i)=>{ editIklanIdx=i; let b=iklanList[i]; document.getElementById('iklanForm').classList.remove('hidden'); document.getElementById('iklanTeks').value=b.teks; document.getElementById('iklanFoto').value=b.foto||''; document.getElementById('iklanWA').value=b.wa||''; document.getElementById('iklanIG').value=b.ig||''; document.getElementById('iklanKontak').value=b.kontak||''; }
+window.hapusIklan=async(i)=>{ if(!confirm('Hapus iklan #'+(i+1)+'?')) return; iklanList.splice(i,1); await saveHomeField('iklanList', iklanList); }
+
+// BERITA
+window.previewBeritaFoto=function(e){
+  let f=e.target.files[0]; if(!f) return;
+  let r=new FileReader();
+  r.onload=ev=>{
+    let img=new Image(); img.src=ev.target.result;
+    img.onload=()=>{
+      let canvas=document.createElement('canvas'); let maxW=800; let scale=Math.min(1,maxW/img.width); canvas.width=img.width*scale; canvas.height=img.height*scale;
+      canvas.getContext('2d').drawImage(img,0,0,canvas.width,canvas.height);
+      let b64=canvas.toDataURL('image/jpeg',0.6); let kb=Math.round(b64.length*0.75/1024);
+      if(kb>900) b64=canvas.toDataURL('image/jpeg',0.4);
+      beritaFotoBase64=b64;
+      document.getElementById('beritaFotoPreview').src=b64; document.getElementById('beritaFotoPreview').classList.remove('hidden');
+      document.getElementById('beritaFotoSize').innerText=kb+'KB ✅';
     }
-  }
+  }; r.readAsDataURL(f);
+}
+window.removeBeritaFoto=()=>{ beritaFotoBase64=null; document.getElementById('beritaFotoPreview').classList.add('hidden'); document.getElementById('beritaFotoSize').innerText=''; }
+window.openBeritaForm=()=>{ document.getElementById('beritaForm').classList.remove('hidden'); editBeritaIdx=-1; document.getElementById('beritaTeks').value=''; beritaFotoBase64=null; document.getElementById('beritaFotoPreview').classList.add('hidden'); }
+window.closeBeritaForm=()=>{ document.getElementById('beritaForm').classList.add('hidden'); }
+window.saveBerita=async()=>{
+  let teks=document.getElementById('beritaTeks').value.trim();
+  if(!teks){ alert('Isi berita dulu'); return; }
+  if(!beritaFotoBase64 && editBeritaIdx===-1){ alert('Foto wajib!'); return; }
+  if(beritaList.length>=10 && editBeritaIdx===-1){ alert('Max 10 berita!'); return; }
+  let data={teks, foto:beritaFotoBase64||beritaList[editBeritaIdx]?.foto||'', kategori:document.getElementById('beritaKategori').value, tanggal:document.getElementById('beritaTanggal').value, wa:document.getElementById('beritaWA').value, ig:document.getElementById('beritaIG').value, link:document.getElementById('beritaLink').value, kontak:''};
+  if(editBeritaIdx>=0) beritaList[editBeritaIdx]=data; else beritaList.unshift(data);
+  if(beritaList.length>10) beritaList=beritaList.slice(0,10);
+  await saveHomeField('beritaList', beritaList);
+  closeBeritaForm();
+}
+window.editBerita=(i)=>{ editBeritaIdx=i; let b=beritaList[i]; document.getElementById('beritaForm').classList.remove('hidden'); document.getElementById('beritaTeks').value=b.teks; document.getElementById('beritaKategori').value=b.kategori||'Info Kampus'; document.getElementById('beritaTanggal').value=b.tanggal||''; document.getElementById('beritaWA').value=b.wa||''; document.getElementById('beritaIG').value=b.ig||''; document.getElementById('beritaLink').value=b.link||''; beritaFotoBase64=b.foto; if(b.foto){ document.getElementById('beritaFotoPreview').src=b.foto; document.getElementById('beritaFotoPreview').classList.remove('hidden'); } }
+window.hapusBerita=async(i)=>{ if(!confirm('Hapus berita #'+(i+1)+'?')) return; beritaList.splice(i,1); await saveHomeField('beritaList', beritaList); }
+
+function renderIklan(){
+  document.getElementById('iklanCount').innerText=iklanList.length;
+  document.getElementById('iklanList').innerHTML=iklanList.map((b,i)=>`<div class="bg-[#FFFBF0] border-2 rounded-xl p-3 flex gap-2"><div class="flex-1"><div class="text-[11px] font-bold line-clamp-2">${b.teks.slice(0,60)}</div><div class="text-[9px] opacity-50">${b.wa?'WA':''} ${b.ig?'IG':''}</div></div><div class="flex gap-1"><button onclick="editIklan(${i})" class="text-[10px] bg-yellow-100 border px-2 py-1 rounded-full">Edit</button><button onclick="hapusIklan(${i})" class="text-[10px] bg-red-100 border px-2 py-1 rounded-full">Hapus</button></div></div>`).join('')||'<div class="text-[10px] opacity-40">Belum ada iklan</div>';
+}
+function renderBerita(){
+  document.getElementById('beritaCount').innerText=beritaList.length;
+  document.getElementById('beritaList').innerHTML=beritaList.map((b,i)=>`<div class="bg-[#FFFBF0] border-2 rounded-xl p-3 flex gap-2"><img src="${b.foto}" class="w-12 h-12 object-cover rounded-lg border"><div class="flex-1"><div class="text-[10px] font-bold line-clamp-2">${b.teks.slice(0,50)}</div><div class="text-[9px] opacity-50">${b.kategori}</div></div><div class="flex gap-1"><button onclick="editBerita(${i})" class="text-[9px] bg-yellow-100 border px-2 py-1 rounded-full">Edit</button><button onclick="hapusBerita(${i})" class="text-[9px] bg-red-100 border px-2 py-1 rounded-full">Hapus</button></div></div>`).join('')||'<div class="text-[10px] opacity-40">Belum ada berita</div>';
 }
 
-window.saveBerita=async function(){
-  let teks=document.getElementById('fTeks').value.trim();
-  if(teks.length<5){ alert('Isi berita minimal 5 huruf'); return; }
-  if(!fotoBase64){ alert('Foto poster wajib! Upload foto dulu ta'); return; }
-  if(beritaList.length>=10 && editIndex===-1){ alert('Max 10 berita ta! Hapus dulu yang lama'); return; }
-
-  let data={
-    teks: teks,
-    foto: fotoBase64,
-    kategori: document.getElementById('fKategori').value,
-    tanggal: document.getElementById('fTanggal').value || new Date().toLocaleDateString('id-ID',{day:'2-digit',month:'short',year:'numeric'}),
-    wa: document.getElementById('fWA').value.trim(),
-    ig: document.getElementById('fIG').value.trim(),
-    link: document.getElementById('fLink').value.trim(),
-    kontak: document.getElementById('fKontak').value.trim()
-  };
-
-  if(editIndex>=0){
-    beritaList[editIndex]=data;
-  } else {
-    beritaList.unshift(data);
-    if(beritaList.length>10) beritaList=beritaList.slice(0,10);
-  }
-
-  await saveToFirebase();
-  resetForm();
+// CONFESS
+window.renderConfess=()=>{
+  let s=document.getElementById('searchConfess').value.toLowerCase();
+  let filtered=confesses.filter(c=>c.text.toLowerCase().includes(s)||c.to.toLowerCase().includes(s));
+  document.getElementById('confessCount').innerText=confesses.length;
+  document.getElementById('confessList').innerHTML=filtered.slice(0,50).map(c=>`<div class="bg-[#FFFBF0] border-2 rounded-xl p-3"><div class="flex justify-between"><span class="text-[10px] font-bold">To: ${c.to} • ${c.cat}</span><span class="text-[9px] opacity-40">#${c.code} • ${new Date(c.time).toLocaleDateString('id-ID')}</span></div><div class="text-[11px] mt-1 line-clamp-3">${c.text.slice(0,120)}</div><div class="flex gap-1 mt-2"><span class="text-[9px]">${c.avatar} ${c.color}</span><span class="text-[9px] opacity-50">💖${c.reactions?.love||0} 😭${c.reactions?.cry||0} • ${c.replies?.length||0} balasan</span><button onclick="hapusConfess('${c.id}')" class="ml-auto text-[9px] bg-red-500 text-white px-2 py-0.5 rounded-full">Hapus</button></div></div>`).join('')||'Belum ada';
+}
+window.hapusConfess=async(id)=>{ if(!confirm('Hapus confess ini?')) return; await deleteDoc(doc(db,"confesses",id)); toast('Confess dihapus'); }
+window.deleteAllConfess=async()=>{
+  let q=await getDocs(collection(db,"confesses"));
+  for(let d of q.docs){ await deleteDoc(d.ref); }
+  toast('Semua confess terhapus!');
 }
 
-// Auto load - live sync
-onSnapshot(docRef, (snap)=>{
+onSnapshot(homeRef, (snap)=>{
   if(snap.exists()){
-    let data=snap.data();
-    // Cuma ambil beritaList, jangan timpa yang lain!
-    beritaList=data.beritaList && Array.isArray(data.beritaList) ? data.beritaList : [];
-    renderList();
-    document.getElementById('conn').innerText='✅ LIVE - '+beritaList.length+' berita (lainnya aman)';
+    homeData=snap.data();
+    document.getElementById('fRules').value=homeData.rules||'';
+    document.getElementById('fPengumuman').value=homeData.pengumuman||'';
+    document.getElementById('fPengumumanDate').value=homeData.pengumumanDate||'';
+    iklanList=homeData.iklanList||[];
+    beritaList=homeData.beritaList||[];
+    renderIklan(); renderBerita();
+    document.getElementById('conn').innerText='✅ LIVE - '+iklanList.length+' iklan, '+beritaList.length+' berita';
   }
 });
 
-resetForm();
-document.getElementById('fTanggal').value=new Date().toLocaleDateString('id-ID',{day:'2-digit',month:'short',year:'numeric'});
+onSnapshot(query(collection(db,"confesses"), orderBy("createdAt","desc")), (snap)=>{
+  confesses=snap.docs.map(d=>({id:d.id, ...d.data()}));
+  renderConfess();
+});
 </script>
+</body>
+</html>
