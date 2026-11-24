@@ -2,82 +2,41 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cerita Kita BETA</title>
+<title>Cerita Kita BETA v7.6</title>
 <link rel="icon" type="image/jpeg" href="logo.png.jpg">
 <script src="https://cdn.tailwindcss.com"></script>
 <script>tailwind.config={theme:{extend:{colors:{maroon:'#5D0F1F',maroon2:'#8B1E3F',broken:'#FFF8E7',cream:'#FDE8C9',cream2:'#FFF1D6',gold:'#E8B86D',peach:'#FFDAB9'}}}}</script>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 *{font-family:'Poppins',sans-serif}
-body{background: linear-gradient(180deg, #FFF8E7 0%, #FDE8C9 35%, #FFECD2 70%, #FFF1D6 100%); min-height:100vh; transition:background 0.25s}
+body{background: linear-gradient(180deg, #FFF8E7 0%, #FDE8C9 35%, #FFECD2 70%, #FFF1D6 100%); min-height:100vh}
 .masonry{column-count:1;column-gap:14px} @media(min-width:640px){.masonry{column-count:2}} @media(min-width:1024px){.masonry{column-count:3}}
-.masonry-item{break-inside:avoid;margin-bottom:14px} .scrollbar-hide::-webkit-scrollbar{display:none;}
+.masonry-item{break-inside:avoid;margin-bottom:14px} .scrollbar-hide::-webkit-scrollbar{display:none}
 .line-clamp-3{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-.soft-card{background: linear-gradient(135deg, #FFFBF0 0%, #FFF1D6 100%); border: 2.5px solid #5D0F1F; box-shadow: 5px 5px 0px #5D0F1F; transition:0.25s}
-.soft-card.clickable{cursor:pointer} .soft-card.clickable:active{transform:translate(2px,2px); box-shadow: 3px 3px 0px #5D0F1F}
-.soft-card-gold{background: linear-gradient(135deg, #FFFBF0 0%, #FFECD2 100%); border: 2.5px solid #E8B86D; box-shadow: 5px 5px 0px #E8B86D; transition:0.25s; cursor:pointer}
-.soft-card-gold:active{transform:translate(2px,2px); box-shadow: 3px 3px 0px #E8B86D}
-.soft-header{background: linear-gradient(180deg, rgba(255,248,231,0.95) 0%, rgba(253,232,201,0.9) 100%); backdrop-filter: blur(12px); border-bottom: 1.5px solid rgba(93,15,31,0.08); transition:0.25s}
-.bottom-nav{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);width:calc(100% - 20px);max-width:440px;background: rgba(255,251,240,0.95); backdrop-filter: blur(16px); border:2.5px solid #5D0F1F;border-radius:20px;display:flex;justify-content:space-around;padding:6px;z-index:50; transition:0.25s}
-.bottom-nav button{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:9px 6px;border-radius:14px;font-size:10px;font-weight:700;color:#5D0F1F;opacity:0.45;transition:0.2s}
+.soft-card{background: linear-gradient(135deg, #FFFBF0 0%, #FFF1D6 100%); border: 2.5px solid #5D0F1F; box-shadow: 5px 5px 0px #5D0F1F}
+.soft-card-gold{background: linear-gradient(135deg, #FFFBF0 0%, #FFECD2 100%); border: 2.5px solid #E8B86D; box-shadow: 5px 5px 0px #E8B86D}
+.soft-header{background: linear-gradient(180deg, rgba(255,248,231,0.95) 0%, rgba(253,232,201,0.9) 100%); backdrop-filter: blur(12px); border-bottom: 1.5px solid rgba(93,15,31,0.08)}
+.bottom-nav{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);width:calc(100% - 20px);max-width:440px;background: rgba(255,251,240,0.95); backdrop-filter: blur(16px); border:2.5px solid #5D0F1F;border-radius:20px;display:flex;justify-content:space-around;padding:6px;z-index:50}
+.bottom-nav button{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:9px 6px;border-radius:14px;font-size:10px;font-weight:700;color:#5D0F1F;opacity:0.45}
 .bottom-nav button.active{background: linear-gradient(135deg, #5D0F1F 0%, #8B1E3F 100%);color:#FFF8E7;opacity:1;transform:translateY(-3px)}
 .view{display:none} .view.active{display:block;animation:fadeIn 0.25s ease} @keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
-.koala-area{position:relative;width:100%;height:220px;background: linear-gradient(180deg, #FFF1D6 0%, #FFECD2 100%);border:2px dashed #E8B86D;border-radius:16px;overflow:hidden; transition:0.25s}
+.koala-area{position:relative;width:100%;height:220px;background: linear-gradient(180deg, #FFF1D6 0%, #FFECD2 100%);border:2px dashed #E8B86D;border-radius:16px;overflow:hidden}
 .koala{position:absolute;font-size:36px;cursor:pointer;user-select:none}
 .cat-badge{background:#FDE8C9; color:#5D0F1F; border:1.5px solid rgba(93,15,31,0.15); padding:4px 12px; border-radius:9999px; font-size:9px; font-weight:800; min-width:48px; text-align:center; display:inline-block}
-.close-btn{width:36px; height:36px; background:#fff; border:2px solid #5D0F1F; border-radius:9999px; display:grid; place-items:center; font-weight:800; transition:0.2s}
-.react-btn{border:2px solid #FDE8C9; background:#FFF8E7; padding:6px 10px; border-radius:9999px; font-size:10px; font-weight:700; transition:0.2s}
-/* DARK V7.4 FINAL - ZERO WHITE BUG */
+.close-btn{width:36px; height:36px; background:#fff; border:2px solid #5D0F1F; border-radius:9999px; display:grid; place-items:center; font-weight:800}
+.react-btn{border:2px solid #FDE8C9; background:#FFF8E7; padding:6px 10px; border-radius:9999px; font-size:10px; font-weight:700}
+.share-btn{border:2px solid #5D0F1F; background:#fff; padding:6px 10px; border-radius:9999px; font-size:10px; font-weight:700}
 html.dark body{background: linear-gradient(180deg, #1a060b 0%, #2B0A12 60%, #3a1520 100%)!important; color:#FFF8E7}
-html.dark .soft-card{background: linear-gradient(135deg, #3a1520 0%, #2B0A12 100%)!important; border-color:#E8B86D!important; color:#FFF8E7!important; box-shadow:5px 5px 0px #0f0205!important}
-html.dark .soft-card-gold{background: linear-gradient(135deg, #4a2030 0%, #3a1520 100%)!important; border-color:#E8B86D!important; color:#FFF8E7!important; box-shadow:5px 5px 0px #0f0205!important}
-html.dark .soft-header{background: linear-gradient(180deg, rgba(43,10,18,0.96) 0%, rgba(26,6,11,0.9) 100%)!important; border-bottom-color:rgba(232,184,109,0.2)!important}
-html.dark .soft-header div{color:#FDE8C9!important}
-html.dark input, html.dark textarea, html.dark select{background:#2B0A12!important; border-color:#5D0F1F!important; color:#FFF8E7!important}
-html.dark #landing{background: linear-gradient(135deg, #1a060b 0%, #2B0A12 50%, #3a1520 100%)!important}
+html.dark .soft-card, html.dark .masonry-item{background: linear-gradient(135deg, #3a1520 0%, #2B0A12 100%)!important; border-color:#E8B86D!important; color:#FFF8E7!important; box-shadow:5px 5px 0px #0f0205!important}
+html.dark .soft-card-gold{background: linear-gradient(135deg, #4a2030 0%, #3a1520 100%)!important; border-color:#E8B86D!important; color:#FFF8E7!important}
+html.dark .soft-header{background: linear-gradient(180deg, rgba(43,10,18,0.96) 0%, rgba(26,6,11,0.9) 100%)!important}
 html.dark .bottom-nav{background: rgba(43,10,18,0.96)!important; border-color:#E8B86D!important}
-html.dark .bottom-nav button{color:#FDE8C9!important}
-html.dark .masonry-item{background: linear-gradient(135deg, #3a1520 0%, #2B0A12 100%)!important; color:#FFF8E7!important; border-color:#5D0F1F!important}
-html.dark .koala-area{background: linear-gradient(180deg, #2B0A12 0%, #3a1520 100%)!important; border-color:#E8B86D!important}
-html.dark footer{color:#FDE8C9!important; opacity:0.6}
 html.dark .filter-btn{background:#2B0A12!important; color:#FDE8C9!important; border-color:#E8B86D!important}
 html.dark .filter-btn.active{background: linear-gradient(135deg, #E8B86D 0%, #FDE8C9 100%)!important; color:#2B0A12!important}
-html.dark .cat-badge{background:#E8B86D!important; color:#2B0A12!important; border-color:#2B0A12!important}
-html.dark #notifDot{box-shadow:0 0 8px #ef4444}
-html.dark ::placeholder{color:rgba(253,232,201,0.5)!important}
-/* FIX MODAL PUTIH */
-html.dark #homeDetailModal > div,
-html.dark #detailModal > div,
-html.dark #createModal > div,
-html.dark #editModal > div,
-html.dark #deleteModal > div,
-html.dark #notifModal > div,
-html.dark #rulesModal > div{background: linear-gradient(135deg, #2B0A12 0%, #3a1520 100%)!important; border-color:#E8B86D!important; color:#FFF8E7!important; box-shadow: 8px 8px 0px #0f0205!important}
-html.dark #homeDetailModal div[class*="bg-white"],
-html.dark #detailModal div[class*="bg-white"],
-html.dark #createModal div[class*="bg-white"],
-html.dark #editModal div[class*="bg-white"],
-html.dark #notifModal div[class*="bg-white"],
-html.dark #rulesModal div[class*="bg-white"]{background:#2B0A12!important; color:#FFF8E7!important; border-color:#5D0F1F!important}
-html.dark #homeDetailModal div[class*="bg-broken"],
-html.dark #detailModal div[class*="bg-broken"],
-html.dark #createModal div[class*="bg-broken"]{background:#3a1520!important; color:#FFF8E7!important}
-/* FIX TOMBOL SILANG PUTIH - INI BUG TADI */
-html.dark .close-btn{background:#2B0A12!important; border-color:#E8B86D!important; color:#FDE8C9!important}
-html.dark #homeDetailModal .close-btn,
-html.dark #detailModal .close-btn,
-html.dark #createModal .close-btn,
-html.dark #editModal .close-btn,
-html.dark #deleteModal .close-btn,
-html.dark #notifModal .close-btn,
-html.dark #rulesModal .close-btn{background:#2B0A12!important; color:#FDE8C9!important; border-color:#E8B86D!important}
-/* FIX REAKSI PUTIH - INI BUG TADI */
-html.dark .react-btn{background:#2B0A12!important; border-color:#5D0F1F!important; color:#FDE8C9!important}
-html.dark .react-btn:hover{background:#3a1520!important}
-html.dark #iklanCarousel div{background:#2B0A12!important; border-color:#5D0F1F!important; color:#FFF8E7!important}
-html.dark #topConfessList div{background:#2B0A12!important; color:#FFF8E7!important}
-html.dark #myConfessList div{background:#2B0A12!important; color:#FFF8E7!important}
-html.dark #toast{background:#E8B86D!important; color:#2B0A12!important}
+html.dark .cat-badge{background:#E8B86D!important; color:#2B0A12!important}
+html.dark input, html.dark textarea, html.dark select{background:#2B0A12!important; border-color:#5D0F1F!important; color:#FFF8E7!important}
+html.dark .close-btn, html.dark .react-btn, html.dark .share-btn{background:#2B0A12!important; border-color:#E8B86D!important; color:#FDE8C9!important}
+html.dark #homeDetailModal > div, html.dark #detailModal > div, html.dark #createModal > div, html.dark #editModal > div, html.dark #deleteModal > div, html.dark #notifModal > div, html.dark #rulesModal > div{background: linear-gradient(135deg, #2B0A12 0%, #3a1520 100%)!important; border-color:#E8B86D!important; color:#FFF8E7!important}
 </style>
 </head>
 <body>
@@ -87,8 +46,9 @@ html.dark #toast{background:#E8B86D!important; color:#2B0A12!important}
 <h1 class="text-[36px] font-extrabold text-maroon mt-3">Cerita<span class="text-maroon2">Kita</span></h1>
 <button onclick="enterApp()" class="w-full mt-5 bg-gradient-to-r from-maroon to-maroon2 text-[#FFF8E7] py-[14px] rounded-[14px] font-bold">Masuk sebagai anonimijon →</button>
 <div class="mt-3 text-[9px] opacity-40" id="connStatus">Menghubungkan...</div>
-<div class="mt-2 text-[8px] opacity-30" id="notifPermStatus">🔔 Notif: cek permission</div>
+<div class="mt-2 text-[8px] p-2 rounded-lg border text-left" id="notifPermStatus">🔔 Cek support...</div>
 </div></div></div>
+
 <div class="max-w-[1200px] mx-auto px-4 pb-[120px]">
 <header class="sticky top-0 z-20 soft-header px-4 py-3.5 flex items-center justify-between -mx-4 mb-5">
 <div class="flex items-center gap-2.5 font-bold text-maroon"><img src="logo.png.jpg" class="w-9 h-9 rounded-full border-2 border-maroon">Cerita<br>Kita</div>
@@ -97,87 +57,60 @@ html.dark #toast{background:#E8B86D!important; color:#2B0A12!important}
 <button id="darkToggle" onclick="toggleDark()" class="w-9 h-9 bg-white border-2 border-cream rounded-full grid place-items-center">🌙</button>
 <div id="myLevelHeader" class="text-[10px] bg-gradient-to-r from-maroon to-maroon2 text-[#FFF8E7] px-3 py-1.5 rounded-full font-bold">🌱 LV.1</div>
 </div></header>
+
 <div id="view-home" class="view active space-y-4">
-<div onclick="openHomeDetail('rules')" class="soft-card clickable rounded-[22px] p-5">
-<div class="flex justify-between items-center"><h2 class="font-extrabold text-maroon">📜 Rules</h2><span class="text-[10px] opacity-40">tap untuk detail →</span></div>
-<div id="homeRules" class="mt-3 text-[12px] leading-6 opacity-80 line-clamp-3">Loading...</div>
-</div>
-<div onclick="openHomeDetail('pengumuman')" class="rounded-[22px] p-5 text-[#FFF8E7] border-[2.5px] border-maroon cursor-pointer active:translate-x-[2px] active:translate-y-[2px]" style="background: linear-gradient(135deg, #5D0F1F 0%, #8B1E3F 100%); box-shadow: 5px 5px 0px #2B0A12">
-<div class="flex justify-between items-center"><h2 class="font-extrabold">📢 Pengumuman</h2><span class="text-[10px] opacity-60">tap →</span></div>
-<div id="homePengumuman" class="mt-3 text-[12px] leading-6 line-clamp-3">Belum ada pengumuman</div>
-<div id="pengumumanDate" class="mt-2 text-[9px] opacity-50"></div>
-</div>
-<div class="soft-card-gold rounded-[22px] p-5 overflow-hidden">
-<div class="flex justify-between items-center"><h2 class="font-extrabold text-maroon">💰 Iklan / Sponsor</h2><span class="text-[9px] bg-gold text-maroon px-2.5 py-1 rounded-full font-bold" id="iklanCount">0 ADS</span></div>
-<div id="iklanCarousel" class="mt-3 flex gap-3 overflow-x-auto scrollbar-hide snap-x snap-mandatory pb-2" style="scroll-behavior:smooth"></div>
-<div class="text-[9px] opacity-40 mt-1">geser → auto scroll 3 detik • tap untuk kontak</div>
-</div>
+<div onclick="openHomeDetail('rules')" class="soft-card clickable rounded-[22px] p-5 cursor-pointer"><div class="flex justify-between"><h2 class="font-extrabold text-maroon">📜 Rules</h2><span class="text-[10px] opacity-40">tap →</span></div><div id="homeRules" class="mt-3 text-[12px] leading-6 opacity-80 line-clamp-3">Loading...</div></div>
+<div onclick="openHomeDetail('pengumuman')" class="rounded-[22px] p-5 text-[#FFF8E7] border-[2.5px] border-maroon cursor-pointer" style="background: linear-gradient(135deg, #5D0F1F 0%, #8B1E3F 100%); box-shadow: 5px 5px 0px #2B0A12"><div class="flex justify-between"><h2 class="font-extrabold">📢 Pengumuman</h2><span class="text-[10px] opacity-60">tap →</span></div><div id="homePengumuman" class="mt-3 text-[12px] leading-6 line-clamp-3">Belum ada</div><div id="pengumumanDate" class="mt-2 text-[9px] opacity-50"></div></div>
+<div class="soft-card-gold rounded-[22px] p-5 overflow-hidden"><div class="flex justify-between"><h2 class="font-extrabold text-maroon">💰 Iklan</h2><span class="text-[9px] bg-gold text-maroon px-2.5 py-1 rounded-full font-bold" id="iklanCount">0 ADS</span></div><div id="iklanCarousel" class="mt-3 flex gap-3 overflow-x-auto scrollbar-hide pb-2"></div></div>
 <div class="grid grid-cols-2 gap-3"><div class="soft-card rounded-[18px] py-5 text-center"><div class="font-extrabold text-maroon text-[26px]" id="lTotal">0</div><div class="text-[9px] font-bold opacity-60">TOTAL</div></div><div class="soft-card rounded-[18px] py-5 text-center"><div class="font-extrabold text-maroon text-[26px]" id="lStreak">0🔥</div><div class="text-[9px] font-bold opacity-60">STREAK</div></div></div>
-<footer class="text-center py-8 opacity-40"><div class="text-[11px]">☁️ cozzy place to confess</div><div class="text-[9px] mt-1">Human/Error 2026 • v7.4 push + no white</div></footer>
+<footer class="text-center py-8 opacity-40"><div class="text-[11px]">☁️ cozzy place to confess</div><div class="text-[9px] mt-1">v7.6 clean - all bug fixed</div></footer>
 </div>
+
 <div id="view-feed" class="view">
-<input id="searchM" oninput="handleSearch(this.value)" placeholder="🔍 Cari..." class="md:hidden w-full bg-white border-2 border-cream rounded-full px-4 py-3 text-[12px] mb-3 outline-none">
-<input id="search" oninput="handleSearch(this.value)" placeholder="Cari #tag / FICT / FMB..." class="hidden md:block w-full bg-white border-2 border-cream rounded-full px-4 py-3 text-[11px] mb-4 outline-none">
+<input id="searchM" oninput="handleSearch(this.value)" placeholder="🔍 Cari..." class="md:hidden w-full bg-white border-2 border-cream rounded-full px-4 py-3 text-[12px] mb-3">
+<input id="search" oninput="handleSearch(this.value)" placeholder="Cari #tag / FICT..." class="hidden md:block w-full bg-white border-2 border-cream rounded-full px-4 py-3 text-[11px] mb-4">
 <div class="soft-card rounded-[18px] p-4 mb-4"><div class="font-bold text-[12px] text-maroon">🏆 Top Confess</div><div id="topConfessList" class="mt-3 flex flex-col gap-2"></div></div>
 <div class="flex gap-2 overflow-auto pb-2 scrollbar-hide">
 <button class="filter-btn active bg-maroon text-[#FFF8E7] border-2 border-maroon px-5 py-2 rounded-full text-[11px]" onclick="setCat('all',this)">Semua</button>
 <button class="filter-btn bg-white border-2 border-maroon px-5 py-2 rounded-full text-[11px]" onclick="setCat('Perasaan',this)">💘 Perasaan</button>
 <button class="filter-btn bg-white border-2 border-maroon px-5 py-2 rounded-full text-[11px]" onclick="setCat('Curhat Dosen',this)">😤 Dosen</button>
 <button class="filter-btn bg-white border-2 border-maroon px-5 py-2 rounded-full text-[11px]" onclick="setCat('Cari Teman',this)">🤝 Teman</button>
+<button class="filter-btn bg-white border-2 border-maroon px-5 py-2 rounded-full text-[11px]" onclick="setCat('MABA',this)">🎓 MABA</button>
 <button class="filter-btn bg-white border-2 border-maroon px-5 py-2 rounded-full text-[11px]" onclick="setCat('Random',this)">🎉 Random</button>
 </div><div id="feed" class="masonry mt-4 gap-4"></div></div>
+
 <div id="view-game" class="view space-y-4">
-<div class="soft-card rounded-[24px] p-5 relative overflow-hidden">
-  <div class="flex justify-between items-start"><div class="flex items-center gap-2"><span class="w-8 h-8 bg-gradient-to-br from-gold to-peach border-2 border-maroon rounded-full grid place-items-center">🎡</span><div><div class="font-extrabold text-maroon text-[14px]">Spin Harian</div><div class="text-[10px] opacity-50">Push notif aktif</div></div></div><div class="text-right"><div class="text-[9px] bg-gradient-to-r from-maroon to-maroon2 text-[#FFF8E7] px-2.5 py-1 rounded-full font-bold" id="spinStreakLabel">STREAK 0🔥</div><div class="text-[9px] opacity-40 mt-1" id="spinDateLabel">belum spin</div></div></div>
-  <div class="mt-6 flex flex-col items-center"><div class="relative"><div class="absolute -top-3 left-1/2 -translate-x-1/2 z-20 text-[28px]">▼</div><canvas id="spinCanvas" width="160" height="160" class="w-[160px] h-[160px] rounded-full border-[4px] border-maroon shadow-[0px_6px_0px_#5D0F1F]"></canvas><div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 bg-white border-[3px] border-maroon rounded-full grid place-items-center text-[20px] z-10">🎁</div></div></div>
-  <button onclick="doSpin()" id="spinBtn" class="w-full mt-6 bg-gradient-to-r from-maroon to-maroon2 text-[#FFF8E7] py-3 rounded-[14px] font-extrabold text-[12px] shadow-[0px_4px_0px_#2B0A12]">SPIN SEKARANG 🎉</button><div id="spinResult" class="text-[12px] text-center mt-3 font-extrabold text-maroon min-h-[20px]"></div>
+<div class="soft-card rounded-[24px] p-5"><div class="flex justify-between"><div class="flex items-center gap-2"><span class="w-8 h-8 bg-gold border-2 border-maroon rounded-full grid place-items-center">🎡</span><div><div class="font-extrabold text-[14px]">Spin Harian</div><div class="text-[10px] opacity-50">Push notif aktif</div></div></div><div class="text-right"><div class="text-[9px] bg-maroon text-white px-2.5 py-1 rounded-full font-bold" id="spinStreakLabel">STREAK 0🔥</div><div class="text-[9px] opacity-40 mt-1" id="spinDateLabel">belum spin</div></div></div><div class="mt-6 flex flex-col items-center"><div class="relative"><div class="absolute -top-3 left-1/2 -translate-x-1/2 z-20 text-[28px]">▼</div><canvas id="spinCanvas" width="160" height="160" class="w-[160px] h-[160px] rounded-full border-[4px] border-maroon"></canvas><div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 bg-white border-[3px] border-maroon rounded-full grid place-items-center text-[20px]">🎁</div></div></div><button onclick="doSpin()" id="spinBtn" class="w-full mt-6 bg-gradient-to-r from-maroon to-maroon2 text-white py-3 rounded-[14px] font-extrabold text-[12px]">SPIN SEKARANG 🎉</button><div id="spinResult" class="text-[12px] text-center mt-3 font-extrabold min-h-[20px]"></div></div>
+<div class="soft-card rounded-[24px] p-5"><div class="flex justify-between"><div><div class="font-extrabold text-[13px]">🐨 Catch The Koala!</div><div class="text-[10px] opacity-60">Tangkap dalam 15 detik</div></div><div class="text-right"><div class="font-extrabold text-[18px]" id="koalaScore">0</div><div class="text-[9px]" id="koalaTimer">15s</div></div></div><div class="koala-area mt-3" id="koalaArea"><div class="absolute inset-0 grid place-items-center text-[11px] opacity-30">Klik START!</div></div><button id="koalaStartBtn" onclick="startKoalaGame()" class="w-full mt-3 bg-maroon text-white py-2.5 rounded-xl font-bold text-[11px]">START CATCH 🐨</button><div id="koalaResult" class="text-[11px] text-center mt-2 font-bold"></div></div>
 </div>
-<div class="soft-card rounded-[24px] p-5">
-<div class="flex justify-between"><div><div class="font-extrabold text-[13px] text-maroon">🐨 Catch The Koala!</div><div class="text-[10px] opacity-60">Tangkap dalam 15 detik</div></div><div class="text-right"><div class="font-extrabold text-maroon text-[18px]" id="koalaScore">0</div><div class="text-[9px]" id="koalaTimer">15s</div></div></div>
-<div class="koala-area mt-3 border-maroon" id="koalaArea"><div class="absolute inset-0 grid place-items-center text-[11px] opacity-30">Klik START!</div></div>
-<button id="koalaStartBtn" onclick="startKoalaGame()" class="w-full mt-3 bg-gradient-to-r from-maroon to-maroon2 text-[#FFF8E7] py-2.5 rounded-xl font-bold text-[11px]">START CATCH 🐨</button>
-<div id="koalaResult" class="text-[11px] text-center mt-2 font-bold text-maroon"></div>
-</div>
-</div>
+
 <div id="view-profile" class="view space-y-4">
-<div class="soft-card rounded-[22px] p-6 text-center"><div class="w-16 h-16 mx-auto rounded-full border-[3px] border-maroon bg-cream2 grid place-items-center text-[32px]">🦊</div><h2 class="font-extrabold text-maroon mt-4" id="profileName">anonimijon</h2><div class="mt-5 grid grid-cols-3 gap-2.5"><div class="bg-broken border-2 border-cream rounded-[14px] py-3.5"><div class="font-extrabold text-maroon" id="profileLevel">LV.1</div><div class="text-[9px]">LEVEL</div></div><div class="bg-broken border-2 border-cream rounded-[14px] py-3.5"><div class="font-extrabold text-maroon" id="profileXP">0</div><div class="text-[9px]">XP</div></div><div class="bg-broken border-2 border-cream rounded-[14px] py-3.5"><div class="font-extrabold text-maroon" id="profileStreak">0🔥</div><div class="text-[9px]">STREAK</div></div></div>
-<button onclick="requestNotifPermission()" class="mt-4 w-full bg-gold text-maroon py-2 rounded-xl text-[11px] font-bold border-2 border-maroon">🔔 Aktifkan Notif HP</button>
+<div class="soft-card rounded-[22px] p-6 text-center"><div class="w-16 h-16 mx-auto rounded-full border-[3px] border-maroon bg-cream2 grid place-items-center text-[32px]">🦊</div><h2 class="font-extrabold mt-4" id="profileName">anonimijon</h2><div class="mt-5 grid grid-cols-3 gap-2.5"><div class="bg-broken border-2 border-cream rounded-[14px] py-3.5"><div class="font-extrabold" id="profileLevel">LV.1</div><div class="text-[9px]">LEVEL</div></div><div class="bg-broken border-2 border-cream rounded-[14px] py-3.5"><div class="font-extrabold" id="profileXP">0</div><div class="text-[9px]">XP</div></div><div class="bg-broken border-2 border-cream rounded-[14px] py-3.5"><div class="font-extrabold" id="profileStreak">0🔥</div><div class="text-[9px]">STREAK</div></div></div>
+<button id="profileNotifBtn" onclick="requestNotifPermission()" class="mt-4 w-full py-2 rounded-xl text-[11px] font-bold border-2 border-maroon">🔔 Aktifkan Notif HP</button>
+<div id="notifSupportInfo" class="mt-2 text-[9px] opacity-70 text-left bg-white/70 p-3 rounded-xl border leading-5"></div>
 </div>
-<div class="soft-card rounded-[18px] p-4"><h3 class="font-bold text-[12px] text-maroon">📝 Confess Gue</h3><div id="myConfessList" class="mt-3 space-y-2 text-[11px]"></div></div>
-<footer class="text-center py-6 opacity-30"><div class="text-[9px]">☁️ Human/Error 2026</div></footer>
+<div class="soft-card rounded-[18px] p-4"><h3 class="font-bold text-[12px]">📝 Confess Gue</h3><div id="myConfessList" class="mt-3 space-y-2 text-[11px]"></div></div>
 </div>
 </div>
+
 <div class="bottom-nav">
-<button id="nav-home" class="active" onclick="switchTab('home')"><span class="icon">🏠</span>Home</button>
-<button id="nav-feed" onclick="switchTab('feed')"><span class="icon">💌</span>Confess</button>
-<button id="nav-game" onclick="switchTab('game')"><span class="icon">🎮</span>Game</button>
-<button id="nav-profile" onclick="switchTab('profile')"><span class="icon">👤</span>Profil</button>
+<button id="nav-home" class="active" onclick="switchTab('home')">🏠Home</button>
+<button id="nav-feed" onclick="switchTab('feed')">💌Confess</button>
+<button id="nav-game" onclick="switchTab('game')">🎮Game</button>
+<button id="nav-profile" onclick="switchTab('profile')">👤Profil</button>
 </div>
-<button id="spillBtn" onclick="openCreate()" class="fixed bottom-[88px] right-5 z-40 bg-gradient-to-r from-maroon to-maroon2 text-[#FFF8E7] px-6 py-3.5 rounded-full font-bold text-[13px] shadow hidden">➕ Spill</button>
+<button id="spillBtn" onclick="openCreate()" class="fixed bottom-[88px] right-5 z-40 bg-gradient-to-r from-maroon to-maroon2 text-white px-6 py-3.5 rounded-full font-bold text-[13px] shadow hidden">➕ Spill</button>
 
-<div id="homeDetailModal" class="fixed inset-0 z-[90] bg-[#2b0a12]/40 backdrop-blur-[12px] hidden place-items-center p-4"><div class="bg-[#FFFBF0] border-[3px] border-maroon rounded-[24px] max-w-[500px] w-full max-h-[85vh] flex flex-col overflow-hidden shadow-[8px_8px_0px_#5D0F1F]">
-<div class="flex items-center justify-between p-5 border-b-2 border-cream bg-white"><div class="flex items-center gap-2"><div class="w-8 h-8 bg-cream border-2 border-maroon rounded-full grid place-items-center text-[14px]" id="homeDetailIcon">📜</div><div class="font-extrabold text-maroon text-[14px]" id="homeDetailTitle">Detail</div></div><button onclick="closeHomeDetail()" class="close-btn">✕</button></div>
-<div class="p-6 overflow-auto space-y-4">
-<img id="homeDetailFoto" class="hidden w-full h-64 object-cover rounded-xl border-2 border-cream">
-<div id="homeDetailContent" class="text-[13px] leading-7"></div>
-<div id="homeDetailKontak" class="hidden mt-4 pt-4 border-t-2 border-dashed border-cream">
-<div class="font-bold text-maroon text-[12px]">📞 Kontak Iklan</div>
-<div id="homeDetailKontakContent" class="mt-2 text-[12px] space-y-2"></div>
-<div class="mt-4 grid grid-cols-2 gap-2" id="kontakBtnWrap">
-<button id="waBtn" class="hidden bg-green-500 text-white py-2.5 rounded-xl font-bold text-[11px]">💬 WhatsApp</button>
-<button id="igBtn" class="hidden bg-gradient-to-r from-purple-500 to-pink-500 text-white py-2.5 rounded-xl font-bold text-[11px]">📸 Instagram</button>
-</div>
-</div>
-</div>
-</div></div>
+<div id="homeDetailModal" class="fixed inset-0 z-[90] bg-[#2b0a12]/40 backdrop-blur-[12px] hidden place-items-center p-4"><div class="bg-[#FFFBF0] border-[3px] border-maroon rounded-[24px] max-w-[500px] w-full max-h-[85vh] flex flex-col overflow-hidden"><div class="flex items-center justify-between p-5 border-b-2 border-cream bg-white"><div class="flex items-center gap-2"><div class="w-8 h-8 bg-cream border-2 border-maroon rounded-full grid place-items-center text-[14px]" id="homeDetailIcon">📜</div><div class="font-extrabold text-[14px]" id="homeDetailTitle">Detail</div></div><button onclick="closeHomeDetail()" class="close-btn">✕</button></div><div class="p-6 overflow-auto space-y-4"><img id="homeDetailFoto" class="hidden w-full h-64 object-cover rounded-xl border-2"><div id="homeDetailContent" class="text-[13px] leading-7"></div><div id="homeDetailKontak" class="hidden mt-4 pt-4 border-t-2 border-dashed"><div class="font-bold text-[12px]">📞 Kontak</div><div id="homeDetailKontakContent" class="mt-2 text-[12px]"></div><div class="mt-4 grid grid-cols-2 gap-2" id="kontakBtnWrap"><button id="waBtn" class="hidden bg-green-500 text-white py-2.5 rounded-xl font-bold text-[11px]">💬 WhatsApp</button><button id="igBtn" class="hidden bg-gradient-to-r from-purple-500 to-pink-500 text-white py-2.5 rounded-xl font-bold text-[11px]">📸 Instagram</button></div></div></div></div></div>
+<div id="rulesModal" class="fixed inset-0 z-[110] bg-[#2b0a12]/60 backdrop-blur-md hidden place-items-center p-4"><div class="bg-[#FFFBF0] border-[3px] border-maroon rounded-[22px] max-w-[400px] w-full p-6"><h3 class="font-extrabold">📜 Rules</h3><ul class="mt-3 text-[11px] list-disc pl-4"><li>Dilarang SARA, porn, 18+</li><li>Dilarang spam, judi, pinjol</li><li>Saling respect</li></ul><label class="flex items-center gap-2 mt-4 text-[11px] font-bold"><input id="agreeCheck" type="checkbox"> Gue setuju</label><button onclick="agreeRules()" class="w-full mt-4 bg-maroon text-white py-3 rounded-xl font-bold">Masuk →</button></div></div>
+<div id="notifModal" class="fixed inset-0 z-[85] bg-[#2b0a12]/40 backdrop-blur-md hidden place-items-center p-4"><div class="bg-broken border-[3px] border-maroon rounded-[22px] max-w-[420px] w-full p-5 max-h-[80vh] overflow-auto"><div class="flex justify-between"><h3 class="font-bold">🔔 Notifikasi</h3><button onclick="closeNotif()" class="close-btn">✕</button></div><div id="notifList" class="mt-4 flex flex-col gap-2 text-[11px]"></div><button onclick="clearNotif()" class="w-full mt-4 bg-cream border-2 py-2 rounded-xl text-[11px] font-bold">Hapus Semua</button></div></div>
+<div id="createModal" class="fixed inset-0 z-[80] bg-[#2b0a12]/35 backdrop-blur-md hidden place-items-center p-4"><div class="bg-broken border-[3px] border-maroon rounded-[22px] max-w-[460px] w-full p-5 max-h-[90vh] overflow-auto"><div class="flex justify-between mb-4"><h3 class="font-bold">Spill ONLINE</h3><button onclick="closeCreate()" class="close-btn">✕</button></div><div class="space-y-3"><div class="grid grid-cols-2 gap-3"><div><label class="text-[11px]">Untuk Siapa</label><input id="toInput" class="mt-1 w-full bg-white border-2 rounded-xl px-3 py-2.5 text-[12px]"></div><div><label class="text-[11px]">Kategori</label><select id="catInput" class="mt-1 w-full bg-white border-2 rounded-xl px-3 py-2.5 text-[12px]"><option>Perasaan</option><option>Curhat Dosen</option><option>Cari Teman</option><option>MABA</option><option>Random</option><option>Curhat Kuliah</option></select></div></div><div><div id="avatarPicker" class="mt-1 flex gap-1.5 overflow-auto scrollbar-hide"></div><div id="colorPicker" class="mt-2 flex gap-1.5"></div></div><div><label class="text-[11px]">Isi Confess <span id="charCount" class="opacity-50">0/500</span></label><textarea id="msgInput" maxlength="500" placeholder="mau curcol apa?" class="mt-1 w-full bg-white border-2 rounded-xl px-3 py-2.5 text-[12px] min-h-[110px]"></textarea><div class="mt-3 grid grid-cols-2 gap-2"><button type="button" onclick="document.getElementById('photoInputGallery').click()" class="bg-white border-2 rounded-xl px-3 py-2.5 text-[11px]">🖼️ Galeri</button><button type="button" onclick="document.getElementById('photoInputCamera').click()" class="bg-white border-2 rounded-xl px-3 py-2.5 text-[11px]">📸 Kamera</button></div><input type="file" id="photoInputGallery" accept="image/*" class="hidden" onchange="previewPhoto(event)"><input type="file" id="photoInputCamera" accept="image/*" capture="environment" class="hidden" onchange="previewPhoto(event)"><img id="photoPreview" class="hidden w-full h-52 object-cover rounded-xl border-2 mt-2"><button id="removePhoto" onclick="removePhoto()" class="hidden text-[10px] bg-red-500 text-white px-3 py-1 rounded-full mt-2">Hapus Foto</button><div id="photoSizeInfo" class="text-[9px] opacity-40 mt-1"></div></div><button id="sendBtn" onclick="sendConfess()" class="w-full bg-maroon text-white py-3 rounded-xl font-bold">Kirim ONLINE ✈️</button></div></div></div>
+<div id="editModal" class="fixed inset-0 z-[85] bg-[#2b0a12]/50 backdrop-blur-md hidden place-items-center p-4"><div class="bg-broken border-[3px] border-maroon rounded-[22px] max-w-[460px] w-full p-5"><div class="flex justify-between mb-4"><h3 class="font-bold">Edit ✏️</h3><button onclick="closeEdit()" class="close-btn">✕</button></div><div class="space-y-3"><div class="grid grid-cols-2 gap-3"><div><label class="text-[11px]">Untuk Siapa</label><input id="editToInput" class="mt-1 w-full bg-white border-2 rounded-xl px-3 py-2.5 text-[12px]"></div><div><label class="text-[11px]">Kategori</label><select id="editCatInput" class="mt-1 w-full bg-white border-2 rounded-xl px-3 py-2.5 text-[12px]"><option>Perasaan</option><option>Curhat Dosen</option><option>Cari Teman</option><option>MABA</option><option>Random</option><option>Curhat Kuliah</option></select></div></div><textarea id="editMsgInput" maxlength="500" class="mt-1 w-full bg-white border-2 rounded-xl px-3 py-2.5 text-[12px] min-h-[100px]"></textarea><button id="saveEditBtn" onclick="saveEdit()" class="w-full bg-maroon text-white py-3 rounded-xl font-bold">Simpan 💾</button></div></div></div>
+<div id="deleteModal" class="fixed inset-0 z-[95] bg-[#2b0a12]/50 backdrop-blur-md hidden place-items-center p-4"><div class="bg-white border-[3px] border-maroon rounded-[22px] max-w-[360px] w-full p-6 text-center"><h3 class="font-bold mt-2">Hapus Confess?</h3><div class="grid grid-cols-2 gap-2 mt-4"><button onclick="closeDelete()" class="bg-broken border-2 py-2.5 rounded-xl font-bold text-[12px]">Batal</button><button id="confirmDeleteBtn" class="bg-red-600 text-white py-2.5 rounded-xl font-bold text-[12px]">Ya, Hapus</button></div></div></div>
+<div id="detailModal" class="fixed inset-0 z-[90] bg-[#2b0a12]/40 backdrop-blur-[18px] hidden place-items-center p-4"><div class="bg-broken border-[3px] border-maroon rounded-[24px] max-w-[560px] w-full max-h-[88vh] flex flex-col overflow-hidden"><div class="flex items-center justify-between p-4 border-b-2 bg-white"><div class="flex items-center gap-2"><div class="w-9 h-9 rounded-full border-2 border-maroon grid place-items-center" id="detailAvatar">🦊</div><div><div class="font-bold text-[13px]" id="detailName"></div><div class="text-[10px] opacity-50" id="detailTime"></div></div></div><button onclick="closeDetail()" class="close-btn">✕</button></div><div class="p-5 overflow-auto" id="detailContent"></div></div></div>
+<div id="toast" class="fixed bottom-[90px] left-1/2 -translate-x-1/2 bg-maroon text-white px-6 py-3 rounded-full text-[13px] font-bold shadow translate-y-[150px] opacity-0 transition-all duration-300 z-[200]"></div>
+<canvas id="storyCanvas" width="1080" height="1920" class="hidden"></canvas>
 
-<div id="rulesModal" class="fixed inset-0 z-[110] bg-[#2b0a12]/60 backdrop-blur-md hidden place-items-center p-4"><div class="bg-[#FFFBF0] border-[3px] border-maroon rounded-[22px] max-w-[400px] w-full p-6"><h3 class="font-extrabold text-maroon">📜 Rules</h3><ul class="mt-3 text-[11px] list-disc pl-4"><li>Dilarang SARA, porn, 18+</li><li>Dilarang spam, judi, pinjol</li><li>Saling respect</li></ul><label class="flex items-center gap-2 mt-4 text-[11px] font-bold"><input id="agreeCheck" type="checkbox" class="w-4 h-4"> Gue setuju</label><button onclick="agreeRules()" class="w-full mt-4 bg-maroon text-[#FFF8E7] py-3 rounded-xl font-bold">Masuk →</button></div></div>
-<div id="notifModal" class="fixed inset-0 z-[85] bg-[#2b0a12]/40 backdrop-blur-md hidden place-items-center p-4"><div class="bg-broken border-[3px] border-maroon rounded-[22px] max-w-[420px] w-full p-5 max-h-[80vh] overflow-auto"><div class="flex justify-between"><h3 class="font-bold text-maroon">🔔 Notifikasi</h3><button onclick="closeNotif()" class="close-btn">✕</button></div><div id="notifList" class="mt-4 flex flex-col gap-2 text-[11px]"></div><button onclick="clearNotif()" class="w-full mt-4 bg-cream border-2 py-2 rounded-xl text-[11px] font-bold">Hapus Semua</button></div></div>
-<div id="createModal" class="fixed inset-0 z-[80] bg-[#2b0a12]/35 backdrop-blur-md hidden place-items-center p-4"><div class="bg-broken border-[3px] border-maroon rounded-[22px] max-w-[460px] w-full p-5 max-h-[90vh] overflow-auto"><div class="flex justify-between mb-4"><h3 class="font-bold text-maroon">Spill ONLINE</h3><button onclick="closeCreate()" class="close-btn">✕</button></div><div class="space-y-3"><div class="grid grid-cols-2 gap-3"><div><label class="text-[11px]">Untuk Siapa</label><input id="toInput" class="mt-1 w-full bg-white border-2 border-cream rounded-xl px-3 py-2.5 text-[12px]"></div><div><label class="text-[11px]">Kategori</label><select id="catInput" class="mt-1 w-full bg-white border-2 border-cream rounded-xl px-3 py-2.5 text-[12px]"><option>Perasaan</option><option>Curhat Dosen</option><option>Cari Teman</option><option>Random</option><option>Curhat Kuliah</option></select></div></div><div><div id="avatarPicker" class="mt-1 flex gap-1.5 overflow-auto scrollbar-hide"></div><div id="colorPicker" class="mt-2 flex gap-1.5"></div></div><div><label class="text-[11px]">Isi Confess <span id="charCount" class="opacity-50">0/500</span></label><textarea id="msgInput" maxlength="500" placeholder="mau curcol apa?" class="mt-1 w-full bg-white border-2 border-cream rounded-xl px-3 py-2.5 text-[12px] min-h-[110px] resize-none"></textarea><div class="mt-3 grid grid-cols-2 gap-2"><button type="button" onclick="document.getElementById('photoInputGallery').click()" class="bg-white border-2 border-cream rounded-xl px-3 py-2.5 text-[11px]">🖼️ Galeri</button><button type="button" onclick="document.getElementById('photoInputCamera').click()" class="bg-white border-2 border-cream rounded-xl px-3 py-2.5 text-[11px]">📸 Kamera</button></div><input type="file" id="photoInputGallery" accept="image/*" class="hidden" onchange="previewPhoto(event)"><input type="file" id="photoInputCamera" accept="image/*" capture="environment" class="hidden" onchange="previewPhoto(event)"><img id="photoPreview" class="hidden w-full h-52 object-cover rounded-xl border-2 border-cream mt-2"><button id="removePhoto" onclick="removePhoto()" class="hidden text-[10px] bg-red-500 text-white px-3 py-1 rounded-full mt-2">Hapus Foto</button><div id="photoSizeInfo" class="text-[9px] opacity-40 mt-1"></div></div><button id="sendBtn" onclick="sendConfess()" class="w-full bg-maroon text-[#FFF8E7] py-3 rounded-xl font-bold">Kirim ONLINE ✈️</button></div></div></div>
-<div id="editModal" class="fixed inset-0 z-[85] bg-[#2b0a12]/50 backdrop-blur-md hidden place-items-center p-4"><div class="bg-broken border-[3px] border-maroon rounded-[22px] max-w-[460px] w-full p-5"><div class="flex justify-between mb-4"><h3 class="font-bold text-maroon">Edit ✏️</h3><button onclick="closeEdit()" class="close-btn">✕</button></div><div class="space-y-3"><div class="grid grid-cols-2 gap-3"><div><label class="text-[11px]">Untuk Siapa</label><input id="editToInput" class="mt-1 w-full bg-white border-2 rounded-xl px-3 py-2.5 text-[12px]"></div><div><label class="text-[11px]">Kategori</label><select id="editCatInput" class="mt-1 w-full bg-white border-2 rounded-xl px-3 py-2.5 text-[12px]"><option>Perasaan</option><option>Curhat Dosen</option><option>Cari Teman</option><option>Random</option><option>Curhat Kuliah</option></select></div></div><textarea id="editMsgInput" maxlength="500" class="mt-1 w-full bg-white border-2 rounded-xl px-3 py-2.5 text-[12px] min-h-[100px]"></textarea><button id="saveEditBtn" onclick="saveEdit()" class="w-full bg-maroon text-white py-3 rounded-xl font-bold">Simpan 💾</button></div></div></div>
-<div id="deleteModal" class="fixed inset-0 z-[95] bg-[#2b0a12]/50 backdrop-blur-md hidden place-items-center p-4"><div class="bg-white border-[3px] border-maroon rounded-[22px] max-w-[360px] w-full p-6 text-center"><h3 class="font-bold text-maroon mt-2">Hapus Confess?</h3><div class="grid grid-cols-2 gap-2 mt-4"><button onclick="closeDelete()" class="bg-broken border-2 py-2.5 rounded-xl font-bold text-[12px]">Batal</button><button id="confirmDeleteBtn" class="bg-red-600 text-white py-2.5 rounded-xl font-bold text-[12px]">Ya, Hapus</button></div></div></div>
-<div id="detailModal" class="fixed inset-0 z-[90] bg-[#2b0a12]/40 backdrop-blur-[18px] hidden place-items-center p-4"><div class="bg-broken border-[3px] border-maroon rounded-[24px] max-w-[560px] w-full max-h-[88vh] flex flex-col overflow-hidden"><div class="flex items-center justify-between p-4 border-b-2 bg-white"><div class="flex items-center gap-2"><div class="w-9 h-9 rounded-full border-2 border-maroon grid place-items-center" id="detailAvatar">🦊</div><div><div class="font-bold text-maroon text-[13px]" id="detailName"></div><div class="text-[10px] opacity-50" id="detailTime"></div></div></div><button onclick="closeDetail()" class="close-btn">✕</button></div><div class="p-5 overflow-auto" id="detailContent"></div></div></div>
-<div id="toast" class="fixed bottom-[90px] left-1/2 -translate-x-1/2 bg-maroon text-[#FFF8E7] px-6 py-3 rounded-full text-[13px] font-bold shadow translate-y-[150px] opacity-0 transition-all duration-300 z-[200]"></div>
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
 import { getFirestore, collection, addDoc, query, orderBy, onSnapshot, serverTimestamp, doc, updateDoc, arrayUnion, deleteDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
@@ -191,30 +124,109 @@ let confesses=[]; let activeCat='all'; let savedScroll=0; let editId=null; let d
 let homeDataCache={rules:'',pengumuman:'',pengumumanDate:'',iklanList:[]};
 let iklanInterval=null; let iklanPaused=false;
 
-// PUSH NOTIF HP BENERAN V7.4
-function updatePermStatus(){ let el=document.getElementById('notifPermStatus'); if(!el) return; if(!('Notification' in window)){ el.innerText='🔔 Browser tidak support notif'; return; } if(Notification.permission==='granted') el.innerText='✅ Notif HP AKTIF'; else if(Notification.permission==='denied') el.innerText='❌ Notif diblokir, aktifkan di setting browser'; else el.innerText='🔔 Klik "Aktifkan Notif HP" di profil'; }
-window.requestNotifPermission=async function(){ if(!('Notification' in window)){ alert('Browser tidak support notifikasi'); return; } let perm=await Notification.requestPermission(); updatePermStatus(); if(perm==='granted'){ showToast('Notif HP AKTIF! 🔔'); new Notification('Cerita Kita','{body: "Notifikasi aktif! Kalo ada yang komen confess kamu, bakal masuk HP!", icon: "logo.png.jpg"}'); } else { alert('Izin notif ditolak ta, aktifkan di setting browser > site settings > notifications > allow'); } }
-function pushHPNotif(title, body){ if(!('Notification' in window)) return; if(Notification.permission!=='granted') return; try{ if(document.hidden || !document.hasFocus()){ new Notification(title,{body, icon: 'logo.png.jpg', badge: 'logo.png.jpg', vibrate: [200,100,200]}); } }catch(e){} }
+// FIX V7.6 - NOTIF SUPPORT LENGKAP
+function checkNotifSupport(){
+  let info={supported:true, secure:true, permission:'default', reason:''};
+  if(!('Notification' in window)){ info.supported=false; info.reason='Browser tidak support Notification API'; return info; }
+  if(typeof window.isSecureContext!=='undefined' && !window.isSecureContext){ info.secure=false; info.reason='Butuh HTTPS, buka pakai https://'; return info; }
+  info.permission=Notification.permission;
+  if(info.permission==='denied') info.reason='Pernah blokir. Klik gembok 🔒 di address bar > Notifications > Allow';
+  return info;
+}
+function updatePermStatus(){
+  let el=document.getElementById('notifPermStatus');
+  let btn=document.getElementById('profileNotifBtn');
+  let infoEl=document.getElementById('notifSupportInfo');
+  let bell=document.getElementById('notifBell');
+  let s=checkNotifSupport();
+  if(!el) return;
+  if(!s.supported){
+    el.innerHTML='❌ '+s.reason;
+    el.className='mt-2 text-[8px] p-2 bg-red-100 rounded-lg border border-red-300 text-red-700 text-left';
+    if(btn){ btn.innerText='❌ Tidak Support'; btn.disabled=true; btn.className='mt-4 w-full bg-gray-300 text-gray-500 py-2 rounded-xl text-[11px] font-bold border-2'; }
+    if(infoEl) infoEl.innerHTML='🔴 GAK SUPPORT<br>Solusi: Update Chrome terbaru. iPhone harus Add to Home Screen dulu.';
+    if(bell){ bell.style.opacity='0.5'; }
+    return;
+  }
+  if(!s.secure){
+    el.innerHTML='⚠️ '+s.reason; el.className='mt-2 text-[8px] p-2 bg-yellow-100 rounded-lg border text-left';
+    if(infoEl) infoEl.innerHTML='🟡 BUTUH HTTPS<br>Buka dengan https:// bukan http://';
+    return;
+  }
+  if(s.permission==='granted'){
+    el.innerHTML='✅ AKTIF - Notif balasan akan masuk HP walau tab tertutup';
+    el.className='mt-2 text-[8px] p-2 bg-green-100 rounded-lg border border-green-300 text-green-700 text-left';
+    if(btn){ btn.innerText='✅ Notif Aktif'; btn.disabled=true; btn.className='mt-4 w-full bg-green-500 text-white py-2 rounded-xl text-[11px] font-bold border-2'; }
+    if(infoEl) infoEl.innerHTML='✅ AKTIF & SUPPORT<br>• Support: Ya ✅<br>• HTTPS: Ya ✅<br>• Izin: Granted ✅<br>• Notif balasan akan bunyi di HP';
+  } else if(s.permission==='denied'){
+    el.innerHTML='❌ Diblokir! Tap gembok 🔒 > Site settings > Notifications > Allow > Reload';
+    el.className='mt-2 text-[8px] p-2 bg-red-100 rounded-lg border border-red-300 text-red-700 text-left';
+    if(btn){ btn.innerText='🔧 Cara Buka Blokir'; btn.disabled=false; btn.className='mt-4 w-full bg-yellow-400 text-maroon py-2 rounded-xl text-[11px] font-bold border-2 border-maroon'; btn.onclick=()=>alert('1. Klik gembok 🔒 di kiri address bar\n2. Site settings\n3. Notifications -> Allow\n4. Reload halaman'); }
+    if(infoEl) infoEl.innerHTML='🔴 DIBLOKIR<br>• Kamu pernah klik Blokir<br>• Fix: Gembok > Notifications > Allow<br>• Lalu reload';
+  } else {
+    el.innerHTML='🔔 Belum aktif tapi support. Klik tombol di profil untuk aktifkan.';
+    el.className='mt-2 text-[8px] p-2 bg-white/70 rounded-lg border text-left';
+    if(btn){ btn.innerText='🔔 Aktifkan Notif HP'; btn.disabled=false; btn.className='mt-4 w-full bg-gold text-maroon py-2 rounded-xl text-[11px] font-bold border-2 border-maroon'; btn.onclick=()=>requestNotifPermission(); }
+    if(infoEl) infoEl.innerHTML='🟡 BELUM AKTIF TAPI SUPPORT<br>• Support: Ya ✅<br>• HTTPS: Ya ✅<br>• Izin: Default (belum ditanya)<br>• Klik tombol di atas, harus dari klik user';
+  }
+}
+window.requestNotifPermission=async function(){
+  let s=checkNotifSupport();
+  if(!s.supported){ alert('Browser tidak support notif. Pakai Chrome terbaru ya!'); return; }
+  if(!s.secure){ alert('Harus pakai HTTPS!'); return; }
+  try{
+    let perm=await Notification.requestPermission();
+    updatePermStatus();
+    if(perm==='granted'){
+      showToast('Notif AKTIF! 🔔');
+      try{ new Notification('Cerita Kita AKTIF! 🎉',{body:'Kalo ada yang bales confess kamu, masuk HP!', icon:'logo.png.jpg'}); }catch(e){}
+    } else { showToast('Izin ditolak'); updatePermStatus(); }
+  }catch(e){ alert('Error: '+e.message); }
+}
+function pushHPNotif(title, body){
+  let s=checkNotifSupport(); if(!s.supported || !s.secure) return;
+  if(Notification.permission!=='granted') return;
+  try{ new Notification(title,{body, icon:'logo.png.jpg', badge:'logo.png.jpg'}); }catch(e){}
+}
 updatePermStatus();
+
+// SHARE FIX V7.6
+function getShareText(c){ return `To: ${c.to}\n\n"${c.text}"\n\n#${c.cat} - via CeritaKita\n${location.href}`; }
+window.shareWA=function(fid){ let c=confesses.find(x=>x.firestoreId===fid); if(!c) return; window.open(`https://wa.me/?text=${encodeURIComponent(getShareText(c))}`,'_blank'); showToast('Buka WA...'); }
+window.shareIG=function(fid){ generateStoryImage(fid); showToast('Download gambar IG Story! 📸'); }
+window.shareWAStory=function(fid){ generateStoryImage(fid); showToast('Download buat WA Story! 📸'); }
+window.shareNative=async function(fid){
+  let c=confesses.find(x=>x.firestoreId===fid); if(!c) return;
+  if(navigator.share){ try{ await navigator.share({title:`Confess to ${c.to}`, text:c.text, url:location.href}); }catch(e){ if(e.name!=='AbortError') navigator.clipboard.writeText(getShareText(c)).then(()=>showToast('Copied! 📋')); } }
+  else { navigator.clipboard.writeText(getShareText(c)).then(()=>showToast('Teks di-copy! 📋')); }
+}
+function drawRoundRect(ctx,x,y,w,h,r){ if(typeof ctx.roundRect==='function'){ ctx.roundRect(x,y,w,h,r); } else { ctx.beginPath(); ctx.moveTo(x+r,y); ctx.lineTo(x+w-r,y); ctx.quadraticCurveTo(x+w,y,x+w,y+r); ctx.lineTo(x+w,y+h-r); ctx.quadraticCurveTo(x+w,y+h,x+w-r,y+h); ctx.lineTo(x+r,y+h); ctx.quadraticCurveTo(x,y+h,x,y+h-r); ctx.lineTo(x,y+r); ctx.quadraticCurveTo(x,y,x+r,y); ctx.closePath(); } }
+window.generateStoryImage=async function(fid){
+  let c=confesses.find(x=>x.firestoreId===fid); if(!c) return;
+  try{ if(document.fonts && document.fonts.ready) await document.fonts.ready; }catch(e){}
+  let canvas=document.getElementById('storyCanvas'); let ctx=canvas.getContext('2d');
+  let grad=ctx.createLinearGradient(0,0,0,1920); grad.addColorStop(0,'#FFF8E7'); grad.addColorStop(0.5,'#FDE8C9'); grad.addColorStop(1,'#FFDAB9');
+  ctx.fillStyle=grad; ctx.fillRect(0,0,1080,1920);
+  ctx.fillStyle='#FFFBF0'; ctx.strokeStyle='#5D0F1F'; ctx.lineWidth=8;
+  ctx.beginPath(); drawRoundRect(ctx,60,500,960,900,40); ctx.fill(); ctx.stroke();
+  ctx.fillStyle='#5D0F1F'; ctx.font='bold 48px Poppins, sans-serif'; ctx.fillText('CeritaKita',80,200);
+  ctx.font='600 32px Poppins, sans-serif'; ctx.fillStyle='#8B1E3F'; ctx.fillText(`To: ${c.to.slice(0,25)}`,100,580);
+  ctx.fillStyle='#5D0F1F'; ctx.font='500 36px Poppins, sans-serif';
+  let words=c.text.split(' '); let line=''; let y=660; let maxW=880;
+  for(let n=0;n<words.length;n++){ let test=line+words[n]+' '; if(ctx.measureText(test).width>maxW && n>0){ ctx.fillText(line,100,y); line=words[n]+' '; y+=50; if(y>1250) break; } else { line=test; } } ctx.fillText(line,100,y);
+  ctx.font='bold 24px Poppins, sans-serif'; ctx.fillStyle='#E8B86D'; ctx.fillText(`#${c.cat} • ${c.avatar} #${c.code}`,100,1480);
+  ctx.fillStyle='#5D0F1F'; ctx.font='800 32px Poppins, sans-serif'; ctx.fillText('ceritakita.vercel.app',100,1820);
+  let link=document.createElement('a'); link.download=`ceritakita-${c.code}.png`; link.href=canvas.toDataURL('image/png'); link.click();
+}
 
 function timeAgo(t){ if(!t) return 'Baru saja'; let d=Math.floor((Date.now()-t)/60000); if(d<1) return 'Baru saja'; if(d<60) return d+' menit lalu'; if(d<1440) return Math.floor(d/60)+' jam lalu'; return Math.floor(d/1440)+' hari lalu'; }
 function todayStr(){ return new Date().toLocaleDateString('en-CA',{timeZone:'Asia/Jakarta'}); }
 function yesterdayStr(){ let d=new Date(); d.setDate(d.getDate()-1); return d.toLocaleDateString('en-CA',{timeZone:'Asia/Jakarta'}); }
 function esc(s){ return (s||'').toString().replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
-function safeHTML(s){ if(!s) return ''; return s.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi,'').replace(/ on\w+="[^"]*"/gi,'').replace(/ on\w+='[^']*'/gi,''); }
+function safeHTML(s){ if(!s) return ''; return s.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi,'').replace(/ on\w+="[^"]*"/gi,''); }
 function parseContent(t){ return esc(t).replace(/#(\w+)/g,'<span class="text-maroon2 font-bold">#$1</span>'); }
-window.handleSearch=function(val){ let a=document.getElementById('search'); let b=document.getElementById('searchM'); if(document.activeElement!==a && document.activeElement!==b) return; if(a && a.value!==val) a.value=val; if(b && b.value!==val) b.value=val; render(); }
-window.switchTab=function(name){
-  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
-  document.getElementById('view-'+name).classList.add('active');
-  document.querySelectorAll('.bottom-nav button').forEach(b=>b.classList.remove('active'));
-  document.getElementById('nav-'+name).classList.add('active');
-  let spill=document.getElementById('spillBtn');
-  if(name==='feed'){ spill.classList.remove('hidden'); } else { spill.classList.add('hidden'); }
-  window.scrollTo({top:0,behavior:'smooth'});
-  if(name==='profile') renderProfile();
-  if(name==='game'){ updateSpinLabel(); setTimeout(()=>drawSpinWheel(),100); }
-}
+window.handleSearch=function(val){ let a=document.getElementById('search'); let b=document.getElementById('searchM'); if(a && a.value!==val) a.value=val; if(b && b.value!==val) b.value=val; render(); }
+window.switchTab=function(name){ document.querySelectorAll('.view').forEach(v=>v.classList.remove('active')); document.getElementById('view-'+name).classList.add('active'); document.querySelectorAll('.bottom-nav button').forEach(b=>b.classList.remove('active')); document.getElementById('nav-'+name).classList.add('active'); let spill=document.getElementById('spillBtn'); if(name==='feed') spill.classList.remove('hidden'); else spill.classList.add('hidden'); window.scrollTo({top:0,behavior:'smooth'}); if(name==='profile') updatePermStatus(); if(name==='game'){ updateSpinLabel(); setTimeout(()=>drawSpinWheel(),100); } }
 function loadTheme(){ let t=localStorage.getItem('theme_CeritaKita'); if(t==='dark'){ document.documentElement.classList.add('dark'); document.getElementById('darkToggle').innerText='☀️'; } }
 window.toggleDark=function(){ let isDark=document.documentElement.classList.toggle('dark'); localStorage.setItem('theme_CeritaKita', isDark?'dark':'light'); document.getElementById('darkToggle').innerText=isDark?'☀️':'🌙'; setTimeout(()=>drawSpinWheel(),100); }
 loadTheme();
@@ -232,7 +244,7 @@ function saveNotif(a){ localStorage.setItem('notif_CeritaKita', JSON.stringify(a
 function addNotif(text){ let a=loadNotif(); a.unshift({text,time:Date.now()}); if(a.length>20) a=a.slice(0,20); saveNotif(a); showNotifDot(); }
 function showNotifDot(){ let a=loadNotif(); let dot=document.getElementById('notifDot'); if(a.length>0) dot.classList.remove('hidden'); else dot.classList.add('hidden'); }
 window.openNotif=function(){ document.getElementById('notifModal').classList.remove('hidden'); document.getElementById('notifModal').classList.add('grid'); let a=loadNotif(); document.getElementById('notifList').innerHTML=a.map(n=>`<div class="bg-white border rounded-xl p-3"><div>${esc(n.text)}</div><div class="text-[9px] opacity-40 mt-1">${new Date(n.time).toLocaleString('id-ID')}</div></div>`).join('')||'<div class="opacity-40 text-center py-6">Belum ada notif</div>'; }
-window.closeNotif=function(){ document.getElementById('notifModal').classList.add('hidden'); document.getElementById('notifModal').classList.remove('grid'); }
+window.closeNotif=function(){ document.getElementById('notifModal').classList.add('hidden'); document.getElementById('notifModal').classList.remove('grid'); saveNotif([]); showNotifDot(); }
 window.clearNotif=function(){ saveNotif([]); showNotifDot(); closeNotif(); }
 showNotifDot();
 window.openHomeDetail=function(type, iklanIndex=0){
@@ -248,7 +260,7 @@ window.openHomeDetail=function(type, iklanIndex=0){
     kontakWrap.classList.add('hidden'); fotoEl.classList.add('hidden');
     if(type==='rules'){ title.innerText='📜 Rules Lengkap'; icon.innerText='📜'; content.innerHTML=safeHTML(homeDataCache.rules) || '<ul class="list-disc pl-4"><li>Dilarang SARA, porn, 18+</li><li>Dilarang spam, judi, pinjol</li><li>Saling respect</li></ul>'; }
     else if(type==='pengumuman'){ title.innerText='📢 Pengumuman'; icon.innerText='📢'; content.innerHTML=`<div>${safeHTML(homeDataCache.pengumuman) || 'Belum ada pengumuman'}</div><div class="mt-3 text-[10px] opacity-40">${homeDataCache.pengumumanDate ? 'Update: '+esc(homeDataCache.pengumumanDate) : ''}</div>`; }
-    else if(type==='iklan'){ let ik = homeDataCache.iklanList[iklanIndex] || homeDataCache.iklanList[0]; if(!ik){ unlockScroll(); return; } title.innerText='💰 Detail Iklan'; icon.innerText='💰'; if(ik.foto){ fotoEl.src=ik.foto; fotoEl.classList.remove('hidden'); } content.innerHTML=safeHTML(ik.teks) || 'Belum ada iklan'; let hasKontakText = ik.kontak && ik.kontak.trim().length>0; let hasWA = ik.wa && ik.wa.replace(/[^0-9]/g,'').length>=10; let hasIG = ik.ig && ik.ig.length>=2; if(hasKontakText || hasWA || hasIG) kontakWrap.classList.remove('hidden'); kontakContent.innerHTML = safeHTML(ik.kontak) || ''; let waBtn=document.getElementById('waBtn'); let igBtn=document.getElementById('igBtn'); let btnWrap=document.getElementById('kontakBtnWrap'); waBtn.classList.add('hidden'); igBtn.classList.add('hidden'); btnWrap.style.display='none'; if(hasWA){ waBtn.classList.remove('hidden'); btnWrap.style.display='grid'; waBtn.onclick=()=>{ window.open('https://wa.me/'+ik.wa.replace(/[^0-9]/g,''),'_blank'); }; } if(hasIG){ igBtn.classList.remove('hidden'); btnWrap.style.display='grid'; let handle=ik.ig.replace('@','').replace('https://instagram.com/','').replace('instagram.com/','').split('/')[0].split('?')[0]; igBtn.onclick=()=>{ window.open('https://instagram.com/'+handle,'_blank'); }; } }
+    else if(type==='iklan'){ let ik = homeDataCache.iklanList[iklanIndex] || homeDataCache.iklanList[0]; if(!ik){ unlockScroll(); return; } title.innerText='💰 Detail Iklan'; icon.innerText='💰'; if(ik.foto){ fotoEl.src=ik.foto; fotoEl.classList.remove('hidden'); } content.innerHTML=safeHTML(ik.teks) || 'Belum ada iklan'; let hasWA = ik.wa && ik.wa.replace(/[^0-9]/g,'').length>=10; let hasIG = ik.ig && ik.ig.length>=2; if(ik.kontak || hasWA || hasIG) kontakWrap.classList.remove('hidden'); kontakContent.innerHTML = safeHTML(ik.kontak) || ''; let waBtn=document.getElementById('waBtn'); let igBtn=document.getElementById('igBtn'); let btnWrap=document.getElementById('kontakBtnWrap'); waBtn.classList.add('hidden'); igBtn.classList.add('hidden'); btnWrap.style.display='none'; if(hasWA){ waBtn.classList.remove('hidden'); btnWrap.style.display='grid'; waBtn.onclick=()=>{ window.open('https://wa.me/'+ik.wa.replace(/[^0-9]/g,''),'_blank'); }; } if(hasIG){ igBtn.classList.remove('hidden'); btnWrap.style.display='grid'; let handle=ik.ig.replace('@','').replace('https://instagram.com/','').replace('instagram.com/','').split('/')[0]; igBtn.onclick=()=>{ window.open('https://instagram.com/'+handle,'_blank'); }; } }
     modal.classList.remove('hidden'); modal.classList.add('grid');
   }catch(e){ unlockScroll(); }
 }
@@ -269,7 +281,7 @@ function addXP_BEBEN(n=10){ let xp=getXP()+n; localStorage.setItem('xp_BEBEN', x
 function getLevel(xp){ if(xp<30) return {lv:1,icon:'🌱'}; if(xp<80) return {lv:2,icon:'💬'}; if(xp<150) return {lv:3,icon:'🌙'}; if(xp<300) return {lv:4,icon:'👑'}; return {lv:5,icon:'🔥'}; }
 function updateLevelHeader(){ let lvl=getLevel(getXP()); document.getElementById('myLevelHeader').innerText=`${lvl.icon} LV.${lvl.lv}`; let pl=document.getElementById('profileLevel'); if(pl) pl.innerText=`LV.${lvl.lv}`; let px=document.getElementById('profileXP'); if(px) px.innerText=getXP(); }
 let fotoBase64=null;
-window.previewPhoto=function(e){ try{ let f=e.target.files[0]; if(!f) return; if(f.size > 4*1024*1024){ showToast('Foto max 4MB ya ta!'); return; } let r=new FileReader(); r.onerror=()=>showToast('Gagal baca foto'); r.onload=ev=>{ let img=new Image(); img.src=ev.target.result; img.onerror=()=>showToast('Foto rusak'); img.onload=()=>{ let canvas=document.createElement('canvas'); let maxW=800; let scale=Math.min(1,maxW/img.width); canvas.width=img.width*scale; canvas.height=img.height*scale; canvas.getContext('2d').drawImage(img,0,0,canvas.width,canvas.height); fotoBase64=canvas.toDataURL('image/jpeg',0.6); let sizeKB = Math.round(fotoBase64.length*0.75/1024); document.getElementById('photoSizeInfo').innerText = sizeKB+'KB'; if(sizeKB > 900){ fotoBase64=null; showToast('Foto kegedean >900KB'); document.getElementById('photoPreview').classList.add('hidden'); document.getElementById('removePhoto').classList.add('hidden'); return; } let p=document.getElementById('photoPreview'); p.src=fotoBase64; p.classList.remove('hidden'); document.getElementById('removePhoto').classList.remove('hidden'); }; }; r.readAsDataURL(f); }catch(err){ showToast('Error foto'); } }
+window.previewPhoto=function(e){ try{ let f=e.target.files[0]; if(!f) return; if(f.size > 4*1024*1024){ showToast('Foto max 4MB ya ta!'); return; } let r=new FileReader(); r.onload=ev=>{ let img=new Image(); img.src=ev.target.result; img.onload=()=>{ let canvas=document.createElement('canvas'); let maxW=700; let scale=Math.min(1,maxW/img.width); canvas.width=img.width*scale; canvas.height=img.height*scale; canvas.getContext('2d').drawImage(img,0,0,canvas.width,canvas.height); fotoBase64=canvas.toDataURL('image/jpeg',0.55); let sizeKB=Math.round(fotoBase64.length*0.75/1024); document.getElementById('photoSizeInfo').innerText=sizeKB+'KB'; if(sizeKB>700){ showToast('Foto kegedean, kompres lagi...'); canvas.width=canvas.width*0.7; canvas.height=canvas.height*0.7; canvas.getContext('2d').drawImage(img,0,0,canvas.width,canvas.height); fotoBase64=canvas.toDataURL('image/jpeg',0.45); sizeKB=Math.round(fotoBase64.length*0.75/1024); document.getElementById('photoSizeInfo').innerText=sizeKB+'KB (compressed)'; if(sizeKB>700){ fotoBase64=null; showToast('Foto masih kegedean >700KB, pilih foto lain'); document.getElementById('photoPreview').classList.add('hidden'); return; } } let p=document.getElementById('photoPreview'); p.src=fotoBase64; p.classList.remove('hidden'); document.getElementById('removePhoto').classList.remove('hidden'); }; }; r.readAsDataURL(f); }catch(err){ showToast('Error foto'); } }
 window.removePhoto=function(){ fotoBase64=null; document.getElementById('photoInputGallery').value=''; document.getElementById('photoInputCamera').value=''; document.getElementById('photoPreview').classList.add('hidden'); document.getElementById('removePhoto').classList.add('hidden'); document.getElementById('photoSizeInfo').innerText=''; }
 function renderAvatarPicker(){ document.getElementById('avatarPicker').innerHTML=avatars.map(a=>`<button type="button" onclick="window.pickAvatar('${a}')" class="w-9 h-9 rounded-full border-2 ${selectedAvatar===a?'border-maroon scale-110':'border-cream bg-white'} grid place-items-center text-[18px]" style="background:${selectedAvatar===a?selectedColor:'#fff'}">${a}</button>`).join(''); document.getElementById('colorPicker').innerHTML=colors.map(c=>`<button type="button" onclick="window.pickColor('${c}')" class="w-7 h-7 rounded-full border-2 ${selectedColor===c?'border-maroon scale-110':'border-white'}" style="background:${c}"></button>`).join(''); }
 window.pickAvatar=(a)=>{ selectedAvatar=a; renderAvatarPicker(); }; window.pickColor=(c)=>{ selectedColor=c; renderAvatarPicker(); };
@@ -277,7 +289,7 @@ renderAvatarPicker();
 document.getElementById('msgInput').addEventListener('input',e=>{ document.getElementById('charCount').innerText=e.target.value.length+'/500'; });
 function lockScroll(){ savedScroll=window.scrollY; document.body.style.position='fixed'; document.body.style.top=`-${savedScroll}px`; document.body.style.width='100%'; }
 function unlockScroll(){ document.body.style.position=''; document.body.style.top=''; document.body.style.width=''; window.scrollTo(0,savedScroll); }
-window.enterApp=async function(){ document.getElementById('landing').style.transform='translateY(-100%)'; setTimeout(()=>document.getElementById('landing').style.display='none',600); checkRules(); render(); updateStreak(); showStreak(); if('Notification' in window && Notification.permission==='default'){ setTimeout(()=>{ if(confirm('Aktifkan notif HP biar kalo ada yang komen confess kamu masuk notif HP?')) requestNotifPermission(); },1500); } }
+window.enterApp=async function(){ document.getElementById('landing').style.transform='translateY(-100%)'; setTimeout(()=>document.getElementById('landing').style.display='none',600); checkRules(); render(); updateStreak(); showStreak(); updatePermStatus(); }
 window.openCreate=function(){ lockScroll(); document.getElementById('createModal').classList.remove('hidden'); document.getElementById('createModal').classList.add('grid'); }
 window.closeCreate=function(){ document.getElementById('createModal').classList.add('hidden'); document.getElementById('createModal').classList.remove('grid'); unlockScroll(); }
 window.openEdit=function(fid){ let c=confesses.find(x=>x.firestoreId===fid); if(!c||!isMine(fid)) return; editId=fid; document.getElementById('editToInput').value=c.to; document.getElementById('editCatInput').value=c.cat; document.getElementById('editMsgInput').value=c.text; lockScroll(); document.getElementById('editModal').classList.remove('hidden'); document.getElementById('editModal').classList.add('grid'); }
@@ -287,12 +299,12 @@ window.confirmDelete=function(fid){ if(!isMine(fid)) return; deleteId=fid; lockS
 window.closeDelete=function(){ document.getElementById('deleteModal').classList.add('hidden'); document.getElementById('deleteModal').classList.remove('grid'); deleteId=null; unlockScroll(); }
 document.getElementById('confirmDeleteBtn').onclick=async function(){ if(!deleteId) return; try{ await deleteDoc(doc(db,"confesses",deleteId)); removeMyId(deleteId); closeDelete(); closeDetail(); showToast('Dihapus 🗑️'); }catch(e){ alert(e.message); } }
 function showToast(msg){ let t=document.getElementById('toast'); t.innerText=msg; t.classList.remove('translate-y-[150px]','opacity-0'); t.classList.add('translate-y-0','opacity-100'); setTimeout(()=>{ t.classList.add('translate-y-[150px]','opacity-0'); t.classList.remove('translate-y-0','opacity-100'); },2500); }
-window.sendConfess=async function(){ let to=document.getElementById('toInput').value.trim(); let cat=document.getElementById('catInput').value; let text=document.getElementById('msgInput').value.trim(); if(text.length<8){ alert('Minimal 8'); return; } if(!to){ alert('Isi Untuk Siapa'); return; } if(profanityFilter(text)){ alert('jaga jempol'); return; } if(!cekLimit()) return; let tags=(text.match(/#(\w+)/g)||[]).map(t=>t.replace('#','')).slice(0,4); let btn=document.getElementById('sendBtn'); btn.disabled=true; btn.innerText='Mengirim...'; try{ let docRef=await addDoc(colRef, {to,cat,text,tags,avatar:selectedAvatar,color:selectedColor,time:Date.now(),createdAt:serverTimestamp(),code:Math.floor(100+Math.random()*900),reactions:{love:0,cry:0,coffee:0,shy:0},replies:[],photo:fotoBase64}); saveMyId(docRef.id); document.getElementById('msgInput').value=''; document.getElementById('toInput').value=''; document.getElementById('charCount').innerText='0/500'; closeCreate(); localStorage.setItem("lastPost_BEBEN",Date.now().toString()); addXP_BEBEN(10); let s=updateStreak(); showStreak(); updateLevelHeader(); fotoBase64=null; removePhoto(); showToast('Terkirim! ✨'); }catch(e){ alert(e.message); } btn.disabled=false; btn.innerText='Kirim ONLINE ✈️'; }
+window.sendConfess=async function(){ let to=document.getElementById('toInput').value.trim(); let cat=document.getElementById('catInput').value; let text=document.getElementById('msgInput').value.trim(); if(text.length<8){ alert('Minimal 8'); return; } if(!to){ alert('Isi Untuk Siapa'); return; } if(profanityFilter(text)){ alert('jaga jempol'); return; } if(!cekLimit()) return; let tags=(text.match(/#(\w+)/g)||[]).map(t=>t.replace('#','')).slice(0,4); let btn=document.getElementById('sendBtn'); btn.disabled=true; btn.innerText='Mengirim...'; try{ let docRef=await addDoc(colRef, {to,cat,text,tags,avatar:selectedAvatar,color:selectedColor,time:Date.now(),createdAt:serverTimestamp(),code:Math.floor(100+Math.random()*900),reactions:{love:0,cry:0,coffee:0,shy:0},replies:[],photo:fotoBase64}); saveMyId(docRef.id); document.getElementById('msgInput').value=''; document.getElementById('toInput').value=''; document.getElementById('charCount').innerText='0/500'; closeCreate(); localStorage.setItem("lastPost_BEBEN",Date.now().toString()); addXP_BEBEN(10); let s=updateStreak(); showStreak(); updateLevelHeader(); fotoBase64=null; removePhoto(); showToast('Terkirim! ✨'); }catch(e){ if(e.message.includes('larger than')||e.message.includes('1,048,576')){ alert('Foto kegedean! Pilih foto lebih kecil ya, max 700KB'); } else { alert(e.message); } } btn.disabled=false; btn.innerText='Kirim ONLINE ✈️'; }
 window.setCat=function(cat,btn){ activeCat=cat; document.querySelectorAll('.filter-btn').forEach(b=>{ b.classList.remove('bg-maroon','text-[#FFF8E7]','active'); b.classList.add('bg-white'); }); btn.classList.add('bg-maroon','text-[#FFF8E7]','active'); btn.classList.remove('bg-white'); render(); }
 function renderTop(){ let c=document.getElementById('topConfessList'); if(!c) return; if(confesses.length===0){ c.innerHTML='<div class="text-[11px] opacity-40">Belum ada</div>'; return; } let top3=[...confesses].sort((a,b)=>{ let ta=Object.values(a.reactions||{}).reduce((x,y)=>x+y||0,0); let tb=Object.values(b.reactions||{}).reduce((x,y)=>x+y||0,0); return tb-ta; }).slice(0,3); c.innerHTML=top3.map((cc,i)=>{ let medal=i===0?'🥇':i===1?'🥈':'🥉'; let total=Object.values(cc.reactions||{}).reduce((x,y)=>x+y||0,0); return `<div onclick="openDetail('${cc.firestoreId}')" class="cursor-pointer bg-broken border border-cream rounded-xl px-3 py-2.5 flex gap-2 items-center"><div>${medal}</div><div class="flex-1 overflow-hidden"><div class="text-[11px] font-semibold line-clamp-3">${esc(cc.text).slice(0,45)}</div><div class="text-[9px] opacity-50">To: ${esc(cc.to)} • 💖 ${total}</div></div></div>`; }).join(''); }
 function renderProfile(){ let my=confesses.filter(c=>isMine(c.firestoreId)); document.getElementById('myConfessList').innerHTML=my.map(c=>`<div class="bg-broken border-2 border-cream rounded-xl p-3"><div class="font-bold">To: ${esc(c.to)}</div><div class="mt-1 line-clamp-3">${esc(c.text).slice(0,80)}</div><div class="mt-2 flex gap-1"><button onclick="openEdit('${c.firestoreId}')" class="text-[10px] bg-yellow-100 border px-2 py-1 rounded-full">✏️ Edit</button><button onclick="confirmDelete('${c.firestoreId}')" class="text-[10px] bg-red-100 border px-2 py-1 rounded-full text-red-600">🗑️ Hapus</button><button onclick="openDetail('${c.firestoreId}')" class="text-[10px] bg-white border px-2 py-1 rounded-full">👁️ Lihat</button></div></div>`).join('')||'<div class="text-center opacity-40 py-6">Belum ada confess</div>'; }
-window.render=function(){ let s=(document.getElementById('search')?.value||document.getElementById('searchM')?.value||'').toLowerCase(); let filtered=confesses.filter(c=>{ let catOk=activeCat==='all'||c.cat===activeCat; let searchOk=!s||c.text.toLowerCase().includes(s)||c.to.toLowerCase().includes(s)||(c.tags||[]).join(' ').toLowerCase().includes(s); return catOk&&searchOk; }); document.getElementById('feed').innerHTML=filtered.map(c=>{ let total=Object.values(c.reactions||{}).reduce((a,b)=>a+b||0,0); let photoHtml=c.photo?`<img src="${c.photo}" class="mt-2 w-full rounded-[12px] border-2 border-cream max-h-[300px] object-cover">`:''; let mineBtn=isMine(c.firestoreId)?`<div class="mt-2 flex gap-1"><button onclick="openEdit('${c.firestoreId}')" class="text-[10px] bg-yellow-100 border px-2.5 py-1 rounded-full font-bold">✏️ Edit</button><button onclick="confirmDelete('${c.firestoreId}')" class="text-[10px] bg-red-100 border px-2.5 py-1 rounded-full font-bold text-red-600">🗑️ Hapus</button></div>`:''; return `<div class="masonry-item bg-white border-[1.5px] border-cream rounded-[18px] p-4 shadow-sm" style="background: linear-gradient(135deg, #FFFBF0 0%, #FFF8E7 100%)"><div class="flex justify-between items-center"><div class="flex items-center gap-2"><div class="w-8 h-8 rounded-full border-2 border-maroon grid place-items-center" style="background:${c.color}">${c.avatar}</div><div class="leading-tight"><div class="text-[10px] font-bold text-maroon">anonimijon ${c.avatar} #${c.code}</div><div class="text-[9px] opacity-50">${timeAgo(c.time)} • ${(c.replies||[]).length} balasan</div></div></div><span class="cat-badge">${esc(c.cat || 'Random')}</span></div><div class="mt-3 cursor-pointer" onclick="openDetail('${c.firestoreId}')"><div class="text-[11px] font-semibold opacity-60">To: ${esc(c.to)}</div><div class="text-[13px] leading-6 mt-1 line-clamp-3">${parseContent(c.text)}</div>${photoHtml}</div><div class="mt-2 flex flex-wrap gap-1">${(c.tags||[]).map(t=>`<span class="text-[10px] bg-broken border border-cream px-2 py-0.5 rounded-full">#${esc(t)}</span>`).join('')}</div><div class="mt-3 flex items-center gap-1"><button onclick="react('${c.firestoreId}','love',this)" class="react-btn">💖 ${c.reactions?.love||0}</button><button onclick="react('${c.firestoreId}','cry',this)" class="react-btn">😭 ${c.reactions?.cry||0}</button><span class="text-[10px] opacity-40 ml-1">${total} reaksi</span></div>${mineBtn}</div>`; }).join('')||'<div class="text-center py-12 opacity-50 text-[12px]">Belum ada confess</div>'; document.getElementById('lTotal').innerText=confesses.length; renderTop(); updateLevelHeader(); showStreak(); renderProfile(); }
-window.openDetail=function(fid){ let c=confesses.find(x=>x.firestoreId===fid); if(!c) return; lockScroll(); document.getElementById('detailAvatar').innerText=c.avatar; document.getElementById('detailAvatar').style.background=c.color; document.getElementById('detailName').innerText=`anonimijon ${c.avatar} #${c.code}`; document.getElementById('detailTime').innerText=`${timeAgo(c.time)} • ${esc(c.cat || 'Random')}`; let photoDetail=c.photo?`<img src="${c.photo}" class="mt-3 w-full max-h-[400px] object-contain rounded-xl border-2 border-cream bg-broken">`:''; let mineDetail=isMine(fid)?`<div class="mt-3 grid grid-cols-2 gap-2"><button onclick="openEdit('${c.firestoreId}'); closeDetail();" class="bg-yellow-100 border-2 py-2 rounded-xl text-[11px] font-bold">✏️ Edit</button><button onclick="confirmDelete('${c.firestoreId}')" class="bg-red-100 border-2 py-2 rounded-xl text-[11px] font-bold text-red-600">🗑️ Hapus</button></div>`:''; document.getElementById('detailContent').innerHTML=`<div class="bg-white border-2 border-cream rounded-xl p-3"><div class="text-[11px] opacity-60">To: ${esc(c.to)}</div><div class="text-[14px] leading-7 mt-2">${parseContent(c.text)}</div>${photoDetail}</div>${mineDetail}<div class="mt-4 grid grid-cols-4 gap-2">${['love','cry','coffee','shy'].map(type=>{ let emoji={love:'💖',cry:'😭',coffee:'☕',shy:'🫣'}[type]; return `<button onclick="react('${c.firestoreId}','${type}',this)" class="py-2.5 rounded-xl border-2 font-bold react-btn">${emoji} ${c.reactions?.[type]||0}</button>`; }).join('')}</div><div class="mt-5"><div class="font-bold text-[12px]">Thread (${(c.replies||[]).length})</div><div class="mt-2 grid gap-2 max-h-[160px] overflow-auto">${(c.replies||[]).map(r=>`<div class="flex gap-2"><div class="w-7 h-7 rounded-full border grid place-items-center text-[14px]" style="background:${r.color}">${r.avatar}</div><div class="bg-white border rounded-xl px-3 py-2 text-[12px] flex-1"><div class="font-bold text-[10px] text-maroon">${esc(r.name)}</div>${esc(r.text)}</div></div>`).join('')||'<div class="text-[11px] opacity-40">Belum ada balasan</div>'}</div><div class="mt-3 flex gap-2"><input id="reply-${c.firestoreId}" placeholder="Balas..." class="flex-1 bg-white border-2 rounded-xl px-3 py-2.5 text-[12px]"><button onclick="addReply('${c.firestoreId}')" class="bg-maroon text-white px-4 rounded-xl font-bold text-[12px]">Kirim</button></div></div>`; document.getElementById('detailModal').classList.remove('hidden'); document.getElementById('detailModal').classList.add('grid'); }
+window.render=function(){ let s=(document.getElementById('search')?.value||document.getElementById('searchM')?.value||'').toLowerCase(); let filtered=confesses.filter(c=>{ let catOk=activeCat==='all'||c.cat===activeCat; let searchOk=!s||c.text.toLowerCase().includes(s)||c.to.toLowerCase().includes(s)||(c.tags||[]).join(' ').toLowerCase().includes(s); return catOk&&searchOk; }); document.getElementById('feed').innerHTML=filtered.map(c=>{ let total=Object.values(c.reactions||{}).reduce((a,b)=>a+b||0,0); let photoHtml=c.photo?`<img src="${c.photo}" class="mt-2 w-full rounded-[12px] border-2 border-cream max-h-[300px] object-cover">`:''; let mineBtn=isMine(c.firestoreId)?`<div class="mt-2 flex gap-1"><button onclick="openEdit('${c.firestoreId}')" class="text-[10px] bg-yellow-100 border px-2.5 py-1 rounded-full font-bold">✏️ Edit</button><button onclick="confirmDelete('${c.firestoreId}')" class="text-[10px] bg-red-100 border px-2.5 py-1 rounded-full font-bold text-red-600">🗑️ Hapus</button></div>`:''; return `<div class="masonry-item bg-white border-[1.5px] border-cream rounded-[18px] p-4 shadow-sm" style="background: linear-gradient(135deg, #FFFBF0 0%, #FFF8E7 100%)"><div class="flex justify-between items-center"><div class="flex items-center gap-2"><div class="w-8 h-8 rounded-full border-2 border-maroon grid place-items-center" style="background:${c.color}">${c.avatar}</div><div class="leading-tight"><div class="text-[10px] font-bold text-maroon">anonimijon ${c.avatar} #${c.code}</div><div class="text-[9px] opacity-50">${timeAgo(c.time)} • ${(c.replies||[]).length} balasan</div></div></div><span class="cat-badge">${esc(c.cat || 'Random')}</span></div><div class="mt-3 cursor-pointer" onclick="openDetail('${c.firestoreId}')"><div class="text-[11px] font-semibold opacity-60">To: ${esc(c.to)}</div><div class="text-[13px] leading-6 mt-1 line-clamp-3">${parseContent(c.text)}</div>${photoHtml}</div><div class="mt-2 flex flex-wrap gap-1">${(c.tags||[]).map(t=>`<span class="text-[10px] bg-broken border border-cream px-2 py-0.5 rounded-full">#${esc(t)}</span>`).join('')}</div><div class="mt-3 flex items-center gap-1 flex-wrap"><button onclick="react('${c.firestoreId}','love',this)" class="react-btn">💖 ${c.reactions?.love||0}</button><button onclick="react('${c.firestoreId}','cry',this)" class="react-btn">😭 ${c.reactions?.cry||0}</button><button onclick="shareWA('${c.firestoreId}')" class="share-btn bg-green-50">💬 WA</button><button onclick="shareIG('${c.firestoreId}')" class="share-btn">📸 IG</button></div>${mineBtn}</div>`; }).join('')||'<div class="text-center py-12 opacity-50 text-[12px]">Belum ada confess</div>'; document.getElementById('lTotal').innerText=confesses.length; renderTop(); updateLevelHeader(); showStreak(); renderProfile(); }
+window.openDetail=function(fid){ let c=confesses.find(x=>x.firestoreId===fid); if(!c) return; lockScroll(); document.getElementById('detailAvatar').innerText=c.avatar; document.getElementById('detailAvatar').style.background=c.color; document.getElementById('detailName').innerText=`anonimijon ${c.avatar} #${c.code}`; document.getElementById('detailTime').innerText=`${timeAgo(c.time)} • ${esc(c.cat || 'Random')}`; let photoDetail=c.photo?`<img src="${c.photo}" class="mt-3 w-full max-h-[400px] object-contain rounded-xl border-2 border-cream bg-broken">`:''; let mineDetail=isMine(fid)?`<div class="mt-3 grid grid-cols-2 gap-2"><button onclick="openEdit('${c.firestoreId}'); closeDetail();" class="bg-yellow-100 border-2 py-2 rounded-xl text-[11px] font-bold">✏️ Edit</button><button onclick="confirmDelete('${c.firestoreId}')" class="bg-red-100 border-2 py-2 rounded-xl text-[11px] font-bold text-red-600">🗑️ Hapus</button></div>`:''; document.getElementById('detailContent').innerHTML=`<div class="bg-white border-2 border-cream rounded-xl p-3"><div class="text-[11px] opacity-60">To: ${esc(c.to)}</div><div class="text-[14px] leading-7 mt-2">${parseContent(c.text)}</div>${photoDetail}</div>${mineDetail}<div class="mt-4 p-3 bg-white border-2 border-cream rounded-xl"><div class="font-bold text-[11px]">📤 Share Confess Ini</div><div class="mt-2 grid grid-cols-3 gap-2"><button onclick="shareWA('${c.firestoreId}')" class="bg-green-500 text-white py-2.5 rounded-xl font-bold text-[11px]">💬 WA Chat</button><button onclick="shareWAStory('${c.firestoreId}')" class="bg-green-600 text-white py-2.5 rounded-xl font-bold text-[11px]">📱 WA Story</button><button onclick="shareIG('${c.firestoreId}')" class="bg-gradient-to-r from-purple-500 to-pink-500 text-white py-2.5 rounded-xl font-bold text-[11px]">📸 IG Story</button></div><button onclick="shareNative('${c.firestoreId}')" class="w-full mt-2 bg-broken border-2 py-2 rounded-xl text-[11px] font-bold">🔗 Share Lainnya / Copy Link</button><div class="text-[9px] opacity-50 mt-1">IG & WA Story = download gambar 1080x1920</div></div><div class="mt-4 grid grid-cols-4 gap-2">${['love','cry','coffee','shy'].map(type=>{ let emoji={love:'💖',cry:'😭',coffee:'☕',shy:'🫣'}[type]; return `<button onclick="react('${c.firestoreId}','${type}',this)" class="py-2.5 rounded-xl border-2 font-bold react-btn">${emoji} ${c.reactions?.[type]||0}</button>`; }).join('')}</div><div class="mt-5"><div class="font-bold text-[12px]">Thread (${(c.replies||[]).length})</div><div class="mt-2 grid gap-2 max-h-[160px] overflow-auto">${(c.replies||[]).map(r=>`<div class="flex gap-2"><div class="w-7 h-7 rounded-full border grid place-items-center text-[14px]" style="background:${r.color}">${r.avatar}</div><div class="bg-white border rounded-xl px-3 py-2 text-[12px] flex-1"><div class="font-bold text-[10px] text-maroon">${esc(r.name)}</div>${esc(r.text)}</div></div>`).join('')||'<div class="text-[11px] opacity-40">Belum ada balasan</div>'}</div><div class="mt-3 flex gap-2"><input id="reply-${c.firestoreId}" placeholder="Balas..." class="flex-1 bg-white border-2 rounded-xl px-3 py-2.5 text-[12px]"><button onclick="addReply('${c.firestoreId}')" class="bg-maroon text-white px-4 rounded-xl font-bold text-[12px]">Kirim</button></div></div>`; document.getElementById('detailModal').classList.remove('hidden'); document.getElementById('detailModal').classList.add('grid'); }
 window.closeDetail=function(){ document.getElementById('detailModal').classList.add('hidden'); document.getElementById('detailModal').classList.remove('grid'); unlockScroll(); }
 window.react=async function(fid,type,el){ let key=`liked_${fid}_${type}`; if(localStorage.getItem(key)) return; let c=confesses.find(x=>x.firestoreId===fid); if(!c) return; let newCount=(c.reactions?.[type]||0)+1; c.reactions[type]=newCount; el.innerHTML=el.innerHTML.replace(/\d+/,newCount); localStorage.setItem(key,'1'); try{ await updateDoc(doc(db,"confesses",fid), {reactions:c.reactions}); renderTop(); }catch(e){} }
 window.addReply=async function(fid){ let inp=document.getElementById(`reply-${fid}`); let v=inp.value.trim(); if(v.length<2) return; let newReply={name:`anonimijon ${selectedAvatar} #${Math.floor(100+Math.random()*900)}`,text:v,avatar:selectedAvatar,color:selectedColor,time:Date.now()}; await updateDoc(doc(db,"confesses",fid), {replies: arrayUnion(newReply)}); inp.value=''; }
@@ -319,7 +331,10 @@ async function loadHomeConfig(){
           carousel.onmouseenter=()=>{ iklanPaused=true; }; carousel.onmouseleave=()=>{ iklanPaused=false; }; carousel.ontouchstart=()=>{ iklanPaused=true; }; carousel.ontouchend=()=>{ setTimeout(()=>{ iklanPaused=false; },2000); };
         }
         if(iklanInterval) clearInterval(iklanInterval);
-        if(list.length>1){ let idx=0; iklanInterval=setInterval(()=>{ if(iklanPaused) return; idx=(idx+1)%list.length; let el=carousel.children[idx]; if(el){ let left = el.offsetLeft - carousel.offsetLeft - (carousel.clientWidth - el.clientWidth)/2; carousel.scrollTo({left, behavior:'smooth'}); } },3000); }
+        if(list.length>1){
+          iklanInterval=setInterval(()=>{ if(iklanPaused || document.hidden) return; let idx=(Date.now()/3000|0)%list.length; let el=carousel.children[idx]; if(el){ let left=el.offsetLeft-carousel.offsetLeft-(carousel.clientWidth-el.clientWidth)/2; carousel.scrollTo({left,behavior:'smooth'}); } },3000);
+          document.addEventListener('visibilitychange',()=>{ iklanPaused=document.hidden; });
+        }
       }
     });
   }catch(e){}
