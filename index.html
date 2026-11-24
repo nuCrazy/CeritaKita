@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cerita Kita BETA v8.0</title>
+<title>Cerita Kita BETA v8.0.1</title>
 <link rel="icon" type="image/jpeg" href="logo.png.jpg">
 <script src="https://cdn.tailwindcss.com"></script>
 <script>tailwind.config={theme:{extend:{colors:{maroon:'#5D0F1F',maroon2:'#8B1E3F',broken:'#FFF8E7',cream:'#FDE8C9',cream2:'#FFF1D6',gold:'#E8B86D',peach:'#FFDAB9'}}}}</script>
@@ -29,16 +29,18 @@ body{background: linear-gradient(180deg, #FFF8E7 0%, #FDE8C9 35%, #FFECD2 70%, #
 .close-btn{width:36px; height:36px; background:#FFFBF0; border:2px solid #5D0F1F; border-radius:9999px; display:grid; place-items:center; font-weight:800; transition:0.2s}
 .react-btn{border:2px solid #FDE8C9; background:#FFF8E7; padding:6px 10px; border-radius:9999px; font-size:10px; font-weight:700; transition:0.2s}
 .broken-white{background:#FFFBF0; border:2px solid #FDE8C9}
+/* DARK MODE v8.0.1 FINAL FIX - NO BUG */
 html.dark body{background: linear-gradient(180deg, #1a060b 0%, #2B0A12 60%, #3a1520 100%)!important; color:#FFF8E7}
 html.dark .soft-card{background: linear-gradient(135deg, #3a1520 0%, #2B0A12 100%)!important; border-color:#E8B86D!important; color:#FFF8E7!important; box-shadow:5px 5px 0px #0f0205!important}
 html.dark .soft-card-gold{background: linear-gradient(135deg, #4a2030 0%, #3a1520 100%)!important; border-color:#E8B86D!important; color:#FFF8E7!important; box-shadow:5px 5px 0px #0f0205!important}
 html.dark .soft-header{background: linear-gradient(180deg, rgba(43,10,18,0.96) 0%, rgba(26,6,11,0.9) 100%)!important; border-bottom-color:rgba(232,184,109,0.2)!important}
 html.dark .soft-header div{color:#FDE8C9!important}
-html.dark input, html.dark textarea, html.dark select{background:#2B0A12!important; border-color:#5D0F1F!important; color:#FFF8E7!important}
+html.dark input, html.dark textarea, html.dark select{background:#2B0A12!important; border-color:#E8B86D!important; color:#FFF8E7!important}
 html.dark #landing{background: linear-gradient(135deg, #1a060b 0%, #2B0A12 50%, #3a1520 100%)!important}
 html.dark .bottom-nav{background: rgba(43,10,18,0.96)!important; border-color:#E8B86D!important}
 html.dark .bottom-nav button{color:#FDE8C9!important}
-html.dark .masonry-item{background: linear-gradient(135deg, #3a1520 0%, #2B0A12 100%)!important; color:#FFF8E7!important; border-color:#5D0F1F!important}
+html.dark .bottom-nav button.active{background: linear-gradient(135deg, #E8B86D 0%, #FDE8C9 100%)!important; color:#2B0A12!important}
+html.dark .masonry-item{background: linear-gradient(135deg, #3a1520 0%, #2B0A12 100%)!important; color:#FFF8E7!important; border-color:#E8B86D!important}
 html.dark .koala-area{background: linear-gradient(180deg, #2B0A12 0%, #3a1520 100%)!important; border-color:#E8B86D!important}
 html.dark footer{color:#FDE8C9!important; opacity:0.6}
 html.dark .filter-btn{background:#2B0A12!important; color:#FDE8C9!important; border-color:#E8B86D!important}
@@ -49,8 +51,10 @@ html.dark ::placeholder{color:rgba(253,232,201,0.5)!important}
 html.dark #homeDetailModal > div, html.dark #detailModal > div, html.dark #createModal > div, html.dark #editModal > div, html.dark #deleteModal > div, html.dark #notifModal > div, html.dark #rulesModal > div, html.dark #profileEditModal > div{background: linear-gradient(135deg, #2B0A12 0%, #3a1520 100%)!important; border-color:#E8B86D!important; color:#FFF8E7!important; box-shadow: 8px 8px 0px #0f0205!important}
 html.dark .close-btn{background:#2B0A12!important; border-color:#E8B86D!important; color:#FDE8C9!important}
 html.dark .react-btn{background:#2B0A12!important; border-color:#5D0F1F!important; color:#FDE8C9!important}
-html.dark #iklanCarousel > div, html.dark #beritaCarousel > div{background:#2B0A12!important; border-color:#5D0F1F!important; color:#FFF8E7!important}
-html.dark #topConfessList > div{background:#2B0A12!important; color:#FFF8E7!important}
+html.dark #iklanCarousel > div{background:#2B0A12!important; border-color:#5D0F1F!important; color:#FFF8E7!important}
+html.dark #beritaCarousel > div{background: linear-gradient(135deg, #3a1520 0%, #2B0A12 100%)!important; border-color:#E8B86D!important; color:#FFF8E7!important; box-shadow:4px 4px 0px #0f0205!important}
+html.dark #beritaCarousel > div img{border-color:#5D0F1F!important}
+html.dark #topConfessList > div{background:#2B0A12!important; color:#FFF8E7!important; border-color:#5D0F1F!important}
 html.dark #myConfessList > div{background:#2B0A12!important; color:#FFF8E7!important; border-color:#5D0F1F!important}
 html.dark #toast{background:#E8B86D!important; color:#2B0A12!important}
 html.dark #view-profile .text-maroon{color:#FDE8C9!important}
@@ -60,12 +64,15 @@ html.dark .broken-white{background:#2B0A12!important; color:#FFF8E7!important; b
 html.dark .bg-yellow-100{background:#4a3a0a!important; color:#FDE8C9!important; border:2px solid #E8B86D!important}
 html.dark .bg-red-100{background:#4a1515!important; color:#FFB4B4!important; border:2px solid #8B1E3F!important}
 html.dark .bg-broken{background:#3a1520!important; color:#FFF8E7!important; border-color:#5D0F1F!important}
-html.dark #myConfessList button.bg-yellow-100{color:#FDE8C9!important; border-color:#E8B86D!important}
-html.dark #myConfessList button.bg-red-100{color:#FF8A8A!important; border-color:#8B1E3F!important}
+html.dark #myConfessList button.bg-yellow-100{color:#FDE8C9!important; border-color:#E8B86D!important; background:#4a3a0a!important}
+html.dark #myConfessList button.bg-red-100{color:#FF8A8A!important; border-color:#8B1E3F!important; background:#4a1515!important}
 html.dark #myConfessList button.broken-white{color:#FFF8E7!important; background:#2B0A12!important}
-html.dark #profileEditModal .broken-white, html.dark #createModal .broken-white{background:#2B0A12!important; color:#FFF8E7!important; border-color:#5D0F1F!important}
+html.dark #profileEditModal .broken-white, html.dark #createModal .broken-white{background:#2B0A12!important; color:#FFF8E7!important; border-color:#E8B86D!important}
 html.dark #removeProfilePhoto{background:#7f1d1d!important; color:#FFFBF0!important; border-color:#5D0F1F!important}
 html.dark .bg-cream2{background:#2B0A12!important; color:#FDE8C9!important; border-color:#E8B86D!important}
+html.dark #beritaCount, html.dark #iklanCount{background:#E8B86D!important; color:#2B0A12!important}
+html.dark #homeDetailContent{color:#FFF8E7!important}
+html.dark #homeDetailFoto{border-color:#E8B86D!important}
 </style>
 </head>
 <body>
@@ -85,7 +92,6 @@ html.dark .bg-cream2{background:#2B0A12!important; color:#FDE8C9!important; bord
 <button id="darkToggle" onclick="toggleDark()" class="w-9 h-9 bg-[#FFFBF0] border-2 border-cream rounded-full grid place-items-center">🌙</button>
 <div id="myLevelHeader" class="text-[10px] bg-gradient-to-r from-maroon to-maroon2 text-[#FFF8E7] px-3 py-1.5 rounded-full font-bold">🌱 LV.1</div>
 </div></header>
-
 <div id="view-home" class="view active space-y-4">
 <div onclick="openHomeDetail('rules')" class="soft-card clickable rounded-[22px] p-5">
 <div class="flex justify-between items-center"><h2 class="font-extrabold text-maroon">📜 Rules</h2><span class="text-[10px] opacity-40">tap untuk detail →</span></div>
@@ -96,15 +102,11 @@ html.dark .bg-cream2{background:#2B0A12!important; color:#FDE8C9!important; bord
 <div id="homePengumuman" class="mt-3 text-[12px] leading-6 line-clamp-3">Belum ada pengumuman</div>
 <div id="pengumumanDate" class="mt-2 text-[9px] opacity-50"></div>
 </div>
-
-<!-- IKLAN -->
 <div class="soft-card-gold rounded-[22px] p-5 overflow-hidden">
 <div class="flex justify-between items-center"><h2 class="font-extrabold text-maroon">💰 Iklan / Sponsor</h2><span class="text-[9px] bg-gold text-maroon px-2.5 py-1 rounded-full font-bold" id="iklanCount">0 ADS</span></div>
 <div id="iklanCarousel" class="mt-3 flex gap-3 overflow-x-auto scrollbar-hide snap-x snap-mandatory pb-2" style="scroll-behavior:smooth"></div>
 <div class="text-[9px] opacity-40 mt-1">geser → auto scroll 3 detik • tap untuk kontak</div>
 </div>
-
-<!-- BERITA KAMPUS V8.0 - MAX 10 POSTER -->
 <div class="soft-card rounded-[22px] p-5 overflow-hidden" style="border-color:#5D0F1F; box-shadow: 5px 5px 0px #5D0F1F">
 <div class="flex justify-between items-center">
 <h2 class="font-extrabold text-maroon">📰 Berita Kampus</h2>
@@ -116,11 +118,9 @@ html.dark .bg-cream2{background:#2B0A12!important; color:#FDE8C9!important; bord
 <div id="beritaCarousel" class="mt-3 flex gap-3 overflow-x-auto scrollbar-hide snap-x snap-mandatory pb-2" style="scroll-behavior:smooth"></div>
 <div class="text-[9px] opacity-40 mt-1">geser → poster berita kampus max 10 • tap untuk detail</div>
 </div>
-
 <div class="grid grid-cols-2 gap-3"><div class="soft-card rounded-[18px] py-5 text-center"><div class="font-extrabold text-maroon text-[26px]" id="lTotal">0</div><div class="text-[9px] font-bold opacity-60">TOTAL</div></div><div class="soft-card rounded-[18px] py-5 text-center"><div class="font-extrabold text-maroon text-[26px]" id="lStreak">0🔥</div><div class="text-[9px] font-bold opacity-60">STREAK</div></div></div>
-<footer class="text-center py-8 opacity-40"><div class="text-[11px]">☁️ cozzy place to confess</div><div class="text-[9px] mt-1">v8.0 berita kampus 10 poster</div></footer>
+<footer class="text-center py-8 opacity-40"><div class="text-[11px]">☁️ cozzy place to confess</div><div class="text-[9px] mt-1">v8.0.1 no bug final</div></footer>
 </div>
-
 <div id="view-feed" class="view">
 <input id="searchM" oninput="handleSearch(this.value)" placeholder="🔍 Cari..." class="md:hidden w-full bg-[#FFFBF0] border-2 border-cream rounded-full px-4 py-3 text-[12px] mb-3 outline-none">
 <input id="search" oninput="handleSearch(this.value)" placeholder="Cari #tag / FICT / FMB..." class="hidden md:block w-full bg-[#FFFBF0] border-2 border-cream rounded-full px-4 py-3 text-[11px] mb-4 outline-none">
@@ -167,7 +167,6 @@ html.dark .bg-cream2{background:#2B0A12!important; color:#FDE8C9!important; bord
 <button id="nav-profile" onclick="switchTab('profile')"><span class="icon">👤</span>Profil</button>
 </div>
 <button id="spillBtn" onclick="openCreate()" class="fixed bottom-[88px] right-5 z-40 bg-gradient-to-r from-maroon to-maroon2 text-[#FFF8E7] px-6 py-3.5 rounded-full font-bold text-[13px] shadow hidden">➕ Spill</button>
-
 <div id="profileEditModal" class="fixed inset-0 z-[95] bg-[#2b0a12]/50 backdrop-blur-md hidden place-items-center p-4"><div class="bg-[#FFFBF0] border-[3px] border-maroon rounded-[24px] max-w-[420px] w-full p-5 max-h-[85vh] overflow-auto">
 <div class="flex justify-between items-center"><h3 class="font-extrabold text-maroon">✏️ Edit Foto Profil</h3><button onclick="closeProfileEdit()" class="close-btn">✕</button></div>
 <div class="mt-4 text-center">
@@ -179,7 +178,6 @@ html.dark .bg-cream2{background:#2B0A12!important; color:#FDE8C9!important; bord
 <div class="mt-4"><div class="font-bold text-[11px] text-maroon">Atau Upload Foto</div><div class="mt-2 grid grid-cols-2 gap-2"><button onclick="document.getElementById('profilePhotoInput').click()" class="broken-white rounded-xl py-2.5 text-[11px] font-bold">🖼️ Galeri</button><button onclick="document.getElementById('profilePhotoCamera').click()" class="broken-white rounded-xl py-2.5 text-[11px] font-bold">📸 Kamera</button></div><input type="file" id="profilePhotoInput" accept="image/*" class="hidden" onchange="previewProfilePhoto(event)"><input type="file" id="profilePhotoCamera" accept="image/*" capture="user" class="hidden" onchange="previewProfilePhoto(event)"><button id="removeProfilePhoto" onclick="removeProfilePhoto()" class="hidden mt-2 w-full bg-red-500 text-white py-2 rounded-xl text-[11px] font-bold">🗑️ Hapus Foto Custom</button></div>
 <div class="mt-5 grid grid-cols-2 gap-2"><button onclick="closeProfileEdit()" class="bg-broken border-2 py-2.5 rounded-xl font-bold text-[12px]">Batal</button><button onclick="saveProfilePhoto()" class="bg-maroon text-white py-2.5 rounded-xl font-bold text-[12px]">Simpan 💾</button></div>
 </div></div>
-
 <div id="homeDetailModal" class="fixed inset-0 z-[90] bg-[#2b0a12]/40 backdrop-blur-[12px] hidden place-items-center p-4"><div class="bg-[#FFFBF0] border-[3px] border-maroon rounded-[24px] max-w-[500px] w-full max-h-[85vh] flex flex-col overflow-hidden shadow-[8px_8px_0px_#5D0F1F]">
 <div class="flex items-center justify-between p-5 border-b-2 border-cream bg-[#FFFBF0]"><div class="flex items-center gap-2"><div class="w-8 h-8 bg-cream border-2 border-maroon rounded-full grid place-items-center text-[14px]" id="homeDetailIcon">📜</div><div class="font-extrabold text-maroon text-[14px]" id="homeDetailTitle">Detail</div></div><button onclick="closeHomeDetail()" class="close-btn">✕</button></div>
 <div class="p-6 overflow-auto space-y-4">
@@ -196,7 +194,6 @@ html.dark .bg-cream2{background:#2B0A12!important; color:#FDE8C9!important; bord
 </div>
 </div>
 </div></div>
-
 <div id="rulesModal" class="fixed inset-0 z-[110] bg-[#2b0a12]/60 backdrop-blur-md hidden place-items-center p-4"><div class="bg-[#FFFBF0] border-[3px] border-maroon rounded-[22px] max-w-[400px] w-full p-6"><h3 class="font-extrabold text-maroon">📜 Rules</h3><ul class="mt-3 text-[11px] list-disc pl-4"><li>Dilarang SARA, porn, 18+</li><li>Dilarang spam, judi, pinjol</li><li>Saling respect</li></ul><label class="flex items-center gap-2 mt-4 text-[11px] font-bold"><input id="agreeCheck" type="checkbox" class="w-4 h-4"> Gue setuju</label><button onclick="agreeRules()" class="w-full mt-4 bg-maroon text-[#FFF8E7] py-3 rounded-xl font-bold">Masuk →</button></div></div>
 <div id="notifModal" class="fixed inset-0 z-[85] bg-[#2b0a12]/40 backdrop-blur-md hidden place-items-center p-4"><div class="bg-broken border-[3px] border-maroon rounded-[22px] max-w-[420px] w-full p-5 max-h-[80vh] overflow-auto"><div class="flex justify-between"><h3 class="font-bold text-maroon">🔔 Notifikasi</h3><button onclick="closeNotif()" class="close-btn">✕</button></div><div id="notifList" class="mt-4 flex flex-col gap-2 text-[11px]"></div><button onclick="clearNotif()" class="w-full mt-4 bg-cream border-2 py-2 rounded-xl text-[11px] font-bold">Hapus Semua</button></div></div>
 <div id="createModal" class="fixed inset-0 z-[80] bg-[#2b0a12]/35 backdrop-blur-md hidden place-items-center p-4"><div class="bg-broken border-[3px] border-maroon rounded-[22px] max-w-[460px] w-full p-5 max-h-[90vh] overflow-auto"><div class="flex justify-between mb-4"><h3 class="font-bold text-maroon">Spill ONLINE</h3><button onclick="closeCreate()" class="close-btn">✕</button></div><div class="space-y-3"><div class="grid grid-cols-2 gap-3"><div><label class="text-[11px]">Untuk Siapa</label><input id="toInput" class="mt-1 w-full bg-[#FFFBF0] border-2 border-cream rounded-xl px-3 py-2.5 text-[12px]"></div><div><label class="text-[11px]">Kategori</label><select id="catInput" class="mt-1 w-full bg-[#FFFBF0] border-2 border-cream rounded-xl px-3 py-2.5 text-[12px]"><option>Perasaan</option><option>Curhat Dosen</option><option>Cari Teman</option><option>Random</option><option>Curhat Kuliah</option></select></div></div><div><div id="avatarPicker" class="mt-1 flex gap-1.5 overflow-auto scrollbar-hide"></div><div id="colorPicker" class="mt-2 flex gap-1.5"></div></div><div><label class="text-[11px]">Isi Confess <span id="charCount" class="opacity-50">0/500</span></label><textarea id="msgInput" maxlength="500" placeholder="mau curcol apa?" class="mt-1 w-full bg-[#FFFBF0] border-2 border-cream rounded-xl px-3 py-2.5 text-[12px] min-h-[110px] resize-none"></textarea><div class="mt-3 grid grid-cols-2 gap-2"><button type="button" onclick="document.getElementById('photoInputGallery').click()" class="broken-white rounded-xl px-3 py-2.5 text-[11px] font-bold">🖼️ Galeri</button><button type="button" onclick="document.getElementById('photoInputCamera').click()" class="broken-white rounded-xl px-3 py-2.5 text-[11px] font-bold">📸 Kamera</button></div><input type="file" id="photoInputGallery" accept="image/*" class="hidden" onchange="previewPhoto(event)"><input type="file" id="photoInputCamera" accept="image/*" capture="environment" class="hidden" onchange="previewPhoto(event)"><img id="photoPreview" class="hidden w-full h-52 object-cover rounded-xl border-2 border-cream mt-2"><button id="removePhoto" onclick="removePhoto()" class="hidden text-[10px] bg-red-500 text-white px-3 py-1 rounded-full mt-2">Hapus Foto</button><div id="photoSizeInfo" class="text-[9px] opacity-40 mt-1"></div></div><button id="sendBtn" onclick="sendConfess()" class="w-full bg-maroon text-[#FFF8E7] py-3 rounded-xl font-bold">Kirim ONLINE ✈️</button></div></div></div>
@@ -376,7 +373,6 @@ async function loadHomeConfig(){
         if(countEl) countEl.innerText=iklanList.length+' ADS';
         if(!iklanList.length){ carousel.innerHTML='<div class="text-[11px] opacity-40 py-4">Belum ada iklan</div>'; }
         else { carousel.innerHTML=iklanList.map((ik,i)=>`<div onclick="openHomeDetail('iklan',${i})" class="min-w-[220px] max-w-[220px] snap-center bg-[#FFFBF0] border-2 border-cream rounded-xl p-3 cursor-pointer active:scale-95 transition">${ik.foto?`<img src="${ik.foto}" class="w-full h-24 object-cover rounded-lg mb-2 border-2 border-cream">`:''}<div class="text-[11px] leading-5 line-clamp-3">${safeHTML(ik.teks)||'Iklan'}</div></div>`).join(''); carousel.onmouseenter=()=>{ iklanPaused=true; }; carousel.onmouseleave=()=>{ iklanPaused=false; }; carousel.ontouchstart=()=>{ iklanPaused=true; }; carousel.ontouchend=()=>{ setTimeout(()=>{ iklanPaused=false; },2000); }; }
-
         let beritaCar=document.getElementById('beritaCarousel');
         let beritaCountEl=document.getElementById('beritaCount');
         if(beritaCountEl) beritaCountEl.innerText=beritaList.length+' BERITA';
