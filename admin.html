@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Admin Dark Simple</title>
+<title>Admin Dark Full - ALL Confess</title>
 <link rel="icon" type="image/jpeg" href="logo.png.jpg">
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -20,11 +20,10 @@ body{background:#0f0205; color:#FFF8E7}
 <div class="max-w-[900px] mx-auto">
 
 <div class="soft rounded-[20px] p-5 flex justify-between items-center mb-6">
-<div class="flex items-center gap-3"><img src="logo.png.jpg" class="w-10 h-10 rounded-full border-2 border-[#E8B86D]"><div><h1 class="font-extrabold text-[#FDE8C9]">Admin Dark</h1><div class="text-[10px] opacity-60">Simple • 2 tombol • Anti Hilang • Dark</div></div></div>
-<div class="flex gap-2"><div id="status" class="text-[10px] bg-[#1a060b] border border-[#E8B86D] px-3 py-2 rounded-full">Loading...</div></div>
+<div class="flex items-center gap-3"><img src="logo.png.jpg" class="w-10 h-10 rounded-full border-2 border-[#E8B86D]"><div><h1 class="font-extrabold text-[#FDE8C9]">Admin Dark ALL</h1><div class="text-[10px] opacity-60">Semua Confess • Iklan • Berita • Dark</div></div></div>
+<div id="status" class="text-[10px] bg-[#1a060b] border border-[#E8B86D] px-3 py-2 rounded-full">Loading...</div>
 </div>
 
-<!-- RULES SIMPLE -->
 <div class="soft rounded-[16px] p-4 mb-4">
 <div class="flex justify-between items-center"><h3 class="font-bold text-[13px] text-[#FDE8C9]">📜 Rules & Pengumuman</h3><button onclick="toggleRules()" class="text-[10px] underline opacity-60">buka/tutup</button></div>
 <div id="rulesBox" class="hidden mt-3 space-y-2">
@@ -35,7 +34,6 @@ body{background:#0f0205; color:#FFF8E7}
 </div>
 </div>
 
-<!-- IKLAN -->
 <div class="soft rounded-[16px] p-4 mb-4">
 <div class="flex justify-between items-center">
 <h3 class="font-bold text-[13px] text-[#FDE8C9]">💰 Iklan (<span id="iklanCount">0</span>)</h3>
@@ -44,8 +42,7 @@ body{background:#0f0205; color:#FFF8E7}
 <div id="iklanList" class="mt-3 space-y-2"></div>
 </div>
 
-<!-- BERITA -->
-<div class="soft rounded-[16px] p-4 mb-6">
+<div class="soft rounded-[16px] p-4 mb-4">
 <div class="flex justify-between items-center">
 <h3 class="font-bold text-[13px] text-[#FDE8C9]">📰 Berita (<span id="beritaCount">0</span>/10)</h3>
 <button onclick="openBerita()" class="btn-gold text-[11px]">+ Tambah Berita</button>
@@ -53,16 +50,26 @@ body{background:#0f0205; color:#FFF8E7}
 <div id="beritaList" class="mt-3 space-y-2"></div>
 </div>
 
-<div class="text-center text-[9px] opacity-30 py-4">Dark Admin Simple • Foto auto 800px 900KB • Anti hilang</div>
+<div class="soft rounded-[16px] p-4 mb-6 border-red-900" style="border-color:#8B1E3F">
+<div class="flex justify-between items-center">
+<h3 class="font-bold text-[13px] text-[#FDE8C9]">💌 Semua Confess (<span id="confessCount">0</span>)</h3>
+<div class="flex gap-2">
+<button onclick="loadConfess()" class="text-[10px] bg-[#1a060b] border border-[#E8B86D] px-2 py-1 rounded-full">🔄 Refresh</button>
+<button onclick="deleteAllConfess()" class="text-[10px] bg-red-600 text-white px-3 py-1 rounded-full font-bold">🗑️ Hapus Semua</button>
+</div>
+</div>
+<input id="searchConfess" placeholder="🔍 Cari To / isi / kategori... (semua confess)" class="input mt-3" oninput="renderConfess()">
+<div id="confessList" class="mt-3 space-y-2 max-h-[800px] overflow-auto"></div>
 </div>
 
-<!-- MODAL IKLAN -->
+</div>
+
 <div id="modalIklan" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-md hidden place-items-center p-4">
 <div class="soft rounded-[20px] p-5 w-full max-w-[400px] max-h-[90vh] overflow-auto">
 <div class="flex justify-between"><h3 class="font-bold text-[#FDE8C9]" id="iklanTitle">Tambah Iklan</h3><button onclick="closeIklan()" class="w-8 h-8 bg-[#1a060b] border border-[#E8B86D] rounded-full">✕</button></div>
 <div class="mt-4 space-y-2">
 <textarea id="iklanTeks" placeholder="Promo ayam geprek 10k..." class="input min-h-[80px]"></textarea>
-<input id="iklanFotoUrl" placeholder="Link foto opsional (atau upload dibawah)" class="input">
+<input id="iklanFotoUrl" placeholder="Link foto opsional" class="input">
 <div class="grid grid-cols-2 gap-2">
 <button onclick="document.getElementById('iklanFileG').click()" class="btn-maroon">🖼️ Galeri</button>
 <button onclick="document.getElementById('iklanFileC').click()" class="btn-maroon">📸 Kamera</button>
@@ -78,7 +85,6 @@ body{background:#0f0205; color:#FFF8E7}
 </div>
 </div>
 
-<!-- MODAL BERITA -->
 <div id="modalBerita" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-md hidden place-items-center p-4">
 <div class="soft rounded-[20px] p-5 w-full max-w-[400px] max-h-[90vh] overflow-auto">
 <div class="flex justify-between"><h3 class="font-bold text-[#FDE8C9]" id="beritaTitle">Tambah Berita</h3><button onclick="closeBerita()" class="w-8 h-8 bg-[#1a060b] border border-[#E8B86D] rounded-full">✕</button></div>
@@ -101,20 +107,21 @@ body{background:#0f0205; color:#FFF8E7}
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { getFirestore, doc, getDoc, setDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+import { getFirestore, doc, getDoc, setDoc, collection, query, orderBy, onSnapshot, deleteDoc, getDocs } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 const firebaseConfig = { apiKey: "AIzaSyCToBiaTsuCCWrDnKK8cI1aQf7BDHICsQ4", authDomain: "confess-f4711.firebaseapp.com", projectId: "confess-f4711", storageBucket: "confess-f4711.firebasestorage.app", messagingSenderId: "484779882136", appId: "1:484779882136:web:52ec1b393f5777e2b582ed" };
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app, "cnfss");
 const ref = doc(db, "home_config", "main");
+const colRef = collection(db, "confesses");
 
 let homeData = { iklanList: [], beritaList: [], rules: "", pengumuman: "", pengumumanDate: "" };
 let iklanFoto = null; let beritaFoto = null;
 let editIklan = -1; let editBerita = -1;
+let confesses = [];
 
 function toast(m){ let t=document.getElementById('toast'); t.innerText=m; t.classList.remove('translate-y-[100px]','opacity-0'); setTimeout(()=>t.classList.add('translate-y-[100px]','opacity-0'),2500); }
 function esc(s){ return (s||'').replace(/</g,'&lt;'); }
 
-// LOAD - ANTI HILANG
 onSnapshot(ref, snap=>{
   if(snap.exists()){
     homeData = snap.data();
@@ -124,9 +131,7 @@ onSnapshot(ref, snap=>{
     document.getElementById('fPengumuman').value = homeData.pengumuman||'';
     document.getElementById('fTgl').value = homeData.pengumumanDate||'';
     renderIklan(); renderBerita();
-    document.getElementById('status').innerText = `✅ ${homeData.iklanList.length} iklan • ${homeData.beritaList.length} berita`;
-  } else {
-    document.getElementById('status').innerText = '⚠️ Belum ada data - buat baru';
+    document.getElementById('status').innerText = `✅ ${homeData.iklanList.length} iklan • ${homeData.beritaList.length} berita • ${confesses.length} confess`;
   }
 });
 
@@ -136,8 +141,7 @@ async function saveField(field, value){
     let snap = await getDoc(ref);
     let existing = snap.exists()? snap.data() : {};
     await setDoc(ref, { ...existing, [field]: value, updatedAt: Date.now() }, {merge:true});
-    toast('✅ '+field+' aman tersimpan');
-    document.getElementById('status').innerText='✅ Tersimpan';
+    toast('✅ '+field+' aman');
   }catch(e){ toast('❌ '+e.message); }
 }
 
@@ -148,7 +152,6 @@ window.saveRules = async()=>{
   await saveField('pengumumanDate', document.getElementById('fTgl').value);
 }
 
-// IKLAN SIMPLE
 function compress(file, cb){
   let r=new FileReader();
   r.onload=ev=>{
@@ -165,106 +168,62 @@ function compress(file, cb){
     }
   }; r.readAsDataURL(file);
 }
-window.previewIklan = function(e){
-  let f=e.target.files[0]; if(!f) return;
-  compress(f,(b64,kb)=>{
-    iklanFoto=b64;
-    document.getElementById('iklanPreview').src=b64;
-    document.getElementById('iklanPreview').classList.remove('hidden');
-    document.getElementById('iklanRemove').classList.remove('hidden');
-    document.getElementById('iklanSize').innerText=kb+'KB';
-    document.getElementById('iklanFotoUrl').value='';
-  });
-}
+window.previewIklan = function(e){ let f=e.target.files[0]; if(!f) return; compress(f,(b64,kb)=>{ iklanFoto=b64; document.getElementById('iklanPreview').src=b64; document.getElementById('iklanPreview').classList.remove('hidden'); document.getElementById('iklanRemove').classList.remove('hidden'); document.getElementById('iklanSize').innerText=kb+'KB'; }); }
 window.removeIklanFoto = ()=>{ iklanFoto=null; document.getElementById('iklanPreview').classList.add('hidden'); document.getElementById('iklanRemove').classList.add('hidden'); document.getElementById('iklanSize').innerText=''; }
-
-window.openIklan = (i=-1)=>{
-  editIklan=i;
-  document.getElementById('modalIklan').classList.remove('hidden'); document.getElementById('modalIklan').classList.add('grid');
-  if(i>=0){
-    let b=homeData.iklanList[i];
-    document.getElementById('iklanTitle').innerText='Edit Iklan #'+(i+1);
-    document.getElementById('iklanTeks').value=b.teks||''; document.getElementById('iklanFotoUrl').value=b.foto||''; document.getElementById('iklanWA').value=b.wa||''; document.getElementById('iklanIG').value=b.ig||''; document.getElementById('iklanKontak').value=b.kontak||'';
-    if(b.foto){ iklanFoto=b.foto; document.getElementById('iklanPreview').src=b.foto; document.getElementById('iklanPreview').classList.remove('hidden'); document.getElementById('iklanSize').innerText=Math.round(b.foto.length*0.75/1024)+'KB'; }
-  } else {
-    document.getElementById('iklanTitle').innerText='Tambah Iklan'; document.getElementById('iklanTeks').value=''; document.getElementById('iklanFotoUrl').value=''; document.getElementById('iklanWA').value=''; document.getElementById('iklanIG').value=''; document.getElementById('iklanKontak').value=''; iklanFoto=null; document.getElementById('iklanPreview').classList.add('hidden'); document.getElementById('iklanSize').innerText='';
-  }
-}
+window.openIklan = (i=-1)=>{ editIklan=i; document.getElementById('modalIklan').classList.remove('hidden'); document.getElementById('modalIklan').classList.add('grid'); if(i>=0){ let b=homeData.iklanList[i]; document.getElementById('iklanTitle').innerText='Edit Iklan #'+(i+1); document.getElementById('iklanTeks').value=b.teks||''; document.getElementById('iklanFotoUrl').value=b.foto||''; document.getElementById('iklanWA').value=b.wa||''; document.getElementById('iklanIG').value=b.ig||''; document.getElementById('iklanKontak').value=b.kontak||''; if(b.foto){ iklanFoto=b.foto; document.getElementById('iklanPreview').src=b.foto; document.getElementById('iklanPreview').classList.remove('hidden'); } } else { document.getElementById('iklanTitle').innerText='Tambah Iklan'; document.getElementById('iklanTeks').value=''; document.getElementById('iklanFotoUrl').value=''; document.getElementById('iklanWA').value=''; document.getElementById('iklanIG').value=''; document.getElementById('iklanKontak').value=''; iklanFoto=null; document.getElementById('iklanPreview').classList.add('hidden'); } }
 window.closeIklan = ()=>{ document.getElementById('modalIklan').classList.add('hidden'); document.getElementById('modalIklan').classList.remove('grid'); }
-
-window.saveIklan = async()=>{
-  let teks=document.getElementById('iklanTeks').value.trim();
-  if(!teks){ alert('Isi iklan dulu'); return; }
-  let foto = iklanFoto || document.getElementById('iklanFotoUrl').value.trim();
-  let data={teks, foto, wa:document.getElementById('iklanWA').value.trim(), ig:document.getElementById('iklanIG').value.trim(), kontak:document.getElementById('iklanKontak').value.trim()};
-  if(editIklan>=0) homeData.iklanList[editIklan]=data; else homeData.iklanList.unshift(data);
-  await saveField('iklanList', homeData.iklanList);
-  closeIklan();
-}
-
-function renderIklan(){
-  document.getElementById('iklanCount').innerText=homeData.iklanList.length;
-  document.getElementById('iklanList').innerHTML=homeData.iklanList.map((b,i)=>`
-    <div class="bg-[#1a060b] border border-[#5D0F1F] rounded-xl p-3 flex gap-3">
-      ${b.foto?`<img src="${b.foto}" class="w-14 h-14 object-cover rounded-lg border border-[#5D0F1F]">`:`<div class="w-14 h-14 bg-[#2B0A12] rounded-lg grid place-items-center border border-[#5D0F1F]">💰</div>`}
-      <div class="flex-1 min-w-0"><div class="text-[11px] font-bold line-clamp-2">${esc(b.teks).slice(0,60)}</div><div class="text-[9px] opacity-50 mt-1">${b.wa?'WA ':''}${b.ig?'IG ':''}${b.foto?Math.round(b.foto.length*0.75/1024)+'KB':''}</div>
-      <div class="flex gap-1 mt-2"><button onclick="openIklan(${i})" class="text-[9px] bg-[#E8B86D] text-[#2B0A12] px-2 py-1 rounded-full font-bold">Edit</button><button onclick="hapusIklan(${i})" class="text-[9px] bg-red-500 text-white px-2 py-1 rounded-full font-bold">Hapus</button></div></div>
-    </div>
-  `).join('')||'<div class="text-[10px] opacity-40 text-center py-4">Belum ada iklan • Klik + Tambah Iklan</div>';
-}
+window.saveIklan = async()=>{ let teks=document.getElementById('iklanTeks').value.trim(); if(!teks){ alert('Isi iklan dulu'); return; } let foto = iklanFoto || document.getElementById('iklanFotoUrl').value.trim(); let data={teks, foto, wa:document.getElementById('iklanWA').value.trim(), ig:document.getElementById('iklanIG').value.trim(), kontak:document.getElementById('iklanKontak').value.trim()}; if(editIklan>=0) homeData.iklanList[editIklan]=data; else homeData.iklanList.unshift(data); await saveField('iklanList', homeData.iklanList); closeIklan(); }
+function renderIklan(){ document.getElementById('iklanCount').innerText=homeData.iklanList.length; document.getElementById('iklanList').innerHTML=homeData.iklanList.map((b,i)=>`<div class="bg-[#1a060b] border border-[#5D0F1F] rounded-xl p-3 flex gap-3">${b.foto?`<img src="${b.foto}" class="w-14 h-14 object-cover rounded-lg border border-[#5D0F1F]">`:`<div class="w-14 h-14 bg-[#2B0A12] rounded-lg grid place-items-center border border-[#5D0F1F]">💰</div>`}<div class="flex-1 min-w-0"><div class="text-[11px] font-bold line-clamp-2">${esc(b.teks).slice(0,60)}</div><div class="text-[9px] opacity-50 mt-1">${b.wa?'WA ':''}${b.ig?'IG ':''}</div><div class="flex gap-1 mt-2"><button onclick="openIklan(${i})" class="text-[9px] bg-[#E8B86D] text-[#2B0A12] px-2 py-1 rounded-full font-bold">Edit</button><button onclick="hapusIklan(${i})" class="text-[9px] bg-red-500 text-white px-2 py-1 rounded-full font-bold">Hapus</button></div></div></div>`).join('')||'<div class="text-[10px] opacity-40 text-center py-4">Belum ada iklan</div>'; }
 window.hapusIklan=async(i)=>{ if(!confirm('Hapus iklan #'+(i+1)+'?')) return; homeData.iklanList.splice(i,1); await saveField('iklanList', homeData.iklanList); }
 
-// BERITA SIMPLE
-window.previewBerita = function(e){
-  let f=e.target.files[0]; if(!f) return;
-  compress(f,(b64,kb)=>{
-    beritaFoto=b64;
-    document.getElementById('beritaPreview').src=b64;
-    document.getElementById('beritaPreview').classList.remove('hidden');
-    document.getElementById('beritaRemove').classList.remove('hidden');
-    document.getElementById('beritaSize').innerText=kb+'KB ✅ sama kayak Home';
+window.previewBerita = function(e){ let f=e.target.files[0]; if(!f) return; compress(f,(b64,kb)=>{ beritaFoto=b64; document.getElementById('beritaPreview').src=b64; document.getElementById('beritaPreview').classList.remove('hidden'); document.getElementById('beritaRemove').classList.remove('hidden'); document.getElementById('beritaSize').innerText=kb+'KB ✅'; }); }
+window.removeBeritaFoto = ()=>{ beritaFoto=null; document.getElementById('beritaPreview').classList.add('hidden'); document.getElementById('beritaRemove').classList.add('hidden'); document.getElementById('beritaSize').innerText=''; }
+window.openBerita = (i=-1)=>{ editBerita=i; document.getElementById('modalBerita').classList.remove('hidden'); document.getElementById('modalBerita').classList.add('grid'); if(i>=0){ let b=homeData.beritaList[i]; document.getElementById('beritaTitle').innerText='Edit Berita #'+(i+1); document.getElementById('beritaTeks').value=b.teks||''; document.getElementById('beritaKat').value=b.kategori||'Info Kampus'; document.getElementById('beritaTgl').value=b.tanggal||''; document.getElementById('beritaWA').value=b.wa||''; document.getElementById('beritaIG').value=b.ig||''; document.getElementById('beritaLink').value=b.link||''; beritaFoto=b.foto; document.getElementById('beritaPreview').src=b.foto; document.getElementById('beritaPreview').classList.remove('hidden'); } else { document.getElementById('beritaTitle').innerText='Tambah Berita'; document.getElementById('beritaTeks').value=''; document.getElementById('beritaKat').value='Info Kampus'; document.getElementById('beritaTgl').value=new Date().toLocaleDateString('id-ID',{day:'2-digit',month:'short',year:'numeric'}); document.getElementById('beritaWA').value=''; document.getElementById('beritaIG').value=''; document.getElementById('beritaLink').value=''; beritaFoto=null; document.getElementById('beritaPreview').classList.add('hidden'); } }
+window.closeBerita = ()=>{ document.getElementById('modalBerita').classList.add('hidden'); document.getElementById('modalBerita').classList.remove('grid'); }
+window.saveBerita = async()=>{ let teks=document.getElementById('beritaTeks').value.trim(); if(teks.length<5){ alert('Isi berita minimal 5'); return; } if(!beritaFoto){ alert('Foto berita wajib!'); return; } if(homeData.beritaList.length>=10 && editBerita===-1){ alert('Max 10 berita!'); return; } let data={teks, foto:beritaFoto, kategori:document.getElementById('beritaKat').value, tanggal:document.getElementById('beritaTgl').value||new Date().toLocaleDateString('id-ID',{day:'2-digit',month:'short',year:'numeric'}), wa:document.getElementById('beritaWA').value.trim(), ig:document.getElementById('beritaIG').value.trim(), link:document.getElementById('beritaLink').value.trim(), kontak:''}; if(editBerita>=0) homeData.beritaList[editBerita]=data; else homeData.beritaList.unshift(data); if(homeData.beritaList.length>10) homeData.beritaList=homeData.beritaList.slice(0,10); await saveField('beritaList', homeData.beritaList); closeBerita(); }
+function renderBerita(){ document.getElementById('beritaCount').innerText=homeData.beritaList.length; document.getElementById('beritaList').innerHTML=homeData.beritaList.map((b,i)=>`<div class="bg-[#1a060b] border border-[#5D0F1F] rounded-xl p-3 flex gap-3"><img src="${b.foto}" class="w-14 h-14 object-cover rounded-lg border border-[#5D0F1F]"><div class="flex-1 min-w-0"><div class="text-[11px] font-bold line-clamp-2">${esc(b.teks).slice(0,50)}</div><div class="text-[9px] opacity-50 mt-1">${b.kategori} • ${b.tanggal||''}</div><div class="flex gap-1 mt-2"><button onclick="openBerita(${i})" class="text-[9px] bg-[#E8B86D] text-[#2B0A12] px-2 py-1 rounded-full font-bold">Edit</button><button onclick="hapusBerita(${i})" class="text-[9px] bg-red-500 text-white px-2 py-1 rounded-full font-bold">Hapus</button></div></div></div>`).join('')||'<div class="text-[10px] opacity-40 text-center py-4">Belum ada berita</div>'; }
+window.hapusBerita=async(i)=>{ if(!confirm('Hapus berita #'+(i+1)+'?')) return; homeData.beritaList.splice(i,1); await saveField('beritaList', homeData.beritaList); }
+
+// CONFESS ALL - TANPA SLICE!
+window.loadConfess=()=>{
+  onSnapshot(query(colRef, orderBy("createdAt","desc")), snap=>{
+    confesses = snap.docs.map(d=>({id:d.id, ...d.data()}));
+    renderConfess();
+    document.getElementById('status').innerText = `✅ ${homeData.iklanList.length} iklan • ${homeData.beritaList.length} berita • ${confesses.length} confess (ALL)`;
   });
 }
-window.removeBeritaFoto = ()=>{ beritaFoto=null; document.getElementById('beritaPreview').classList.add('hidden'); document.getElementById('beritaRemove').classList.add('hidden'); document.getElementById('beritaSize').innerText=''; }
-
-window.openBerita = (i=-1)=>{
-  editBerita=i;
-  document.getElementById('modalBerita').classList.remove('hidden'); document.getElementById('modalBerita').classList.add('grid');
-  if(i>=0){
-    let b=homeData.beritaList[i];
-    document.getElementById('beritaTitle').innerText='Edit Berita #'+(i+1);
-    document.getElementById('beritaTeks').value=b.teks||''; document.getElementById('beritaKat').value=b.kategori||'Info Kampus'; document.getElementById('beritaTgl').value=b.tanggal||''; document.getElementById('beritaWA').value=b.wa||''; document.getElementById('beritaIG').value=b.ig||''; document.getElementById('beritaLink').value=b.link||'';
-    beritaFoto=b.foto; document.getElementById('beritaPreview').src=b.foto; document.getElementById('beritaPreview').classList.remove('hidden'); document.getElementById('beritaSize').innerText=Math.round(b.foto.length*0.75/1024)+'KB';
-  } else {
-    document.getElementById('beritaTitle').innerText='Tambah Berita'; document.getElementById('beritaTeks').value=''; document.getElementById('beritaKat').value='Info Kampus'; document.getElementById('beritaTgl').value=new Date().toLocaleDateString('id-ID',{day:'2-digit',month:'short',year:'numeric'}); document.getElementById('beritaWA').value=''; document.getElementById('beritaIG').value=''; document.getElementById('beritaLink').value=''; beritaFoto=null; document.getElementById('beritaPreview').classList.add('hidden'); document.getElementById('beritaSize').innerText='';
-  }
-}
-window.closeBerita = ()=>{ document.getElementById('modalBerita').classList.add('hidden'); document.getElementById('modalBerita').classList.remove('grid'); }
-
-window.saveBerita = async()=>{
-  let teks=document.getElementById('beritaTeks').value.trim();
-  if(teks.length<5){ alert('Isi berita minimal 5'); return; }
-  if(!beritaFoto){ alert('Foto berita wajib!'); return; }
-  if(homeData.beritaList.length>=10 && editBerita===-1){ alert('Max 10 berita! Hapus dulu'); return; }
-  let data={teks, foto:beritaFoto, kategori:document.getElementById('beritaKat').value, tanggal:document.getElementById('beritaTgl').value||new Date().toLocaleDateString('id-ID',{day:'2-digit',month:'short',year:'numeric'}), wa:document.getElementById('beritaWA').value.trim(), ig:document.getElementById('beritaIG').value.trim(), link:document.getElementById('beritaLink').value.trim(), kontak:''};
-  if(editBerita>=0) homeData.beritaList[editBerita]=data; else homeData.beritaList.unshift(data);
-  if(homeData.beritaList.length>10) homeData.beritaList=homeData.beritaList.slice(0,10);
-  await saveField('beritaList', homeData.beritaList);
-  closeBerita();
-}
-
-function renderBerita(){
-  document.getElementById('beritaCount').innerText=homeData.beritaList.length;
-  document.getElementById('beritaList').innerHTML=homeData.beritaList.map((b,i)=>`
-    <div class="bg-[#1a060b] border border-[#5D0F1F] rounded-xl p-3 flex gap-3">
-      <img src="${b.foto}" class="w-14 h-14 object-cover rounded-lg border border-[#5D0F1F]">
-      <div class="flex-1 min-w-0"><div class="text-[11px] font-bold line-clamp-2">${esc(b.teks).slice(0,50)}</div><div class="text-[9px] opacity-50 mt-1">${b.kategori} • ${b.tanggal||''} • ${Math.round(b.foto.length*0.75/1024)}KB</div>
-      <div class="flex gap-1 mt-2"><button onclick="openBerita(${i})" class="text-[9px] bg-[#E8B86D] text-[#2B0A12] px-2 py-1 rounded-full font-bold">Edit</button><button onclick="hapusBerita(${i})" class="text-[9px] bg-red-500 text-white px-2 py-1 rounded-full font-bold">Hapus</button><button onclick="moveBerita(${i},-1)" class="text-[9px] bg-[#2B0A12] border border-[#5D0F1F] px-2 py-1 rounded-full">⬆️</button><button onclick="moveBerita(${i},1)" class="text-[9px] bg-[#2B0A12] border border-[#5D0F1F] px-2 py-1 rounded-full">⬇️</button></div></div>
+window.renderConfess=()=>{
+  let s=document.getElementById('searchConfess').value.toLowerCase();
+  let filtered=confesses.filter(c=> (c.to||'').toLowerCase().includes(s) || (c.text||'').toLowerCase().includes(s) || (c.cat||'').toLowerCase().includes(s) );
+  document.getElementById('confessCount').innerText=filtered.length;
+  // SEMUA CONFESS - GAK PAKE SLICE LAGI!
+  document.getElementById('confessList').innerHTML=filtered.map(c=>`
+    <div class="bg-[#1a060b] border border-[#5D0F1F] rounded-xl p-3">
+      <div class="flex justify-between items-start">
+        <div class="flex items-center gap-2"><div class="w-7 h-7 rounded-full grid place-items-center text-[14px] border border-[#E8B86D]" style="background:${c.color||'#2B0A12'}">${c.avatar||'🦊'}</div><div><div class="text-[11px] font-bold">To: ${esc(c.to)} • ${esc(c.cat||'Random')} • #${c.code||''}</div><div class="text-[9px] opacity-50">${c.time?new Date(c.time).toLocaleString('id-ID'):''} • ${c.replies?.length||0} reply • 💖${c.reactions?.love||0}</div></div></div>
+        <button onclick="hapusConfess('${c.id}')" class="bg-red-600 text-white px-3 py-1 rounded-full text-[10px] font-bold">HAPUS</button>
+      </div>
+      <div class="mt-2 text-[12px] leading-5 bg-[#2B0A12] p-2 rounded-lg border border-[#5D0F1F]">${esc(c.text).slice(0,300)}</div>
+      ${c.photo?`<img src="${c.photo}" class="mt-2 w-full h-32 object-cover rounded-lg border border-[#5D0F1F]">`:''}
     </div>
-  `).join('')||'<div class="text-[10px] opacity-40 text-center py-4">Belum ada berita • Klik + Tambah Berita</div>';
+  `).join('')||'<div class="text-[10px] opacity-40 text-center py-6">Belum ada confess</div>';
 }
-window.hapusBerita=async(i)=>{ if(!confirm('Hapus berita #'+(i+1)+'?')) return; homeData.beritaList.splice(i,1); await saveField('beritaList', homeData.beritaList); }
-window.moveBerita=async(i,dir)=>{ let ni=i+dir; if(ni<0||ni>=homeData.beritaList.length) return; let tmp=homeData.beritaList[i]; homeData.beritaList[i]=homeData.beritaList[ni]; homeData.beritaList[ni]=tmp; await saveField('beritaList', homeData.beritaList); }
+window.hapusConfess=async(id)=>{
+  if(!confirm('Yakin hapus confess ini?')) return;
+  try{ await deleteDoc(doc(db,"confesses",id)); toast('✅ Confess dihapus'); }catch(e){ toast('❌ '+e.message); }
+}
+window.deleteAllConfess=async()=>{
+  if(!confirm('HAPUS SEMUA CONFESS?')) return;
+  let konf=prompt('Ketik: HAPUS SEMUA');
+  if(konf!=='HAPUS SEMUA'){ alert('Dibatalkan'); return; }
+  try{
+    let snap=await getDocs(colRef);
+    for(let d of snap.docs){ await deleteDoc(d.ref); }
+    toast('✅ Semua confess terhapus!');
+  }catch(e){ toast('❌ '+e.message); }
+}
+
+loadConfess();
 </script>
 </body>
 </html>
