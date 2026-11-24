@@ -106,7 +106,33 @@ html.dark #createModal textarea{background:#2B0A12!important; color:#FFF8E7!impo
 html.dark #detailModal #detailContent .flex.gap-2 > div.bg-\[\#FFFBF0\]{background:#2B0A12!important; border-color:#5D0F1F!important}
 html.dark #detailModal #detailContent #reply-{border-color:#E8B86D!important}
 html.dark #homeDetailModal > div > div:first-child{background:#2B0A12!important; border-color:#5D0F1F!important}
-html.dark #homeDetailModal > div > div:first-child div{color:#FDE8C9!important}  
+html.dark #homeDetailModal > div > div:first-child div{color:#FDE8C9!important}
+/* FIX RUANG KOSONG DI ATAS CONFESS GAME PROFIL - DARK BETA */
+#view-feed, #view-game, #view-profile {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  min-height: auto !important;
+}
+
+header.soft-header {
+  margin-bottom: 10px !important; /* tadinya mb-5 = 20px jadi kosong */
+}
+
+#view-feed #searchM,
+#view-feed #search {
+  margin-top: 0 !important;
+}
+
+/* Biar Top Confess rapet ke search */
+#view-feed .soft-card.rounded-\[18px\] {
+  margin-top: 10px !important;
+  margin-bottom: 12px !important;
+}
+
+/* Fix bottom nav gak nutup Edit/Hapus */
+#view-feed {
+  padding-bottom: 100px !important;
+}
 </style>
 </head>
 <body>
