@@ -156,6 +156,36 @@ html.dark #spinResult {
   object-fit: contain !important;
   background: #2B0A12;
 }
+
+/* FIX BERITA KAMPUS BIAR GAK KE-POTONG JUGA */
+#beritaCarousel {
+  align-items: flex-start !important;
+}
+#beritaCarousel > div {
+  flex: 0 0 82% !important; /* biar keliatan gesernya */
+  height: auto !important;
+  min-height: auto !important;
+  overflow: visible !important;
+}
+#beritaCarousel > div img,
+#beritaCarousel img {
+  width: 100% !important;
+  height: auto !important;
+  max-height: none !important;
+  aspect-ratio: auto !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  display: block;
+  border-radius: 12px;
+  background: #FFFBF0;
+}
+
+/* FIX CARD BERITA LIST YANG DI HOME DETAIL (10 berita) */
+#homeDetailContent img {
+  width: 100% !important;
+  height: auto !important;
+  object-fit: contain !important;
+}
 </style>
 </head>
 <body>
