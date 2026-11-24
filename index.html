@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cerita Kita BETA</title>
+<title>Cerita Kita BETA v8.0</title>
 <link rel="icon" type="image/jpeg" href="logo.png.jpg">
 <script src="https://cdn.tailwindcss.com"></script>
 <script>tailwind.config={theme:{extend:{colors:{maroon:'#5D0F1F',maroon2:'#8B1E3F',broken:'#FFF8E7',cream:'#FDE8C9',cream2:'#FFF1D6',gold:'#E8B86D',peach:'#FFDAB9'}}}}</script>
@@ -12,6 +12,7 @@
 body{background: linear-gradient(180deg, #FFF8E7 0%, #FDE8C9 35%, #FFECD2 70%, #FFF1D6 100%); min-height:100vh; transition:background 0.25s}
 .masonry{column-count:1;column-gap:14px} @media(min-width:640px){.masonry{column-count:2}} @media(min-width:1024px){.masonry{column-count:3}}
 .masonry-item{break-inside:avoid;margin-bottom:14px} .scrollbar-hide::-webkit-scrollbar{display:none;}
+.line-clamp-2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .line-clamp-3{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .soft-card{background: linear-gradient(135deg, #FFFBF0 0%, #FFF1D6 100%); border: 2.5px solid #5D0F1F; box-shadow: 5px 5px 0px #5D0F1F; transition:0.25s}
 .soft-card.clickable{cursor:pointer} .soft-card.clickable:active{transform:translate(2px,2px); box-shadow: 3px 3px 0px #5D0F1F}
@@ -28,7 +29,6 @@ body{background: linear-gradient(180deg, #FFF8E7 0%, #FDE8C9 35%, #FFECD2 70%, #
 .close-btn{width:36px; height:36px; background:#FFFBF0; border:2px solid #5D0F1F; border-radius:9999px; display:grid; place-items:center; font-weight:800; transition:0.2s}
 .react-btn{border:2px solid #FDE8C9; background:#FFF8E7; padding:6px 10px; border-radius:9999px; font-size:10px; font-weight:700; transition:0.2s}
 .broken-white{background:#FFFBF0; border:2px solid #FDE8C9}
-/* DARK V7.7 - NO PURE WHITE, SEMUA BROKEN + FIX EDIT HAPUS */
 html.dark body{background: linear-gradient(180deg, #1a060b 0%, #2B0A12 60%, #3a1520 100%)!important; color:#FFF8E7}
 html.dark .soft-card{background: linear-gradient(135deg, #3a1520 0%, #2B0A12 100%)!important; border-color:#E8B86D!important; color:#FFF8E7!important; box-shadow:5px 5px 0px #0f0205!important}
 html.dark .soft-card-gold{background: linear-gradient(135deg, #4a2030 0%, #3a1520 100%)!important; border-color:#E8B86D!important; color:#FFF8E7!important; box-shadow:5px 5px 0px #0f0205!important}
@@ -46,17 +46,10 @@ html.dark .filter-btn.active{background: linear-gradient(135deg, #E8B86D 0%, #FD
 html.dark .cat-badge{background:#E8B86D!important; color:#2B0A12!important; border-color:#2B0A12!important}
 html.dark #notifDot{box-shadow:0 0 8px #ef4444}
 html.dark ::placeholder{color:rgba(253,232,201,0.5)!important}
-html.dark #homeDetailModal > div,
-html.dark #detailModal > div,
-html.dark #createModal > div,
-html.dark #editModal > div,
-html.dark #deleteModal > div,
-html.dark #notifModal > div,
-html.dark #rulesModal > div,
-html.dark #profileEditModal > div{background: linear-gradient(135deg, #2B0A12 0%, #3a1520 100%)!important; border-color:#E8B86D!important; color:#FFF8E7!important; box-shadow: 8px 8px 0px #0f0205!important}
+html.dark #homeDetailModal > div, html.dark #detailModal > div, html.dark #createModal > div, html.dark #editModal > div, html.dark #deleteModal > div, html.dark #notifModal > div, html.dark #rulesModal > div, html.dark #profileEditModal > div{background: linear-gradient(135deg, #2B0A12 0%, #3a1520 100%)!important; border-color:#E8B86D!important; color:#FFF8E7!important; box-shadow: 8px 8px 0px #0f0205!important}
 html.dark .close-btn{background:#2B0A12!important; border-color:#E8B86D!important; color:#FDE8C9!important}
 html.dark .react-btn{background:#2B0A12!important; border-color:#5D0F1F!important; color:#FDE8C9!important}
-html.dark #iklanCarousel > div{background:#2B0A12!important; border-color:#5D0F1F!important; color:#FFF8E7!important}
+html.dark #iklanCarousel > div, html.dark #beritaCarousel > div{background:#2B0A12!important; border-color:#5D0F1F!important; color:#FFF8E7!important}
 html.dark #topConfessList > div{background:#2B0A12!important; color:#FFF8E7!important}
 html.dark #myConfessList > div{background:#2B0A12!important; color:#FFF8E7!important; border-color:#5D0F1F!important}
 html.dark #toast{background:#E8B86D!important; color:#2B0A12!important}
@@ -64,15 +57,13 @@ html.dark #view-profile .text-maroon{color:#FDE8C9!important}
 html.dark #view-profile h3{color:#FDE8C9!important}
 html.dark #notifPermStatus, html.dark #notifAutoInfo{background:#2B0A12!important; color:#FDE8C9!important; border-color:#5D0F1F!important}
 html.dark .broken-white{background:#2B0A12!important; color:#FFF8E7!important; border-color:#5D0F1F!important}
-/* FIX EDIT HAPUS KELIATAN V7.7 */
 html.dark .bg-yellow-100{background:#4a3a0a!important; color:#FDE8C9!important; border:2px solid #E8B86D!important}
 html.dark .bg-red-100{background:#4a1515!important; color:#FFB4B4!important; border:2px solid #8B1E3F!important}
 html.dark .bg-broken{background:#3a1520!important; color:#FFF8E7!important; border-color:#5D0F1F!important}
 html.dark #myConfessList button.bg-yellow-100{color:#FDE8C9!important; border-color:#E8B86D!important}
 html.dark #myConfessList button.bg-red-100{color:#FF8A8A!important; border-color:#8B1E3F!important}
 html.dark #myConfessList button.broken-white{color:#FFF8E7!important; background:#2B0A12!important}
-html.dark #profileEditModal .broken-white,
-html.dark #createModal .broken-white{background:#2B0A12!important; color:#FFF8E7!important; border-color:#5D0F1F!important}
+html.dark #profileEditModal .broken-white, html.dark #createModal .broken-white{background:#2B0A12!important; color:#FFF8E7!important; border-color:#5D0F1F!important}
 html.dark #removeProfilePhoto{background:#7f1d1d!important; color:#FFFBF0!important; border-color:#5D0F1F!important}
 html.dark .bg-cream2{background:#2B0A12!important; color:#FDE8C9!important; border-color:#E8B86D!important}
 </style>
@@ -94,6 +85,7 @@ html.dark .bg-cream2{background:#2B0A12!important; color:#FDE8C9!important; bord
 <button id="darkToggle" onclick="toggleDark()" class="w-9 h-9 bg-[#FFFBF0] border-2 border-cream rounded-full grid place-items-center">🌙</button>
 <div id="myLevelHeader" class="text-[10px] bg-gradient-to-r from-maroon to-maroon2 text-[#FFF8E7] px-3 py-1.5 rounded-full font-bold">🌱 LV.1</div>
 </div></header>
+
 <div id="view-home" class="view active space-y-4">
 <div onclick="openHomeDetail('rules')" class="soft-card clickable rounded-[22px] p-5">
 <div class="flex justify-between items-center"><h2 class="font-extrabold text-maroon">📜 Rules</h2><span class="text-[10px] opacity-40">tap untuk detail →</span></div>
@@ -104,14 +96,31 @@ html.dark .bg-cream2{background:#2B0A12!important; color:#FDE8C9!important; bord
 <div id="homePengumuman" class="mt-3 text-[12px] leading-6 line-clamp-3">Belum ada pengumuman</div>
 <div id="pengumumanDate" class="mt-2 text-[9px] opacity-50"></div>
 </div>
+
+<!-- IKLAN -->
 <div class="soft-card-gold rounded-[22px] p-5 overflow-hidden">
 <div class="flex justify-between items-center"><h2 class="font-extrabold text-maroon">💰 Iklan / Sponsor</h2><span class="text-[9px] bg-gold text-maroon px-2.5 py-1 rounded-full font-bold" id="iklanCount">0 ADS</span></div>
 <div id="iklanCarousel" class="mt-3 flex gap-3 overflow-x-auto scrollbar-hide snap-x snap-mandatory pb-2" style="scroll-behavior:smooth"></div>
-<div class="text-[9px] opacity-40 mt-1">geser >></div>
+<div class="text-[9px] opacity-40 mt-1">geser → auto scroll 3 detik • tap untuk kontak</div>
 </div>
+
+<!-- BERITA KAMPUS V8.0 - MAX 10 POSTER -->
+<div class="soft-card rounded-[22px] p-5 overflow-hidden" style="border-color:#5D0F1F; box-shadow: 5px 5px 0px #5D0F1F">
+<div class="flex justify-between items-center">
+<h2 class="font-extrabold text-maroon">📰 Berita Kampus</h2>
+<div class="flex gap-1.5">
+<span class="text-[9px] bg-maroon text-[#FFF8E7] px-2.5 py-1 rounded-full font-bold" id="beritaCount">0 BERITA</span>
+<button onclick="openHomeDetail('beritaList')" class="text-[9px] bg-cream2 border-2 border-maroon px-2.5 py-1 rounded-full font-bold">Lihat Semua →</button>
+</div>
+</div>
+<div id="beritaCarousel" class="mt-3 flex gap-3 overflow-x-auto scrollbar-hide snap-x snap-mandatory pb-2" style="scroll-behavior:smooth"></div>
+<div class="text-[9px] opacity-40 mt-1">geser → poster berita kampus max 10 • tap untuk detail</div>
+</div>
+
 <div class="grid grid-cols-2 gap-3"><div class="soft-card rounded-[18px] py-5 text-center"><div class="font-extrabold text-maroon text-[26px]" id="lTotal">0</div><div class="text-[9px] font-bold opacity-60">TOTAL</div></div><div class="soft-card rounded-[18px] py-5 text-center"><div class="font-extrabold text-maroon text-[26px]" id="lStreak">0🔥</div><div class="text-[9px] font-bold opacity-60">STREAK</div></div></div>
-<footer class="text-center py-8 opacity-40"><div class="text-[11px]">☁️ cozzy place to confess</div><div class="text-[9px] mt-1">CAPEEEEEEE TEU KUATTT</div></footer>
+<footer class="text-center py-8 opacity-40"><div class="text-[11px]">☁️ cozzy place to confess</div><div class="text-[9px] mt-1">v8.0 berita kampus 10 poster</div></footer>
 </div>
+
 <div id="view-feed" class="view">
 <input id="searchM" oninput="handleSearch(this.value)" placeholder="🔍 Cari..." class="md:hidden w-full bg-[#FFFBF0] border-2 border-cream rounded-full px-4 py-3 text-[12px] mb-3 outline-none">
 <input id="search" oninput="handleSearch(this.value)" placeholder="Cari #tag / FICT / FMB..." class="hidden md:block w-full bg-[#FFFBF0] border-2 border-cream rounded-full px-4 py-3 text-[11px] mb-4 outline-none">
@@ -145,10 +154,10 @@ html.dark .bg-cream2{background:#2B0A12!important; color:#FDE8C9!important; bord
 <h2 class="font-extrabold text-maroon mt-4" id="profileName">anonimijon</h2>
 <div class="text-[10px] opacity-60 mt-1">tap foto buat edit • <span id="profileAvatarLabel">🦊 • LV.1</span></div>
 <div class="mt-5 grid grid-cols-3 gap-2.5"><div class="bg-broken border-2 border-cream rounded-[14px] py-3.5"><div class="font-extrabold text-maroon" id="profileLevel">LV.1</div><div class="text-[9px]">LEVEL</div></div><div class="bg-broken border-2 border-cream rounded-[14px] py-3.5"><div class="font-extrabold text-maroon" id="profileXP">0</div><div class="text-[9px]">XP</div></div><div class="bg-broken border-2 border-cream rounded-[14px] py-3.5"><div class="font-extrabold text-maroon" id="profileStreak">0🔥</div><div class="text-[9px]">STREAK</div></div></div>
-<div id="notifAutoInfo" class="mt-4 p-3 bg-broken border-2 border-cream rounded-xl text-[10px] leading-5 text-left">ini isi apa ya bingung</div>
+<div id="notifAutoInfo" class="mt-4 p-3 bg-broken border-2 border-cream rounded-xl text-[10px] leading-5 text-left">🔔 Notifikasi otomatis ditanya pas masuk web.</div>
 </div>
 <div class="soft-card rounded-[18px] p-4"><h3 class="font-bold text-[12px] text-maroon">📝 Confess Gue</h3><div id="myConfessList" class="mt-3 space-y-2 text-[11px]"></div></div>
-<footer class="text-center py-6 opacity-30"><div class="text-[9px]">By Human/Error 2026</div></footer>
+<footer class="text-center py-6 opacity-30"><div class="text-[9px]">☁️ Human/Error 2026</div></footer>
 </div>
 </div>
 <div class="bottom-nav">
@@ -177,11 +186,12 @@ html.dark .bg-cream2{background:#2B0A12!important; color:#FDE8C9!important; bord
 <img id="homeDetailFoto" class="hidden w-full h-64 object-cover rounded-xl border-2 border-cream">
 <div id="homeDetailContent" class="text-[13px] leading-7"></div>
 <div id="homeDetailKontak" class="hidden mt-4 pt-4 border-t-2 border-dashed border-cream">
-<div class="font-bold text-maroon text-[12px]">📞 Kontak Iklan</div>
+<div class="font-bold text-maroon text-[12px]">📞 Kontak / Info</div>
 <div id="homeDetailKontakContent" class="mt-2 text-[12px] space-y-2"></div>
 <div class="mt-4 grid grid-cols-2 gap-2" id="kontakBtnWrap">
 <button id="waBtn" class="hidden bg-green-500 text-white py-2.5 rounded-xl font-bold text-[11px]">💬 WhatsApp</button>
 <button id="igBtn" class="hidden bg-gradient-to-r from-purple-500 to-pink-500 text-white py-2.5 rounded-xl font-bold text-[11px]">📸 Instagram</button>
+<button id="linkBtn" class="hidden col-span-2 bg-maroon text-white py-2.5 rounded-xl font-bold text-[11px]">🔗 Buka Link</button>
 </div>
 </div>
 </div>
@@ -204,164 +214,27 @@ const colRef = collection(db, "confesses");
 const avatars=['🦊','🐱','🐶','🐼','👻','🦄','🐙','🦅']; const colors=['#FDE8C9','#E0F2E9','#E0E7FF','#FFE4E6','#FFF1D6'];
 let selectedAvatar=avatars[0]; let selectedColor=colors[0];
 let confesses=[]; let activeCat='all'; let savedScroll=0; let editId=null; let deleteId=null; let prevReplyCounts={}; let isFirstLoad=true;
-let homeDataCache={rules:'',pengumuman:'',pengumumanDate:'',iklanList:[]};
+let homeDataCache={rules:'',pengumuman:'',pengumumanDate:'',iklanList:[], beritaList:[]};
 let iklanInterval=null; let iklanPaused=false;
-function checkNotifSupport(){
-  if(!('Notification' in window)) return {ok:false, msg:'Browser tidak support notif', reason:'not_supported'};
-  if(typeof window.isSecureContext!=='undefined' && !window.isSecureContext) return {ok:false, msg:'Butuh HTTPS', reason:'not_secure'};
-  return {ok:true, perm: Notification.permission};
-}
-function updatePermStatus(){
-  let el=document.getElementById('notifPermStatus'); if(!el) return;
-  let c=checkNotifSupport();
-  if(!c.ok){
-    el.innerHTML=c.reason==='not_supported'?'🔴 Browser tidak support notif • Pakai Chrome terbaru':'🟡 '+c.msg+' • Buka pakai https://';
-    el.className='mt-2 text-[8px] p-2 rounded-lg border text-left bg-red-50 border-red-200';
-    return;
-  }
-  if(c.perm==='granted'){ el.innerHTML='✅ Notif HP AKTIF • Balasan bakal masuk HP'; el.className='mt-2 text-[8px] p-2 rounded-lg border text-left bg-green-50 border-green-200 text-green-700'; }
-  else if(c.perm==='denied'){ el.innerHTML='❌ Notif diblokir • Buka gembok 🔒 di address bar > Allow'; el.className='mt-2 text-[8px] p-2 rounded-lg border text-left bg-red-50 border-red-200 text-red-700'; }
-  else { el.innerHTML='🔔 Akan minta izin pas kamu klik Masuk'; el.className='mt-2 text-[8px] p-2 rounded-lg border text-left bg-[#FFFBF0]/80'; }
-}
-async function autoRequestNotifOnEnter(){
-  let c=checkNotifSupport(); if(!c.ok){ updatePermStatus(); return; }
-  if(c.perm==='granted' || c.perm==='denied'){ updatePermStatus(); return; }
-  try{
-    let perm=await Notification.requestPermission();
-    updatePermStatus();
-    if(perm==='granted'){
-      showToast('Notif AKTIF! 🔔');
-      try{ new Notification('Cerita Kita AKTIF! 🎉',{body:'Mantap! Kalo ada yang bales confess kamu, masuk HP!', icon:'logo.png.jpg'}); }catch(e){}
-    }
-  }catch(e){ updatePermStatus(); }
-}
-function pushHPNotif(title, body){
-  let c=checkNotifSupport(); if(!c.ok) return;
-  if(Notification.permission!=='granted') return;
-  try{ new Notification(title,{body, icon:'logo.png.jpg', badge:'logo.png.jpg'}); }catch(e){}
-}
+let beritaInterval=null; let beritaPaused=false;
+function checkNotifSupport(){ if(!('Notification' in window)) return {ok:false, msg:'Browser tidak support notif', reason:'not_supported'}; if(typeof window.isSecureContext!=='undefined' && !window.isSecureContext) return {ok:false, msg:'Butuh HTTPS', reason:'not_secure'}; return {ok:true, perm: Notification.permission}; }
+function updatePermStatus(){ let el=document.getElementById('notifPermStatus'); if(!el) return; let c=checkNotifSupport(); if(!c.ok){ el.innerHTML=c.reason==='not_supported'?'🔴 Browser tidak support notif • Pakai Chrome terbaru':'🟡 '+c.msg+' • Buka pakai https://'; el.className='mt-2 text-[8px] p-2 rounded-lg border text-left bg-red-50 border-red-200'; return; } if(c.perm==='granted'){ el.innerHTML='✅ Notif HP AKTIF • Balasan bakal masuk HP'; el.className='mt-2 text-[8px] p-2 rounded-lg border text-left bg-green-50 border-green-200 text-green-700'; } else if(c.perm==='denied'){ el.innerHTML='❌ Notif diblokir • Buka gembok 🔒 di address bar > Allow'; el.className='mt-2 text-[8px] p-2 rounded-lg border text-left bg-red-50 border-red-200 text-red-700'; } else { el.innerHTML='🔔 Akan minta izin pas kamu klik Masuk'; el.className='mt-2 text-[8px] p-2 rounded-lg border text-left bg-[#FFFBF0]/80'; } }
+async function autoRequestNotifOnEnter(){ let c=checkNotifSupport(); if(!c.ok){ updatePermStatus(); return; } if(c.perm==='granted' || c.perm==='denied'){ updatePermStatus(); return; } try{ let perm=await Notification.requestPermission(); updatePermStatus(); if(perm==='granted'){ showToast('Notif AKTIF! 🔔'); try{ new Notification('Cerita Kita AKTIF! 🎉',{body:'Mantap! Kalo ada yang bales confess kamu, masuk HP!', icon:'logo.png.jpg'}); }catch(e){} } }catch(e){ updatePermStatus(); } }
+function pushHPNotif(title, body){ let c=checkNotifSupport(); if(!c.ok) return; if(Notification.permission!=='granted') return; try{ new Notification(title,{body, icon:'logo.png.jpg', badge:'logo.png.jpg'}); }catch(e){} }
 updatePermStatus();
 let profileTempAvatar = localStorage.getItem('profileAvatar_CeritaKita') || avatars[0];
 let profileTempColor = localStorage.getItem('profileColor_CeritaKita') || colors[0];
 let profileEditPhotoTemp = localStorage.getItem('profilePhoto_CeritaKita') || null;
-function getProfileData(){
-  try{
-    let a=localStorage.getItem('profileAvatar_CeritaKita') || avatars[0];
-    let c=localStorage.getItem('profileColor_CeritaKita') || colors[0];
-    let p=localStorage.getItem('profilePhoto_CeritaKita') || null;
-    return {avatar:a, color:c, photo:p};
-  }catch{ return {avatar:avatars[0], color:colors[0], photo:null}; }
-}
-function renderProfileAvatar(){
-  let data=getProfileData();
-  let display=document.getElementById('profileAvatarDisplay');
-  let label=document.getElementById('profileAvatarLabel');
-  let lvl=getLevel(getXP());
-  if(!display) return;
-  if(data.photo){
-    display.innerHTML=`<img src="${data.photo}" class="w-full h-full object-cover">`;
-    display.style.background=data.color;
-    if(label) label.innerText=`📸 • LV.${lvl.lv}`;
-  } else {
-    display.innerText=data.avatar;
-    display.style.background=data.color;
-    if(label) label.innerText=`${data.avatar} • LV.${lvl.lv}`;
-  }
-  let editPreview=document.getElementById('profileEditPreview');
-  if(editPreview){
-    if(profileEditPhotoTemp){
-      editPreview.innerHTML=`<img src="${profileEditPhotoTemp}" class="w-full h-full object-cover">`;
-      editPreview.style.background=profileTempColor;
-    } else {
-      editPreview.innerText=profileTempAvatar;
-      editPreview.style.background=profileTempColor;
-    }
-  }
-}
-function renderProfileAvatarPickers(){
-  let isPhotoMode = !!profileEditPhotoTemp;
-  document.getElementById('profileAvatarPicker').innerHTML=avatars.map(a=>`<button type="button" onclick="pickProfileAvatar('${a}')" class="w-10 h-10 rounded-full border-2 ${!isPhotoMode && profileTempAvatar===a?'border-maroon scale-110':'border-cream bg-[#FFFBF0]'} grid place-items-center text-[20px]" style="background:${!isPhotoMode && profileTempAvatar===a?profileTempColor:'#FFFBF0'}">${a}</button>`).join('');
-  document.getElementById('profileColorPicker').innerHTML=colors.map(c=>`<button type="button" onclick="pickProfileColor('${c}')" class="w-8 h-8 rounded-full border-2 ${profileTempColor===c?'border-maroon scale-110':'border-[#FFFBF0]'} " style="background:${c}"></button>`).join('');
-}
-window.pickProfileAvatar=function(a){
-  profileTempAvatar=a;
-  profileEditPhotoTemp=null;
-  let btn=document.getElementById('removeProfilePhoto');
-  if(btn) btn.classList.add('hidden');
-  document.getElementById('profilePhotoInput').value='';
-  document.getElementById('profilePhotoCamera').value='';
-  renderProfileAvatarPickers();
-  renderProfileAvatar();
-}
-window.pickProfileColor=function(c){
-  profileTempColor=c;
-  renderProfileAvatarPickers();
-  renderProfileAvatar();
-}
-window.openProfileEdit=function(){
-  let data=getProfileData();
-  profileTempAvatar=data.avatar;
-  profileTempColor=data.color;
-  profileEditPhotoTemp=data.photo;
-  lockScroll();
-  document.getElementById('profileEditModal').classList.remove('hidden');
-  document.getElementById('profileEditModal').classList.add('grid');
-  renderProfileAvatarPickers();
-  renderProfileAvatar();
-  let btn=document.getElementById('removeProfilePhoto');
-  if(profileEditPhotoTemp) btn.classList.remove('hidden');
-  else btn.classList.add('hidden');
-}
-window.closeProfileEdit=function(){
-  document.getElementById('profileEditModal').classList.add('hidden');
-  document.getElementById('profileEditModal').classList.remove('grid');
-  unlockScroll();
-}
-window.previewProfilePhoto=function(e){
-  try{
-    let f=e.target.files[0]; if(!f) return;
-    if(f.size>3*1024*1024){ showToast('Foto profil max 3MB!'); return; }
-    let r=new FileReader();
-    r.onload=ev=>{
-      let img=new Image(); img.src=ev.target.result;
-      img.onload=()=>{
-        let canvas=document.createElement('canvas');
-        let maxW=300; let scale=Math.min(1,maxW/img.width);
-        canvas.width=img.width*scale; canvas.height=img.height*scale;
-        canvas.getContext('2d').drawImage(img,0,0,canvas.width,canvas.height);
-        profileEditPhotoTemp=canvas.toDataURL('image/jpeg',0.7);
-        let btn=document.getElementById('removeProfilePhoto');
-        if(btn) btn.classList.remove('hidden');
-        renderProfileAvatarPickers();
-        renderProfileAvatar();
-        showToast('Foto dimuat! Klik Simpan 💖');
-      };
-      img.onerror=()=>showToast('Foto rusak');
-    };
-    r.readAsDataURL(f);
-  }catch(err){ showToast('Error foto'); }
-}
-window.removeProfilePhoto=function(){
-  profileEditPhotoTemp=null;
-  document.getElementById('profilePhotoInput').value='';
-  document.getElementById('profilePhotoCamera').value='';
-  let btn=document.getElementById('removeProfilePhoto');
-  if(btn) btn.classList.add('hidden');
-  renderProfileAvatarPickers();
-  renderProfileAvatar();
-}
-window.saveProfilePhoto=function(){
-  localStorage.setItem('profileAvatar_CeritaKita', profileTempAvatar);
-  localStorage.setItem('profileColor_CeritaKita', profileTempColor);
-  if(profileEditPhotoTemp){
-    localStorage.setItem('profilePhoto_CeritaKita', profileEditPhotoTemp);
-  } else {
-    localStorage.removeItem('profilePhoto_CeritaKita');
-  }
-  renderProfileAvatar();
-  closeProfileEdit();
-  showToast('Foto profil disimpan! ✨');
-}
+function getProfileData(){ try{ let a=localStorage.getItem('profileAvatar_CeritaKita') || avatars[0]; let c=localStorage.getItem('profileColor_CeritaKita') || colors[0]; let p=localStorage.getItem('profilePhoto_CeritaKita') || null; return {avatar:a, color:c, photo:p}; }catch{ return {avatar:avatars[0], color:colors[0], photo:null}; } }
+function renderProfileAvatar(){ let data=getProfileData(); let display=document.getElementById('profileAvatarDisplay'); let label=document.getElementById('profileAvatarLabel'); let lvl=getLevel(getXP()); if(!display) return; if(data.photo){ display.innerHTML=`<img src="${data.photo}" class="w-full h-full object-cover">`; display.style.background=data.color; if(label) label.innerText=`📸 • LV.${lvl.lv}`; } else { display.innerText=data.avatar; display.style.background=data.color; if(label) label.innerText=`${data.avatar} • LV.${lvl.lv}`; } let editPreview=document.getElementById('profileEditPreview'); if(editPreview){ if(profileEditPhotoTemp){ editPreview.innerHTML=`<img src="${profileEditPhotoTemp}" class="w-full h-full object-cover">`; editPreview.style.background=profileTempColor; } else { editPreview.innerText=profileTempAvatar; editPreview.style.background=profileTempColor; } } }
+function renderProfileAvatarPickers(){ let isPhotoMode = !!profileEditPhotoTemp; document.getElementById('profileAvatarPicker').innerHTML=avatars.map(a=>`<button type="button" onclick="pickProfileAvatar('${a}')" class="w-10 h-10 rounded-full border-2 ${!isPhotoMode && profileTempAvatar===a?'border-maroon scale-110':'border-cream bg-[#FFFBF0]'} grid place-items-center text-[20px]" style="background:${!isPhotoMode && profileTempAvatar===a?profileTempColor:'#FFFBF0'}">${a}</button>`).join(''); document.getElementById('profileColorPicker').innerHTML=colors.map(c=>`<button type="button" onclick="pickProfileColor('${c}')" class="w-8 h-8 rounded-full border-2 ${profileTempColor===c?'border-maroon scale-110':'border-[#FFFBF0]'} " style="background:${c}"></button>`).join(''); }
+window.pickProfileAvatar=function(a){ profileTempAvatar=a; profileEditPhotoTemp=null; let btn=document.getElementById('removeProfilePhoto'); if(btn) btn.classList.add('hidden'); document.getElementById('profilePhotoInput').value=''; document.getElementById('profilePhotoCamera').value=''; renderProfileAvatarPickers(); renderProfileAvatar(); }
+window.pickProfileColor=function(c){ profileTempColor=c; renderProfileAvatarPickers(); renderProfileAvatar(); }
+window.openProfileEdit=function(){ let data=getProfileData(); profileTempAvatar=data.avatar; profileTempColor=data.color; profileEditPhotoTemp=data.photo; lockScroll(); document.getElementById('profileEditModal').classList.remove('hidden'); document.getElementById('profileEditModal').classList.add('grid'); renderProfileAvatarPickers(); renderProfileAvatar(); let btn=document.getElementById('removeProfilePhoto'); if(profileEditPhotoTemp) btn.classList.remove('hidden'); else btn.classList.add('hidden'); }
+window.closeProfileEdit=function(){ document.getElementById('profileEditModal').classList.add('hidden'); document.getElementById('profileEditModal').classList.remove('grid'); unlockScroll(); }
+window.previewProfilePhoto=function(e){ try{ let f=e.target.files[0]; if(!f) return; if(f.size>3*1024*1024){ showToast('Foto profil max 3MB!'); return; } let r=new FileReader(); r.onload=ev=>{ let img=new Image(); img.src=ev.target.result; img.onload=()=>{ let canvas=document.createElement('canvas'); let maxW=300; let scale=Math.min(1,maxW/img.width); canvas.width=img.width*scale; canvas.height=img.height*scale; canvas.getContext('2d').drawImage(img,0,0,canvas.width,canvas.height); profileEditPhotoTemp=canvas.toDataURL('image/jpeg',0.7); let btn=document.getElementById('removeProfilePhoto'); if(btn) btn.classList.remove('hidden'); renderProfileAvatarPickers(); renderProfileAvatar(); showToast('Foto dimuat! Klik Simpan 💖'); }; img.onerror=()=>showToast('Foto rusak'); }; r.readAsDataURL(f); }catch(err){ showToast('Error foto'); } }
+window.removeProfilePhoto=function(){ profileEditPhotoTemp=null; document.getElementById('profilePhotoInput').value=''; document.getElementById('profilePhotoCamera').value=''; let btn=document.getElementById('removeProfilePhoto'); if(btn) btn.classList.add('hidden'); renderProfileAvatarPickers(); renderProfileAvatar(); }
+window.saveProfilePhoto=function(){ localStorage.setItem('profileAvatar_CeritaKita', profileTempAvatar); localStorage.setItem('profileColor_CeritaKita', profileTempColor); if(profileEditPhotoTemp){ localStorage.setItem('profilePhoto_CeritaKita', profileEditPhotoTemp); } else { localStorage.removeItem('profilePhoto_CeritaKita'); } renderProfileAvatar(); closeProfileEdit(); showToast('Foto profil disimpan! ✨'); }
 function timeAgo(t){ if(!t) return 'Baru saja'; let d=Math.floor((Date.now()-t)/60000); if(d<1) return 'Baru saja'; if(d<60) return d+' menit lalu'; if(d<1440) return Math.floor(d/60)+' jam lalu'; return Math.floor(d/1440)+' hari lalu'; }
 function todayStr(){ return new Date().toLocaleDateString('en-CA',{timeZone:'Asia/Jakarta'}); }
 function yesterdayStr(){ let d=new Date(); d.setDate(d.getDate()-1); return d.toLocaleDateString('en-CA',{timeZone:'Asia/Jakarta'}); }
@@ -369,17 +242,7 @@ function esc(s){ return (s||'').toString().replace(/&/g,'&amp;').replace(/</g,'&
 function safeHTML(s){ if(!s) return ''; return s.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi,'').replace(/ on\w+="[^"]*"/gi,'').replace(/ on\w+='[^']*'/gi,''); }
 function parseContent(t){ return esc(t).replace(/#(\w+)/g,'<span class="text-maroon2 font-bold">#$1</span>'); }
 window.handleSearch=function(val){ let a=document.getElementById('search'); let b=document.getElementById('searchM'); if(document.activeElement!==a && document.activeElement!==b) return; if(a && a.value!==val) a.value=val; if(b && b.value!==val) b.value=val; render(); }
-window.switchTab=function(name){
-  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
-  document.getElementById('view-'+name).classList.add('active');
-  document.querySelectorAll('.bottom-nav button').forEach(b=>b.classList.remove('active'));
-  document.getElementById('nav-'+name).classList.add('active');
-  let spill=document.getElementById('spillBtn');
-  if(name==='feed'){ spill.classList.remove('hidden'); } else { spill.classList.add('hidden'); }
-  window.scrollTo({top:0,behavior:'smooth'});
-  if(name==='profile'){ renderProfile(); renderProfileAvatar(); }
-  if(name==='game'){ updateSpinLabel(); setTimeout(()=>drawSpinWheel(),100); }
-}
+window.switchTab=function(name){ document.querySelectorAll('.view').forEach(v=>v.classList.remove('active')); document.getElementById('view-'+name).classList.add('active'); document.querySelectorAll('.bottom-nav button').forEach(b=>b.classList.remove('active')); document.getElementById('nav-'+name).classList.add('active'); let spill=document.getElementById('spillBtn'); if(name==='feed'){ spill.classList.remove('hidden'); } else { spill.classList.add('hidden'); } window.scrollTo({top:0,behavior:'smooth'}); if(name==='profile'){ renderProfile(); renderProfileAvatar(); } if(name==='game'){ updateSpinLabel(); setTimeout(()=>drawSpinWheel(),100); } }
 function loadTheme(){ let t=localStorage.getItem('theme_CeritaKita'); if(t==='dark'){ document.documentElement.classList.add('dark'); document.getElementById('darkToggle').innerText='☀️'; } }
 window.toggleDark=function(){ let isDark=document.documentElement.classList.toggle('dark'); localStorage.setItem('theme_CeritaKita', isDark?'dark':'light'); document.getElementById('darkToggle').innerText=isDark?'☀️':'🌙'; setTimeout(()=>drawSpinWheel(),100); }
 loadTheme();
@@ -410,10 +273,40 @@ window.openHomeDetail=function(type, iklanIndex=0){
     let fotoEl=document.getElementById('homeDetailFoto');
     let kontakWrap=document.getElementById('homeDetailKontak');
     let kontakContent=document.getElementById('homeDetailKontakContent');
-    kontakWrap.classList.add('hidden'); fotoEl.classList.add('hidden');
+    let waBtn=document.getElementById('waBtn'); let igBtn=document.getElementById('igBtn'); let linkBtn=document.getElementById('linkBtn');
+    let btnWrap=document.getElementById('kontakBtnWrap');
+    kontakWrap.classList.add('hidden'); fotoEl.classList.add('hidden'); waBtn.classList.add('hidden'); igBtn.classList.add('hidden'); linkBtn.classList.add('hidden'); btnWrap.style.display='none';
     if(type==='rules'){ title.innerText='📜 Rules Lengkap'; icon.innerText='📜'; content.innerHTML=safeHTML(homeDataCache.rules) || '<ul class="list-disc pl-4"><li>Dilarang SARA, porn, 18+</li><li>Dilarang spam, judi, pinjol</li><li>Saling respect</li></ul>'; }
     else if(type==='pengumuman'){ title.innerText='📢 Pengumuman'; icon.innerText='📢'; content.innerHTML=`<div>${safeHTML(homeDataCache.pengumuman) || 'Belum ada pengumuman'}</div><div class="mt-3 text-[10px] opacity-40">${homeDataCache.pengumumanDate ? 'Update: '+esc(homeDataCache.pengumumanDate) : ''}</div>`; }
-    else if(type==='iklan'){ let ik = homeDataCache.iklanList[iklanIndex] || homeDataCache.iklanList[0]; if(!ik){ unlockScroll(); return; } title.innerText='💰 Detail Iklan'; icon.innerText='💰'; if(ik.foto){ fotoEl.src=ik.foto; fotoEl.classList.remove('hidden'); } content.innerHTML=safeHTML(ik.teks) || 'Belum ada iklan'; let hasKontakText = ik.kontak && ik.kontak.trim().length>0; let hasWA = ik.wa && ik.wa.replace(/[^0-9]/g,'').length>=10; let hasIG = ik.ig && ik.ig.length>=2; if(hasKontakText || hasWA || hasIG) kontakWrap.classList.remove('hidden'); kontakContent.innerHTML = safeHTML(ik.kontak) || ''; let waBtn=document.getElementById('waBtn'); let igBtn=document.getElementById('igBtn'); let btnWrap=document.getElementById('kontakBtnWrap'); waBtn.classList.add('hidden'); igBtn.classList.add('hidden'); btnWrap.style.display='none'; if(hasWA){ waBtn.classList.remove('hidden'); btnWrap.style.display='grid'; waBtn.onclick=()=>{ window.open('https://wa.me/'+ik.wa.replace(/[^0-9]/g,''),'_blank'); }; } if(hasIG){ igBtn.classList.remove('hidden'); btnWrap.style.display='grid'; let handle=ik.ig.replace('@','').replace('https://instagram.com/','').replace('instagram.com/','').split('/')[0].split('?')[0]; igBtn.onclick=()=>{ window.open('https://instagram.com/'+handle,'_blank'); }; } }
+    else if(type==='iklan'){ let ik = homeDataCache.iklanList[iklanIndex] || homeDataCache.iklanList[0]; if(!ik){ unlockScroll(); return; } title.innerText='💰 Detail Iklan'; icon.innerText='💰'; if(ik.foto){ fotoEl.src=ik.foto; fotoEl.classList.remove('hidden'); } content.innerHTML=safeHTML(ik.teks) || 'Belum ada iklan'; let hasKontakText = ik.kontak && ik.kontak.trim().length>0; let hasWA = ik.wa && ik.wa.replace(/[^0-9]/g,'').length>=10; let hasIG = ik.ig && ik.ig.length>=2; if(hasKontakText || hasWA || hasIG) kontakWrap.classList.remove('hidden'); kontakContent.innerHTML = safeHTML(ik.kontak) || ''; if(hasWA){ waBtn.classList.remove('hidden'); btnWrap.style.display='grid'; waBtn.onclick=()=>{ window.open('https://wa.me/'+ik.wa.replace(/[^0-9]/g,''),'_blank'); }; } if(hasIG){ igBtn.classList.remove('hidden'); btnWrap.style.display='grid'; let handle=ik.ig.replace('@','').replace('https://instagram.com/','').replace('instagram.com/','').split('/')[0].split('?')[0]; igBtn.onclick=()=>{ window.open('https://instagram.com/'+handle,'_blank'); }; } }
+    else if(type==='berita'){
+      let b = homeDataCache.beritaList[iklanIndex] || homeDataCache.beritaList[0];
+      if(!b){ unlockScroll(); return; }
+      title.innerText='📰 Berita Kampus'; icon.innerText='📰';
+      if(b.foto){ fotoEl.src=b.foto; fotoEl.classList.remove('hidden'); }
+      content.innerHTML=`<div class="inline-block text-[9px] bg-maroon text-white px-2 py-1 rounded-full font-bold mb-2">${esc(b.kategori||'Info Kampus')}</div><div class="text-[10px] opacity-50 mb-2">${esc(b.tanggal||'')}</div><div>${safeHTML(b.teks)||'Berita Kampus'}</div>`;
+      let hasKontakText = b.kontak && b.kontak.trim().length>0;
+      let hasWA = b.wa && b.wa.replace(/[^0-9]/g,'').length>=10;
+      let hasIG = b.ig && b.ig.length>=2;
+      let hasLink = b.link && b.link.length>5;
+      if(hasKontakText || hasWA || hasIG || hasLink) kontakWrap.classList.remove('hidden');
+      kontakContent.innerHTML = (b.kontak?safeHTML(b.kontak)+'<br>':'') + (b.link?`<span class="text-[10px]">Link: ${esc(b.link)}</span>`:'');
+      if(hasWA){ waBtn.classList.remove('hidden'); btnWrap.style.display='grid'; waBtn.onclick=()=>{ window.open('https://wa.me/'+b.wa.replace(/[^0-9]/g,''),'_blank'); }; }
+      if(hasIG){ igBtn.classList.remove('hidden'); btnWrap.style.display='grid'; let handle=b.ig.replace('@','').replace('https://instagram.com/','').replace('instagram.com/','').split('/')[0].split('?')[0]; igBtn.onclick=()=>{ window.open('https://instagram.com/'+handle,'_blank'); }; }
+      if(hasLink){ linkBtn.classList.remove('hidden'); btnWrap.style.display='grid'; linkBtn.onclick=()=>{ window.open(b.link,'_blank'); }; }
+    }
+    else if(type==='beritaList'){
+      title.innerText='📰 Semua Berita Kampus (10)'; icon.innerText='📰';
+      if(!homeDataCache.beritaList.length){ content.innerHTML='<div class="text-center opacity-40 py-8">Belum ada berita kampus</div>'; }
+      else {
+        content.innerHTML = homeDataCache.beritaList.map((b,i)=>`
+          <div onclick="closeHomeDetail(); setTimeout(()=>openHomeDetail('berita',${i}),200)" class="flex gap-3 bg-[#FFFBF0] border-2 border-cream rounded-xl p-3 cursor-pointer mb-2 active:scale-95 transition">
+            ${b.foto?`<img src="${b.foto}" class="w-16 h-16 object-cover rounded-lg border-2 border-cream">`:`<div class="w-16 h-16 bg-cream2 rounded-lg grid place-items-center border-2 border-cream">📰</div>`}
+            <div class="flex-1 overflow-hidden"><div class="text-[9px] bg-maroon text-white px-2 py-0.5 rounded-full font-bold inline-block">${esc(b.kategori||'Info')}</div><div class="text-[11px] font-bold line-clamp-2 mt-1">${esc(b.teks).slice(0,80)}</div><div class="text-[9px] opacity-40 mt-1">${esc(b.tanggal||'')}</div></div>
+          </div>
+        `).join('');
+      }
+    }
     modal.classList.remove('hidden'); modal.classList.add('grid');
   }catch(e){ unlockScroll(); }
 }
@@ -442,12 +335,7 @@ renderAvatarPicker();
 document.getElementById('msgInput').addEventListener('input',e=>{ document.getElementById('charCount').innerText=e.target.value.length+'/500'; });
 function lockScroll(){ savedScroll=window.scrollY; document.body.style.position='fixed'; document.body.style.top=`-${savedScroll}px`; document.body.style.width='100%'; }
 function unlockScroll(){ document.body.style.position=''; document.body.style.top=''; document.body.style.width=''; window.scrollTo(0,savedScroll); }
-window.enterApp=async function(){
-  document.getElementById('landing').style.transform='translateY(-100%)';
-  setTimeout(()=>document.getElementById('landing').style.display='none',600);
-  checkRules(); render(); updateStreak(); showStreak(); renderProfileAvatar();
-  autoRequestNotifOnEnter();
-}
+window.enterApp=async function(){ document.getElementById('landing').style.transform='translateY(-100%)'; setTimeout(()=>document.getElementById('landing').style.display='none',600); checkRules(); render(); updateStreak(); showStreak(); renderProfileAvatar(); autoRequestNotifOnEnter(); }
 window.openCreate=function(){ lockScroll(); document.getElementById('createModal').classList.remove('hidden'); document.getElementById('createModal').classList.add('grid'); }
 window.closeCreate=function(){ document.getElementById('createModal').classList.add('hidden'); document.getElementById('createModal').classList.remove('grid'); unlockScroll(); }
 window.openEdit=function(fid){ let c=confesses.find(x=>x.firestoreId===fid); if(!c||!isMine(fid)) return; editId=fid; document.getElementById('editToInput').value=c.to; document.getElementById('editCatInput').value=c.cat; document.getElementById('editMsgInput').value=c.text; lockScroll(); document.getElementById('editModal').classList.remove('hidden'); document.getElementById('editModal').classList.add('grid'); }
@@ -475,21 +363,32 @@ async function loadHomeConfig(){
         homeDataCache.rules=data.rules || '';
         homeDataCache.pengumuman=data.pengumuman || '';
         homeDataCache.pengumumanDate=data.pengumumanDate || '';
-        let list = data.iklanList && Array.isArray(data.iklanList) && data.iklanList.length ? data.iklanList : (data.iklan ? [{teks:data.iklan, foto:data.iklanFoto, wa:data.iklanWA||data.wa||'', ig:data.iklanIG||data.ig||'', kontak:data.iklanKontak||''}] : []);
-        homeDataCache.iklanList = list;
+        let iklanList = data.iklanList && Array.isArray(data.iklanList) && data.iklanList.length ? data.iklanList : (data.iklan ? [{teks:data.iklan, foto:data.iklanFoto, wa:data.iklanWA||data.wa||'', ig:data.iklanIG||data.ig||'', kontak:data.iklanKontak||''}] : []);
+        homeDataCache.iklanList = iklanList;
+        let beritaList = data.beritaList && Array.isArray(data.beritaList) ? data.beritaList.slice(0,10) : [];
+        if(beritaList.length===0 && data.berita){ beritaList=[{teks:data.berita, foto:data.beritaFoto||'', tanggal:data.beritaTanggal||'', kategori:data.beritaKategori||'Info Kampus', wa:data.beritaWA||'', ig:data.beritaIG||'', link:data.beritaLink||''}]; }
+        homeDataCache.beritaList = beritaList;
         document.getElementById('homeRules').innerHTML = safeHTML(data.rules) || "Rules belum diset admin";
         document.getElementById('homePengumuman').innerHTML = safeHTML(data.pengumuman) || "Belum ada pengumuman";
         document.getElementById('pengumumanDate').innerText = data.pengumumanDate ? "Update: "+data.pengumumanDate : "";
         let carousel=document.getElementById('iklanCarousel');
         let countEl=document.getElementById('iklanCount');
-        if(countEl) countEl.innerText=list.length+' ADS';
-        if(!list.length){ carousel.innerHTML='<div class="text-[11px] opacity-40 py-4">Belum ada iklan</div>'; }
+        if(countEl) countEl.innerText=iklanList.length+' ADS';
+        if(!iklanList.length){ carousel.innerHTML='<div class="text-[11px] opacity-40 py-4">Belum ada iklan</div>'; }
+        else { carousel.innerHTML=iklanList.map((ik,i)=>`<div onclick="openHomeDetail('iklan',${i})" class="min-w-[220px] max-w-[220px] snap-center bg-[#FFFBF0] border-2 border-cream rounded-xl p-3 cursor-pointer active:scale-95 transition">${ik.foto?`<img src="${ik.foto}" class="w-full h-24 object-cover rounded-lg mb-2 border-2 border-cream">`:''}<div class="text-[11px] leading-5 line-clamp-3">${safeHTML(ik.teks)||'Iklan'}</div></div>`).join(''); carousel.onmouseenter=()=>{ iklanPaused=true; }; carousel.onmouseleave=()=>{ iklanPaused=false; }; carousel.ontouchstart=()=>{ iklanPaused=true; }; carousel.ontouchend=()=>{ setTimeout(()=>{ iklanPaused=false; },2000); }; }
+
+        let beritaCar=document.getElementById('beritaCarousel');
+        let beritaCountEl=document.getElementById('beritaCount');
+        if(beritaCountEl) beritaCountEl.innerText=beritaList.length+' BERITA';
+        if(!beritaList.length){ beritaCar.innerHTML='<div class="text-[11px] opacity-40 py-6 text-center w-full">📰 Belum ada berita kampus • Admin upload di Firebase home_config/main -> beritaList (max 10)</div>'; }
         else {
-          carousel.innerHTML=list.map((ik,i)=>`<div onclick="openHomeDetail('iklan',${i})" class="min-w-[220px] max-w-[220px] snap-center bg-[#FFFBF0] border-2 border-cream rounded-xl p-3 cursor-pointer active:scale-95 transition">${ik.foto?`<img src="${ik.foto}" class="w-full h-24 object-cover rounded-lg mb-2 border-2 border-cream">`:''}<div class="text-[11px] leading-5 line-clamp-3">${safeHTML(ik.teks)||'Iklan'}</div><div class="mt-2 flex gap-1">${ik.wa?'<span class="text-[8px] bg-green-500 text-white px-1.5 py-0.5 rounded-full">WA</span>':''}${ik.ig?'<span class="text-[8px] bg-gradient-to-r from-purple-500 to-pink-500 text-white px-1.5 py-0.5 rounded-full">IG</span>':''}</div></div>`).join('');
-          carousel.onmouseenter=()=>{ iklanPaused=true; }; carousel.onmouseleave=()=>{ iklanPaused=false; }; carousel.ontouchstart=()=>{ iklanPaused=true; }; carousel.ontouchend=()=>{ setTimeout(()=>{ iklanPaused=false; },2000); };
+          beritaCar.innerHTML=beritaList.map((b,i)=>`<div onclick="openHomeDetail('berita',${i})" class="min-w-[260px] max-w-[260px] snap-center bg-[#FFFBF0] border-[2.5px] border-maroon rounded-[16px] overflow-hidden cursor-pointer active:scale-95 transition shadow-[4px_4px_0px_#5D0F1F]">${b.foto?`<img src="${b.foto}" class="w-full h-[160px] object-cover">`:`<div class="w-full h-[160px] bg-gradient-to-br from-cream2 to-cream grid place-items-center text-[32px]">📰</div>`}<div class="p-3"><div class="flex justify-between items-center mb-1"><span class="text-[8px] bg-maroon text-white px-2 py-0.5 rounded-full font-bold">${esc(b.kategori||'Info')}</span><span class="text-[8px] opacity-50">${esc(b.tanggal||'')}</span></div><div class="text-[11px] font-bold leading-5 line-clamp-2">${safeHTML(b.teks)||'Berita'}</div></div></div>`).join('');
+          beritaCar.onmouseenter=()=>{ beritaPaused=true; }; beritaCar.onmouseleave=()=>{ beritaPaused=false; }; beritaCar.ontouchstart=()=>{ beritaPaused=true; }; beritaCar.ontouchend=()=>{ setTimeout(()=>{ beritaPaused=false; },2000); };
         }
         if(iklanInterval) clearInterval(iklanInterval);
-        if(list.length>1){ let idx=0; iklanInterval=setInterval(()=>{ if(iklanPaused) return; idx=(idx+1)%list.length; let el=carousel.children[idx]; if(el){ let left = el.offsetLeft - carousel.offsetLeft - (carousel.clientWidth - el.clientWidth)/2; carousel.scrollTo({left, behavior:'smooth'}); } },3000); }
+        if(iklanList.length>1){ let idx=0; iklanInterval=setInterval(()=>{ if(iklanPaused) return; idx=(idx+1)%iklanList.length; let el=carousel.children[idx]; if(el){ let left = el.offsetLeft - carousel.offsetLeft - (carousel.clientWidth - el.clientWidth)/2; carousel.scrollTo({left, behavior:'smooth'}); } },3000); }
+        if(beritaInterval) clearInterval(beritaInterval);
+        if(beritaList.length>1){ let idxB=0; beritaInterval=setInterval(()=>{ if(beritaPaused) return; idxB=(idxB+1)%beritaList.length; let el=beritaCar.children[idxB]; if(el){ let left = el.offsetLeft - beritaCar.offsetLeft - (beritaCar.clientWidth - el.clientWidth)/2; beritaCar.scrollTo({left, behavior:'smooth'}); } },3500); }
       }
     });
   }catch(e){}
